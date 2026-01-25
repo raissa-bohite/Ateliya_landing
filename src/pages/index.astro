@@ -1,11 +1,35 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import HeroSection from "../components/Hero.astro";
+import StepsSection from "../components/StepsSection.astro";
+import FeaturesGrid from "../components/Features.astro";
+import AccountingPaymentSection from "../components/Pricing.astro";
+import GalleryCarousel from "../components/appGallery.astro";
+import TestimonialsStatsSection from "../components/TestimonialsStatsSection.astro";
+import DownloadSection from "../components/DownloadSection.astro";
+import BlogSection from "../components/BlogSection.astro";
+import FinalCtaSection from "../components/FinalCtaSection.astro";
+import "../styles/global.css";
+import FeaturesDatails from "../components/FeaturesDatails.astro";
+import Pricing from "../components/Pricing.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Ateliya - Gestion d'Atelier Intelligente"
+  description="Transformez votre atelier de couture avec Ateliya. Gestion des clients, commandes, mesures et paiements intégrés. Essai gratuit."
+>
+  <Header />
+
+  <HeroSection />
+  <StepsSection />
+  <FeaturesDatails />
+  <GalleryCarousel />
+  <TestimonialsStatsSection />
+  <DownloadSection />
+  <BlogSection />
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+import Icon from "../components/Icon.astro";
+import { faqCategories } from "../data/contact";
+---
+
+<section class="py-20 md:py-24 bg-white">
+  <div class="container mx-auto max-w-6xl px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black text-ateliya-dark mb-4">
+        Questions Fréquentes
+      </h2>
+      <p class="text-xl text-ateliya-text/70">
+        Trouvez rapidement des réponses
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        faqCategories.map((category) => (
+          <div>
+            <h3 class="text-xl font-black text-ateliya-primary mb-6">
+              {category.name}
+            </h3>
+            <div class="space-y-4">
+              {category.faqs.map((faq, idx) => (
+                <div class="faq-item group">
+                  <button
+                    class="w-full text-left p-6 rounded-2xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-ateliya-primary/30 transition-all"
+                    data-faq={`${category.name}-${idx}`}
+                  >
+                    <div class="flex items-start justify-between gap-4">
+                      <h4 class="font-bold text-ateliya-dark group-hover:text-ateliya-primary transition-colors pr-4">
+                        {faq.question}
+                      </h4>
+                      <Icon
+                        name="chevronDown"
+                        size="sm"
+                        class="text-ateliya-primary flex-shrink-0 transform transition-transform group-hover:rotate-180"
+                      />
+                    </div>
+                    <div class="faq-answer hidden mt-4 text-sm text-ateliya-text/70 leading-relaxed">
+                      {faq.answer}
+                    </div>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- More questions -->
+    <div
+      class="text-center mt-16 p-8 rounded-2xl bg-gradient-to-r from-ateliya-primary/5 to-ateliya-secondary/5"
+    >
+      <p class="text-ateliya-text/70 mb-4">Vous ne trouvez pas la réponse ?</p>
+      <a
+        href="#contactForm"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold hover:scale-105 transition-transform"
+      >
+        <span>Contactez-nous</span>
+        <Icon name="arrowRight" size="sm" />
+      </a>
+    </div>
+  </div>
+</section>

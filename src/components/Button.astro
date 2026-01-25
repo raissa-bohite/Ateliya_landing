@@ -1,0 +1,171 @@
+---
+interface Props {
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
+  size?: "sm" | "md" | "lg" | "xl";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  fullWidth?: boolean;
+  icon?: string;
+  iconPosition?: "left" | "right";
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  type = "button",
+  disabled = false,
+  fullWidth = false,
+  icon,
+  iconPosition = "left",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+// Size classes
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm rounded-lg",
+  md: "px-6 py-3 text-base rounded-xl",
+  lg: "px-8 py-4 text-lg rounded-xl",
+  xl: "px-10 py-5 text-xl rounded-2xl",
+};
+
+// Variant classes avec designs ultra-captivants
+const variantClasses = {
+  primary: `
+    bg-gradient-to-r from-ateliya-primary to-ateliya-dark 
+    text-white font-bold
+    shadow-lg hover:shadow-2xl hover:shadow-ateliya-primary/30
+    hover:scale-105 active:scale-95
+    border-0
+    relative overflow-hidden
+    group/btn
+  `,
+  secondary: `
+    bg-gradient-to-r from-ateliya-secondary to-ateliya-accent
+    text-white font-bold
+    shadow-lg hover:shadow-2xl hover:shadow-ateliya-secondary/30
+    hover:scale-105 active:scale-95
+    border-0
+    relative overflow-hidden
+    group/btn
+  `,
+  outline: `
+    bg-white
+    text-ateliya-dark font-bold
+    border-2 border-ateliya-primary/30 hover:border-ateliya-primary
+    hover:bg-ateliya-primary/5
+    shadow-md hover:shadow-xl
+    hover:scale-105 active:scale-95
+    relative overflow-hidden
+    group/btn
+  `,
+  ghost: `
+    bg-transparent
+    text-ateliya-primary font-bold
+    border-0
+    hover:bg-ateliya-primary/10
+    hover:scale-105 active:scale-95
+    relative overflow-hidden
+    group/btn
+  `,
+  danger: `
+    bg-gradient-to-r from-red-500 to-red-600
+    text-white font-bold
+    shadow-lg hover:shadow-2xl hover:shadow-red-500/30
+    hover:scale-105 active:scale-95
+    border-0
+    relative overflow-hidden
+    group/btn
+  `,
+};
+
+// Disabled classes
+const disabledClasses = disabled
+  ? "opacity-50 cursor-not-allowed pointer-events-none"
+  : "cursor-pointer";
+
+// Full width
+const widthClasses = fullWidth ? "w-full" : "inline-flex";
+
+// Classes finales
+const buttonClasses = `
+  ${sizeClasses[size]}
+  ${variantClasses[variant]}
+  ${disabledClasses}
+  ${widthClasses}
+  ${className}
+  items-center justify-center gap-3
+  transition-all duration-300
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2
+  select-none
+`;
+
+const Tag = href && !disabled ? "a" : "button";
+const linkProps = href && !disabled ? { href } : {};
+const buttonProps = !href ? { type, disabled } : {};
+---
+
+<Tag
+  class={buttonClasses}
+  {...linkProps}
+  {...buttonProps}
+  {...rest}
+>
+  <!-- Shimmer effect pour primary et secondary -->
+  {(variant === "primary" || variant === "secondary") && (
+    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent bg-[length:200%_100%] animate-shimmer-slow" />
+  )}
+
+  <!-- Ripple effect au hover -->
+  <span class="absolute inset-0 rounded-[inherit] bg-white/0 group-hover/btn:bg-white/10 scale-0 group-hover/btn:scale-100 transition-all duration-500" />
+
+  <!-- Content -->
+  <span class="relative z-10 flex items-center gap-3">
+    {icon && iconPosition === "left" && (
+      <span class="flex-shrink-0">
+        <slot name="icon-left" />
+      </span>
+    )}
+    
+    <slot />
+    
+    {icon && iconPosition === "right" && (
+      <span class="flex-shrink-0 group-hover/btn:translate-x-1 transition-transform duration-300">
+        <slot name="icon-right" />
+      </span>
+    )}
+  </span>
+
+  <!-- Glow effect pour primary -->
+  {variant === "primary" && (
+    <span class="absolute -inset-1 bg-gradient-to-r from-ateliya-primary to-ateliya-dark opacity-0 group-hover/btn:opacity-50 blur-xl transition-opacity duration-500 -z-10" />
+  )}
+</Tag>
+
+<style>
+  @keyframes shimmer-slow {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .animate-shimmer-slow {
+    animation: shimmer-slow 3s linear infinite;
+  }
+
+  /* Empêcher la sélection du texte */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+</style>

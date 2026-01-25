@@ -1,0 +1,34 @@
+---
+import Icon from "../components/Icon.astro";
+import "../styles/global.css";
+---
+
+<section
+  class="hero-gradient text-white relative overflow-hidden section-padding-xl"
+>
+  <div
+    class="container-wide relative z-10 text-center max-w-3xl mx-auto animate-fade-in"
+  >
+    <h2 class="text-4xl font-black mb-8">Prêt à Transformer Votre Atelier ?</h2>
+    <p class="text-lg text-white/90 mb-12 leading-relaxed">
+      Rejoignez 500+ ateliers qui font confiance à Ateliya pour gérer leurs
+      activités efficacement. Commencez maintenant, c'est gratuit !
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#appstore" class="btn-primary inline-flex items-center gap-2">
+        <Icon name="download" size="md" color="currentColor" />
+        <span>Télécharger Gratuitement</span>
+      </a>
+      <a
+        href="#contact"
+        class="btn-outline inline-flex items-center gap-2 border-white text-white hover:bg-white hover:text-ateliya-primary"
+      >
+        <Icon name="mail" size="md" color="currentColor" />
+        <span>Nous Contacter</span>
+      </a>
+    </div>
+    <p class="text-sm text-white/70 mt-8">
+      Aucune carte de crédit requise • Configuration en 5 minutes • Support 24/7
+    </p>
+  </div>
+</section>

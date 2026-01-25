@@ -1,0 +1,145 @@
+/* ===== UTILITY CLASSES ===== */
+/* Classes helper réutilisables */
+
+/* Layout */
+.container-wide {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+.section-padding-xl {
+  @apply py-20 md:py-32 lg:py-48;
+}
+
+/* Flex & Grid helpers */
+.center-flex {
+  @apply flex items-center justify-center;
+}
+
+.center-grid {
+  @apply grid place-items-center;
+}
+
+/* Responsive visibility */
+.hide-mobile {
+  @apply hidden md:block;
+}
+
+.hide-desktop {
+  @apply block md:hidden;
+}
+
+/* Focus rings */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ateliya-primary;
+}
+
+.focus-ring-dark {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ateliya-bg-dark focus:ring-ateliya-primary;
+}
+
+.focus-ring-africa {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  --tw-ring-color: var(--color-africa-gold);
+}
+
+/* Glass effects */
+.glass-effect {
+  @apply backdrop-blur-md bg-white/10 border border-white/20;
+}
+
+.glass-effect-africa {
+  @apply backdrop-blur-md border;
+  background: rgba(212, 175, 116, 0.1);
+  border-color: rgba(212, 175, 116, 0.3);
+}
+
+/* Gradient overlays */
+.gradient-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(52, 199, 184, 0.1) 0%,
+    transparent 100%
+  );
+}
+
+.gradient-overlay-africa {
+  background: linear-gradient(
+    180deg,
+    rgba(212, 175, 116, 0.15) 0%,
+    transparent 100%
+  );
+}
+
+/* Hero gradients */
+.hero-gradient {
+  background: linear-gradient(135deg, #34c7b8 0%, #2ba39f 50%, #0d6b5f 100%);
+  position: relative;
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.hero-gradient-africa {
+  background: linear-gradient(135deg, #b85c38 0%, #d4af37 50%, #d4a574 100%);
+  position: relative;
+}
+
+.hero-gradient-africa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.hero-gradient-blend {
+  background: linear-gradient(135deg, #34c7b8 0%, #8b6f47 50%, #d4af37 100%);
+  position: relative;
+}
+
+.hero-gradient-blend::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply bg-gradient-to-r from-ateliya-bg-light via-white to-ateliya-bg-light;
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+.stagger-4 { animation-delay: 400ms; }
+.stagger-5 { animation-delay: 500ms; }

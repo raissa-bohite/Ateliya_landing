@@ -1,0 +1,341 @@
+---
+import Icon from "../../../components/Icon.astro";
+import "../../../styles/global.css";
+import { blogPosts } from "../../../data/blog";
+import Layout from "../../../layouts/Layout.astro";
+import Footer from "../../../components/Footer.astro";
+import Header from "../../../components/Header.astro";
+
+export async function getStaticPaths() {
+  const categories = [...new Set(blogPosts.map(post => post.category))];
+  return categories.map(category => ({
+    params: { category }
+  }));
+}
+
+const { category: currentCategory } = Astro.params;
+
+
+
+// Filtrer les articles par catégorie
+const filteredPosts = blogPosts.filter(post => post.category === currentCategory);
+
+// Stats de la catégorie
+const categoryStats = {
+  totalArticles: filteredPosts.length,
+  totalReadTime: filteredPosts.reduce((acc, post) => {
+    const time = parseInt(post.readTime);
+    return acc + time;
+  }, 0),
+  authors: [...new Set(filteredPosts.map(post => post.author))].length
+};
+
+const categoryInfo: Record<string, {description: string, icon: string, color: string}> = {
+  "Productivité": {
+    description: "Optimisez votre temps et augmentez votre efficacité au quotidien",
+    icon: "lightning",
+    color: "from-ateliya-primary to-ateliya-secondary"
+  },
+  "Gestion": {
+    description: "Maîtrisez la gestion de votre atelier et de vos projets",
+    icon: "settings",
+    color: "from-ateliya-secondary to-ateliya-accent"
+  },
+  "Business": {
+    description: "Développez votre activité et augmentez votre chiffre d'affaires",
+    icon: "trending",
+    color: "from-[#D4AF37] to-ateliya-primary"
+  },
+  "Stock": {
+    description: "Gérez efficacement votre inventaire et vos fournitures",
+    icon: "package",
+    color: "from-ateliya-accent to-ateliya-secondary"
+  }
+};
+
+const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catégorie: {currentCategory} - Blog Ateliya</title>
+</head>
+<body>
+  <Layout title={`Catégorie: ${currentCategory}`}>
+    <Header />
+
+    <section class="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      
+      <!-- Header -->
+      <div class="relative overflow-hidden bg-gradient-to-br {info.color} py-20 md:py-24">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;"></div>
+        
+        <div class="container-wide relative z-10">
+          
+          <!-- Breadcrumb -->
+          <nav class="mb-8 animate-fade-in-up">
+            <ol class="flex items-center gap-3 text-sm text-white/80">
+              <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
+              <li><Icon name="arrowRight" size="sm" /></li>
+              <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+              <li><Icon name="arrowRight" size="sm" /></li>
+              <li class="text-white font-semibold">{currentCategory}</li>
+            </ol>
+          </nav>
+
+          <div class="max-w-4xl space-y-6 animate-fade-in-up" style="animation-delay: 100ms;">
+            
+            <!-- Icon -->
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-sm">
+              <Icon name={info.icon} size="xl" class="text-white" />
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
+              {currentCategory}
+            </h1>
+
+            <!-- Description -->
+            <p class="text-xl md:text-2xl text-white/90 leading-relaxed">
+              {info.description}
+            </p>
+
+            <!-- Stats -->
+            <div class="flex flex-wrap gap-8 pt-6">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                  <Icon name="bookOpen" size="md" class="text-white" />
+                </div>
+                <div>
+                  <div class="text-2xl font-black text-white">{categoryStats.totalArticles}</div>
+                  <div class="text-sm text-white/70">Articles</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                  <Icon name="clock" size="md" class="text-white" />
+                </div>
+                <div>
+                  <div class="text-2xl font-black text-white">{categoryStats.totalReadTime} min</div>
+                  <div class="text-sm text-white/70">Temps de lecture</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                  <Icon name="users" size="md" class="text-white" />
+                </div>
+                <div>
+                  <div class="text-2xl font-black text-white">{categoryStats.authors}</div>
+                  <div class="text-sm text-white/70">Auteurs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="container-wide py-16 md:py-20">
+        
+        <!-- Sorting & Filter -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+          <div class="flex items-center gap-4">
+            <p class="text-ateliya-text/60">
+              <span class="font-bold text-ateliya-dark">{filteredPosts.length}</span> articles trouvés
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <label class="text-sm font-semibold text-ateliya-text/60">Trier par:</label>
+            <select class="px-4 py-2 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all font-semibold text-ateliya-dark">
+              <option>Plus récent</option>
+              <option>Plus ancien</option>
+              <option>Plus populaire</option>
+              <option>Temps de lecture</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredPosts.map((post, i) => (
+            <article class="group/post animate-fade-in-up" style={`animation-delay: ${i * 100}ms`}>
+              <a href={`/blog/${post.id}`} class="block h-full">
+                <div class="h-full flex flex-col rounded-3xl bg-white border border-gray-100 hover:border-ateliya-primary/20 hover:shadow-2xl transition-all duration-500 overflow-hidden group-hover/post:scale-[1.02]">
+                  
+                  <!-- Image -->
+                  <div class="relative h-64 overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      class="w-full h-full object-cover group-hover/post:scale-110 transition-transform duration-700"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ateliya-dark/30 to-transparent opacity-0 group-hover/post:opacity-100 transition-opacity duration-500" />
+                    
+                    <!-- Category Badge -->
+                    <div class="absolute top-4 right-4 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm font-bold text-xs text-ateliya-primary">
+                      {post.category}
+                    </div>
+                  </div>
+
+                  <!-- Content -->
+                  <div class="flex-1 flex flex-col p-6 space-y-4">
+                    
+                    <!-- Meta -->
+                    <div class="flex items-center gap-4 text-xs text-ateliya-text/60">
+                      <span class="flex items-center gap-1.5">
+                        <Icon name="calendar" size="sm" />
+                        {post.date}
+                      </span>
+                      <span class="flex items-center gap-1.5">
+                        <Icon name="clock" size="sm" />
+                        {post.readTime}
+                      </span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-black text-ateliya-dark leading-tight group-hover/post:text-ateliya-primary transition-colors">
+                      {post.title}
+                    </h3>
+
+                    <!-- Excerpt -->
+                    <p class="text-ateliya-text/70 text-sm leading-relaxed line-clamp-3 flex-grow">
+                      {post.excerpt}
+                    </p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2">
+                      {post.tags.slice(0, 3).map(tag => (
+                        <span class="px-2.5 py-1 rounded-lg bg-ateliya-primary/5 text-xs font-semibold text-ateliya-primary">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                      <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white text-xs font-bold">
+                          {post.author.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <span class="text-sm font-semibold text-ateliya-dark">{post.author}</span>
+                      </div>
+
+                      <div class="flex items-center gap-1 text-ateliya-primary font-bold text-sm group-hover/post:gap-2 transition-all">
+                        <span>Lire</span>
+                        <Icon name="arrowRight" size="sm" class="group-hover/post:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-center gap-3 mt-16">
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 flex items-center justify-center transition-all" disabled>
+            <Icon name="arrowLeft" size="sm" class="text-ateliya-text/40" />
+          </button>
+          <button class="w-12 h-12 rounded-xl bg-ateliya-primary text-white font-bold">1</button>
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 font-bold text-ateliya-dark transition-all">2</button>
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 font-bold text-ateliya-dark transition-all">3</button>
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 flex items-center justify-center transition-all">
+            <Icon name="arrowRight" size="sm" class="text-ateliya-dark" />
+          </button>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-20 p-12 md:p-16 rounded-[2rem] bg-gradient-to-br from-ateliya-primary/5 to-ateliya-secondary/5 border-2 border-ateliya-primary/10 text-center">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <h2 class="text-3xl md:text-4xl font-black text-ateliya-dark">
+              Vous ne trouvez pas ce que vous cherchez ?
+            </h2>
+            <p class="text-lg text-ateliya-text/80">
+              Parcourez toutes nos catégories ou utilisez la recherche pour trouver l'article parfait
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="/blog" class="px-8 py-4 rounded-2xl bg-gradient-primary text-white font-bold hover:scale-105 transition-transform">
+                Voir tous les articles
+              </a>
+              <a href="/blog/recherche" class="px-8 py-4 rounded-2xl border-2 border-ateliya-primary/20 hover:border-ateliya-primary/40 text-ateliya-dark font-bold hover:bg-ateliya-primary/5 transition-all">
+                Rechercher
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <Footer />
+  </Layout>
+</body>
+</html>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    appearance: none;
+  }
+
+  button:focus-visible,
+  select:focus-visible,
+  a:focus-visible {
+    outline: 2px solid #34C7B8;
+    outline-offset: 4px;
+  }
+
+  button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+</style>
+
+<script>
+  // Sorting functionality
+  const sortSelect = document.querySelector('select');
+  const articlesGrid = document.querySelector('.grid');
+  
+  sortSelect?.addEventListener('change', (e) => {
+    const articles = Array.from(articlesGrid?.children || []);
+    const sortBy = (e.target as HTMLSelectElement).value;
+    
+    // Simulate sorting animation
+    articlesGrid?.classList.add('opacity-50');
+    
+    setTimeout(() => {
+      // Here you would implement actual sorting logic
+      articlesGrid?.classList.remove('opacity-50');
+    }, 300);
+  });
+</script>

@@ -1,0 +1,494 @@
+---
+import Icon from "../../components/Icon.astro";
+import "../../styles/global.css";
+import { blogPosts, categories, bentoLayout } from "../../data/blog";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+
+const featuredPost = blogPosts[0];
+
+
+
+
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & Ressources - Ateliya</title>
+</head>
+<body>
+    <Layout title="Blog & Ressources - Ateliya">
+        <Header />
+<section 
+  class="min-h-screen relative overflow-hidden top-50 py-20"
+  style="background: linear-gradient(135deg, #f8fcfc 0%, #ffffff 50%, #f8fcfc 100%);"
+>
+  <!-- Éléments décoratifs minimalistes -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-20 right-0 w-[800px] h-[800px] bg-ateliya-primary/3 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-ateliya-secondary/2 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Grid pattern subtil -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.015]" style="background-image: radial-gradient(circle, #0D6B5F 1px, transparent 1px); background-size: 40px 40px;" aria-hidden="true"></div>
+
+  <div class="container-wide relative z-10 section-padding-y">
+    
+    <!-- Header Section - Plus compact et moderne -->
+    <div class="text-center mb-10 space-y-4 animate-fade-in-up">
+      
+      <!-- Badge minimaliste -->
+      <div class="inline-block" data-animate>
+        <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ateliya-primary/8 border border-ateliya-primary/20 backdrop-blur-sm">
+          <div class="w-2 h-2 rounded-full bg-ateliya-primary animate-pulse"></div>
+          <span class="text-sm font-bold text-ateliya-dark">
+            Blog & Ressources
+          </span>
+        </div>
+      </div>
+
+      <!-- Title moderne -->
+      <div class="space-y-4">
+        <h1 class="text-dxl md:text-4xl lg:text-6xl xl:text-6xl font-black leading-[0.95] text-ateliya-dark tracking-tight" data-animate>
+          Conseils pour
+          <span class="block mt-2 bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-ateliya-primary bg-clip-text text-transparent">
+            Artisans Modernes
+          </span>
+        </h1>
+
+        <p class="text-xl text-ateliya-text/60 max-w-2xl mx-auto" data-animate>
+          Guides, tutoriels et astuces pour développer votre atelier
+        </p>
+      </div>
+
+      <!-- Search Bar moderne -->
+      <div class="max-w-xl mx-auto" data-animate>
+        <div class="relative group/search">
+          <Icon name="search" size="md" class="absolute left-6 top-1/2 -translate-y-1/2 text-ateliya-text/40" />
+          <input 
+            type="text" 
+            placeholder="Rechercher..." 
+            class="w-full pl-14 pr-6 py-5 rounded-2xl bg-white border border-ateliya-primary/10 focus:border-ateliya-primary/30 focus:outline-none transition-all duration-300 text-ateliya-dark placeholder:text-ateliya-text/40"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories - Pills minimalistes -->
+    <div class="mb-16 animate-fade-in-up">
+      <div class="flex flex-wrap justify-center gap-3">
+        <button class="px-6 py-3 rounded-full bg-ateliya-dark text-white font-bold text-sm hover:scale-105 transition-all duration-300 shadow-lg">
+          Tous
+        </button>
+        {categories.map((category) => (
+          <button class="px-6 py-3 rounded-full bg-white border border-ateliya-primary/10 hover:border-ateliya-primary/30 font-bold text-sm text-ateliya-dark hover:scale-105 transition-all duration-300">
+            {category.name}
+            <span class="ml-2 text-ateliya-primary">{category.count}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Featured Article - Hero Full Width -->
+    <div class="mb-16 animate-fade-in-up" data-animate>
+      <div class="relative overflow-hidden rounded-[2rem] group/featured shadow-2xl h-[600px]">
+        
+        <!-- Background Image -->
+        <img 
+          src={featuredPost.image} 
+          alt={featuredPost.title}
+          class="absolute inset-0 w-full h-full object-cover group-hover/featured:scale-105 transition-transform duration-1000"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-ateliya-dark/95 via-ateliya-dark/50 to-transparent" />
+
+        <!-- Content -->
+        <div class="relative h-full flex flex-col justify-end p-8 md:p-16">
+          
+          <!-- Badge -->
+          <div class="absolute top-8 left-8">
+            <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[#D4AF37] text-white font-bold text-sm shadow-2xl">
+              <Icon name="star" size="sm" class="fill-current" />
+              <span>Vedette</span>
+            </div>
+          </div>
+
+          <div class="max-w-4xl space-y-6">
+            
+            <!-- Meta -->
+            <div class="flex flex-wrap items-center gap-4 text-white/80 text-sm">
+              <span class="px-4 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 font-bold">
+                {featuredPost.category}
+              </span>
+              <span class="flex items-center gap-2">
+                <Icon name="calendar" size="sm" />
+                {featuredPost.date}
+              </span>
+              <span class="flex items-center gap-2">
+                <Icon name="clock" size="sm" />
+                {featuredPost.readTime}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1]">
+              {featuredPost.title}
+            </h2>
+
+            <!-- Excerpt -->
+            <p class="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
+              {featuredPost.excerpt}
+            </p>
+
+            <!-- Author & CTA -->
+            <div class="flex flex-wrap items-center gap-6 pt-4">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-lg">
+                  {featuredPost.author.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <p class="font-bold text-white">{featuredPost.author}</p>
+                  <p class="text-sm text-white/60">Auteur</p>
+                </div>
+              </div>
+              
+            <a href={`/blog/${featuredPost.id}`} class="group/btn flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-ateliya-dark font-bold hover:scale-105 transition-all duration-300 ml-auto">
+  <span>Lire l'article</span>
+  <Icon name="arrowRight" size="md" class="group-hover/btn:translate-x-1 transition-transform" />
+</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+          <div class="h-full w-0 bg-gradient-to-r from-ateliya-primary to-[#D4AF37] group-hover/featured:w-full transition-all duration-1000" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Bento Box Grid - Articles -->
+    <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 mb-16">
+      {blogPosts.slice(1).map((post, i) => (
+        <article
+          class={`animate-fade-in-up group/post ${bentoLayout[i % bentoLayout.length].span}`}
+          data-animate
+        >
+          <div class={`relative ${bentoLayout[i % bentoLayout.length].height} rounded-[2rem] overflow-hidden group-hover/post:scale-[1.02] transition-all duration-500`}>
+            
+            <!-- Image Background -->
+            <img 
+              src={post.image} 
+              alt={post.title}
+              class="absolute inset-0 w-full h-full object-cover group-hover/post:scale-110 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ateliya-dark/90 via-ateliya-dark/40 to-transparent" />
+
+            <!-- Content Overlay -->
+            <div class="relative h-full flex flex-col justify-between p-8">
+              
+              <!-- Top Meta -->
+              <div class="flex items-start justify-between">
+                <span class="px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-xs">
+                  {post.category}
+                </span>
+                <div class="flex items-center gap-2 text-white/70 text-xs">
+                  <Icon name="clock" size="sm" />
+                  <span>{post.readTime}</span>
+                </div>
+              </div>
+
+              <!-- Bottom Content -->
+              <div class="space-y-4">
+                <!-- Title -->
+                <h3 class="text-2xl md:text-3xl font-black text-white leading-tight">
+                  {post.title}
+                </h3>
+
+                <!-- Excerpt - visible on larger cards only -->
+                {i < 2 && (
+                  <p class="text-white/80 text-sm leading-relaxed line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                )}
+
+                <!-- Footer -->
+                <div class="flex items-center justify-between pt-3 border-t border-white/10">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white text-xs font-bold">
+                      {post.author.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                      <p class="text-white font-bold text-sm">{post.author}</p>
+                      <p class="text-white/60 text-xs">{post.date}</p>
+                    </div>
+                  </div>
+
+                 <a href={`/blog/${post.id}`} class="group/link w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 flex items-center justify-center transition-all">
+  <Icon name="arrowRight" size="sm" class="text-white group-hover/link:translate-x-0.5 transition-transform" />
+</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hover overlay effect -->
+            <div class="absolute inset-0 bg-gradient-to-t from-ateliya-primary/20 to-transparent opacity-0 group-hover/post:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Newsletter CTA - Design minimaliste -->
+    <div class="relative animate-fade-in-up" data-animate>
+      <div class="relative p-12 md:p-16 rounded-[2rem] bg-gradient-to-br from-ateliya-dark to-ateliya-primary/90 overflow-hidden">
+        
+        <!-- Pattern décoratif -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center space-y-8">
+          
+          <!-- Icon -->
+          <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-sm">
+            <Icon name="mail" size="xl" class="text-white" />
+          </div>
+
+          <!-- Title -->
+          <div class="space-y-4">
+            <h3 class="text-4xl md:text-5xl font-black text-white">
+              Restez Informé
+            </h3>
+            <p class="text-xl text-white/80 max-w-2xl mx-auto">
+              Recevez nos meilleurs conseils chaque semaine
+            </p>
+          </div>
+
+          <!-- Form -->
+          <div class="max-w-md mx-auto">
+            <div class="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl bg-white/10 backdrop-blur-md">
+              <input 
+                type="email" 
+                placeholder="Votre email..." 
+                class="flex-1 px-6 py-4 rounded-xl bg-white/90 border-0 focus:outline-none text-ateliya-dark placeholder:text-ateliya-text/50"
+              />
+              <button class="px-8 py-4 rounded-xl bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white font-bold transition-all duration-300 whitespace-nowrap">
+                S'abonner
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex flex-wrap justify-center gap-12 pt-6">
+            <div class="text-center">
+              <div class="text-4xl font-black text-white">500+</div>
+              <div class="text-sm text-white/70">Abonnés</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-black text-white">50+</div>
+              <div class="text-sm text-white/70">Articles</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-black text-white">1x</div>
+              <div class="text-sm text-white/70">Par Semaine</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<Footer />
+    </Layout>
+</body>
+</html>
+
+<style>
+  /* Animations optimisées */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  /* Stagger animations */
+  [data-animate]:nth-child(1) { animation-delay: 0ms; }
+  [data-animate]:nth-child(2) { animation-delay: 100ms; }
+  [data-animate]:nth-child(3) { animation-delay: 200ms; }
+  [data-animate]:nth-child(4) { animation-delay: 300ms; }
+  [data-animate]:nth-child(5) { animation-delay: 400ms; }
+
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus states */
+  button:focus-visible,
+  input:focus-visible {
+    outline: 2px solid #34C7B8;
+    outline-offset: 4px;
+  }
+
+  /* Optimisation des performances */
+  .group\/post,
+  .group\/featured {
+    will-change: transform;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .grid > article {
+      grid-column: span 1 !important;
+      height: 400px !important;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer pour animations au scroll
+  const initScrollAnimations = () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  };
+
+  // Filtrage par catégorie
+  const initCategoryFilter = () => {
+    const buttons = document.querySelectorAll('button');
+    const articles = document.querySelectorAll('.group\\/post');
+    
+    buttons.forEach(button => {
+      if (!button.textContent?.includes('Tous') && !button.textContent?.includes('S\'abonner') && !button.textContent?.includes('article')) {
+        button.addEventListener('click', () => {
+          const category = button.textContent?.trim().split('\n')[0];
+          
+          // Update active state
+          buttons.forEach(btn => {
+            if (!btn.textContent?.includes('Tous') && !btn.textContent?.includes('S\'abonner')) {
+              btn.className = 'px-6 py-3 rounded-full bg-white border border-ateliya-primary/10 hover:border-ateliya-primary/30 font-bold text-sm text-ateliya-dark hover:scale-105 transition-all duration-300';
+            }
+          });
+          button.className = 'px-6 py-3 rounded-full bg-ateliya-dark text-white font-bold text-sm hover:scale-105 transition-all duration-300 shadow-lg';
+          
+          // Filter articles
+          articles.forEach((article) => {
+            const articleElement = article as HTMLElement;
+            const articleCategory = article.querySelector('span')?.textContent?.trim();
+            
+            if (category === 'Tous' || articleCategory === category) {
+              articleElement.style.display = 'block';
+              articleElement.style.opacity = '1';
+            } else {
+              articleElement.style.opacity = '0';
+              setTimeout(() => {
+                articleElement.style.display = 'none';
+              }, 300);
+            }
+          });
+        });
+      }
+    });
+  };
+
+  // Recherche
+  const initSearch = () => {
+    const searchInput = document.querySelector('input[type="text"]') as HTMLInputElement;
+    const articles = document.querySelectorAll('.group\\/post');
+    
+    const performSearch = () => {
+      const term = searchInput?.value.toLowerCase() || '';
+      
+      articles.forEach((article) => {
+        const articleElement = article as HTMLElement;
+        const title = article.querySelector('h3')?.textContent?.toLowerCase() || '';
+        const matches = title.includes(term) || term === '';
+        
+        if (matches) {
+          articleElement.style.display = 'block';
+          articleElement.style.opacity = '1';
+        } else {
+          articleElement.style.opacity = '0';
+          setTimeout(() => {
+            articleElement.style.display = 'none';
+          }, 300);
+        }
+      });
+    };
+    
+    searchInput?.addEventListener('input', performSearch);
+  };
+
+  // Newsletter
+  const initNewsletter = () => {
+    const button = document.querySelector('button[class*="D4AF37"]') as HTMLButtonElement;
+    const input = document.querySelector('input[type="email"]') as HTMLInputElement;
+    
+    button?.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      if (!input?.value || !input.value.includes('@')) {
+        input?.classList.add('border-red-500');
+        setTimeout(() => input?.classList.remove('border-red-500'), 2000);
+        return;
+      }
+      
+      const originalText = button.innerHTML;
+      button.innerHTML = '✓ Inscrit !';
+      button.classList.add('bg-green-500');
+      input.value = '';
+      
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.classList.remove('bg-green-500');
+      }, 3000);
+    });
+  };
+
+  // Init
+  document.addEventListener('astro:page-load', () => {
+    initScrollAnimations();
+    initCategoryFilter();
+    initSearch();
+    initNewsletter();
+  });
+</script>

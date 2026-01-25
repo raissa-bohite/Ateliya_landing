@@ -1,0 +1,84 @@
+---
+/**
+ * Composant Card modulaire avec glassmorphism
+ * @param variant - "glass" | "africa" | "dark" | "solid"
+ * @param hover - Active l'effet hover
+ * @param padding - "none" | "sm" | "md" | "lg"
+ * @param class - Classes Tailwind additionnelles
+ */
+
+interface Props {
+  variant?: "glass" | "africa" | "dark" | "solid";
+  hover?: boolean;
+  padding?: "none" | "sm" | "md" | "lg";
+  class?: string;
+}
+
+const {
+  variant = "glass",
+  hover = true,
+  padding = "md",
+  class: className = "",
+} = Astro.props;
+
+// Classes de base
+const baseClasses = "rounded-2xl transition-all duration-300";
+
+// Variantes de style
+const variantClasses = {
+  glass:
+    "backdrop-blur-md bg-white/80 border border-white/40",
+  
+  africa:
+    "backdrop-blur-md border border-africa-gold/30 relative overflow-hidden bg-gradient-to-br from-white/85 to-africa-gold/5",
+  
+  dark:
+    "bg-ateliya-bg-dark/50 backdrop-blur-lg border border-ateliya-border-dark text-ateliya-text-dark",
+  
+  solid:
+    "bg-white border border-ateliya-border",
+};
+
+// Effets hover
+const hoverClasses = hover
+  ? {
+      glass: "hover:shadow-lg hover:bg-white/95",
+      africa: "hover:shadow-lg hover:border-africa-gold/50 hover:bg-white/95",
+      dark: "hover:bg-ateliya-bg-dark/70 hover:border-ateliya-primary/30",
+      solid: "hover:shadow-lg",
+    }[variant]
+  : "";
+
+// Padding
+const paddingClasses = {
+  none: "",
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8",
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${hoverClasses} ${paddingClasses[padding]} ${className}`;
+---
+
+<div class={classes}>
+  <slot />
+</div>
+
+<style>
+  /* Pattern africain pour variant africa */
+  .variant-africa {
+    background-image: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(212, 175, 116, 0.05) 100%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 48%,
+        rgba(212, 175, 116, 0.03) 49%,
+        rgba(212, 175, 116, 0.03) 51%,
+        transparent 52%
+      );
+    background-size: 100% 100%, 20px 20px;
+  }
+</style>

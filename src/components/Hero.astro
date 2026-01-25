@@ -1,0 +1,179 @@
+---
+import { Download, PlayCircle, Star, Check, TrendingUp, ChevronDown } from 'lucide-astro';
+import Button from '../ui/Button.astro';
+import Badge from './ui/Badge.astro';
+import { stats } from "../data/data";
+---
+
+<section 
+  id="hero"
+  class="relative overflow-hidden min-h-[95vh] flex items-center bg-gradient-to-br from-[#D4F1F0] via-[#E8F9F8] to-[#D4F1F0]"
+>
+  <!-- Pattern africain subtil -->
+  <div class="absolute inset-0 opacity-[0.04] pointer-events-none pattern-mudcloth" aria-hidden="true" />
+
+  <!-- Bordure Kente animée -->
+  <div
+    class="absolute top-0 left-0 right-0 h-2 opacity-40"
+    style="background: linear-gradient(90deg, #34C7B8 0%, #D4AF37 25%, #0D6B5F 50%, #34C7B8 75%); background-size: 200% 100%; animation: kente-slide 20s linear infinite;"
+    aria-hidden="true"
+  />
+
+  <!-- Éléments décoratifs flottants -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-1/4 left-10 w-80 h-80 bg-ateliya-primary/8 rounded-full blur-3xl animate-float" />
+    <div class="absolute top-1/2 right-20 w-96 h-96 bg-ateliya-secondary/6 rounded-full blur-3xl animate-float" style="animation-delay: 2s;" />
+    <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-ateliya-accent/7 rounded-full blur-3xl animate-float" style="animation-delay: 4s;" />
+  </div>
+
+  <div class="container-wide relative z-10 section-padding">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- Contenu (Gauche) -->
+      <div class="space-y-8 animate-fade-in">
+        
+        <!-- Badge -->
+        <div class="animate-slide-up" style="animation-delay: 100ms;">
+          <Badge variant="primary" size="lg" class="gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            Couture Africaine Connectée
+          </Badge>
+        </div>
+
+        <!-- Titre principal -->
+        <div class="space-y-4 animate-slide-up" style="animation-delay: 200ms;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
+            Transformez votre
+            <span class="block mt-2 text-gradient-primary">
+              atelier de couture
+            </span>
+            <span class="block mt-2">
+              dès aujourd'hui
+            </span>
+          </h1>
+
+          <p class="text-lg md:text-xl text-ateliya-text/80 leading-relaxed max-w-xl">
+            Gérez vos commandes, clients et finances avec 
+            <span class="font-bold text-ateliya-primary">
+              un essai gratuit de 14 jours
+            </span>
+          </p>
+        </div>
+
+        <!-- Boutons CTA - REFAITS -->
+        <div class="flex flex-col sm:flex-row gap-4 animate-scale-in" style="animation-delay: 300ms;">
+          
+          <!-- Bouton Primary avec Download -->
+          <button class="group relative overflow-hidden px-8 py-4 rounded-2xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-xl hover:shadow-2xl hover:shadow-ateliya-primary/50 transition-all duration-300 hover:scale-105 active:scale-95 focus-ring flex items-center justify-center gap-3">
+            <span class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            <Download class="w-6 h-6 relative z-10 group-hover:animate-bounce" />
+            <span class="relative z-10 text-lg">Démarrer Gratuitement</span>
+          </button>
+
+          <!-- Bouton Outline avec PlayCircle -->
+          <button class="group relative px-8 py-4 rounded-2xl border-2 border-ateliya-primary text-ateliya-primary font-bold hover:bg-ateliya-primary hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 focus-ring flex items-center justify-center gap-3">
+            <PlayCircle class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+            <span class="text-lg">Voir la Démo</span>
+          </button>
+        </div>
+
+        <!-- Statistiques -->
+        <div
+          class="grid grid-cols-3 gap-4 pt-8 border-t border-ateliya-primary/20 animate-slide-up"
+          style="animation-delay: 400ms;"
+        >
+          {stats.map((stat, i) => (
+            <div class="text-center space-y-1 p-3 rounded-xl hover:bg-white/50 transition-all duration-300">
+              <p class={`text-3xl md:text-4xl font-black ${stat.color} leading-none`}>
+                {stat.value}
+              </p>
+              <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Social proof -->
+        <div class="flex items-center gap-4 pt-4 animate-slide-up" style="animation-delay: 500ms;">
+          <div class="flex -space-x-2">
+            {[1, 2, 3, 4].map((i) => (
+              <div class="w-10 h-10 rounded-full border-2 border-white bg-gradient-primary flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                {i}
+              </div>
+            ))}
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex gap-0.5">
+              {[...Array(5)].map(() => (
+                <Star class="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
+              ))}
+            </div>
+            <span class="text-sm text-ateliya-text/70 font-semibold">
+              500+ couturiers satisfaits
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup (Droite) -->
+      <div class="relative h-[500px] md:h-[650px] lg:h-[700px] flex items-center justify-center order-first lg:order-last">
+        <!-- Glow -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-[80%] h-[80%] bg-gradient-to-br from-ateliya-primary/20 via-ateliya-secondary/15 to-ateliya-accent/20 rounded-full blur-3xl opacity-60" />
+        </div>
+
+        <!-- Mockup -->
+        <div class="relative z-10 animate-scale-in" style="animation-delay: 200ms;">
+          <img
+            src="/Mobile-Mockup.webp"
+            alt="Interface mobile Ateliya"
+            class="w-full h-full object-contain drop-shadow-2xl"
+            loading="eager"
+          />
+          
+          <!-- Badge flottant 1 -->
+          <div class="absolute top-1/4 -left-8 md:-left-12 animate-float" style="animation-delay: 1s;">
+            <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-primary/20">
+              <div class="flex items-center gap-2">
+                <Check class="w-5 h-5 text-green-500" />
+                <span class="text-xs font-bold text-ateliya-dark">+250 commandes</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badge flottant 2 -->
+          <div class="absolute bottom-1/3 -right-8 md:-right-12 animate-float" style="animation-delay: 1.5s;">
+            <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-secondary/20">
+              <div class="flex items-center gap-2">
+                <TrendingUp class="w-5 h-5 text-ateliya-secondary" />
+                <span class="text-xs font-bold text-ateliya-dark">+35% revenus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:block animate-bounce-slow">
+    <a 
+      href="#features" 
+      class="flex flex-col items-center gap-2 text-ateliya-text/50 hover:text-ateliya-primary transition-colors duration-300 focus-ring rounded-lg p-2"
+      aria-label="Défiler vers le bas"
+    >
+      <span class="text-xs font-semibold uppercase tracking-wider">Découvrir</span>
+      <ChevronDown class="w-5 h-5" />
+    </a>
+  </div>
+</section>
+
+<style>
+  @keyframes kente-slide {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+</style>

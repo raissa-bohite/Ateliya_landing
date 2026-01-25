@@ -1,0 +1,713 @@
+---
+import Icon from "../../components/Icon.astro";
+import "../../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { blogPosts } from "../../data/blog";
+
+export async function getStaticPaths() {
+  return blogPosts.map(post => ({
+    params: { id: post.id.toString() }
+  }));
+}
+
+const { id } = Astro.params;
+const articleData = blogPosts.find(post => post.id.toString() === id);
+
+if (!articleData) {
+  return Astro.redirect('/404');
+}
+
+// Article sécurisé avec tous les champs requis
+const article = {
+  id: articleData.id || 1,
+  title: articleData.title || 'Article non trouvé',
+  category: articleData.category || 'Général',
+  date: articleData.date || '01 Jan 2025',
+  readTime: articleData.readTime || '5 min',
+  author: {
+    name: articleData.author?.name || 'Auteur Invité',
+    role: articleData.author?.role || 'Contributeur',
+    avatar: articleData.author?.avatar || '/images/authors/default.jpg',
+    bio: articleData.author?.bio || 'Contenu éditorial Ateliya.'
+  },
+  image: articleData.image || 'https://images.unsplash.com/photo-1558769132-cb1aea3c1c2d?w=1200',
+  tags: articleData.tags || ['général'],
+  content: articleData.content || '<p>Contenu temporaire. L\'article sera bientôt disponible.</p>'
+};
+
+const relatedArticles = [
+  {
+    title: "Comment Calculer le Prix de vos Créations",
+    category: "Business",
+    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400",
+    readTime: "5 min",
+    url: "/blog/calculer-prix-creations",
+  },
+  {
+    title: "5 Erreurs à Éviter en Gestion d'Atelier",
+    category: "Gestion",
+    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400",
+    readTime: "6 min",
+    url: "/blog/erreurs-gestion",
+  },
+  {
+    title: "Guide du Stock Management pour Couturiers",
+    category: "Stock",
+    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400",
+    readTime: "10 min",
+    url: "/blog/stock-management",
+  },
+];
+
+const categoryColors: Record<string, string> = {
+  Productivité: "bg-ateliya-primary text-white",
+  Gestion: "bg-ateliya-secondary text-white",
+  Business: "bg-[#D4AF37] text-white",
+  Stock: "bg-ateliya-accent text-white",
+  Général: "bg-gray-500 text-white",
+  Technologie: "bg-blue-500 text-white"
+};
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{article.title} - Blog Ateliya</title>
+    <meta name="description" content={article.title} />
+  </head>
+  <body>
+    <Layout title={article.title}>
+      <Header />
+
+      <article class="min-h-screen bg-gradient-to-b from-white to-gray-50">
+        <!-- Hero Section -->
+        <section class="relative h-[70vh] min-h-[500px] overflow-hidden">
+          <!-- Image -->
+          <img
+            src={article.image}
+            alt={article.title}
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-ateliya-dark via-ateliya-dark/70 to-transparent"
+          >
+          </div>
+
+          <!-- Content -->
+          <div
+            class="relative h-full container-wide flex flex-col justify-end pb-16 md:pb-20"
+          >
+            <!-- Breadcrumb -->
+            <nav class="mb-8 animate-fade-in-up">
+              <ol class="flex items-center gap-3 text-sm text-white/80">
+                <li>
+                  <a href="/" class="hover:text-white transition-colors"
+                    >Accueil</a
+                  >
+                </li>
+                <li><Icon name="arrowRight" size="sm" /></li>
+                <li>
+                  <a href="/blog" class="hover:text-white transition-colors"
+                    >Blog</a
+                  >
+                </li>
+                <li><Icon name="arrowRight" size="sm" /></li>
+                <li class="text-white font-semibold">{article.title}</li>
+              </ol>
+            </nav>
+
+            <div
+              class="max-w-4xl space-y-6 animate-fade-in-up"
+              style="animation-delay: 100ms;"
+            >
+              <!-- Meta -->
+              <div class="flex flex-wrap items-center gap-4">
+                <span
+                  class={`px-4 py-2 rounded-xl font-bold text-sm ${categoryColors[article.category] || 'bg-gray-500 text-white'}`}
+                >
+                  {article.category}
+                </span>
+                <div class="flex items-center gap-5 text-white/90 text-sm">
+                  <span class="flex items-center gap-2">
+                    <Icon name="calendar" size="sm" />
+                    {article.date}
+                  </span>
+                  <span class="flex items-center gap-2">
+                    <Icon name="clock" size="sm" />
+                    {article.readTime} de lecture
+                  </span>
+                </div>
+              </div>
+
+              <!-- Title -->
+              <h1
+                class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1]"
+              >
+                {article.title}
+              </h1>
+
+              <!-- Author -->
+              <div class="flex items-center gap-4 pt-4">
+                <div
+                  class="w-16 h-16 rounded-2xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-xl"
+                >
+                  {
+                    article.author.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")
+                  }
+                </div>
+                <div>
+                  <p class="font-bold text-white text-lg">
+                    {article.author.name}
+                  </p>
+                  <p class="text-white/70">{article.author.role}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="container-wide py-16 md:py-20">
+          <div class="grid lg:grid-cols-12 gap-12">
+            <!-- Article Content -->
+            <div class="lg:col-span-8">
+              <!-- Social Share Bar (Sticky) -->
+              <div
+                class="hidden lg:block fixed left-8 top-1/2 -translate-y-1/2 z-20"
+              >
+                <div
+                  class="flex flex-col gap-4 p-4 rounded-2xl bg-white shadow-2xl border border-gray-100"
+                >
+                  <button
+                    class="w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                    aria-label="Partager sur Facebook"
+                  >
+                    <Icon name="share" size="sm" />
+                  </button>
+                  <button
+                    class="w-12 h-12 rounded-xl bg-sky-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                    aria-label="Partager sur Twitter"
+                  >
+                    <Icon name="share" size="sm" />
+                  </button>
+                  <button
+                    class="w-12 h-12 rounded-xl bg-green-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                    aria-label="Partager sur WhatsApp"
+                  >
+                    <Icon name="share" size="sm" />
+                  </button>
+                  <button
+                    class="w-12 h-12 rounded-xl bg-gray-500 text-white flex                    <Icon name="link" size="sm" />
+                  </button>
+                </div>
+              </div>
+
+              <!-- Article Body -->
+              <div class="prose prose-lg max-w-none">
+                <div class="article-content" set:html={article.content} />
+              </div>
+
+              <!-- Tags -->
+              <div class="mt-12 pt-8 border-t border-gray-200">
+                <h3 class="text-sm font-bold text-ateliya-text/60 mb-4">
+                  TAGS
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                  {
+                    article.tags.map((tag) => (
+                      <a
+                        href={`/blog/tag/${tag}`}
+                        class="px-4 py-2 rounded-xl bg-ateliya-primary/5 hover:bg-ateliya-primary/10 text-ateliya-primary font-semibold text-sm transition-colors"
+                      >
+                        #{tag}
+                      </a>
+                    ))
+                  }
+                </div>
+              </div>
+
+              <!-- Author Bio -->
+              <div
+                class="mt-12 p-8 rounded-2xl bg-gradient-to-br from-ateliya-primary/5 to-ateliya-secondary/5 border border-ateliya-primary/10"
+              >
+                <div class="flex flex-col md:flex-row gap-6">
+                  <div
+                    class="w-24 h-24 rounded-2xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-3xl flex-shrink-0"
+                  >
+                    {
+                      article.author.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                    }
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-2xl font-black text-ateliya-dark mb-2">
+                      {article.author.name}
+                    </h3>
+                    <p class="text-ateliya-primary font-semibold mb-3">
+                      {article.author.role}
+                    </p>
+                    <p class="text-ateliya-text/80 leading-relaxed">
+                      {article.author.bio}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigation Previous/Next -->
+              <div class="mt-12 grid md:grid-cols-2 gap-6">
+                <a
+                  href="#"
+                  class="group p-6 rounded-2xl bg-white hover:bg-ateliya-primary/5 border border-gray-100 hover:border-ateliya-primary/20 transition-all"
+                >
+                  <p class="text-sm font-bold text-ateliya-text/60 mb-2">
+                    ← ARTICLE PRÉCÉDENT
+                  </p>
+                  <p
+                    class="text-lg font-bold text-ateliya-dark group-hover:text-ateliya-primary transition-colors"
+                  >
+                    Comment Calculer le Prix de vos Créations
+                  </p>
+                </a>
+                <a
+                  href="#"
+                  class="group p-6 rounded-2xl bg-white hover:bg-ateliya-primary/5 border border-gray-100 hover:border-ateliya-primary/20 transition-all text-right"
+                >
+                  <p class="text-sm font-bold text-ateliya-text/60 mb-2">
+                    ARTICLE SUIVANT →
+                  </p>
+                  <p
+                    class="text-lg font-bold text-ateliya-dark group-hover:text-ateliya-primary transition-colors"
+                  >
+                    5 Erreurs à Éviter en Gestion d'Atelier
+                  </p>
+                </a>
+              </div>
+
+              <!-- Comments Section -->
+              <div class="mt-16">
+                <h2 class="text-3xl font-black text-ateliya-dark mb-8">
+                  Commentaires (12)
+                </h2>
+
+                <!-- Comment Form -->
+                <div
+                  class="p-8 rounded-2xl bg-white border border-gray-100 mb-8"
+                >
+                  <h3 class="text-xl font-bold text-ateliya-dark mb-6">
+                    Laisser un commentaire
+                  </h3>
+                  <form class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                      <input
+                        type="text"
+                        placeholder="Votre nom"
+                        class="px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all"
+                      />
+                      <input
+                        type="email"
+                        placeholder="Votre email"
+                        class="px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all"
+                      />
+                    </div>
+                    <textarea
+                      rows="4"
+                      placeholder="Votre commentaire..."
+                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all resize-none"
+                    ></textarea>
+                    <button
+                      class="px-8 py-3 rounded-xl bg-gradient-primary text-white font-bold hover:scale-105 transition-transform"
+                    >
+                      Publier le commentaire
+                    </button>
+                  </form>
+                </div>
+
+                <!-- Sample Comments -->
+                <div class="space-y-6">
+                  <div class="p-6 rounded-2xl bg-white border border-gray-100">
+                    <div class="flex items-start gap-4">
+                      <div
+                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold flex-shrink-0"
+                      >
+                        MK
+                      </div>
+                      <div class="flex-1">
+                        <div class="flex items-center justify-between mb-2">
+                          <h4 class="font-bold text-ateliya-dark">
+                            Marie Kouassi
+                          </h4>
+                          <span class="text-sm text-ateliya-text/60"
+                            >Il y a 2 jours</span
+                          >
+                        </div>
+                        <p class="text-ateliya-text/80 leading-relaxed">
+                          Merci pour ces conseils très pratiques ! J'ai commencé
+                          à utiliser Ateliya il y a 3 mois et ça a vraiment
+                          changé ma façon de gérer mon atelier. 🙏
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-6 rounded-2xl bg-white border border-gray-100">
+                    <div class="flex items-start gap-4">
+                      <div
+                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold flex-shrink-0"
+                      >
+                        FT
+                      </div>
+                      <div class="flex-1">
+                        <div class="flex items-center justify-between mb-2">
+                          <h4 class="font-bold text-ateliya-dark">
+                            Fatou Traoré
+                          </h4>
+                          <span class="text-sm text-ateliya-text/60"
+                            >Il y a 5 jours</span
+                          >
+                        </div>
+                        <p class="text-ateliya-text/80 leading-relaxed">
+                          Article très complet ! Le point sur la planification
+                          hebdomadaire est essentiel. Je vais l'appliquer dès
+                          cette semaine.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="lg:col-span-4 space-y-8">
+              <!-- Newsletter Sticky -->
+              <div class="sticky top-24 space-y-8">
+                <!-- Newsletter Widget -->
+                <div
+                  class="p-8 rounded-2xl bg-gradient-to-br from-ateliya-dark to-ateliya-primary overflow-hidden relative"
+                >
+                  <div
+                    class="absolute inset-0 opacity-10"
+                    style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 30px 30px;"
+                  >
+                  </div>
+                  <div class="relative z-10 space-y-6">
+                    <div
+                      class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center"
+                    >
+                      <Icon name="mail" size="lg" class="text-white" />
+                    </div>
+                    <div>
+                      <h3 class="text-2xl font-black text-white mb-2">
+                        Newsletter
+                      </h3>
+                      <p class="text-white/80 text-sm">
+                        Recevez nos meilleurs conseils chaque semaine
+                      </p>
+                    </div>
+                    <div class="space-y-3">
+                      <input
+                        type="email"
+                        placeholder="Votre email..."
+                        class="w-full px-4 py-3 rounded-xl bg-white/90 border-0 focus:outline-none text-ateliya-dark placeholder:text-ateliya-text/50"
+                      />
+                      <button
+                        class="w-full px-6 py-3 rounded-xl bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white font-bold transition-all"
+                      >
+                        S'abonner
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Related Articles -->
+                <div class="p-8 rounded-2xl bg-white border border-gray-100">
+                  <h3 class="text-xl font-black text-ateliya-dark mb-6">
+                    Articles Similaires
+                  </h3>
+                  <div class="space-y-6">
+                    {
+                      relatedArticles.map((related) => (
+                        <a href={related.url} class="group block">
+                          <div class="flex gap-4">
+                            <img
+                              src={related.image}
+                              alt={related.title}
+                              class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform"
+                            />
+                            <div class="flex-1">
+                              <span class="text-xs font-bold text-ateliya-primary mb-1 block">
+                                {related.category}
+                              </span>
+                              <h4 class="font-bold text-ateliya-dark group-hover:text-ateliya-primary transition-colors text-sm line-clamp-2 mb-2">
+                                {related.title}
+                              </h4>
+                              <span class="text-xs text-ateliya-text/60">
+                                {related.readTime}
+                              </span>
+                            </div>
+                          </div>
+                        </a>
+                      ))
+                    }
+                  </div>
+                </div>
+
+                <!-- Popular Tags -->
+                <div class="p-8 rounded-2xl bg-white border border-gray-100">
+                  <h3 class="text-xl font-black text-ateliya-dark mb-6">
+                    Tags Populaires
+                  </h3>
+                  <div class="flex flex-wrap gap-2">
+                    {
+                      [
+                        "productivité",
+                        "gestion",
+                        "stock",
+                        "organisation",
+                        "business",
+                        "formation",
+                        "finance",
+                        "marketing",
+                      ].map((tag) => (
+                        <a
+                          href={`/blog/tag/${tag}`}
+                          class="px-3 py-1.5 rounded-lg bg-ateliya-primary/5 hover:bg-ateliya-primary/10 text-ateliya-primary font-semibold text-xs transition-colors"
+                        >
+                          #{tag}
+                        </a>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </article>
+
+      <Footer />
+    </Layout>
+  </body>
+</html>
+
+<style>
+  /* Typography Article */
+  .article-content {
+    color: #2d3748;
+    line-height: 1.8;
+  }
+
+  .article-content .lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .article-content h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #0d6b5f;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .article-content h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .article-content ul,
+  .article-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .article-content li {
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .article-content strong {
+    color: #0d6b5f;
+    font-weight: 700;
+  }
+
+  .article-content blockquote {
+    border-left: 4px solid #34c7b8;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #4a5568;
+    font-size: 1.25rem;
+  }
+
+  .article-content blockquote.highlight {
+    background: linear-gradient(135deg, #e6f7f5 0%, #f0faf9 100%);
+    border-left: none;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d6b5f;
+  }
+
+  .article-content .info-box {
+    background: linear-gradient(135deg, #fff4e6 0%, #fff9f0 100%);
+    border-left: 4px solid #d4af37;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin: 2rem 0;
+  }
+
+  .article-content .cta-box {
+    background: linear-gradient(135deg, #e6f7f5 0%, #f0faf9 100%);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    margin: 3rem 0;
+    border: 2px solid #34c7b8;
+  }
+
+  .article-content .cta-box h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #0d6b5f;
+  }
+
+  .article-content .cta-box p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .article-content .btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #34c7b8 0%, #2ba39f 100%);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s;
+  }
+
+  .article-content .btn-primary:hover {
+    transform: scale(1.05);
+  }
+
+  /* Animations */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus states */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  a:focus-visible {
+    outline: 2px solid #34c7b8;
+    outline-offset: 4px;
+  }
+</style>
+
+<script>
+  // Copy link functionality
+  document.querySelectorAll('button[aria-label*="Copier"]').forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML =
+          '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+        }, 2000);
+      } catch (err) {
+        console.error("Failed to copy:", err);
+      }
+    });
+  });
+
+  // Smooth scroll for anchors
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href") || "");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  // Reading progress bar
+  const createProgressBar = () => {
+    const progressBar = document.createElement("div");
+    progressBar.className =
+      "fixed top-0 left-0 right-0 h-1 bg-ateliya-primary/20 z-50";
+    progressBar.innerHTML =
+      '<div class="h-full bg-gradient-to-r from-ateliya-primary to-[#D4AF37] transition-all duration-150" style="width: 0%"></div>';
+    document.body.appendChild(progressBar);
+
+    const updateProgress = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight =
+        document.documentElement.scrollHeight - windowHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / documentHeight) * 100;
+
+      const progressFill = progressBar.querySelector("div");
+      if (progressFill) {
+        progressFill.style.width = `${Math.min(progress, 100)}%`;
+      }
+    };
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+  };
+
+  createProgressBar();
+</script>
+

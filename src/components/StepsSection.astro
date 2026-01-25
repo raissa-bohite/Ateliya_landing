@@ -1,0 +1,286 @@
+---
+import { UserPlus, Settings, Upload, Rocket, Compass, Smartphone, Cloud, Clock, DollarSign, Star, Users, Zap, ArrowRight } from 'lucide-astro';
+import { steps } from "../data/data";
+
+// Configuration des icônes pour chaque étape
+const stepIcons = [
+  { Component: UserPlus, color: "text-ateliya-primary", bgColor: "from-ateliya-primary/20 to-ateliya-primary/10" },
+  { Component: Settings, color: "text-ateliya-secondary", bgColor: "from-ateliya-secondary/20 to-ateliya-secondary/10" },
+  { Component: Upload, color: "text-ateliya-accent", bgColor: "from-ateliya-accent/20 to-ateliya-accent/10" },
+  { Component: Rocket, color: "text-[#D4AF37]", bgColor: "from-[#D4AF37]/20 to-[#D4AF37]/10" },
+];
+
+// Features pour la section mockup
+const appFeatures = [
+  {
+    Component: Cloud,
+    title: "Gestion Cloud Complète",
+    description: "Accédez à vos données depuis n'importe où avec notre solution cloud sécurisée et synchronisée en temps réel"
+  },
+  {
+    Component: Clock,
+    title: "Gain de Temps Optimal",
+    description: "Automatisez vos tâches répétitives et réduisez le temps de saisie des données de 70%"
+  },
+  {
+    Component: DollarSign,
+    title: "Suivi Financier Précis",
+    description: "Suivez vos revenus, dépenses et marges en temps réel avec des rapports détaillés"
+  }
+];
+---
+
+<section 
+  id="steps"
+  class="section-padding-xl bg-gradient-to-b from-white via-ateliya-bg-light/10 to-white relative overflow-hidden"
+>
+  <!-- Éléments décoratifs de fond -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-ateliya-primary/5 rounded-full blur-3xl" />
+    <div class="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-ateliya-secondary/4 rounded-full blur-3xl" />
+  </div>
+
+  <div class="container-wide relative z-10">
+    <!-- Header Section -->
+    <div class="text-center mb-16 md:mb-20 space-y-6">
+      
+      <!-- Badge -->
+      <div class="inline-block">
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-ateliya-primary/10 to-ateliya-primary/15 border border-ateliya-primary/30 backdrop-blur-sm">
+          <Compass class="w-5 h-5 text-ateliya-primary" />
+          <span class="text-sm font-bold text-ateliya-dark">
+            Guide de Démarrage
+          </span>
+        </div>
+      </div>
+
+      <!-- Titre -->
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
+        <span class="block">4 Étapes</span>
+        <span class="block mt-2 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent">
+          pour vous connecter
+        </span>
+      </h2>
+
+      <!-- Description -->
+      <p class="text-lg md:text-xl text-ateliya-text/80 max-w-3xl mx-auto leading-relaxed">
+        Suivez notre processus <span class="font-bold text-ateliya-primary">simple et efficace</span> pour optimiser votre gestion d'atelier
+      </p>
+    </div>
+
+    <!-- Steps Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 md:mb-32">
+      {steps.map((step, i) => {
+        const IconComponent = stepIcons[i].Component;
+        return (
+          <div class="group/step h-full">
+            <div class="h-full relative">
+              <!-- Glow Effect -->
+              <div class={`absolute -inset-1 bg-gradient-to-br ${stepIcons[i].bgColor} rounded-2xl blur-lg opacity-0 group-hover/step:opacity-60 transition-all duration-700 -z-10`} />
+
+              <!-- Main Card -->
+              <div class="h-full p-6 md:p-8 rounded-2xl bg-white border-2 border-ateliya-primary/10 group-hover/step:border-ateliya-primary/30 transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
+                
+                <!-- Top Accent -->
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/step:opacity-100 transition-opacity duration-500" />
+
+                <!-- Content -->
+                <div class="relative z-10 flex flex-col h-full space-y-6">
+                  
+                  <!-- Icône + Numéro -->
+                  <div class="flex items-start justify-between">
+                    <div class={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepIcons[i].bgColor} group-hover/step:scale-110 transition-all duration-500 shadow-lg`}>
+                      <IconComponent class={`w-8 h-8 ${stepIcons[i].color}`} />
+                    </div>
+
+                    <!-- Numéro -->
+                    <div class="relative">
+                      <div class="text-6xl md:text-7xl font-black text-ateliya-primary/10 leading-none">
+                        {step.number}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Title -->
+                  <div class="space-y-2">
+                    <h3 class="text-xl md:text-2xl font-black text-ateliya-dark leading-tight">
+                      {step.title}
+                    </h3>
+                    <div class="w-12 h-1 bg-gradient-to-r from-ateliya-primary to-transparent rounded-full group-hover/step:w-20 transition-all duration-500" />
+                  </div>
+
+                  <!-- Description -->
+                  <p class="text-ateliya-text/70 leading-relaxed text-sm md:text-base flex-grow">
+                    {step.description}
+                  </p>
+
+                  <!-- CTA Link -->
+                  <div class="flex items-center gap-2 text-ateliya-primary font-bold text-sm group/link cursor-pointer">
+                    <span>En savoir plus</span>
+                    <ArrowRight class="w-4 h-4 group-hover/link:translate-x-2 transition-transform duration-300" />
+                  </div>
+
+                  <!-- Progress Bar -->
+                  <div class="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
+                    <div class="h-full w-0 bg-gradient-to-r from-ateliya-primary to-ateliya-accent group-hover/step:w-full transition-all duration-1000" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Section Hero avec Mockups -->
+    <div class="relative mt-16 md:mt-24">
+      
+      <!-- Grid Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        
+        <!-- GAUCHE: Contenu -->
+        <div class="space-y-8 order-2 lg:order-1">
+          
+          <!-- Badge -->
+          <div class="inline-block">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-ateliya-secondary/10 to-ateliya-secondary/15 border border-ateliya-secondary/30 backdrop-blur-sm">
+              <Smartphone class="w-5 h-5 text-ateliya-secondary" />
+              <span class="text-sm font-bold text-ateliya-dark">
+                Multi-Plateformes
+              </span>
+            </div>
+          </div>
+
+          <!-- Titre -->
+          <div class="space-y-4">
+            <h3 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+              <span class="block text-ateliya-dark">Suivez vos</span>
+              <span class="block mt-2 bg-gradient-to-r from-ateliya-secondary to-ateliya-primary bg-clip-text text-transparent">
+                dépenses quotidiennes
+              </span>
+            </h3>
+            
+            <p class="text-lg md:text-xl text-ateliya-text/70 leading-relaxed">
+              Gérez votre atelier avec une <span class="font-bold text-ateliya-primary">solution moderne</span> qui centralise tout
+            </p>
+          </div>
+
+          <!-- Features -->
+          <div class="space-y-4">
+            {appFeatures.map((feature) => {
+              const FeatureIcon = feature.Component;
+              return (
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/50 transition-all duration-300 group/feat border border-transparent hover:border-ateliya-primary/20">
+                  <div class="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-white to-ateliya-primary/10 border-2 border-ateliya-primary/20 group-hover/feat:scale-110 transition-all duration-500">
+                    <FeatureIcon class="w-6 h-6 text-ateliya-primary" />
+                  </div>
+
+                  <div class="flex-1 space-y-1">
+                    <h4 class="text-lg md:text-xl font-black text-ateliya-dark">
+                      {feature.title}
+                    </h4>
+                    <p class="text-sm md:text-base text-ateliya-text/70">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <!-- Trust Indicators -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <div class="flex items-center gap-2">
+              <div class="flex">
+                {[...Array(5)].map(() => (
+                  <Star class="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
+                ))}
+              </div>
+              <span class="text-sm font-bold text-ateliya-text/70">4.9/5 étoiles</span>
+            </div>
+            
+            <div class="h-8 w-px bg-ateliya-primary/20" />
+            
+            <div class="flex items-center gap-2">
+              <Users class="w-4 h-4 text-ateliya-primary" />
+              <span class="text-sm font-bold text-ateliya-text/70">500+ utilisateurs actifs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DROITE: Mockups -->
+        <div class="relative h-[400px] md:h-[550px] lg:h-[600px] order-1 lg:order-2">
+          
+          <div class="relative h-full flex items-center justify-center">
+            
+            <!-- Glow -->
+            <div class="absolute inset-0 bg-gradient-to-br from-ateliya-primary/15 to-ateliya-accent/15 rounded-full blur-3xl opacity-40" />
+
+            <!-- Device 1: Terminal -->
+            <div class="absolute left-0 lg:left-8 top-1/2 -translate-y-1/2 z-10">
+              <div class="relative">
+                <div class="absolute -inset-1 bg-gradient-to-br from-ateliya-primary/40 to-ateliya-primary/20 rounded-3xl blur-md opacity-60" />
+                
+                <div class="relative bg-white rounded-3xl p-3 shadow-2xl">
+                  <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-ateliya-primary via-[#D4AF37] to-ateliya-secondary rounded-t-3xl opacity-70" />
+                  
+                  <div class="relative overflow-hidden rounded-2xl w-[180px] sm:w-[220px] md:w-[280px] lg:w-[320px]">
+                    <img 
+                      src="/Track-software.webp" 
+                      alt="Terminal de paiement"
+                      class="w-full h-auto object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="absolute -top-3 -right-3 bg-gradient-to-r from-ateliya-primary to-ateliya-dark text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                    <Zap class="w-3 h-3" />
+                    <span>Terminal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Device 2: Mobile -->
+            <div class="absolute right-0 lg:right-8 top-1/2 translate-y-8 z-20">
+              <div class="relative">
+                <div class="absolute -inset-1 bg-gradient-to-br from-ateliya-secondary/40 to-ateliya-accent/30 rounded-3xl blur-md opacity-70" />
+                
+                <div class="relative bg-white rounded-3xl p-3 shadow-2xl">
+                  <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-ateliya-accent via-ateliya-secondary to-[#D4AF37] rounded-t-3xl opacity-70" />
+                  
+                  <div class="relative overflow-hidden rounded-2xl w-[200px] sm:w-[240px] md:w-[280px] lg:w-[300px]">
+                    <img 
+                      src="/Tracking-mobile.webp" 
+                      alt="Application mobile"
+                      class="w-full h-auto object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="absolute -top-3 -left-3 bg-gradient-to-r from-ateliya-secondary to-ateliya-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                    <Smartphone class="w-3 h-3" />
+                    <span>Mobile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Accessibilité */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

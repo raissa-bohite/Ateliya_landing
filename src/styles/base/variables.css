@@ -1,0 +1,65 @@
+/* ===== CSS VARIABLES ===== */
+/* Centralisation de toutes les variables pour faciliter la maintenance */
+
+:root {
+  /* Couleurs Ateliya */
+  --color-primary: #34c7b8;
+  --color-secondary: #2ba39f;
+  --color-accent: #1eb5a0;
+  --color-light: #4fd9cc;
+  --color-dark: #0d6b5f;
+
+  /* Couleurs Africa */
+  --color-africa-gold: #d4af37;
+  --color-africa-terra: #b85c38;
+  --color-africa-ochre: #d4a574;
+  --color-africa-clay: #8b6f47;
+  --color-africa-sand: #c9b59a;
+  --color-africa-sage: #6b8e5c;
+  --color-africa-burgundy: #8b3a3a;
+  --color-africa-ebony: #2c2c2c;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #34c7b8 0%, #2ba39f 100%);
+  --gradient-africa: linear-gradient(135deg, #b85c38 0%, #d4af37 100%);
+  --gradient-blend: linear-gradient(135deg, #34c7b8 0%, #8b6f47 50%, #d4af37 100%);
+
+  /* Shadows */
+  --shadow-glow-primary: 0 0 30px rgba(52, 199, 184, 0.3);
+  --shadow-glow-primary-lg: 0 0 50px rgba(52, 199, 184, 0.4);
+  --shadow-glow-africa: 0 0 30px rgba(212, 175, 116, 0.3);
+  --shadow-glow-africa-lg: 0 0 50px rgba(212, 175, 116, 0.4);
+
+  /* Timing */
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 350ms;
+  --transition-slowest: 500ms;
+
+  /* Easing */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 8vw, 8rem);
+  --container-padding: clamp(1rem, 4vw, 2rem);
+
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+
+  /* Backdrop blur */
+  --blur-sm: 8px;
+  --blur-md: 12px;
+  --blur-lg: 16px;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-glow-primary: 0 0 40px rgba(52, 199, 184, 0.5);
+    --shadow-glow-africa: 0 0 40px rgba(212, 175, 116, 0.5);
+  }
+}

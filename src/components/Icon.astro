@@ -1,0 +1,111 @@
+---
+import { icons, sizeMap, colorMap, animationMap } from "../data/icon";
+
+interface Props {
+  name: string;
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+  color?: "currentColor" | "primary" | "light" | "accent" | "white" | "dark";
+  variant?: "outline" | "solid" | "duotone";
+  animate?: "spin" | "bounce" | "pulse" | "float" | "scale" | "none";
+  class?: string;
+  title?: string;
+}
+const {
+  name = "check",
+  size = "md",
+  color = "currentColor",
+  variant = "outline",
+  animate = "none",
+  class: customClass = "",
+  title,
+} = Astro.props;
+
+const iconPath = icons[name] || icons.info;
+const sizeClass = sizeMap[size as keyof typeof sizeMap];
+const strokeColor = colorMap[color as keyof typeof colorMap];
+const animClass = animationMap[animate as keyof typeof animationMap];
+---
+
+<svg
+  class={`transition-all duration-300 ${sizeClass} ${animClass} ${customClass}`}
+  fill={variant === "solid" ? strokeColor : "none"}
+  stroke={variant === "outline" || variant === "duotone" ? strokeColor : "none"}
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+  {title}
+  role="img"
+  aria-hidden={!title}
+>
+  <g set:html={iconPath} />
+</svg>
+
+<style is:global>
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes scale {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-scale {
+    animation: scale 2s ease-in-out infinite;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  .animate-bounce {
+    animation: bounce 1s infinite;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+</style>

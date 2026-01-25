@@ -1,0 +1,211 @@
+---
+import { Users, FileText, Ruler, CreditCard, ArrowRight, Check, Rocket } from 'lucide-astro';
+import Card from '../components/ui/Card.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import { features, benefits, stats } from "../data/data";
+
+const featureIcons = [Users, FileText, Ruler, CreditCard, CreditCard];
+const featureColors = [
+  { bg: "from-ateliya-primary/20 to-ateliya-primary/10", text: "text-ateliya-primary" },
+  { bg: "from-ateliya-secondary/20 to-ateliya-secondary/10", text: "text-ateliya-secondary" },
+  { bg: "from-ateliya-accent/20 to-ateliya-accent/10", text: "text-ateliya-accent" },
+  { bg: "from-africa-gold/20 to-africa-gold/10", text: "text-africa-gold" },
+  { bg: "from-africa-terra/20 to-africa-terra/10", text: "text-africa-terra" },
+];
+---
+
+<section 
+  id="features"
+  class="section-padding-xl relative overflow-hidden bg-gradient-to-br from-[#E1F3F2] via-[#F0F9F8] to-[#E1F3F2]"
+>
+  <!-- Éléments décoratifs -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-0 right-1/3 w-[500px] h-[500px] bg-ateliya-primary/6 rounded-full blur-3xl animate-float" />
+    <div class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-ateliya-secondary/5 rounded-full blur-3xl animate-float" style="animation-delay: 2s;" />
+  </div>
+
+  <!-- Pattern subtil -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.03] pattern-wax" aria-hidden="true" />
+
+  <div class="container-wide relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-16 md:mb-24 space-y-6 animate-fade-in">
+      
+      <!-- Badge -->
+      <div class="inline-block">
+        <Badge variant="primary" size="lg" class="gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+          Fonctionnalités Complètes
+        </Badge>
+      </div>
+
+      <!-- Titre -->
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
+        Outils Essentiels pour
+        <span class="block mt-2 text-gradient-primary">
+          votre Succès
+        </span>
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="text-lg md:text-xl text-ateliya-text/85 max-w-3xl mx-auto leading-relaxed">
+        Tout ce dont vous avez besoin pour gérer votre atelier 
+        <span class="font-bold text-ateliya-primary">efficacement</span> 
+        avec une solution puissante et intuitive
+      </p>
+
+      <!-- Stats Pills -->
+      <div class="flex flex-wrap justify-center gap-4 pt-4">
+        {stats.map((stat, i) => (
+          <div 
+            class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/80 backdrop-blur-md border-2 border-ateliya-primary/25 hover:border-ateliya-primary/50 hover:shadow-lg transition-all duration-300 hover:scale-105"
+          >
+            <span class="text-2xl font-black text-ateliya-primary">{stat.value}</span>
+            <span class="text-sm font-bold text-ateliya-text/70">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24">
+      {features.map((feature, i) => {
+        const IconComponent = featureIcons[i];
+        const colors = featureColors[i];
+        
+        return (
+          <div class="animate-slide-up group/feature" style={`animation-delay: ${i * 100}ms`}>
+            <Card variant="glass" hover={true} padding="lg" class="h-full relative overflow-hidden group-hover/feature:-translate-y-2 transition-all duration-300">
+              
+              <!-- Glow effect -->
+              <div class={`absolute -inset-2 bg-gradient-to-br ${colors.bg} rounded-2xl blur-xl opacity-0 group-hover/feature:opacity-60 transition-opacity duration-500 -z-10`} />
+
+              <!-- Top border -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-primary opacity-0 group-hover/feature:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
+
+              <!-- Content -->
+              <div class="space-y-6">
+                
+                <!-- Icon + Number -->
+                <div class="flex items-center justify-between">
+                  <div class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${colors.bg} flex items-center justify-center group-hover/feature:scale-110 group-hover/feature:rotate-6 transition-all duration-300 shadow-lg`}>
+                    <IconComponent class={`w-8 h-8 ${colors.text}`} />
+                  </div>
+                  <span class="text-5xl font-black text-ateliya-primary/10 group-hover/feature:text-ateliya-primary/20 transition-colors duration-300">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <!-- Title -->
+                <div class="space-y-3">
+                  <h3 class="text-xl md:text-2xl font-black text-ateliya-dark leading-tight group-hover/feature:translate-x-1 transition-transform duration-300">
+                    {feature.title}
+                  </h3>
+                  <div class="w-16 h-1 bg-gradient-primary rounded-full opacity-60 group-hover/feature:w-32 group-hover/feature:opacity-100 transition-all duration-500" />
+                </div>
+
+                <!-- Description -->
+                <p class="text-ateliya-text/85 leading-relaxed">
+                  {feature.description}
+                </p>
+
+                <!-- CTA Link -->
+                <div class="flex items-center gap-2 text-ateliya-primary font-bold text-sm group/link cursor-pointer pt-2">
+                  <span class="group-hover/link:translate-x-1 transition-transform duration-300">
+                    Explorer
+                  </span>
+                  <ArrowRight class="w-4 h-4 group-hover/link:translate-x-2 transition-transform duration-300" />
+                </div>
+              </div>
+
+              <!-- Bottom progress -->
+              <div class="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
+                <div class="h-full w-0 bg-gradient-primary group-hover/feature:w-full transition-all duration-1000" />
+              </div>
+            </Card>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="animate-fade-in">
+      <Card variant="glass" hover={false} padding="lg" class="relative overflow-hidden">
+        
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-ateliya-primary/5 via-transparent to-ateliya-secondary/5 pointer-events-none" />
+        
+        <!-- Kente borders -->
+        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-ateliya-primary via-[#D4AF37] to-ateliya-secondary rounded-t-2xl" />
+        <div class="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-ateliya-secondary via-[#D4AF37] to-ateliya-primary rounded-b-2xl" />
+
+        <!-- Content -->
+        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+          
+          <!-- Left -->
+          <div class="flex-1 space-y-6">
+            
+            <!-- Badge -->
+            <Badge variant="primary" size="lg" class="gap-2">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              <Rocket class="w-5 h-5" />
+              Essai Gratuit • Sans Engagement
+            </Badge>
+
+            <!-- Title -->
+            <h3 class="text-3xl md:text-4xl lg:text-5xl font-black text-ateliya-dark leading-tight">
+              Transformez votre atelier
+              <span class="block mt-2 text-gradient-primary">
+                dès aujourd'hui
+              </span>
+            </h3>
+
+            <!-- Description -->
+            <p class="text-ateliya-text/85 text-lg md:text-xl leading-relaxed max-w-2xl">
+              Accédez à toutes ces fonctionnalités avec un 
+              <span class="font-bold text-ateliya-primary">essai gratuit de 14 jours</span>
+              • Aucune carte bancaire requise
+            </p>
+
+            <!-- Benefits -->
+            <div class="flex flex-wrap gap-3">
+              {benefits.map((benefit) => (
+                <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 border-2 border-ateliya-primary/25 hover:border-ateliya-primary/50 transition-all duration-300 hover:scale-105">
+                  <Check class="w-5 h-5 text-ateliya-primary" />
+                  <span class="font-bold text-ateliya-dark text-sm">{benefit.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Right CTA -->
+          <div class="flex-shrink-0">
+            <Button variant="primary" size="lg" href="#download" class="group/cta whitespace-nowrap">
+              <Rocket class="w-6 h-6 group-hover/cta:rotate-12 transition-transform duration-300" />
+              Démarrer Gratuitement
+              <ArrowRight class="w-6 h-6 group-hover/cta:translate-x-2 transition-transform duration-300" />
+            </Button>
+
+            <div class="flex flex-col gap-2 mt-4 text-center text-sm text-ateliya-text/70 font-semibold">
+              <div class="flex items-center gap-2 justify-center">
+                <Check class="w-4 h-4 text-ateliya-primary" />
+                <span>Gratuit pendant 14 jours</span>
+              </div>
+              <div class="flex items-center gap-2 justify-center">
+                <Check class="w-4 h-4 text-ateliya-primary" />
+                <span>Annulation à tout moment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </div>
+</section>

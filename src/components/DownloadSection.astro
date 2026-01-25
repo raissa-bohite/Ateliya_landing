@@ -1,0 +1,219 @@
+---
+import { Download, Star, ArrowRight, Check, QrCode } from 'lucide-astro';
+import Button from "./Button-Improved.astro";
+import "../styles/global.css";
+---
+
+<section
+  id="download"
+  class="section-padding-xl relative overflow-hidden"
+  style="background: linear-gradient(135deg, #f0f9f8 0%, #e8f9f8 50%, #f0f9f8 100%);"
+>
+  <!-- Background Subtil -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-ateliya-primary/5 rounded-full blur-3xl" />
+    <div class="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-ateliya-secondary/4 rounded-full blur-3xl" />
+  </div>
+
+  <div class="container-wide relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      
+      <!-- Content Section (Gauche) -->
+      <div class="space-y-8 order-2 lg:order-1">
+        
+        <!-- Badge -->
+        <div class="inline-block">
+          <div class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-gradient-to-r from-ateliya-primary/10 to-ateliya-primary/15 border border-ateliya-primary/30 backdrop-blur-sm">
+            <Download class="w-5 h-5 text-ateliya-primary" />
+            <span class="text-sm font-bold text-ateliya-dark">
+              Application Mobile
+            </span>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <div class="space-y-4">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
+            <span class="block">Téléchargez</span>
+            <span class="block mt-2 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent">
+              Ateliya
+            </span>
+          </h2>
+
+          <p class="text-lg md:text-xl text-ateliya-text/80 leading-relaxed max-w-xl">
+            Disponible sur <span class="font-bold text-ateliya-primary">iOS et Android</span>. 
+            Gérez votre atelier où que vous soyez.
+          </p>
+        </div>
+
+        <!-- Download Buttons - Couleurs Ateliya -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          
+          <!-- App Store - Ateliya Primary avec icône Apple dark -->
+          <a 
+            href="#appstore" 
+            class="group flex-1 flex items-center gap-4 px-6 py-4 rounded-xl bg-white border-2 border-ateliya-primary/30 hover:border-ateliya-primary hover:bg-ateliya-primary/5 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+          >
+            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-ateliya-primary/10">
+              <svg class="w-7 h-7 text-ateliya-dark" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+              </svg>
+            </div>
+            <div class="text-left flex-1">
+              <div class="text-xs text-ateliya-text/60 font-semibold">Télécharger sur</div>
+              <div class="text-lg font-black text-ateliya-primary">App Store</div>
+            </div>
+            <ArrowRight class="w-5 h-5 text-ateliya-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+          </a>
+
+          <!-- Google Play - Dégradé Ateliya avec icône Play Store et texte blanc -->
+          <a 
+            href="#googleplay" 
+            class="group flex-1 flex items-center gap-4 px-6 py-4 rounded-xl bg-gradient-to-r from-ateliya-primary via-ateliya-dark to-ateliya-primary text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl hover:shadow-ateliya-primary/30 relative overflow-hidden"
+          >
+            <!-- Shimmer effect -->
+            <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent bg-[length:200%_100%] animate-shimmer-slow"></span>
+            
+            <div class="relative z-10 flex items-center gap-4 w-full">
+              <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-white/20">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186c-.316-.237-.522-.623-.522-1.073V2.887c0-.45.206-.836.521-1.073zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626c.591.342.591 1.252 0 1.594l-2.807 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"></path>
+                </svg>
+              </div>
+              <div class="text-left flex-1">
+                <div class="text-xs opacity-90 font-semibold">Télécharger sur</div>
+                <div class="text-lg font-black">Google Play</div>
+              </div>
+              <ArrowRight class="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+            </div>
+          </a>
+        </div>
+
+        <!-- Stats avec icônes visibles -->
+        <div class="grid grid-cols-3 gap-4 pt-6">
+          <div class="text-center p-4 rounded-xl bg-white border border-ateliya-primary/20 hover:shadow-lg transition-all duration-300">
+            <div class="flex justify-center mb-2">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center shadow-lg">
+                <Download class="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <p class="text-2xl md:text-3xl font-black text-ateliya-primary mb-1">
+              500K+
+            </p>
+            <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
+              Téléchargements
+            </p>
+          </div>
+
+          <div class="text-center p-4 rounded-xl bg-white border border-ateliya-primary/20 hover:shadow-lg transition-all duration-300">
+            <div class="flex justify-center mb-2">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-lg">
+                <Star class="w-6 h-6 text-white fill-white" />
+              </div>
+            </div>
+            <p class="text-2xl md:text-3xl font-black text-ateliya-primary mb-1">
+              4.9
+            </p>
+            <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
+              Note moyenne
+            </p>
+          </div>
+
+          <div class="text-center p-4 rounded-xl bg-white border border-ateliya-primary/20 hover:shadow-lg transition-all duration-300">
+            <div class="flex justify-center mb-2">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg">
+                <Check class="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <p class="text-2xl md:text-3xl font-black text-ateliya-primary mb-1">
+              98%
+            </p>
+            <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
+              Satisfaction
+            </p>
+          </div>
+        </div>
+
+        <!-- QR Code Intégré -->
+        <div class="flex items-center gap-6 p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-ateliya-primary/20 hover:border-ateliya-primary/40 transition-all duration-300">
+          <div class="flex-shrink-0 w-24 h-24 rounded-xl bg-gradient-to-br from-ateliya-primary/15 to-ateliya-primary/10 flex items-center justify-center border border-ateliya-primary/30">
+            <QrCode class="w-16 h-16 text-ateliya-primary" />
+          </div>
+          <div>
+            <p class="text-lg font-black text-ateliya-dark mb-1">
+              Scannez pour télécharger
+            </p>
+            <p class="text-sm text-ateliya-text/70">
+              Accès rapide à l'application
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup Section (Droite) - Simplifié -->
+      <div class="relative h-[500px] md:h-[600px] lg:h-[650px] flex items-center justify-center order-1 lg:order-2">
+        
+        <!-- Glow Subtil -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-[75%] h-[75%] bg-gradient-to-br from-ateliya-primary/20 via-ateliya-secondary/15 to-ateliya-accent/20 rounded-full blur-3xl opacity-40" />
+        </div>
+
+        <!-- Mockup -->
+        <div class="relative z-10">
+          <img
+            src="/Download-App.webp"
+            alt="Application mobile Ateliya"
+            class="object-contain drop-shadow-2xl"
+            loading="eager"
+          />
+        </div>
+
+        <!-- Badges Flottants Simplifiés -->
+        <div class="absolute top-1/4 -left-8 lg:left-0">
+          <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-primary/20">
+            <div class="flex items-center gap-2">
+              <Check class="w-5 h-5 text-green-500" />
+              <span class="text-xs font-bold text-ateliya-dark whitespace-nowrap">Disponible</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute bottom-1/3 -right-8 lg:right-0">
+          <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-secondary/20">
+            <div class="flex items-center gap-2">
+              <Star class="w-5 h-5 text-[#D4AF37] fill-[#D4AF37]" />
+              <span class="text-xs font-bold text-ateliya-dark whitespace-nowrap">4.9/5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animation shimmer */
+  @keyframes shimmer-slow {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .animate-shimmer-slow {
+    animation: shimmer-slow 3s linear infinite;
+  }
+
+  /* Accessibilité */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

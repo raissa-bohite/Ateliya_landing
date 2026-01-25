@@ -1,0 +1,494 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// Plans de tarification
+const plans = [
+  {
+    name: "Starter",
+    description: "Pour débuter et tester Ateliya",
+    price: {
+      monthly: 5000,
+      annual: 50000
+    },
+    popular: false,
+    features: [
+      { text: "Jusqu'à 50 commandes/mois", included: true },
+      { text: "Gestion clients & stock", included: true },
+      { text: "Notifications SMS (50/mois)", included: true },
+      { text: "1 utilisateur", included: true },
+      { text: "Support email", included: true },
+      { text: "Rapports basiques", included: true },
+      { text: "Paiements mobile money", included: true },
+      { text: "Mode hors ligne", included: false },
+      { text: "API & intégrations", included: false },
+      { text: "Formation personnalisée", included: false }
+    ],
+    cta: "Commencer gratuitement",
+    gradient: "from-gray-400 to-gray-500"
+  },
+  {
+    name: "Professionnel",
+    description: "Pour les ateliers établis",
+    price: {
+      monthly: 15000,
+      annual: 150000
+    },
+    popular: true,
+    features: [
+      { text: "Commandes illimitées", included: true },
+      { text: "Gestion clients & stock", included: true },
+      { text: "Notifications SMS illimitées", included: true },
+      { text: "Jusqu'à 3 utilisateurs", included: true },
+      { text: "Support prioritaire 24/7", included: true },
+      { text: "Rapports avancés", included: true },
+      { text: "Paiements mobile money", included: true },
+      { text: "Mode hors ligne", included: true },
+      { text: "API & intégrations", included: true },
+      { text: "Formation personnalisée", included: false }
+    ],
+    cta: "Essayer 14 jours gratuit",
+    gradient: "from-ateliya-primary to-ateliya-secondary"
+  },
+  {
+    name: "Enterprise",
+    description: "Pour les grandes structures",
+    price: {
+      monthly: 35000,
+      annual: 350000
+    },
+    popular: false,
+    features: [
+      { text: "Commandes illimitées", included: true },
+      { text: "Gestion clients & stock", included: true },
+      { text: "Notifications SMS illimitées", included: true },
+      { text: "Utilisateurs illimités", included: true },
+      { text: "Support dédié 24/7", included: true },
+      { text: "Rapports personnalisés", included: true },
+      { text: "Paiements mobile money", included: true },
+      { text: "Mode hors ligne", included: true },
+      { text: "API & intégrations avancées", included: true },
+      { text: "Formation personnalisée", included: true }
+    ],
+    cta: "Nous contacter",
+    gradient: "from-ateliya-dark to-ateliya-primary"
+  }
+];
+
+// Comparaison détaillée
+const featureComparison = [
+  {
+    category: "Gestion",
+    features: [
+      { name: "Commandes par mois", starter: "50", pro: "Illimité", enterprise: "Illimité" },
+      { name: "Clients", starter: "Illimité", pro: "Illimité", enterprise: "Illimité" },
+      { name: "Produits/Tissus", starter: "Illimité", pro: "Illimité", enterprise: "Illimité" },
+      { name: "Gestion stock", starter: true, pro: true, enterprise: true }
+    ]
+  },
+  {
+    category: "Communication",
+    features: [
+      { name: "SMS par mois", starter: "50", pro: "Illimité", enterprise: "Illimité" },
+      { name: "Email notifications", starter: true, pro: true, enterprise: true },
+      { name: "WhatsApp (bientôt)", starter: false, pro: true, enterprise: true }
+    ]
+  },
+  {
+    category: "Support",
+    features: [
+      { name: "Support email", starter: true, pro: true, enterprise: true },
+      { name: "Support téléphone", starter: false, pro: true, enterprise: true },
+      { name: "Support dédié", starter: false, pro: false, enterprise: true },
+      { name: "Formation", starter: false, pro: false, enterprise: true }
+    ]
+  }
+];
+
+// FAQ Tarification
+const faqPricing = [
+  {
+    question: "Puis-je essayer gratuitement ?",
+    answer: "Oui ! Tous les plans incluent 14 jours d'essai gratuit, sans carte bancaire requise."
+  },
+  {
+    question: "Comment puis-je payer ?",
+    answer: "Nous acceptons Orange Money, MTN Money, Moov Money, Wave et cartes bancaires via notre plateforme sécurisée."
+  },
+  {
+    question: "Puis-je changer de plan ?",
+    answer: "Oui, vous pouvez upgrader ou downgrader à tout moment. Les changements prennent effet immédiatement."
+  },
+  {
+    question: "Y a-t-il des frais cachés ?",
+    answer: "Non, aucun frais caché. Le prix affiché est tout compris : app, support, mises à jour et hébergement."
+  },
+  {
+    question: "Que se passe-t-il si je dépasse ma limite ?",
+    answer: "Vous recevrez une notification et pourrez upgrader votre plan. Vos données restent accessibles."
+  },
+  {
+    question: "Puis-je annuler à tout moment ?",
+    answer: "Oui, sans préavis ni pénalités. Vos données sont exportables pendant 30 jours après l'annulation."
+  }
+];
+---
+
+<Layout title="Tarification - Ateliya">
+  <Header />
+
+  <main class="bg-white overflow-hidden">
+    
+    <!-- Hero Section -->
+    <section class="relative py-20 md:py-24 overflow-hidden bg-gradient-to-br from-white via-ateliya-primary/5 to-white">
+      
+      <!-- Background -->
+      <div class="absolute inset-0">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(52, 199, 184, 0.08) 1px, transparent 0); background-size: 50px 50px;"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-ateliya-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-ateliya-secondary/8 rounded-full blur-3xl animate-float-delayed"></div>
+      </div>
+
+      <div class="container mx-auto max-w-7xl px-6 relative z-10">
+        
+        <div class="text-center space-y-8 mb-16">
+          
+          <!-- Badge -->
+          <div class="inline-block animate-fade-in-up">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ateliya-primary/8 border border-ateliya-primary/20">
+              <Icon name="tag" size="sm" class="text-ateliya-primary" />
+              <span class="text-sm font-bold text-ateliya-dark">Tarifs Transparents</span>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-ateliya-dark leading-[1.1] animate-fade-in-up" style="animation-delay: 100ms;">
+            Un prix juste pour
+            <span class="block mt-2 bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-ateliya-primary bg-clip-text text-transparent">
+              chaque atelier
+            </span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 200ms;">
+            Commencez gratuitement pendant 14 jours. Aucune carte bancaire requise. Annulation en 1 clic.
+          </p>
+
+          <!-- Toggle Mensuel/Annuel -->
+          <div class="flex items-center justify-center gap-4 pt-4 animate-fade-in-up" style="animation-delay: 300ms;">
+            <span class="text-gray-600 font-semibold toggle-label" data-period="monthly">Mensuel</span>
+            <button id="billingToggle" class="relative w-16 h-8 bg-gray-200 rounded-full transition-colors duration-300">
+              <div class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300 toggle-switch"></div>
+            </button>
+            <span class="text-ateliya-primary font-semibold toggle-label" data-period="annual">
+              Annuel
+              <span class="ml-2 px-2 py-1 text-xs bg-ateliya-primary/10 rounded-full">-17%</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="relative py-20 -mt-10">
+      <div class="container mx-auto max-w-7xl px-6">
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          {plans.map((plan, idx) => (
+            <div class={`relative group animate-fade-in-up ${plan.popular ? 'md:-mt-8' : ''}`} style={`animation-delay: ${idx * 100}ms`}>
+              
+              <!-- Popular Badge -->
+              {plan.popular && (
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                  <div class="px-4 py-1.5 rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-sm font-bold shadow-lg">
+                    ⭐ Plus Populaire
+                  </div>
+                </div>
+              )}
+
+              <!-- Card -->
+              <div class={`relative h-full p-8 rounded-3xl bg-white border-2 transition-all duration-500 shadow-lg ${
+                plan.popular 
+                  ? 'border-ateliya-primary/50 shadow-ateliya-primary/20 hover:shadow-2xl hover:shadow-ateliya-primary/30 scale-105' 
+                  : 'border-gray-100 hover:border-ateliya-primary/30 hover:shadow-2xl'
+              }`}>
+                
+                <!-- Header -->
+                <div class="text-center mb-8">
+                  <h3 class="text-2xl font-black text-gray-900 mb-2">{plan.name}</h3>
+                  <p class="text-sm text-gray-600">{plan.description}</p>
+                </div>
+
+                <!-- Price -->
+                <div class="text-center mb-8">
+                  <div class="flex items-end justify-center gap-2 mb-2">
+                    <span class="text-5xl font-black text-gray-900 price-value" data-monthly={plan.price.monthly} data-annual={plan.price.annual}>
+                      {plan.price.monthly.toLocaleString()}
+                    </span>
+                    <span class="text-xl text-gray-600 font-bold mb-2">FCFA</span>
+                  </div>
+                  <p class="text-sm text-gray-500 price-period">par mois</p>
+                  {plan.price.annual && (
+                    <p class="text-xs text-ateliya-primary font-semibold mt-2 annual-savings hidden">
+                      Économisez {((plan.price.monthly * 12 - plan.price.annual)).toLocaleString()} FCFA/an
+                    </p>
+                  )}
+                </div>
+
+                <!-- CTA -->
+                <button class={`w-full px-6 py-4 rounded-xl font-bold text-lg transition-all mb-8 ${
+                  plan.popular
+                    ? 'bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white hover:scale-105 shadow-lg hover:shadow-xl'
+                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                }`}>
+                  {plan.cta}
+                </button>
+
+                <!-- Features -->
+                <ul class="space-y-3">
+                  {plan.features.map(feature => (
+                    <li class="flex items-start gap-3">
+                      {feature.included ? (
+                        <Icon name="check" size="sm" class="text-ateliya-primary flex-shrink-0 mt-1" />
+                      ) : (
+                        <Icon name="x" size="sm" class="text-gray-300 flex-shrink-0 mt-1" />
+                      )}
+                      <span class={feature.included ? 'text-gray-700' : 'text-gray-400 line-through'}>
+                        {feature.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Glow effect -->
+              {plan.popular && (
+                <div class="absolute inset-0 bg-gradient-to-br from-ateliya-primary/10 to-ateliya-secondary/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <!-- Trust badges -->
+        <div class="flex flex-wrap items-center justify-center gap-8 mt-16 text-sm text-gray-500 font-semibold">
+          <div class="flex items-center gap-2">
+            <Icon name="shield" size="sm" class="text-ateliya-primary" />
+            <span>Paiement sécurisé</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="check" size="sm" class="text-ateliya-primary" />
+            <span>Sans engagement</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="zap" size="sm" class="text-ateliya-primary" />
+            <span>Activation instantanée</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="refresh" size="sm" class="text-ateliya-primary" />
+            <span>Changement de plan facile</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="py-20 md:py-24 bg-gray-50">
+      <div class="container mx-auto max-w-6xl px-6">
+        
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+            Comparaison détaillée
+          </h2>
+          <p class="text-xl text-gray-600">
+            Toutes les fonctionnalités de chaque plan
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+          {featureComparison.map((category, catIdx) => (
+            <div class={catIdx > 0 ? 'border-t-2 border-gray-100' : ''}>
+              <!-- Category Header -->
+              <div class="bg-gradient-to-r from-ateliya-primary/10 to-ateliya-secondary/10 p-6">
+                <h3 class="text-xl font-black text-gray-900">{category.category}</h3>
+              </div>
+              
+              <!-- Features -->
+              {category.features.map((feature, idx) => (
+                <div class={`grid grid-cols-4 gap-4 p-6 ${idx > 0 ? 'border-t border-gray-100' : ''}`}>
+                  <div class="col-span-1 font-semibold text-gray-700">{feature.name}</div>
+                  <div class="text-center">
+                    {typeof feature.starter === 'boolean' ? (
+                      feature.starter ? (
+                        <Icon name="check" size="md" class="text-ateliya-primary mx-auto" />
+                      ) : (
+                        <Icon name="x" size="md" class="text-gray-300 mx-auto" />
+                      )
+                    ) : (
+                      <span class="text-gray-900 font-semibold">{feature.starter}</span>
+                    )}
+                  </div>
+                  <div class="text-center">
+                    {typeof feature.pro === 'boolean' ? (
+                      feature.pro ? (
+                        <Icon name="check" size="md" class="text-ateliya-primary mx-auto" />
+                      ) : (
+                        <Icon name="x" size="md" class="text-gray-300 mx-auto" />
+                      )
+                    ) : (
+                      <span class="text-gray-900 font-semibold">{feature.pro}</span>
+                    )}
+                  </div>
+                  <div class="text-center">
+                    {typeof feature.enterprise === 'boolean' ? (
+                      feature.enterprise ? (
+                        <Icon name="check" size="md" class="text-ateliya-primary mx-auto" />
+                      ) : (
+                        <Icon name="x" size="md" class="text-gray-300 mx-auto" />
+                      )
+                    ) : (
+                      <span class="text-gray-900 font-semibold">{feature.enterprise}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+   
+
+   
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 8s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  .faq-answer {
+    display: none;
+  }
+
+  .faq-item.active .faq-answer {
+    display: block;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  // Billing toggle (Monthly/Annual)
+  const toggle = document.getElementById('billingToggle');
+  const toggleSwitch = document.querySelector('.toggle-switch');
+  const priceValues = document.querySelectorAll('.price-value');
+  const pricePeriods = document.querySelectorAll('.price-period');
+  const annualSavings = document.querySelectorAll('.annual-savings');
+  const toggleLabels = document.querySelectorAll('.toggle-label');
+  
+  let isAnnual = false;
+
+  toggle?.addEventListener('click', () => {
+    isAnnual = !isAnnual;
+    
+    // Update toggle UI
+    if (isAnnual) {
+      toggleSwitch?.classList.add('translate-x-8');
+      toggle.classList.add('bg-ateliya-primary');
+      toggle.classList.remove('bg-gray-200');
+    } else {
+      toggleSwitch?.classList.remove('translate-x-8');
+      toggle.classList.remove('bg-ateliya-primary');
+      toggle.classList.add('bg-gray-200');
+    }
+
+    // Update prices
+    priceValues.forEach(priceEl => {
+      const monthly = parseInt(priceEl.getAttribute('data-monthly') || '0');
+      const annual = parseInt(priceEl.getAttribute('data-annual') || '0');
+      const displayPrice = isAnnual ? Math.round(annual / 12) : monthly;
+      priceEl.textContent = displayPrice.toLocaleString();
+    });
+
+    // Update period text
+    pricePeriods.forEach(period => {
+      period.textContent = isAnnual ? 'par mois (facturé annuellement)' : 'par mois';
+    });
+
+    // Show/hide savings
+    annualSavings.forEach(saving => {
+      if (isAnnual) {
+        saving.classList.remove('hidden');
+      } else {
+        saving.classList.add('hidden');
+      }
+    });
+
+    // Update labels
+    toggleLabels.forEach(label => {
+      const period = label.getAttribute('data-period');
+      if ((period === 'annual' && isAnnual) || (period === 'monthly' && !isAnnual)) {
+        label.classList.add('text-ateliya-primary');
+        label.classList.remove('text-gray-600');
+      } else {
+        label.classList.remove('text-ateliya-primary');
+        label.classList.add('text-gray-600');
+      }
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item button').forEach(button => {
+    button.addEventListener('click', () => {
+      const faqItem = button.closest('.faq-item');
+      const allItems = document.querySelectorAll('.faq-item');
+      
+      allItems.forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+        }
+      });
+      
+      faqItem?.classList.toggle('active');
+    });
+  });
+</script>

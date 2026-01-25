@@ -1,0 +1,39 @@
+/* ===== IMPORTS MODULAIRES ===== */
+@import "./base/variables.css";
+@import "./base/reset.css";
+@import "./utilities/patterns.css";
+@import "./utilities/helpers.css";
+
+/* ===== TAILWIND DIRECTIVES ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== THEME ===== */
+@layer base {
+  body {
+    @apply bg-ateliya-background text-ateliya-text antialiased;
+  }
+}
+
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-ateliya-bg-dark text-ateliya-text-dark;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    @apply text-black bg-white;
+  }
+
+  a {
+    @apply text-blue-600 underline;
+  }
+
+  button {
+    @apply hidden;
+  }
+}

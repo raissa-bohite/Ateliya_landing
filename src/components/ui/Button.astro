@@ -1,0 +1,72 @@
+---
+/**
+ * Composant Button modulaire
+ * @param variant - "primary" | "africa" | "earth" | "blend" | "outline" | "ghost"
+ * @param size - "sm" | "md" | "lg"
+ * @param class - Classes Tailwind additionnelles
+ */
+
+interface Props {
+  variant?: "primary" | "africa" | "earth" | "blend" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  type = "button",
+  disabled = false,
+  class: className = "",
+} = Astro.props;
+
+// Classes de base communes
+const baseClasses =
+  "font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-offset-2";
+
+// Variantes de style
+const variantClasses = {
+  primary:
+    "bg-gradient-to-br from-ateliya-primary to-ateliya-secondary text-white shadow-glow-primary hover:shadow-glow-primary-lg focus:ring-ateliya-primary",
+  
+  africa:
+    "bg-gradient-to-br from-africa-terra to-africa-gold text-white shadow-glow-africa hover:shadow-glow-africa-lg focus:ring-africa-gold",
+  
+  earth:
+    "bg-gradient-to-br from-africa-clay to-africa-ochre text-white shadow-glow-africa hover:shadow-glow-africa-lg focus:ring-africa-ochre",
+  
+  blend:
+    "text-white shadow-glow-africa hover:shadow-glow-africa-lg focus:ring-ateliya-primary",
+  
+  outline:
+    "border-2 border-ateliya-primary text-ateliya-primary bg-transparent hover:bg-ateliya-primary hover:text-white focus:ring-ateliya-primary",
+  
+  ghost:
+    "text-ateliya-primary bg-transparent hover:bg-ateliya-primary/10 focus:ring-ateliya-primary shadow-none",
+};
+
+// Style pour le variant blend (gradient spécial)
+const blendStyle = variant === "blend" 
+  ? "background: linear-gradient(135deg, #34C7B8 0%, #B85C38 50%, #D4AF37 100%);"
+  : "";
+
+// Tailles
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 md:px-8 md:py-4",
+  lg: "px-8 py-4 md:px-10 md:py-5 text-lg",
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+<button
+  type={type}
+  disabled={disabled}
+  class={classes}
+  style={blendStyle}
+>
+  <slot />
+</button>

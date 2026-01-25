@@ -1,22 +1,253 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  url?: string;
+  keywords?: string;
+  author?: string;
+  ogType?: string;
+  twitterHandle?: string;
+}
+
+import '../styles/global.css';
+
+const {
+  title = 'Ateliya - Gestion d\'Atelier Intelligente',
+  description = 'Transformez votre atelier de couture avec Ateliya. Gestion complète des clients, commandes, mesures et paiements. Essai gratuit, pas de carte bancaire.',
+  image = 'https://ateliya.com/og-image.jpg',
+  url = 'https://ateliya.com',
+  keywords = 'atelier couture, gestion atelier, logiciel couture, prise de mesures, gestion commandes, solutions artisanales',
+  author = 'Ateliya',
+  ogType = 'website',
+  twitterHandle = '@ateliya_app',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, url).toString();
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <link rel="canonical" href={canonicalURL} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="theme-color" content="#34C7B8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Ateliya" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:site" content={twitterHandle} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   script-src 'self' 'unsafe-inline' https://cdn.example.com https://www.googletagmanager.com; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   connect-src 'self' https://www.google-analytics.com; 
+                   img-src 'self' data: https:; 
+                   object-src 'none';" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Ateliya",
+        "description": {description},
+        "url": {canonicalURL},
+        "image": {image},
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1250"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Ateliya",
+          "url": {canonicalURL}
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": {canonicalURL}
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preload" as="font" href="/fonts/inter.woff2" type="font/woff2" crossorigin />
+    <link rel="prefetch" href="/" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'page_path': window.location.pathname,
+      });
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <slot />
+    </main>
+
+    <button
+      id="scroll-to-top"
+      class="fixed bottom-8 right-8 z-40 hidden opacity-0 translate-y-10 transition-all duration-300 p-3 rounded-full shadow-lg focus-ring hover:scale-110"
+      style="background: linear-gradient(135deg, var(--color-primary), var(--color-africa-gold)); box-shadow: 0 8px 24px rgba(52, 199, 184, 0.3);"
+      aria-label="Retour en haut"
+    >
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
+    </button>
+
+  
+
+    <script>
+      const scrollBtn = document.getElementById('scroll-to-top');
+      const scrollThreshold = 300;
+      let ticking = false;
+
+      function updateScrollButton() {
+        const isVisible = window.scrollY > scrollThreshold;
+        
+        if (isVisible) {
+          scrollBtn?.classList.remove('hidden', 'opacity-0', 'translate-y-10');
+        } else {
+          scrollBtn?.classList.add('hidden', 'opacity-0', 'translate-y-10');
+        }
+        
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateScrollButton);
+          ticking = true;
+        }
+      });
+
+      scrollBtn?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-slide-up');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('[data-observe]').forEach((el) => {
+        observer.observe(el);
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href && href !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              window.history.pushState(null, '', href);
+            }
+          }
+        });
+      });
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+          page_title: document.title,
+          page_path: window.location.pathname,
+        });
+      }
+    </script>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  :root {
+    color-scheme: light dark;
+  }
 </style>

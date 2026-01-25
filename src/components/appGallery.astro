@@ -1,0 +1,163 @@
+---
+import Icon from "../components/Icon.astro";
+import { galleryItems } from "../data/data";
+import "../styles/global.css";
+---
+
+<section class="section-padding-xl bg-ateliya-bg-light relative overflow-hidden">
+  <!-- Subtle Background Gradient -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-ateliya-primary/3 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-ateliya-dark/2 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 right-0 w-72 h-72 bg-ateliya-accent/2 rounded-full blur-3xl"></div>
+  </div>
+
+ <div class="absolute inset-0 pointer-events-none opacity-[0.02]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><defs><pattern id=%22features-pattern%22 patternUnits=%22userSpaceOnUse%22 width=%22120%22 height=%22120%22><circle cx=%2260%22 cy=%2260%22 r=%222%22 fill=%22%230D6B5F%22/><circle cx=%2290%22 cy=%2290%22 r=%221%22 fill=%22%23D4AF37%22/><line x1=%2260%22 y1=%2260%22 x2=%2290%22 y2=%2290%22 stroke=%22%2334C7B8%22 stroke-width=%220.5%22/></pattern></defs><rect width=%221200%22 height=%22600%22 fill=%22url(%23features-pattern)%22/></svg>');"></div>
+<div
+    class="absolute inset-0 pointer-events-none opacity-[0.03]"
+    style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><defs><pattern id=%22etapes-pattern%22 patternUnits=%22userSpaceOnUse%22 width=%22100%22 height=%22100%22><path d=%22M50,0 Q75,25 50,50 Q25,75 0,50 Q25,25 50,0%22 fill=%22none%22 stroke=%22%230D6B5F%22 stroke-width=%220.5%22/></pattern></defs><rect width=%221200%22 height=%22600%22 fill=%22url(%23etapes-pattern)%22/></svg>');"
+  >
+  </div>
+  <div class="container-wide relative z-10">
+    <!-- Header Section -->
+    <div class="text-center mb-16 md:mb-20 animate-fade-in">
+      
+       <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-ateliya-dark">
+        Découvrez l' <span class="text-ateliya-primary"> Application</span> Ateliya
+      </h2>
+      <p class="text-lg text-ateliya-text-light max-w-2xl mx-auto leading-relaxed">
+        Interface intuitive et puissante pour gérer tous les aspects de votre atelier avec fluidité
+      </p>
+    </div>
+
+    <!-- Gallery Container -->
+    <div class="relative group">
+      <!-- Gallery Wrapper -->
+      <div class="overflow-x-auto rounded-3xl px-6 py-4 scrollbar-hide">
+        <!-- Gallery Track -->
+        <div 
+          class="flex gap-6"
+          style="width: fit-content;"
+        >
+          {
+            galleryItems.slice(0, 6).map((item, idx) => (
+              <div
+                key={`item-${idx}`}
+                class="carousel-card group/card relative flex-shrink-0 w-[450px] h-[550px] rounded-2xl overflow-hidden animate-scale-in hover:z-20"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <!-- Card Border & Background -->
+                <div class="absolute inset-0  group-hover/card:border-ateliya-primary/50 rounded-2xl transition-all duration-500"></div>
+
+                <!-- Top Accent Line (Kente inspired) -->
+                <div class="absolute top-0 left-0 right-0 h-0.5  group-hover/card:opacity-100 transition-opacity duration-500"></div>
+
+                <!-- Image or Icon Background -->
+                {item.image ? (
+                  <img 
+                    src={item.image} 
+                    alt={item.label}
+                    class="absolute inset-0 w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700"
+                  />
+                ) : (
+                  <div class="absolute inset-0 bg-gradient-to-br from-ateliya-bg-light via-white to-ateliya-accent/5 flex items-center justify-center" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><pattern id=%22gallery-pattern%22 patternUnits=%22userSpaceOnUse%22 width=%2250%22 height=%2250%22><circle cx=%2225%22 cy=%2225%22 r=%221.5%22 fill=%22%2334C7B8%22 opacity=%220.04%22/></pattern></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23gallery-pattern)%22/></svg>');">
+                  </div>
+                )}
+
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-ateliya-text via-ateliya-text/20 to-transparent opacity-40 group-hover/card:opacity-20 transition-opacity duration-500"></div>
+
+                <!-- Shine Effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent group-hover/card:via-white/15 transition-all duration-700 pointer-events-none opacity-0 group-hover/card:opacity-100"></div>
+
+                <!-- Content Overlay -->
+                <div class="relative h-full flex flex-col items-center justify-center p-8 z-10">
+                  <!-- Icon Wrapper -->
+                  {!item.image && (
+                    <div class="mb-6 p-4 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/30 group-hover/card:bg-ateliya-primary/15 group-hover/card:border-ateliya-primary/50 transition-all duration-500">
+                      <Icon name={item.icon} size="3xl" class="text-ateliya-primary group-hover/card:scale-110 transition-transform duration-500" />
+                    </div>
+                  )}
+
+                  <!-- Label -->
+                  <p class="text-ateliya-text font-bold text-center text-xl drop-shadow-sm mb-2 group-hover/card:text-ateliya-dark transition-colors duration-500">
+                    {item.label}
+                  </p>
+
+                  <!-- Description -->
+                  <p class="text-ateliya-text-light text-sm text-center opacity-70 group-hover/card:opacity-100 transition-all duration-500 drop-shadow-sm group-hover/card:text-ateliya-text">
+                    {item.description || "Cliquez pour explorer"}
+                  </p>
+                </div>
+
+                <!-- Bottom Accent Bar -->
+                <div class="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-transparent scale-x-0 group-hover/card:scale-x-100 transition-transform duration-500 origin-left"></div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const gallery = document.querySelector('.overflow-x-auto');
+  const track = gallery.querySelector('div[style*="width: fit-content"]');
+  
+  let scrollPosition = 0;
+  
+  function autoScroll() {
+    scrollPosition += 2;
+    gallery.scrollLeft = scrollPosition;
+    
+    // Restart scroll when reaching the end
+    if (scrollPosition >= track.offsetWidth - gallery.offsetWidth) {
+      scrollPosition = 0;
+    }
+  }
+  
+  // Auto-scroll every 50ms
+  setInterval(autoScroll, 50);
+</script>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+</style>

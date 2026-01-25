@@ -1,0 +1,55 @@
+---
+/**
+ * Composant Badge modulaire
+ * @param variant - "primary" | "secondary" | "outline" | "africa" | "earth"
+ * @param size - "sm" | "md" | "lg"
+ * @param class - Classes Tailwind additionnelles
+ */
+
+interface Props {
+  variant?: "primary" | "secondary" | "outline" | "africa" | "earth";
+  size?: "sm" | "md" | "lg";
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  class: className = "",
+} = Astro.props;
+
+// Classes de base
+const baseClasses =
+  "inline-flex items-center rounded-full font-semibold transition-all duration-250";
+
+// Variantes de style
+const variantClasses = {
+  primary:
+    "bg-gradient-to-br from-ateliya-primary to-ateliya-secondary text-white",
+  
+  secondary:
+    "bg-ateliya-accent/20 text-ateliya-accent",
+  
+  outline:
+    "border-2 border-ateliya-primary text-ateliya-primary bg-transparent",
+  
+  africa:
+    "bg-gradient-to-br from-africa-terra to-africa-gold text-white",
+  
+  earth:
+    "bg-gradient-to-br from-africa-clay to-africa-ochre text-white",
+};
+
+// Tailles
+const sizeClasses = {
+  sm: "px-2 py-0.5 text-xs",
+  md: "px-3 py-1 text-sm",
+  lg: "px-4 py-1.5 text-base",
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+<span class={classes}>
+  <slot />
+</span>

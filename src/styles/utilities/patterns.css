@@ -1,0 +1,69 @@
+/* ===== PATTERNS AFRICAINS ===== */
+/* Motifs inspirés des textiles africains */
+
+.pattern-mudcloth {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(212, 175, 116, 0.1) 35px,
+      rgba(212, 175, 116, 0.1) 70px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 35px,
+      rgba(184, 92, 56, 0.1) 35px,
+      rgba(184, 92, 56, 0.1) 70px
+    );
+}
+
+.pattern-kente {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 10px,
+      rgba(212, 175, 116, 0.05) 10px,
+      rgba(212, 175, 116, 0.05) 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 10px,
+      rgba(212, 175, 116, 0.05) 10px,
+      rgba(212, 175, 116, 0.05) 20px
+    );
+}
+
+.pattern-wax {
+  background-image: 
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(212, 175, 116, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(184, 92, 56, 0.1) 0%,
+      transparent 50%
+    );
+}
+
+/* Patterns subtils pour backgrounds */
+.pattern-subtle-dots {
+  background-image: radial-gradient(
+    circle,
+    rgba(52, 199, 184, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+.pattern-subtle-grid {
+  background-image: 
+    linear-gradient(rgba(52, 199, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(52, 199, 184, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}

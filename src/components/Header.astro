@@ -1,0 +1,247 @@
+---
+import { Menu, Download, Apple, PlayCircle } from 'lucide-astro';
+import Button from '../ui/Button.astro';
+import { navItems } from "../data/header";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<header
+  id="header"
+  class:list={[
+    "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+    className
+  ]}
+>
+  <!-- Background Glassmorphism -->
+  <div class="absolute inset-0 backdrop-blur-xl bg-white/96 shadow-lg pattern-subtle-dots" />
+
+  <!-- Navigation Container -->
+  <nav
+    class="container-wide relative z-10 flex items-center justify-between h-20 md:h-24 gap-6"
+    aria-label="Navigation principale"
+  >
+    <!-- Logo Section (bordure supprimée) -->
+    <a
+      href="/"
+      class="flex items-center gap-3 group relative rounded-2xl p-2 -m-2"
+      aria-label="Retour à l'accueil"
+    >
+      <!-- Logo Icon -->
+      <div class="relative w-12 h-12 md:w-14 md:h-14 bg-gradient-primary rounded-2xl flex items-center justify-center text-white font-black text-xl md:text-xl shadow-glow-primary overflow-hidden group-hover:shadow-glow-primary-lg group-hover:scale-110 transition-all duration-300">
+        <span class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+        <span class="relative z-10">A</span>
+      </div>
+      
+      <!-- Logo Text -->
+      <span class="hidden sm:inline text-xl md:text-3xl font-black text-gradient-primary group-hover:scale-105 transition-transform duration-300">
+        Ateliya
+      </span>
+    </a>
+
+    <!-- Desktop Navigation Links (bordure conservée ici) -->
+    <div class="hidden md:flex items-center gap-2 bg-ateliya-bg-light/90 backdrop-blur-xl border-2 border-ateliya-primary/20 rounded-2xl p-2 shadow-lg transition-all duration-300">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="nav-link relative px-5 py-3 text-sm font-bold text-ateliya-text/80 hover:text-ateliya-primary rounded-xl transition-all duration-300"
+        >
+          <span class="relative z-10">{item.label}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-3">
+      
+      <!-- Download Buttons (Desktop) -->
+      <div class="hidden lg:flex items-center gap-2">
+        <!-- App Store Button (bordure supprimée) -->
+        <a
+          href="#"
+          class="group/store flex items-center gap-3 px-5 py-3 bg-white text-gray-800 rounded-xl border-2 border-gray-200 hover:border-gray-300hover:shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          <svg class="w-7 h-7 text-gray-700" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+          </svg>
+          <div class="flex flex-col items-start">
+            <span class="text-[10px] leading-none text-gray-600">Télécharger sur</span>
+            <span class="text-base font-bold leading-none mt-0.5 text-ateliya-primary">App Store</span>
+          </div>
+        </a>
+
+        <!-- Play Store Button (Teal Ateliya) -->
+        <a
+          href="#"
+          class="group/store flex items-center gap-3 px-5 py-3 bg-gradient-to-br from-ateliya-primary to-ateliya-secondary text-white rounded-xl hover:shadow-glow-primary-lg transition-all duration-300 hover:scale-105"
+        >
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+          </svg>
+          <div class="flex flex-col items-start">
+            <span class="text-[10px] leading-none opacity-90">Télécharger sur</span>
+            <span class="text-base font-bold leading-none mt-0.5">Google Play</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle (bordure supprimée) -->
+      <button
+        id="menu-toggle"
+        class="md:hidden w-12 h-12 flex items-center justify-center hover:bg-ateliya-primary/10 rounded-xl transition-all duration-300 group/menu"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        <Menu class="w-6 h-6 text-ateliya-text transition-transform duration-300 group-hover/menu:scale-110" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 right-0 bg-white/98 backdrop-blur-xl shadow-2xl pattern-subtle-dots"
+  >
+    <div class="container-wide py-6 space-y-2">
+      {navItems.map((item, index) => (
+        <a
+          href={item.href}
+          class="mobile-nav-link group/mobile block px-4 py-3 text-ateliya-text font-bold hover:text-ateliya-primary hover:bg-ateliya-primary/10 rounded-xl transition-all duration-300"
+          style={`animation-delay: ${index * 50}ms`}
+        >
+          <span class="flex items-center gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-ateliya-primary/10 group-hover/mobile:scale-110 group-hover/mobile:bg-ateliya-primary/20 transition-all duration-300">
+              <span class="text-xl">{item.icon}</span>
+            </span>
+            <span class="flex-1">{item.label}</span>
+            <span class="opacity-0 group-hover/mobile:opacity-100 group-hover/mobile:translate-x-1 transition-all duration-300">→</span>
+          </span>
+        </a>
+      ))}
+
+      <!-- Mobile Download Buttons -->
+      <div class="pt-4 space-y-3">
+        <!-- App Store Mobile (bordure supprimée) -->
+        <a
+          href="#"
+          class="flex items-center justify-center gap-3 w-full px-5 py-4 bg-white text-gray-800 rounded-xl hover:shadow-lg transition-all duration-300"
+        >
+          <svg class="w-8 h-8 text-gray-700" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+          </svg>
+          <div class="flex flex-col items-start">
+            <span class="text-xs text-gray-600">Télécharger sur</span>
+            <span class="text-lg font-bold text-ateliya-primary">App Store</span>
+          </div>
+        </a>
+
+        <!-- Play Store Mobile (Teal) -->
+        <a
+          href="#"
+          class="flex items-center justify-center gap-3 w-full px-5 py-4 bg-gradient-to-br from-ateliya-primary to-ateliya-secondary text-white rounded-xl hover:shadow-glow-primary-lg transition-all duration-300"
+        >
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+          </svg>
+          <div class="flex flex-col items-start">
+            <span class="text-xs opacity-90">Télécharger sur</span>
+            <span class="text-lg font-bold">Google Play</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer -->
+<div class="h-20 md:h-24" aria-hidden="true" />
+
+<script>
+  const initMobileMenu = () => {
+    const menuToggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+    const mobileMenu = document.querySelector<HTMLDivElement>('#mobile-menu');
+    if (!menuToggle || !mobileMenu) return;
+
+    const toggleMenu = (show?: boolean) => {
+      const isHidden = show !== undefined ? !show : !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isHidden);
+      menuToggle.setAttribute('aria-expanded', (!isHidden).toString());
+      menuToggle.setAttribute('aria-label', isHidden ? 'Ouvrir le menu' : 'Fermer le menu');
+      document.body.style.overflow = isHidden ? '' : 'hidden';
+    };
+
+    menuToggle.addEventListener('click', () => toggleMenu());
+    document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => toggleMenu(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        toggleMenu(false);
+      }
+    });
+  };
+
+  const initScrollEffects = () => {
+    const header = document.querySelector<HTMLElement>('#header');
+    if (!header) return;
+
+    let ticking = false;
+    const updateHeader = () => {
+      header.classList.toggle('shadow-2xl', window.scrollY > 50);
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+  };
+
+  document.addEventListener('astro:page-load', () => {
+    initMobileMenu();
+    initScrollEffects();
+  });
+</script>
+
+<style>
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::before {
+    width: 80%;
+  }
+
+  #mobile-menu:not(.hidden) {
+    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-nav-link {
+    animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

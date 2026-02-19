@@ -1,111 +1,245 @@
 ---
-import { icons, sizeMap, colorMap, animationMap } from "../data/icon";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  ChevronRight,
+  ChevronUp,
+  ChevronLeft,
+  ArrowRight,
+  ArrowLeft,
+  ArrowUp,
+  ArrowDown,
+  Download,
+  Upload,
+  Search,
+  Check,
+  CheckCircle,
+  Bell,
+  Mail,
+  Phone,
+  MapPin,
+  MessageCircle,
+  BarChart3,
+  TrendingUp,
+  TrendingDown,
+  CreditCard,
+  ShoppingCart,
+  Package,
+  Gift,
+  Lock,
+  Unlock,
+  Key,
+  Star,
+  Heart,
+  Zap,
+  Clock,
+  Calendar,
+  User,
+  Users,
+  UserPlus,
+  Globe,
+  Settings,
+  Info,
+  HelpCircle,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  AlertTriangle,
+  FileText,
+  File,
+  Smartphone,
+  Smile,
+  Frown,
+  Ruler,
+  Scissors,
+  BookOpen,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Image,
+  PlayCircle,
+  Sparkles,
+  Shield,
+  RefreshCw,
+  Tag,
+  MessageSquare,
+  Edit,
+  Plus,
+  Receipt,
+  PieChart,
+  Share2,
+  Printer,
+  Cloud,
+  Activity,
+  Headphones,
+  Quote,
+  Rocket,
+  Compass,
+  type LucideProps
+} from "lucide-astro";
 
-interface Props {
+export interface Props extends Omit<LucideProps, 'name'> {
   name: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
-  color?: "currentColor" | "primary" | "light" | "accent" | "white" | "dark";
-  variant?: "outline" | "solid" | "duotone";
-  animate?: "spin" | "bounce" | "pulse" | "float" | "scale" | "none";
   class?: string;
-  title?: string;
 }
+
 const {
-  name = "check",
+  name,
   size = "md",
-  color = "currentColor",
-  variant = "outline",
-  animate = "none",
   class: customClass = "",
-  title,
+  ...rest
 } = Astro.props;
 
-const iconPath = icons[name] || icons.info;
-const sizeClass = sizeMap[size as keyof typeof sizeMap];
-const strokeColor = colorMap[color as keyof typeof colorMap];
-const animClass = animationMap[animate as keyof typeof animationMap];
+// Size mapping
+const sizeMap = {
+  xs: 12,
+  sm: 16,
+  md: 24,
+  lg: 32,
+  xl: 40,
+  "2xl": 48,
+};
+
+const iconSize = sizeMap[size as keyof typeof sizeMap] || 24;
+
+// Icon component mapping (kebab-case to PascalCase)
+const iconMap: Record<string, any> = {
+  // Navigation
+  menu: Menu,
+  close: X,
+  x: X,
+  "chevron-down": ChevronDown,
+  chevronDown: ChevronDown,
+  "chevron-right": ChevronRight,
+  chevronRight: ChevronRight,
+  "chevron-up": ChevronUp,
+  chevronUp: ChevronUp,
+  "chevron-left": ChevronLeft,
+  chevronLeft: ChevronLeft,
+  "arrow-right": ArrowRight,
+  arrowRight: ArrowRight,
+  "arrow-left": ArrowLeft,
+  arrowLeft: ArrowLeft,
+  "arrow-up": ArrowUp,
+  arrowUp: ArrowUp,
+  "arrow-down": ArrowDown,
+  arrowDown: ArrowDown,
+
+  // Actions
+  download: Download,
+  upload: Upload,
+  search: Search,
+  check: Check,
+  "check-circle": CheckCircle,
+  checkCircle: CheckCircle,
+  bell: Bell,
+  mail: Mail,
+  phone: Phone,
+  "phone-call": Phone,
+  "phone-incoming": Phone,
+  "map-pin": MapPin,
+  mapPin: MapPin,
+  "message-circle": MessageCircle,
+  messageCircle: MessageCircle,
+  "message-square": MessageSquare,
+  messageSquare: MessageSquare,
+
+  // Data
+  chart: BarChart3,
+  "bar-chart": BarChart3,
+  barChart: BarChart3,
+  trending: TrendingUp,
+  "trending-up": TrendingUp,
+  trendingUp: TrendingUp,
+  "trending-down": TrendingDown,
+  trendingDown: TrendingDown,
+
+  // Commerce
+  "credit-card": CreditCard,
+  creditCard: CreditCard,
+  "dollar-sign": CreditCard,
+  shoppingCart: ShoppingCart,
+  package: Package,
+  gift: Gift,
+  tag: Tag,
+
+  // Security
+  lock: Lock,
+  unlocked: Unlock,
+  key: Key,
+  shield: Shield,
+  
+  // Misc
+  star: Star,
+  heart: Heart,
+  zap: Zap,
+  clock: Clock,
+  calendar: Calendar,
+  refresh: RefreshCw,
+  
+  // User
+  user: User,
+  users: Users,
+  "user-plus": UserPlus,
+  userPlus: UserPlus,
+  
+  // System
+  globe: Globe,
+  settings: Settings,
+  info: Info,
+  "help-circle": HelpCircle,
+  helpCircle: HelpCircle,
+  eye: Eye,
+  "eye-off": EyeOff,
+  eyeOff: EyeOff,
+  "alert-circle": AlertCircle,
+  alertCircle: AlertCircle,
+  "alert-triangle": AlertTriangle,
+  "file-text": FileText,
+  fileText: FileText,
+  file: File,
+  smartphone: Smartphone,
+  image: Image,
+  "play-circle": PlayCircle,
+  playCircle: PlayCircle,
+  sparkles: Sparkles,
+  
+  // Tools
+  ruler: Ruler,
+  measure: Ruler,
+  scissors: Scissors,
+  bookOpen: BookOpen,
+  printer: Printer,
+  cloud: Cloud,
+  "share-2": Share2,
+  activity: Activity,
+  headphones: Headphones,
+  edit: Edit,
+  plus: Plus,
+  rocket: Rocket,
+  compass: Compass,
+  
+  // Finance
+  receipt: Receipt,
+  "pie-chart": PieChart,
+  pieChart: PieChart,
+  
+  // Social
+  facebook: Facebook,
+  twitter: Twitter,
+  instagram: Instagram,
+  linkedin: Linkedin,
+  
+  // Misc Elements
+  quote: Quote,
+};
+
+// Normalize name to handle potential inconsistencies
+const normalizedName = name;
+const IconComponent = iconMap[normalizedName] || iconMap[normalizedName.toLowerCase()] || Info;
 ---
 
-<svg
-  class={`transition-all duration-300 ${sizeClass} ${animClass} ${customClass}`}
-  fill={variant === "solid" ? strokeColor : "none"}
-  stroke={variant === "outline" || variant === "duotone" ? strokeColor : "none"}
-  viewBox="0 0 24 24"
-  xmlns="http://www.w3.org/2000/svg"
-  {title}
-  role="img"
-  aria-hidden={!title}
->
-  <g set:html={iconPath} />
-</svg>
-
-<style is:global>
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-  }
-
-  @keyframes scale {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .animate-scale {
-    animation: scale 2s ease-in-out infinite;
-  }
-
-  .animate-spin {
-    animation: spin 1s linear infinite;
-  }
-
-  .animate-bounce {
-    animation: bounce 1s infinite;
-  }
-
-  .animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes bounce {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
-</style>
+<IconComponent size={iconSize} class={customClass} {...rest} />

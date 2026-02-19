@@ -4,18 +4,20 @@ import Icon from "../components/Icon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-// Plans de tarification
 const plans = [
   {
     name: "Starter",
-    description: "Pour débuter et tester Ateliya",
-    price: {
-      monthly: 5000,
-      annual: 50000
-    },
+    description: "Pour debuter et tester Ateliya",
+    price: { monthly: 5000, annual: 50000 },
     popular: false,
+    icon: "zap",
+    iconColor: "text-ateliya-primary",
+    iconBg: "from-ateliya-primary/20 to-ateliya-primary/10",
+    glowBg: "from-ateliya-primary/15 to-teal-400/10",
+    barGradient: "from-ateliya-primary to-teal-400",
+    number: "01",
     features: [
-      { text: "Jusqu'à 50 commandes/mois", included: true },
+      { text: "Jusqu'a 50 commandes/mois", included: true },
       { text: "Gestion clients & stock", included: true },
       { text: "Notifications SMS (50/mois)", included: true },
       { text: "1 utilisateur", included: true },
@@ -23,116 +25,108 @@ const plans = [
       { text: "Rapports basiques", included: true },
       { text: "Paiements mobile money", included: true },
       { text: "Mode hors ligne", included: false },
-      { text: "API & intégrations", included: false },
-      { text: "Formation personnalisée", included: false }
+      { text: "API & integrations", included: false },
+      { text: "Formation personnalisee", included: false },
     ],
     cta: "Commencer gratuitement",
-    gradient: "from-gray-400 to-gray-500"
   },
   {
     name: "Professionnel",
-    description: "Pour les ateliers établis",
-    price: {
-      monthly: 15000,
-      annual: 150000
-    },
+    description: "Pour les ateliers etablis",
+    price: { monthly: 15000, annual: 150000 },
     popular: true,
+    icon: "star",
+    iconColor: "text-ateliya-secondary",
+    iconBg: "from-ateliya-secondary/20 to-ateliya-secondary/10",
+    glowBg: "from-ateliya-secondary/15 to-amber-400/10",
+    barGradient: "from-ateliya-secondary to-amber-400",
+    number: "02",
     features: [
-      { text: "Commandes illimitées", included: true },
+      { text: "Commandes illimitees", included: true },
       { text: "Gestion clients & stock", included: true },
-      { text: "Notifications SMS illimitées", included: true },
-      { text: "Jusqu'à 3 utilisateurs", included: true },
+      { text: "Notifications SMS illimitees", included: true },
+      { text: "Jusqu'a 3 utilisateurs", included: true },
       { text: "Support prioritaire 24/7", included: true },
-      { text: "Rapports avancés", included: true },
+      { text: "Rapports avances", included: true },
       { text: "Paiements mobile money", included: true },
       { text: "Mode hors ligne", included: true },
-      { text: "API & intégrations", included: true },
-      { text: "Formation personnalisée", included: false }
+      { text: "API & integrations", included: true },
+      { text: "Formation personnalisee", included: false },
     ],
     cta: "Essayer 14 jours gratuit",
-    gradient: "from-ateliya-primary to-ateliya-secondary"
   },
   {
     name: "Enterprise",
     description: "Pour les grandes structures",
-    price: {
-      monthly: 35000,
-      annual: 350000
-    },
+    price: { monthly: 35000, annual: 350000 },
     popular: false,
+    icon: "shield",
+    iconColor: "text-blue-500",
+    iconBg: "from-blue-500/20 to-blue-500/10",
+    glowBg: "from-blue-500/15 to-indigo-400/10",
+    barGradient: "from-blue-500 to-indigo-400",
+    number: "03",
     features: [
-      { text: "Commandes illimitées", included: true },
+      { text: "Commandes illimitees", included: true },
       { text: "Gestion clients & stock", included: true },
-      { text: "Notifications SMS illimitées", included: true },
-      { text: "Utilisateurs illimités", included: true },
-      { text: "Support dédié 24/7", included: true },
-      { text: "Rapports personnalisés", included: true },
+      { text: "Notifications SMS illimitees", included: true },
+      { text: "Utilisateurs illimites", included: true },
+      { text: "Support dedie 24/7", included: true },
+      { text: "Rapports personnalises", included: true },
       { text: "Paiements mobile money", included: true },
       { text: "Mode hors ligne", included: true },
-      { text: "API & intégrations avancées", included: true },
-      { text: "Formation personnalisée", included: true }
+      { text: "API & integrations avancees", included: true },
+      { text: "Formation personnalisee", included: true },
     ],
     cta: "Nous contacter",
-    gradient: "from-ateliya-dark to-ateliya-primary"
-  }
+  },
 ];
 
-// Comparaison détaillée
 const featureComparison = [
   {
     category: "Gestion",
+    icon: "scissors",
+    color: "text-ateliya-primary",
+    bg: "from-ateliya-primary/20 to-ateliya-primary/10",
     features: [
-      { name: "Commandes par mois", starter: "50", pro: "Illimité", enterprise: "Illimité" },
-      { name: "Clients", starter: "Illimité", pro: "Illimité", enterprise: "Illimité" },
-      { name: "Produits/Tissus", starter: "Illimité", pro: "Illimité", enterprise: "Illimité" },
-      { name: "Gestion stock", starter: true, pro: true, enterprise: true }
-    ]
+      { name: "Commandes par mois", starter: "50", pro: "Illimite", enterprise: "Illimite" },
+      { name: "Clients", starter: "Illimite", pro: "Illimite", enterprise: "Illimite" },
+      { name: "Produits/Tissus", starter: "Illimite", pro: "Illimite", enterprise: "Illimite" },
+      { name: "Gestion stock", starter: true, pro: true, enterprise: true },
+    ],
   },
   {
     category: "Communication",
+    icon: "mail",
+    color: "text-ateliya-secondary",
+    bg: "from-ateliya-secondary/20 to-ateliya-secondary/10",
     features: [
-      { name: "SMS par mois", starter: "50", pro: "Illimité", enterprise: "Illimité" },
+      { name: "SMS par mois", starter: "50", pro: "Illimite", enterprise: "Illimite" },
       { name: "Email notifications", starter: true, pro: true, enterprise: true },
-      { name: "WhatsApp (bientôt)", starter: false, pro: true, enterprise: true }
-    ]
+      { name: "WhatsApp (bientot)", starter: false, pro: true, enterprise: true },
+    ],
   },
   {
-    category: "Support",
+    category: "Support & extras",
+    icon: "headphones",
+    color: "text-blue-500",
+    bg: "from-blue-500/20 to-blue-500/10",
     features: [
       { name: "Support email", starter: true, pro: true, enterprise: true },
-      { name: "Support téléphone", starter: false, pro: true, enterprise: true },
-      { name: "Support dédié", starter: false, pro: false, enterprise: true },
-      { name: "Formation", starter: false, pro: false, enterprise: true }
-    ]
-  }
+      { name: "Support telephone", starter: false, pro: true, enterprise: true },
+      { name: "Support dedie", starter: false, pro: false, enterprise: true },
+      { name: "Formation", starter: false, pro: false, enterprise: true },
+    ],
+  },
 ];
 
-// FAQ Tarification
 const faqPricing = [
-  {
-    question: "Puis-je essayer gratuitement ?",
-    answer: "Oui ! Tous les plans incluent 14 jours d'essai gratuit, sans carte bancaire requise."
-  },
-  {
-    question: "Comment puis-je payer ?",
-    answer: "Nous acceptons Orange Money, MTN Money, Moov Money, Wave et cartes bancaires via notre plateforme sécurisée."
-  },
-  {
-    question: "Puis-je changer de plan ?",
-    answer: "Oui, vous pouvez upgrader ou downgrader à tout moment. Les changements prennent effet immédiatement."
-  },
-  {
-    question: "Y a-t-il des frais cachés ?",
-    answer: "Non, aucun frais caché. Le prix affiché est tout compris : app, support, mises à jour et hébergement."
-  },
-  {
-    question: "Que se passe-t-il si je dépasse ma limite ?",
-    answer: "Vous recevrez une notification et pourrez upgrader votre plan. Vos données restent accessibles."
-  },
-  {
-    question: "Puis-je annuler à tout moment ?",
-    answer: "Oui, sans préavis ni pénalités. Vos données sont exportables pendant 30 jours après l'annulation."
-  }
+  { question: "Puis-je essayer gratuitement ?", answer: "Oui ! Tous les plans incluent 14 jours d'essai gratuit, sans carte bancaire requise." },
+  { question: "Comment puis-je payer ?", answer: "Nous acceptons Orange Money, MTN Money, Moov Money, Wave et cartes bancaires via notre plateforme securisee." },
+  { question: "Puis-je changer de plan ?", answer: "Oui, vous pouvez upgrader ou downgrader a tout moment. Les changements prennent effet immediatement." },
+  { question: "Y a-t-il des frais caches ?", answer: "Non, aucun frais cache. Le prix affiche est tout compris : app, support, mises a jour et hebergement." },
+  { question: "Que se passe-t-il si je depasse ma limite ?", answer: "Vous recevrez une notification et pourrez upgrader votre plan. Vos donnees restent accessibles." },
+  { question: "Puis-je annuler a tout moment ?", answer: "Oui, sans preavis ni penalites. Vos donnees sont exportables pendant 30 jours apres l'annulation." },
 ];
 ---
 
@@ -140,228 +134,440 @@ const faqPricing = [
   <Header />
 
   <main class="bg-white overflow-hidden">
-    
-    <!-- Hero Section -->
-    <section class="relative py-20 md:py-24 overflow-hidden bg-gradient-to-br from-white via-ateliya-primary/5 to-white">
-      
-      <!-- Background -->
-      <div class="absolute inset-0">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(52, 199, 184, 0.08) 1px, transparent 0); background-size: 50px 50px;"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-ateliya-primary/10 rounded-full blur-3xl animate-float"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-ateliya-secondary/8 rounded-full blur-3xl animate-float-delayed"></div>
+
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="relative py-12 lg:py-16 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
+
+      <div class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/5 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/4 rounded-full blur-[100px]"></div>
+      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"></div>
+
+      <div class="absolute right-8 top-[6%] grid grid-cols-5 gap-2 opacity-25">
+        {[...Array(20)].map((_, i) => (
+          <div class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : i % 3 === 1 ? "bg-ateliya-secondary/50" : "bg-gray-300"}`} />
+        ))}
+      </div>
+      <div class="absolute left-8 bottom-[10%] grid grid-cols-4 gap-2.5 opacity-20">
+        {[...Array(12)].map((_, i) => (
+          <div class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary/50" : "bg-gray-300"}`} />
+        ))}
       </div>
 
-      <div class="container mx-auto max-w-7xl px-6 relative z-10">
-        
-        <div class="text-center space-y-8 mb-16">
-          
-          <!-- Badge -->
-          <div class="inline-block animate-fade-in-up">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ateliya-primary/8 border border-ateliya-primary/20">
-              <Icon name="tag" size="sm" class="text-ateliya-primary" />
-              <span class="text-sm font-bold text-ateliya-dark">Tarifs Transparents</span>
-            </div>
+      <div class="container mx-auto px-6 lg:px-12 relative z-10">
+        <div class="text-center mb-8 space-y-4">
+
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
+            <Icon name="tag" size="sm" class="text-ateliya-primary" />
+            <span class="text-sm font-bold text-ateliya-primary">Tarifs Transparents</span>
           </div>
 
-          <!-- Title -->
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-ateliya-dark leading-[1.1] animate-fade-in-up" style="animation-delay: 100ms;">
-            Un prix juste pour
-            <span class="block mt-2 bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-ateliya-primary bg-clip-text text-transparent">
-              chaque atelier
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+            <span class="block">Un prix juste</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
+              pour chaque atelier
             </span>
           </h1>
 
-          <!-- Subtitle -->
-          <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 200ms;">
-            Commencez gratuitement pendant 14 jours. Aucune carte bancaire requise. Annulation en 1 clic.
+          <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            Commencez avec <span class="font-bold text-ateliya-primary">14 jours gratuits</span>.
+            Aucune carte requise. Annulation en 1 clic.
           </p>
 
-          <!-- Toggle Mensuel/Annuel -->
-          <div class="flex items-center justify-center gap-4 pt-4 animate-fade-in-up" style="animation-delay: 300ms;">
-            <span class="text-gray-600 font-semibold toggle-label" data-period="monthly">Mensuel</span>
-            <button id="billingToggle" class="relative w-16 h-8 bg-gray-200 rounded-full transition-colors duration-300">
-              <div class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300 toggle-switch"></div>
+          <!-- Toggle -->
+          <div class="flex items-center justify-center gap-4 pt-2">
+            <span class="text-sm font-bold text-gray-900 toggle-label" data-period="monthly">Mensuel</span>
+            <button
+              id="billingToggle"
+              class="pricing-toggle"
+              role="switch"
+              aria-checked="false"
+              aria-label="Basculer entre mensuel et annuel"
+            >
+              <span class="pricing-toggle__thumb"></span>
             </button>
-            <span class="text-ateliya-primary font-semibold toggle-label" data-period="annual">
+            <span class="text-sm font-bold text-gray-400 toggle-label" data-period="annual">
               Annuel
-              <span class="ml-2 px-2 py-1 text-xs bg-ateliya-primary/10 rounded-full">-17%</span>
+              <span class="ml-1.5 px-2 py-0.5 text-[10px] font-black bg-ateliya-primary/10 text-ateliya-primary rounded-full uppercase tracking-wide">-17%</span>
             </span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing Cards -->
-    <section class="relative py-20 -mt-10">
-      <div class="container mx-auto max-w-7xl px-6">
-        
-        <div class="grid md:grid-cols-3 gap-8">
+    <!-- ============================================
+         PRICING CARDS
+         ============================================ -->
+    <section class="relative py-4 -mt-6">
+      <div class="container mx-auto px-6 lg:px-12 max-w-7xl">
+
+        <div class="grid md:grid-cols-3 gap-5 md:gap-6">
           {plans.map((plan, idx) => (
-            <div class={`relative group animate-fade-in-up ${plan.popular ? 'md:-mt-8' : ''}`} style={`animation-delay: ${idx * 100}ms`}>
-              
-              <!-- Popular Badge -->
-              {plan.popular && (
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                  <div class="px-4 py-1.5 rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-sm font-bold shadow-lg">
-                    ⭐ Plus Populaire
-                  </div>
-                </div>
-              )}
+            <div class={`group/plan h-full ${plan.popular ? "md:-mt-4" : ""}`}>
+              <div class="h-full relative">
 
-              <!-- Card -->
-              <div class={`relative h-full p-8 rounded-3xl bg-white border-2 transition-all duration-500 shadow-lg ${
-                plan.popular 
-                  ? 'border-ateliya-primary/50 shadow-ateliya-primary/20 hover:shadow-2xl hover:shadow-ateliya-primary/30 scale-105' 
-                  : 'border-gray-100 hover:border-ateliya-primary/30 hover:shadow-2xl'
-              }`}>
-                
-                <!-- Header -->
-                <div class="text-center mb-8">
-                  <h3 class="text-2xl font-black text-gray-900 mb-2">{plan.name}</h3>
-                  <p class="text-sm text-gray-600">{plan.description}</p>
-                </div>
+                <div class={`absolute -inset-1 bg-gradient-to-br ${plan.glowBg} rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-60 transition-all duration-700 -z-10`} />
 
-                <!-- Price -->
-                <div class="text-center mb-8">
-                  <div class="flex items-end justify-center gap-2 mb-2">
-                    <span class="text-5xl font-black text-gray-900 price-value" data-monthly={plan.price.monthly} data-annual={plan.price.annual}>
-                      {plan.price.monthly.toLocaleString()}
-                    </span>
-                    <span class="text-xl text-gray-600 font-bold mb-2">FCFA</span>
-                  </div>
-                  <p class="text-sm text-gray-500 price-period">par mois</p>
-                  {plan.price.annual && (
-                    <p class="text-xs text-ateliya-primary font-semibold mt-2 annual-savings hidden">
-                      Économisez {((plan.price.monthly * 12 - plan.price.annual)).toLocaleString()} FCFA/an
-                    </p>
-                  )}
-                </div>
-
-                <!-- CTA -->
-                <button class={`w-full px-6 py-4 rounded-xl font-bold text-lg transition-all mb-8 ${
+                <div class={`h-full p-5 md:p-6 rounded-2xl bg-white border-2 transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden ${
                   plan.popular
-                    ? 'bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white hover:scale-105 shadow-lg hover:shadow-xl'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                    ? "border-ateliya-primary/30 shadow-none"
+                    : "border-gray-100 group-hover/plan:border-ateliya-primary/30"
                 }`}>
-                  {plan.cta}
-                </button>
 
-                <!-- Features -->
-                <ul class="space-y-3">
-                  {plan.features.map(feature => (
-                    <li class="flex items-start gap-3">
-                      {feature.included ? (
-                        <Icon name="check" size="sm" class="text-ateliya-primary flex-shrink-0 mt-1" />
-                      ) : (
-                        <Icon name="x" size="sm" class="text-gray-300 flex-shrink-0 mt-1" />
-                      )}
-                      <span class={feature.included ? 'text-gray-700' : 'text-gray-400 line-through'}>
-                        {feature.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/plan:opacity-100 transition-opacity duration-500"></div>
 
-              <!-- Glow effect -->
-              {plan.popular && (
-                <div class="absolute inset-0 bg-gradient-to-br from-ateliya-primary/10 to-ateliya-secondary/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
-              )}
-            </div>
-          ))}
-        </div>
+                  {plan.popular && (
+                    <div class="absolute -top-px left-0 right-0 flex justify-center">
+                      <div class="px-5 py-1.5 rounded-b-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-[11px] font-black tracking-wide uppercase shadow-sm shadow-ateliya-primary/15">
+                        Le plus populaire
+                      </div>
+                    </div>
+                  )}
 
-        <!-- Trust badges -->
-        <div class="flex flex-wrap items-center justify-center gap-8 mt-16 text-sm text-gray-500 font-semibold">
-          <div class="flex items-center gap-2">
-            <Icon name="shield" size="sm" class="text-ateliya-primary" />
-            <span>Paiement sécurisé</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <Icon name="check" size="sm" class="text-ateliya-primary" />
-            <span>Sans engagement</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <Icon name="zap" size="sm" class="text-ateliya-primary" />
-            <span>Activation instantanée</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <Icon name="refresh" size="sm" class="text-ateliya-primary" />
-            <span>Changement de plan facile</span>
-          </div>
-        </div>
-      </div>
-    </section>
+                  <div class={`relative z-10 flex flex-col h-full ${plan.popular ? "pt-5" : ""}`}>
 
-    <!-- Comparison Table -->
-    <section class="py-20 md:py-24 bg-gray-50">
-      <div class="container mx-auto max-w-6xl px-6">
-        
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Comparaison détaillée
-          </h2>
-          <p class="text-xl text-gray-600">
-            Toutes les fonctionnalités de chaque plan
-          </p>
-        </div>
+                    {/* Header : icon + number */}
+                    <div class="flex items-start justify-between mb-4">
+                      <div class={`relative flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${plan.iconBg} group-hover/plan:scale-110 transition-all duration-500 shadow-sm`}>
+                        <Icon name={plan.icon} size="md" class={plan.iconColor} />
+                      </div>
+                      <div class="text-5xl md:text-6xl font-black text-ateliya-primary/8 leading-none select-none">
+                        {plan.number}
+                      </div>
+                    </div>
 
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
-          {featureComparison.map((category, catIdx) => (
-            <div class={catIdx > 0 ? 'border-t-2 border-gray-100' : ''}>
-              <!-- Category Header -->
-              <div class="bg-gradient-to-r from-ateliya-primary/10 to-ateliya-secondary/10 p-6">
-                <h3 class="text-xl font-black text-gray-900">{category.category}</h3>
-              </div>
-              
-              <!-- Features -->
-              {category.features.map((feature, idx) => (
-                <div class={`grid grid-cols-4 gap-4 p-6 ${idx > 0 ? 'border-t border-gray-100' : ''}`}>
-                  <div class="col-span-1 font-semibold text-gray-700">{feature.name}</div>
-                  <div class="text-center">
-                    {typeof feature.starter === 'boolean' ? (
-                      feature.starter ? (
-                        <Icon name="check" size="md" class="text-ateliya-primary mx-auto" />
-                      ) : (
-                        <Icon name="x" size="md" class="text-gray-300 mx-auto" />
-                      )
-                    ) : (
-                      <span class="text-gray-900 font-semibold">{feature.starter}</span>
-                    )}
-                  </div>
-                  <div class="text-center">
-                    {typeof feature.pro === 'boolean' ? (
-                      feature.pro ? (
-                        <Icon name="check" size="md" class="text-ateliya-primary mx-auto" />
-                      ) : (
-                        <Icon name="x" size="md" class="text-gray-300 mx-auto" />
-                      )
-                    ) : (
-                      <span class="text-gray-900 font-semibold">{feature.pro}</span>
-                    )}
-                  </div>
-                  <div class="text-center">
-                    {typeof feature.enterprise === 'boolean' ? (
-                      feature.enterprise ? (
-                        <Icon name="check" size="md" class="text-ateliya-primary mx-auto" />
-                      ) : (
-                        <Icon name="x" size="md" class="text-gray-300 mx-auto" />
-                      )
-                    ) : (
-                      <span class="text-gray-900 font-semibold">{feature.enterprise}</span>
-                    )}
+                    {/* Title */}
+                    <div class="space-y-1 mb-4">
+                      <h3 class="text-xl md:text-2xl font-black text-gray-900 leading-tight">{plan.name}</h3>
+                      <div class={`w-12 h-1 bg-gradient-to-r ${plan.barGradient} rounded-full group-hover/plan:w-20 transition-all duration-500`}></div>
+                      <p class="text-sm text-gray-500 pt-0.5">{plan.description}</p>
+                    </div>
+
+                    {/* Price */}
+                    <div class="mb-4">
+                      <div class="flex items-baseline gap-1.5">
+                        <span
+                          class="text-4xl md:text-5xl font-black text-gray-900 tabular-nums price-value"
+                          data-monthly={plan.price.monthly}
+                          data-annual={plan.price.annual}
+                        >
+                          {plan.price.monthly.toLocaleString()}
+                        </span>
+                        <span class="text-base text-gray-400 font-bold">FCFA</span>
+                      </div>
+                      <p class="text-sm text-gray-400 mt-0.5 price-period">par mois</p>
+                      <p class="text-xs text-ateliya-primary font-bold mt-1 annual-savings hidden">
+                        Economisez {(plan.price.monthly * 12 - plan.price.annual).toLocaleString()} FCFA/an
+                      </p>
+                    </div>
+
+                    {/* CTA */}
+                    <div class="mb-4">
+                      <button class={`w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] ${
+                        plan.popular
+                          ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-sm shadow-ateliya-primary/15 hover:shadow-md hover:shadow-ateliya-primary/20"
+                          : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-dark"
+                      }`}>
+                        {plan.cta}
+                      </button>
+                    </div>
+
+                    {/* Features */}
+                    <div class="space-y-2.5 flex-grow">
+                      {plan.features.map((feature) => (
+                        <div class={`flex items-start gap-2.5 ${!feature.included ? "opacity-40" : ""}`}>
+                          <div class={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
+                            feature.included
+                              ? "bg-ateliya-primary/10"
+                              : "bg-gray-100"
+                          }`}>
+                            <Icon
+                              name={feature.included ? "check" : "x"}
+                              size="xs"
+                              class={feature.included ? "text-ateliya-primary" : "text-gray-300"}
+                            />
+                          </div>
+                          <span class="text-sm text-gray-600 leading-snug">{feature.text}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Link */}
+                    <div class="flex items-center gap-2 text-ateliya-primary font-bold text-sm group/link cursor-pointer mt-4 pt-3 border-t border-gray-100">
+                      <span>En savoir plus</span>
+                      <Icon name="arrow-right" size="sm" class="group-hover/link:translate-x-2 transition-transform duration-300" />
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
+                      <div class={`h-full w-0 bg-gradient-to-r ${plan.barGradient} group-hover/plan:w-full transition-all duration-1000`}></div>
+                    </div>
                   </div>
                 </div>
-              ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Trust badges */}
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-10">
+          {[
+            { icon: "shield", text: "Paiement securise" },
+            { icon: "check", text: "Sans engagement" },
+            { icon: "zap", text: "Activation instantanee" },
+            { icon: "refresh", text: "Changement facile" },
+          ].map((badge) => (
+            <div class="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100">
+              <div class="w-7 h-7 rounded-lg bg-ateliya-primary/8 flex items-center justify-center">
+                <Icon name={badge.icon} size="sm" class="text-ateliya-primary" />
+              </div>
+              <span class="text-sm font-bold text-gray-600">{badge.text}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-   
+    <!-- ============================================
+         COMPARISON TABLE
+         ============================================ -->
+    <section class="relative py-14 lg:py-18 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
 
-   
+      <div class="absolute top-[10%] left-[10%] w-72 h-72 bg-ateliya-primary/4 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[10%] right-[15%] w-64 h-64 bg-ateliya-secondary/3 rounded-full blur-[100px]"></div>
+      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"></div>
+
+      <div class="container mx-auto px-6 lg:px-12 max-w-6xl relative z-10">
+
+        <div class="text-center mb-10 md:mb-12 space-y-4">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-secondary/10 rounded-full">
+            <Icon name="list" size="sm" class="text-ateliya-secondary" />
+            <span class="text-sm font-bold text-ateliya-secondary">Comparaison Complete</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+            <span class="block">Tout ce qui est inclus</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
+              dans chaque plan
+            </span>
+          </h2>
+        </div>
+
+        {/* Table header - sticky */}
+        <div class="comparison-head sticky top-0 z-20 mb-3">
+          <div class="grid grid-cols-4 gap-4 p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-gray-100 shadow-none">
+            <div class="text-sm font-bold text-gray-400 uppercase tracking-wider">Fonctionnalite</div>
+            <div class="text-center text-sm font-black text-gray-900">Starter</div>
+            <div class="text-center">
+              <span class="text-sm font-black text-ateliya-primary">Pro</span>
+              <div class="w-6 h-0.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary rounded-full mx-auto mt-1"></div>
+            </div>
+            <div class="text-center text-sm font-black text-gray-900">Enterprise</div>
+          </div>
+        </div>
+
+        {/* Category groups */}
+        <div class="space-y-4">
+          {featureComparison.map((category) => (
+            <div class="group/cat">
+              <div class="relative">
+                <div class={`absolute -inset-1 bg-gradient-to-br ${category.bg} rounded-2xl blur-lg opacity-0 group-hover/cat:opacity-40 transition-all duration-700 -z-10`} />
+
+                <div class="p-5 md:p-6 rounded-2xl bg-white border-2 border-gray-100 group-hover/cat:border-ateliya-primary/20 transition-all duration-500 hover:shadow-lg overflow-hidden relative">
+
+                  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/cat:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* Category header */}
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class={`flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br ${category.bg} shadow-sm`}>
+                      <Icon name={category.icon} size="sm" class={category.color} />
+                    </div>
+                    <h3 class="text-base font-black text-gray-900">{category.category}</h3>
+                  </div>
+
+                  {/* Rows */}
+                  <div class="space-y-0">
+                    {category.features.map((feature, idx) => (
+                      <div class={`grid grid-cols-4 gap-4 py-3 ${idx > 0 ? "border-t border-gray-50" : ""} hover:bg-ateliya-primary/[0.02] -mx-2 px-2 rounded-lg transition-colors duration-200`}>
+                        <div class="text-sm font-medium text-gray-600">{feature.name}</div>
+                        {["starter", "pro", "enterprise"].map((tier) => {
+                          const val = feature[tier as keyof typeof feature];
+                          return (
+                            <div class="text-center flex items-center justify-center">
+                              {typeof val === "boolean" ? (
+                                val ? (
+                                  <div class="w-6 h-6 rounded-full bg-ateliya-primary/10 flex items-center justify-center">
+                                    <Icon name="check" size="xs" class="text-ateliya-primary" />
+                                  </div>
+                                ) : (
+                                  <span class="text-gray-200 font-bold">-</span>
+                                )
+                              ) : (
+                                <span class="text-sm font-bold text-gray-900 px-3 py-1 bg-gray-50 rounded-lg">{val}</span>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div class="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
+                    <div class={`h-full w-0 bg-gradient-to-r ${category.bg.replace("/20", "").replace("/10", "")} group-hover/cat:w-full transition-all duration-1000`}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FAQ
+         ============================================ -->
+    <section class="relative py-14 lg:py-18 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
+
+      <div class="absolute top-[10%] right-[10%] w-72 h-72 bg-ateliya-primary/4 rounded-full blur-[120px]"></div>
+      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"></div>
+
+      <div class="absolute right-8 top-[8%] grid grid-cols-5 gap-2 opacity-25">
+        {[...Array(15)].map((_, i) => (
+          <div class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : "bg-gray-300"}`} />
+        ))}
+      </div>
+
+      <div class="container mx-auto px-6 lg:px-12 max-w-3xl relative z-10">
+
+        <div class="text-center mb-10 md:mb-12 space-y-4">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
+            <Icon name="help-circle" size="sm" class="text-ateliya-primary" />
+            <span class="text-sm font-bold text-ateliya-primary">FAQ</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+            <span class="block">Questions</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
+              frequentes
+            </span>
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          {faqPricing.map((item, idx) => (
+            <div class="group/faq faq-item">
+              <div class="relative">
+                <div class="absolute -inset-1 bg-gradient-to-br from-ateliya-primary/10 to-teal-400/5 rounded-2xl blur-lg opacity-0 faq-item-glow transition-all duration-700 -z-10"></div>
+
+                <div class="p-5 rounded-2xl bg-white border-2 border-gray-100 transition-all duration-500 faq-item-card relative overflow-hidden">
+
+                  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 faq-item-accent transition-opacity duration-500"></div>
+
+                  <button
+                    class="w-full flex items-center justify-between gap-4 text-left"
+                    aria-expanded="false"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-ateliya-primary/15 to-ateliya-primary/5 flex items-center justify-center faq-item-icon transition-all duration-500">
+                        <span class="text-sm font-black text-ateliya-primary">{String(idx + 1).padStart(2, "0")}</span>
+                      </div>
+                      <span class="font-bold text-gray-900 text-base">{item.question}</span>
+                    </div>
+                    <div class="faq-chevron flex-shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center transition-all duration-300">
+                      <Icon name="chevron-down" size="sm" class="text-gray-400 transition-transform duration-300" />
+                    </div>
+                  </button>
+
+                  <div class="faq-answer">
+                    <div class="pt-3 pl-12 text-gray-500 leading-relaxed text-sm">
+                      {item.answer}
+                    </div>
+                  </div>
+
+                  <div class="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
+                    <div class="h-full w-0 bg-gradient-to-r from-ateliya-primary to-teal-400 faq-item-bar transition-all duration-1000"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CTA FINAL
+         ============================================ -->
+    <section class="relative py-12 px-8 lg:px-12 mx-6 lg:mx-12 mb-14 rounded-3xl overflow-hidden bg-gradient-to-br from-teal-50/60 via-white to-amber-50/20 border border-gray-100">
+
+      <div class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/4 to-transparent rounded-bl-[80px]"></div>
+      <div class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/5 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/4 rounded-full blur-[80px]"></div>
+      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+      <div class="absolute left-6 top-[10%] grid grid-cols-5 gap-2 opacity-25">
+        {[...Array(20)].map((_, i) => (
+          <div class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : i % 3 === 1 ? "bg-ateliya-secondary/40" : "bg-gray-300"}`} />
+        ))}
+      </div>
+
+      <div class="absolute top-[5%] right-[5%] w-[140px] h-[140px] opacity-50">
+        <svg viewBox="0 0 200 200" class="w-full h-full">
+          <defs>
+            <linearGradient id="ctaArc" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.5" />
+              <stop offset="100%" style="stop-color:#34C7B8;stop-opacity:0.3" />
+            </linearGradient>
+          </defs>
+          <path d="M 100,18 A 82,82 0 0,1 182,100" fill="none" stroke="url(#ctaArc)" stroke-width="25" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="relative z-10 text-center max-w-2xl mx-auto space-y-5">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
+          <Icon name="rocket" size="sm" class="text-ateliya-primary" />
+          <span class="text-sm font-bold text-ateliya-primary">Lancez-vous</span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+          <span class="block">Pret a transformer</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
+            votre atelier ?
+          </span>
+        </h2>
+
+        <p class="text-lg text-gray-500 leading-relaxed max-w-lg mx-auto">
+          Rejoignez <span class="font-bold text-ateliya-primary">500+ couturiers</span> qui gerent leur atelier plus efficacement avec Ateliya.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
+          <a href="#download" class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-sm shadow-ateliya-primary/10 hover:shadow-md hover:shadow-ateliya-primary/20 transition-all duration-300 hover:scale-105 active:scale-[0.97]">
+            <span class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            <Icon name="download" size="md" class="relative z-10" />
+            <span class="relative z-10">Demarrer gratuitement</span>
+          </a>
+          <a href="#demo" class="group inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-white/60 backdrop-blur-sm border border-gray-100 text-gray-800 font-bold hover:bg-white/90 hover:border-ateliya-primary/30 transition-all duration-300 hover:scale-105 active:scale-[0.97]">
+            <Icon name="play-circle" size="md" class="text-ateliya-primary group-hover:scale-110 transition-transform" />
+            <span>Voir la demo</span>
+          </a>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+          {[
+            { icon: "check", text: "14 jours gratuits" },
+            { icon: "check", text: "Sans carte bancaire" },
+            { icon: "check", text: "Annulation libre" },
+          ].map((item) => (
+            <div class="flex items-center gap-2 text-sm text-gray-500">
+              <div class="w-5 h-5 rounded-full bg-ateliya-primary/10 flex items-center justify-center">
+                <Icon name={item.icon} size="xs" class="text-ateliya-primary" />
+              </div>
+              <span class="font-semibold">{item.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -369,126 +575,163 @@ const faqPricing = [
 </Layout>
 
 <style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+  .pricing-toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
   }
 
-  @keyframes float-delayed {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-30px); }
+  .pricing-toggle[aria-checked="true"] {
+    background: #34C7B8;
   }
 
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .pricing-toggle__thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .pricing-toggle[aria-checked="true"] .pricing-toggle__thumb {
+    transform: translateX(24px);
   }
 
-  .animate-float-delayed {
-    animation: float-delayed 8s ease-in-out infinite;
-    animation-delay: 1s;
+  .price-value {
+    transition: opacity 0.2s ease;
   }
 
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+  .price-value.is-changing {
+    opacity: 0.3;
   }
 
   .faq-answer {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .faq-item.active .faq-answer {
-    display: block;
+  .faq-item.is-open .faq-answer {
+    max-height: 300px;
   }
 
-  html {
-    scroll-behavior: smooth;
+  .faq-item.is-open .faq-item-card {
+    border-color: rgba(52, 199, 184, 0.25);
+  }
+
+  .faq-item.is-open .faq-item-glow {
+    opacity: 0.5;
+  }
+
+  .faq-item.is-open .faq-item-accent {
+    opacity: 1;
+  }
+
+  .faq-item.is-open .faq-item-bar {
+    width: 100%;
+  }
+
+  .faq-item.is-open .faq-item-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, rgba(52, 199, 184, 0.25), rgba(52, 199, 184, 0.1));
+  }
+
+  .faq-item.is-open .faq-chevron {
+    background: rgba(52, 199, 184, 0.1);
+  }
+
+  .faq-item.is-open .faq-chevron :global(svg) {
+    transform: rotate(180deg);
+    color: #34C7B8;
+  }
+
+  @media (max-width: 768px) {
+    .comparison-head .grid {
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .comparison-head .grid > div:first-child {
+      font-size: 10px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 
 <script>
-  // Billing toggle (Monthly/Annual)
-  const toggle = document.getElementById('billingToggle');
-  const toggleSwitch = document.querySelector('.toggle-switch');
-  const priceValues = document.querySelectorAll('.price-value');
-  const pricePeriods = document.querySelectorAll('.price-period');
-  const annualSavings = document.querySelectorAll('.annual-savings');
-  const toggleLabels = document.querySelectorAll('.toggle-label');
-  
-  let isAnnual = false;
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("billingToggle");
+    const priceValues = document.querySelectorAll(".price-value");
+    const pricePeriods = document.querySelectorAll(".price-period");
+    const annualSavings = document.querySelectorAll(".annual-savings");
+    const toggleLabels = document.querySelectorAll(".toggle-label");
 
-  toggle?.addEventListener('click', () => {
-    isAnnual = !isAnnual;
-    
-    // Update toggle UI
-    if (isAnnual) {
-      toggleSwitch?.classList.add('translate-x-8');
-      toggle.classList.add('bg-ateliya-primary');
-      toggle.classList.remove('bg-gray-200');
-    } else {
-      toggleSwitch?.classList.remove('translate-x-8');
-      toggle.classList.remove('bg-ateliya-primary');
-      toggle.classList.add('bg-gray-200');
-    }
+    let isAnnual = false;
 
-    // Update prices
-    priceValues.forEach(priceEl => {
-      const monthly = parseInt(priceEl.getAttribute('data-monthly') || '0');
-      const annual = parseInt(priceEl.getAttribute('data-annual') || '0');
-      const displayPrice = isAnnual ? Math.round(annual / 12) : monthly;
-      priceEl.textContent = displayPrice.toLocaleString();
+    toggle?.addEventListener("click", () => {
+      isAnnual = !isAnnual;
+      toggle.setAttribute("aria-checked", String(isAnnual));
+
+      priceValues.forEach((el) => {
+        el.classList.add("is-changing");
+        setTimeout(() => {
+          const monthly = parseInt(el.getAttribute("data-monthly") || "0");
+          const annual = parseInt(el.getAttribute("data-annual") || "0");
+          el.textContent = (isAnnual ? Math.round(annual / 12) : monthly).toLocaleString();
+          el.classList.remove("is-changing");
+        }, 200);
+      });
+
+      pricePeriods.forEach((p) => {
+        p.textContent = isAnnual ? "par mois (facture annuellement)" : "par mois";
+      });
+
+      annualSavings.forEach((s) => s.classList.toggle("hidden", !isAnnual));
+
+      toggleLabels.forEach((label) => {
+        const period = label.getAttribute("data-period");
+        const active =
+          (period === "annual" && isAnnual) || (period === "monthly" && !isAnnual);
+        label.classList.toggle("text-gray-900", active && period === "monthly");
+        label.classList.toggle("text-ateliya-primary", active && period === "annual");
+        label.classList.toggle("text-gray-400", !active);
+      });
     });
 
-    // Update period text
-    pricePeriods.forEach(period => {
-      period.textContent = isAnnual ? 'par mois (facturé annuellement)' : 'par mois';
-    });
+    document.querySelectorAll(".faq-item button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        if (!item) return;
 
-    // Show/hide savings
-    annualSavings.forEach(saving => {
-      if (isAnnual) {
-        saving.classList.remove('hidden');
-      } else {
-        saving.classList.add('hidden');
-      }
-    });
+        const wasOpen = item.classList.contains("is-open");
 
-    // Update labels
-    toggleLabels.forEach(label => {
-      const period = label.getAttribute('data-period');
-      if ((period === 'annual' && isAnnual) || (period === 'monthly' && !isAnnual)) {
-        label.classList.add('text-ateliya-primary');
-        label.classList.remove('text-gray-600');
-      } else {
-        label.classList.remove('text-ateliya-primary');
-        label.classList.add('text-gray-600');
-      }
-    });
-  });
+        document.querySelectorAll(".faq-item").forEach((i) => {
+          i.classList.remove("is-open");
+          i.querySelector("button")?.setAttribute("aria-expanded", "false");
+        });
 
-  // FAQ accordion
-  document.querySelectorAll('.faq-item button').forEach(button => {
-    button.addEventListener('click', () => {
-      const faqItem = button.closest('.faq-item');
-      const allItems = document.querySelectorAll('.faq-item');
-      
-      allItems.forEach(item => {
-        if (item !== faqItem) {
-          item.classList.remove('active');
+        if (!wasOpen) {
+          item.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
         }
       });
-      
-      faqItem?.classList.toggle('active');
     });
   });
 </script>

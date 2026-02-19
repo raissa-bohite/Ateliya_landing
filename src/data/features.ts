@@ -87,31 +87,139 @@ export const interactiveDemos = [
 ];
 
 export const features = [
+  // Gestion Clients
   {
-    icon: "user",
+    icon: "users",
     title: "Gestion des Clients",
-    description:
-      "Gérez vos clients, leurs coordonnées, leurs préférences et leur historique complet.",
+    description: "Créez des fiches clients complètes avec coordonnées, photos et historique d'achats.",
+    category: "clients"
   },
   {
-    icon: "document",
-    title: "Gestion de Commandes",
-    description:
-      "Créez, suivez et gérez vos commandes en temps réel avec notifications.",
-  },
-  {
-    icon: "measure",
+    icon: "ruler",
     title: "Prise de Mesures",
-    description:
-      "Enregistrez et retrouvez rapidement toutes les mesures de vos clients.",
+    description: "Enregistrez toutes les mesures (tour de poitrine, hanches, longueur) pour chaque client.",
+    category: "clients"
   },
-  /* {
-    icon: "creditCard",
-    title: "Paiements Sécurisés",
-    description:
-      "Acceptez les paiements via Orange Money, MTN, Moov, Wave en toute sécurité.",
-  }, */
- 
+  {
+    icon: "image",
+    title: "Photos de Modèles",
+    description: "Ajoutez des photos des modèles souhaités directement dans la fiche client.",
+    category: "clients"
+  },
+  {
+    icon: "clock",
+    title: "Historique Complet",
+    description: "Consultez l'historique de toutes les commandes et paiements d'un client.",
+    category: "clients"
+  },
+
+  // Gestion Commandes
+  {
+    icon: "package",
+    title: "Suivi de Commandes",
+    description: "Créez et suivez vos commandes avec statuts personnalisables (En cours, Prêt, Livré).",
+    category: "commandes"
+  },
+  {
+    icon: "calendar",
+    title: "Dates de Livraison",
+    description: "Définissez des dates de livraison et recevez des rappels automatiques.",
+    category: "commandes"
+  },
+  {
+    icon: "bell",
+    title: "Rappels Automatiques",
+    description: "Notifications push pour ne jamais oublier une date de livraison.",
+    category: "commandes"
+  },
+  {
+    icon: "message-circle",
+    title: "Notifications Clients",
+    description: "Envoyez des SMS automatiques à vos clients quand leur commande est prête.",
+    category: "commandes"
+  },
+  {
+    icon: "file-text",
+    title: "Notes de Commande",
+    description: "Ajoutez des notes détaillées, instructions spéciales et préférences.",
+    category: "commandes"
+  },
+
+  // Gestion Financière
+  {
+    icon: "dollar-sign",
+    title: "Suivi des Paiements",
+    description: "Suivez qui a payé, qui doit encore, et gérez les paiements partiels.",
+    category: "finance"
+  },
+  {
+    icon: "credit-card",
+    title: "Acomptes et Soldes",
+    description: "Gérez facilement les acomptes et calculez automatiquement les soldes restants.",
+    category: "finance"
+  },
+  {
+    icon: "receipt",
+    title: "Reçus Automatiques",
+    description: "Générez et imprimez des reçus professionnels pour chaque paiement.",
+    category: "finance"
+  },
+  {
+    icon: "trending-up",
+    title: "Rapports Financiers",
+    description: "Consultez vos revenus, dépenses et bénéfices en temps réel.",
+    category: "finance"
+  },
+  {
+    icon: "pie-chart",
+    title: "Statistiques Détaillées",
+    description: "Graphiques et tableaux pour analyser vos performances.",
+    category: "finance"
+  },
+  /*  {
+     icon: "download",
+     title: "Export PDF",
+     description: "Exportez vos rapports en PDF pour votre comptable.",
+     category: "finance"
+   }, */
+
+  // Productivité
+  {
+    icon: "search",
+    title: "Recherche Rapide",
+    description: "Trouvez n'importe quel client ou commande en quelques secondes.",
+    category: "productivite"
+  },
+  /*  {
+     icon: "filter",
+     title: "Filtres Avancés",
+     description: "Filtrez vos commandes par statut, date, client ou montant.",
+     category: "productivite"
+   }, */
+  {
+    icon: "smartphone",
+    title: "Mode Hors Ligne",
+    description: "Continuez à travailler même sans connexion internet.",
+    category: "productivite"
+  },
+  {
+    icon: "cloud",
+    title: "Sauvegarde Cloud",
+    description: "Vos données sont automatiquement sauvegardées et sécurisées.",
+    category: "productivite"
+  },
+  {
+    icon: "share-2",
+    title: "Partage Facile",
+    description: "Partagez des reçus et factures par WhatsApp, SMS ou email.",
+    category: "productivite"
+  },
+  {
+    icon: "printer",
+    title: "Impression",
+    description: "Imprimez vos reçus, factures et rapports directement depuis l'app.",
+    category: "productivite"
+  },
 ];
 
 // Configuration des icônes colorées pour chaque feature

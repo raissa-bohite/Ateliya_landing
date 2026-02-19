@@ -1,270 +1,456 @@
 ---
-import { UserPlus, Settings, Upload, Rocket, Compass, Smartphone, Cloud, Clock, DollarSign, Star, Users, Zap, ArrowRight } from 'lucide-astro';
+import Icon from "../components/Icon.astro";
 import { steps } from "../data/data";
 
-// Configuration des icônes pour chaque étape
-const stepIcons = [
-  { Component: UserPlus, color: "text-ateliya-primary", bgColor: "from-ateliya-primary/20 to-ateliya-primary/10" },
-  { Component: Settings, color: "text-ateliya-secondary", bgColor: "from-ateliya-secondary/20 to-ateliya-secondary/10" },
-  { Component: Upload, color: "text-ateliya-accent", bgColor: "from-ateliya-accent/20 to-ateliya-accent/10" },
-  { Component: Rocket, color: "text-[#D4AF37]", bgColor: "from-[#D4AF37]/20 to-[#D4AF37]/10" },
+const stepStyles = [
+  { icon: "user-plus", color: "text-ateliya-primary", bgColor: "from-ateliya-primary/20 to-ateliya-primary/10" },
+  { icon: "settings", color: "text-ateliya-secondary", bgColor: "from-ateliya-secondary/20 to-ateliya-secondary/10" },
+  { icon: "upload", color: "text-blue-500", bgColor: "from-blue-500/20 to-blue-500/10" },
+  { icon: "rocket", color: "text-amber-500", bgColor: "from-amber-500/20 to-amber-500/10" },
 ];
 
-// Features pour la section mockup
 const appFeatures = [
   {
-    Component: Cloud,
-    title: "Gestion Cloud Complète",
-    description: "Accédez à vos données depuis n'importe où avec notre solution cloud sécurisée et synchronisée en temps réel"
+    icon: "cloud",
+    title: "Gestion Cloud Complete",
+    description: "Accedez a vos donnees depuis n'importe ou avec notre solution cloud securisee et synchronisee en temps reel",
   },
   {
-    Component: Clock,
+    icon: "clock",
     title: "Gain de Temps Optimal",
-    description: "Automatisez vos tâches répétitives et réduisez le temps de saisie des données de 70%"
+    description: "Automatisez vos taches repetitives et reduisez le temps de saisie des donnees de 70%",
   },
   {
-    Component: DollarSign,
-    title: "Suivi Financier Précis",
-    description: "Suivez vos revenus, dépenses et marges en temps réel avec des rapports détaillés"
-  }
+    icon: "dollar-sign",
+    title: "Suivi Financier Precis",
+    description: "Suivez vos revenus, depenses et marges en temps reel avec des rapports detailles",
+  },
 ];
 ---
 
-<section 
+<section
   id="steps"
-  class="section-padding-xl bg-gradient-to-b from-white via-ateliya-bg-light/10 to-white relative overflow-hidden"
+  class="relative py-24 lg:py-28 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white"
 >
-  <!-- Éléments décoratifs de fond -->
-  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-ateliya-primary/5 rounded-full blur-3xl" />
-    <div class="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-ateliya-secondary/4 rounded-full blur-3xl" />
+  <!-- ---- Background Decorations ---- -->
+  <div
+    class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/5 rounded-full blur-[120px]"
+  ></div>
+  <div
+    class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/4 rounded-full blur-[100px]"
+  ></div>
+
+  <div
+    class="absolute inset-0 opacity-[0.02]"
+    style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"
+  ></div>
+
+  <!-- Dot grid top-right -->
+  <div class="absolute right-8 top-[6%] grid grid-cols-5 gap-2 opacity-25">
+    {
+      [...Array(20)].map((_, i) => (
+        <div
+          class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : i % 3 === 1 ? "bg-ateliya-secondary/50" : "bg-gray-300"}`}
+        />
+      ))
+    }
   </div>
 
-  <div class="container-wide relative z-10">
-    <!-- Header Section -->
-    <div class="text-center mb-16 md:mb-20 space-y-6">
-      
-      <!-- Badge -->
-      <div class="inline-block">
-        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-ateliya-primary/10 to-ateliya-primary/15 border border-ateliya-primary/30 backdrop-blur-sm">
-          <Compass class="w-5 h-5 text-ateliya-primary" />
-          <span class="text-sm font-bold text-ateliya-dark">
-            Guide de Démarrage
-          </span>
-        </div>
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <!-- ---- Header ---- -->
+    <div class="text-center mb-16 md:mb-20 space-y-5">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full"
+      >
+        <Icon name="compass" size="sm" class="text-ateliya-primary" />
+        <span class="text-sm font-bold text-ateliya-primary"
+          >Guide de Demarrage</span
+        >
       </div>
 
-      <!-- Titre -->
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
-        <span class="block">4 Étapes</span>
-        <span class="block mt-2 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent">
+     <h3
+              class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900"
+            >
+        <span class="block">4 Etapes</span>
+         <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary"
+              >
           pour vous connecter
         </span>
-      </h2>
+      </h3>
 
-      <!-- Description -->
-      <p class="text-lg md:text-xl text-ateliya-text/80 max-w-3xl mx-auto leading-relaxed">
-        Suivez notre processus <span class="font-bold text-ateliya-primary">simple et efficace</span> pour optimiser votre gestion d'atelier
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+        Suivez notre processus <span class="font-bold text-ateliya-primary"
+          >simple et efficace</span
+        > pour optimiser votre gestion d'atelier
       </p>
     </div>
 
-    <!-- Steps Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 md:mb-32">
-      {steps.map((step, i) => {
-        const IconComponent = stepIcons[i].Component;
-        return (
+    <!-- ---- Steps Grid (KEPT AS-IS with Icon component) ---- -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 md:mb-28">
+      {
+        steps.map((step, i) => (
           <div class="group/step h-full">
             <div class="h-full relative">
-              <!-- Glow Effect -->
-              <div class={`absolute -inset-1 bg-gradient-to-br ${stepIcons[i].bgColor} rounded-2xl blur-lg opacity-0 group-hover/step:opacity-60 transition-all duration-700 -z-10`} />
+              <div
+                class={`absolute -inset-1 bg-gradient-to-br ${stepStyles[i].bgColor} rounded-2xl blur-lg opacity-0 group-hover/step:opacity-60 transition-all duration-700 -z-10`}
+              />
 
-              <!-- Main Card -->
-              <div class="h-full p-6 md:p-8 rounded-2xl bg-white border-2 border-ateliya-primary/10 group-hover/step:border-ateliya-primary/30 transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
-                
-                <!-- Top Accent -->
+              <div class="h-full p-6 md:p-8 rounded-2xl bg-white border-2 border-gray-100 group-hover/step:border-ateliya-primary/30 transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/step:opacity-100 transition-opacity duration-500" />
 
-                <!-- Content -->
                 <div class="relative z-10 flex flex-col h-full space-y-6">
-                  
-                  <!-- Icône + Numéro -->
                   <div class="flex items-start justify-between">
-                    <div class={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepIcons[i].bgColor} group-hover/step:scale-110 transition-all duration-500 shadow-lg`}>
-                      <IconComponent class={`w-8 h-8 ${stepIcons[i].color}`} />
+                    <div
+                      class={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepStyles[i].bgColor} group-hover/step:scale-110 transition-all duration-500 shadow-lg`}
+                    >
+                      <Icon
+                        name={stepStyles[i].icon}
+                        size="lg"
+                        class={stepStyles[i].color}
+                      />
                     </div>
-
-                    <!-- Numéro -->
-                    <div class="relative">
-                      <div class="text-6xl md:text-7xl font-black text-ateliya-primary/10 leading-none">
-                        {step.number}
-                      </div>
+                    <div class="text-6xl md:text-7xl font-black text-ateliya-primary/10 leading-none">
+                      {step.number}
                     </div>
                   </div>
 
-                  <!-- Title -->
                   <div class="space-y-2">
-                    <h3 class="text-xl md:text-2xl font-black text-ateliya-dark leading-tight">
+                    <h3 class="text-xl md:text-2xl font-black text-gray-900 leading-tight">
                       {step.title}
                     </h3>
                     <div class="w-12 h-1 bg-gradient-to-r from-ateliya-primary to-transparent rounded-full group-hover/step:w-20 transition-all duration-500" />
                   </div>
 
-                  <!-- Description -->
-                  <p class="text-ateliya-text/70 leading-relaxed text-sm md:text-base flex-grow">
+                  <p class="text-gray-500 leading-relaxed text-sm md:text-base flex-grow">
                     {step.description}
                   </p>
 
-                  <!-- CTA Link -->
                   <div class="flex items-center gap-2 text-ateliya-primary font-bold text-sm group/link cursor-pointer">
                     <span>En savoir plus</span>
-                    <ArrowRight class="w-4 h-4 group-hover/link:translate-x-2 transition-transform duration-300" />
+                    <Icon
+                      name="arrow-right"
+                      size="sm"
+                      class="group-hover/link:translate-x-2 transition-transform duration-300"
+                    />
                   </div>
 
-                  <!-- Progress Bar -->
                   <div class="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
-                    <div class="h-full w-0 bg-gradient-to-r from-ateliya-primary to-ateliya-accent group-hover/step:w-full transition-all duration-1000" />
+                    <div class="h-full w-0 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary group-hover/step:w-full transition-all duration-1000" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        );
-      })}
+        ))
+      }
     </div>
 
-    <!-- Section Hero avec Mockups -->
-    <div class="relative mt-16 md:mt-24">
-      
-      <!-- Grid Layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        
-        <!-- GAUCHE: Contenu -->
-        <div class="space-y-8 order-2 lg:order-1">
-          
-          <!-- Badge -->
-          <div class="inline-block">
-            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-ateliya-secondary/10 to-ateliya-secondary/15 border border-ateliya-secondary/30 backdrop-blur-sm">
-              <Smartphone class="w-5 h-5 text-ateliya-secondary" />
-              <span class="text-sm font-bold text-ateliya-dark">
-                Multi-Plateformes
-              </span>
-            </div>
+    <!-- ============================================== -->
+    <!-- ---- BOTTOM SECTION: Mockups + Features ---- -->
+    <!-- ============================================== -->
+    <div
+      class="relative py-16 px-8 lg:px-12 rounded-3xl overflow-hidden bg-gradient-to-br from-teal-50/60 via-white to-amber-50/20 border border-gray-100"
+    >
+      <!-- Section bg decorations -->
+      <div
+        class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/4 to-transparent rounded-bl-[80px]"
+      ></div>
+      <div
+        class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/5 rounded-full blur-[100px]"
+      ></div>
+      <div
+        class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/4 rounded-full blur-[80px]"
+      ></div>
+
+      <!-- Dot grid -->
+      <div
+        class="absolute left-6 top-[10%] grid grid-cols-5 gap-2 opacity-25"
+      >
+        {
+          [...Array(20)].map((_, i) => (
+            <div
+              class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : i % 3 === 1 ? "bg-ateliya-secondary/40" : "bg-gray-300"}`}
+            />
+          ))
+        }
+      </div>
+      <div
+        class="absolute right-6 bottom-[8%] grid grid-cols-4 gap-2.5 opacity-20"
+      >
+        {
+          [...Array(12)].map((_, i) => (
+            <div
+              class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary/50" : "bg-gray-300"}`}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Radial dots -->
+      <div
+        class="absolute inset-0 opacity-[0.02]"
+        style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 32px 32px;"
+      ></div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+        <!-- Left: Content -->
+        <div class="space-y-7 order-2 lg:order-1">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-secondary/10 rounded-full"
+          >
+            <Icon name="smartphone" size="sm" class="text-ateliya-secondary" />
+            <span class="text-sm font-bold text-ateliya-secondary"
+              >Multi-Plateformes</span
+            >
           </div>
 
-          <!-- Titre -->
-          <div class="space-y-4">
-            <h3 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-              <span class="block text-ateliya-dark">Suivez vos</span>
-              <span class="block mt-2 bg-gradient-to-r from-ateliya-secondary to-ateliya-primary bg-clip-text text-transparent">
-                dépenses quotidiennes
+          <div class="space-y-3">
+            <h3
+              class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900"
+            >
+              Suivez vos
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary"
+              >
+                depenses quotidiennes
               </span>
             </h3>
-            
-            <p class="text-lg md:text-xl text-ateliya-text/70 leading-relaxed">
-              Gérez votre atelier avec une <span class="font-bold text-ateliya-primary">solution moderne</span> qui centralise tout
+            <p class="text-lg text-gray-500 leading-relaxed max-w-lg">
+              Gerez votre atelier avec une <span
+                class="font-bold text-ateliya-primary">solution moderne</span
+              > qui centralise tout
             </p>
           </div>
 
-          <!-- Features -->
-          <div class="space-y-4">
-            {appFeatures.map((feature) => {
-              const FeatureIcon = feature.Component;
-              return (
-                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/50 transition-all duration-300 group/feat border border-transparent hover:border-ateliya-primary/20">
-                  <div class="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-white to-ateliya-primary/10 border-2 border-ateliya-primary/20 group-hover/feat:scale-110 transition-all duration-500">
-                    <FeatureIcon class="w-6 h-6 text-ateliya-primary" />
+          <!-- Feature list -->
+          <div class="space-y-3">
+            {
+              appFeatures.map((feature, i) => (
+                <div
+                  class="group/feat flex items-start gap-4 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100 hover:border-ateliya-primary/25 hover:bg-white/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                  style={`animation-delay: ${i * 80}ms`}
+                >
+                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center shadow-md group-hover/feat:scale-110 transition-transform duration-300">
+                    <Icon
+                      name={feature.icon}
+                      size="sm"
+                      class="text-white"
+                    />
                   </div>
-
-                  <div class="flex-1 space-y-1">
-                    <h4 class="text-lg md:text-xl font-black text-ateliya-dark">
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-base font-bold text-gray-900 group-hover/feat:text-ateliya-primary transition-colors duration-300 mb-0.5">
                       {feature.title}
                     </h4>
-                    <p class="text-sm md:text-base text-ateliya-text/70">
+                    <p class="text-sm text-gray-500 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
                 </div>
-              );
-            })}
+              ))
+            }
           </div>
 
-          <!-- Trust Indicators -->
+          <!-- Trust indicators -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
-            <div class="flex items-center gap-2">
-              <div class="flex">
-                {[...Array(5)].map(() => (
-                  <Star class="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
-                ))}
+            <div
+              class="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100"
+            >
+              <div class="flex gap-0.5">
+                {
+                  [...Array(5)].map(() => (
+                    <Icon name="star" size="xs" class="text-amber-400" />
+                  ))
+                }
               </div>
-              <span class="text-sm font-bold text-ateliya-text/70">4.9/5 étoiles</span>
+              <span class="text-sm font-bold text-gray-600">4.9/5</span>
             </div>
-            
-            <div class="h-8 w-px bg-ateliya-primary/20" />
-            
-            <div class="flex items-center gap-2">
-              <Users class="w-4 h-4 text-ateliya-primary" />
-              <span class="text-sm font-bold text-ateliya-text/70">500+ utilisateurs actifs</span>
+
+            <div class="h-8 w-px bg-gray-200"></div>
+
+            <div
+              class="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100"
+            >
+              <Icon name="users" size="sm" class="text-ateliya-primary" />
+              <span class="text-sm font-bold text-gray-600"
+                >500+ utilisateurs actifs</span
+              >
             </div>
           </div>
         </div>
 
-        <!-- DROITE: Mockups -->
-        <div class="relative h-[400px] md:h-[550px] lg:h-[600px] order-1 lg:order-2">
-          
-          <div class="relative h-full flex items-center justify-center">
-            
-            <!-- Glow -->
-            <div class="absolute inset-0 bg-gradient-to-br from-ateliya-primary/15 to-ateliya-accent/15 rounded-full blur-3xl opacity-40" />
+        <!-- Right: Mockup Composite -->
+        <div
+          class="relative min-h-[480px] md:min-h-[560px] order-1 lg:order-2"
+        >
+          <!-- BG circle -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-ateliya-primary/5 to-ateliya-secondary/3"
+          ></div>
 
-            <!-- Device 1: Terminal -->
-            <div class="absolute left-0 lg:left-8 top-1/2 -translate-y-1/2 z-10">
-              <div class="relative">
-                <div class="absolute -inset-1 bg-gradient-to-br from-ateliya-primary/40 to-ateliya-primary/20 rounded-3xl blur-md opacity-60" />
-                
-                <div class="relative bg-white rounded-3xl p-3 shadow-2xl">
-                  <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-ateliya-primary via-[#D4AF37] to-ateliya-secondary rounded-t-3xl opacity-70" />
-                  
-                  <div class="relative overflow-hidden rounded-2xl w-[180px] sm:w-[220px] md:w-[280px] lg:w-[320px]">
-                    <img 
-                      src="/Track-software.webp" 
-                      alt="Terminal de paiement"
-                      class="w-full h-auto object-cover"
-                      loading="lazy"
-                    />
-                  </div>
+          <!-- Dashed orbit -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] rounded-full border-2 border-dashed border-ateliya-primary/8 steps-spin-slow hidden md:block"
+          ></div>
 
-                  <div class="absolute -top-3 -right-3 bg-gradient-to-r from-ateliya-primary to-ateliya-dark text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-                    <Zap class="w-3 h-3" />
-                    <span>Terminal</span>
-                  </div>
-                </div>
+          <!-- Device 1: Terminal (back) -->
+          <div
+            class="absolute left-[2%] top-[8%] z-10 steps-device-1"
+          >
+            <div
+              class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl"
+            >
+              <div
+                class="relative bg-white rounded-[2rem] overflow-hidden w-56 md:w-64 h-[400px] md:h-[460px]"
+              >
+                <div
+                  class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-b-2xl z-20"
+                ></div>
+                <img
+                  src="/ateliya/app_images/gestion.png"
+                  alt="Terminal de paiement"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </div>
 
-            <!-- Device 2: Mobile -->
-            <div class="absolute right-0 lg:right-8 top-1/2 translate-y-8 z-20">
-              <div class="relative">
-                <div class="absolute -inset-1 bg-gradient-to-br from-ateliya-secondary/40 to-ateliya-accent/30 rounded-3xl blur-md opacity-70" />
-                
-                <div class="relative bg-white rounded-3xl p-3 shadow-2xl">
-                  <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-ateliya-accent via-ateliya-secondary to-[#D4AF37] rounded-t-3xl opacity-70" />
-                  
-                  <div class="relative overflow-hidden rounded-2xl w-[200px] sm:w-[240px] md:w-[280px] lg:w-[300px]">
-                    <img 
-                      src="/Tracking-mobile.webp" 
-                      alt="Application mobile"
-                      class="w-full h-auto object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div class="absolute -top-3 -left-3 bg-gradient-to-r from-ateliya-secondary to-ateliya-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-                    <Smartphone class="w-3 h-3" />
-                    <span>Mobile</span>
-                  </div>
-                </div>
+            <!-- Badge -->
+            <div class="absolute -top-3 -right-3 z-20">
+              <div
+                class="bg-gradient-to-r from-ateliya-primary to-teal-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5"
+              >
+                <Icon name="zap" size="xs" class="text-white" />
+                <span>Terminal</span>
               </div>
             </div>
+          </div>
+
+          <!-- Device 2: Mobile (front) -->
+          <div
+            class="absolute right-[2%] top-[18%] z-20 steps-device-2"
+          >
+            <div
+              class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl"
+            >
+              <div
+                class="relative bg-white rounded-[2rem] overflow-hidden w-56 md:w-64 h-[400px] md:h-[460px]"
+              >
+                <div
+                  class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-b-2xl z-20"
+                ></div>
+                <img
+                  src="/ateliya/app_images/rapport.png"
+                  alt="Application mobile"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <!-- Badge -->
+            <div class="absolute -top-3 -left-3 z-30">
+              <div
+                class="bg-gradient-to-r from-ateliya-secondary to-amber-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5"
+              >
+                <Icon name="smartphone" size="xs" class="text-white" />
+                <span>Mobile</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arc decoration -->
+          <div
+            class="absolute top-[3%] right-[5%] w-[240px] h-[240px] steps-arc-entrance"
+          >
+            <svg viewBox="0 0 200 200" class="w-full h-full">
+              <defs>
+                <linearGradient
+                  id="stepsArc"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color:#D4AF37;stop-opacity:0.5"></stop>
+                  <stop
+                    offset="100%"
+                    style="stop-color:#34C7B8;stop-opacity:0.3"></stop>
+                </linearGradient>
+              </defs>
+              <path
+                d="M 100,18 A 82,82 0 0,1 182,100"
+                fill="none"
+                stroke="url(#stepsArc)"
+                stroke-width="25"
+                stroke-linecap="round"></path>
+            </svg>
+          </div>
+
+          <!-- Floating cards -->
+          <div
+            class="absolute top-[5%] left-[35%] z-30 steps-float-card"
+            style="animation-delay: 0.5s"
+          >
+            <div
+              class="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl shadow-gray-200/50 p-3 border border-gray-100"
+            >
+              <div class="flex items-center gap-2">
+                <div
+                  class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center"
+                >
+                  <Icon name="check" size="xs" class="text-green-600" />
+                </div>
+                <span class="text-xs font-bold text-gray-900"
+                  >Synchronise</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="absolute bottom-[10%] right-[15%] z-30 steps-float-card"
+            style="animation-delay: 0.9s"
+          >
+            <div
+              class="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl shadow-gray-200/50 p-3 border border-gray-100"
+            >
+              <div class="flex items-center gap-2">
+                <div
+                  class="w-8 h-8 rounded-lg bg-ateliya-primary/10 flex items-center justify-center"
+                >
+                  <Icon
+                    name="shield"
+                    size="xs"
+                    class="text-ateliya-primary"
+                  />
+                </div>
+                <span class="text-xs font-bold text-gray-900">Securise</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bouncing dots -->
+          <div
+            class="absolute top-[15%] right-[30%] w-3 h-3 rounded-full bg-ateliya-primary/40 steps-bounce-1"
+          ></div>
+          <div
+            class="absolute bottom-[20%] left-[25%] w-3.5 h-3.5 rounded-full bg-ateliya-secondary/35 steps-bounce-2"
+          ></div>
+          <div
+            class="absolute top-[50%] right-[5%] w-2.5 h-2.5 rounded-full bg-pink-400/30 steps-bounce-1"
+          ></div>
+
+          <!-- Hatched circle -->
+          <div
+            class="absolute bottom-[5%] left-[12%] w-16 h-16 opacity-30"
+          >
+            <div
+              class="w-full h-full rounded-full"
+              style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #D4AF3740 2.5px, #D4AF3740 5px);"
+            ></div>
           </div>
         </div>
       </div>
@@ -273,7 +459,108 @@ const appFeatures = [
 </section>
 
 <style>
-  /* Accessibilité */
+  /* ---- Animations ---- */
+  @keyframes stepsDeviceEntrance1 {
+    from {
+      opacity: 0;
+      transform: translateX(-30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes stepsDeviceEntrance2 {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes stepsArcEntrance {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes stepsFloatCard {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes stepsSpinSlow {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes stepsBounce1 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-6px) scale(1.1);
+    }
+  }
+
+  @keyframes stepsBounce2 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-4px) scale(0.9);
+    }
+  }
+
+  .steps-device-1 {
+    animation: stepsDeviceEntrance1 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  .steps-device-2 {
+    animation: stepsDeviceEntrance2 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  .steps-arc-entrance {
+    animation: stepsArcEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .steps-float-card {
+    animation: stepsFloatCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .steps-spin-slow {
+    animation: stepsSpinSlow 35s linear infinite;
+  }
+
+  .steps-bounce-1 {
+    animation: stepsBounce1 3s ease-in-out infinite;
+  }
+
+  .steps-bounce-2 {
+    animation: stepsBounce2 3.5s ease-in-out infinite;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

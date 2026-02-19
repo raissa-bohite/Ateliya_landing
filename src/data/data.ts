@@ -135,6 +135,12 @@ export const testimonials = [
     role: "Couturière Indépendante",
     rating: 5,
   },
+  {
+    text: "Le suivi de mes commandes n'a jamais été aussi facile. Ateliya a vraiment augmenté ma productivité.",
+    author: "Aïssatou Ba",
+    role: "Couturière Indépendante",
+    rating: 5,
+  },
 ];
 
 export const blogPosts = [
@@ -170,39 +176,39 @@ export const blogPosts = [
 export const galleryItems = [
   {
     icon: "",
-    label: "",
-    description: "Gestion des paiements",
-    image: "landing_lebedoo.webp",
+    label: "Tableau de Bord",
+    description: "Vue d'ensemble de votre activité",
+    image: "/ateliya/app_images/accueil.png",
   },
   {
     icon: "",
-    label: "",
-    description: "Suivi des commandes",
-    image: "landing_lebedoo.webp",
+    label: "Gestion Commandes",
+    description: "Suivi détaillé de la production",
+    image: "/ateliya/app_images/gestion.png",
   },
   {
     icon: "",
-    label: "",
-    description: "Gestion des clients",
-    image: "landing_lebedoo.webp",
+    label: "Gestion Clients",
+    description: "carnet d'adresses et mesures",
+    image: "/ateliya/app_images/rendez-vous.png",
   },
   {
     icon: "",
-    label: "",
-    description: "Analyse financière",
-    image: "landing_lebedoo.webp",
+    label: "Rapports Financiers",
+    description: "Suivi des revenus et dépenses",
+    image: "/ateliya/app_images/rapport.png",
   },
   {
     icon: "",
-    label: "",
-    description: "Analyse financière",
-    image: "landing_lebedoo.webp",
+    label: "Connexion Sécurisée",
+    description: "Accès protégé à vos données",
+    image: "/ateliya/app_images/login.png",
   },
   {
     icon: "",
-    label: "",
-    description: "Analyse financière",
-    image: "landing_lebedoo.webp",
+    label: "Bienvenue",
+    description: "Interface d'accueil intuitive",
+    image: "/ateliya/app_images/onboarding.png",
   },
 ];
 

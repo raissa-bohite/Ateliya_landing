@@ -1,157 +1,182 @@
 ---
-import { Download, PlayCircle, Star, Check, TrendingUp, ChevronDown } from 'lucide-astro';
-import Button from '../ui/Button.astro';
-import Badge from './ui/Badge.astro';
+import Icon from "../components/Icon.astro";
 import { stats } from "../data/data";
+
+const carouselCards = [
+  { icon: "scissors", title: "Commandes", desc: "Suivi en temps reel", accent: "from-ateliya-primary to-teal-500" },
+  { icon: "users", title: "Clients", desc: "Fiches & mesures", accent: "from-blue-500 to-cyan-400" },
+  { icon: "trending-up", title: "Revenus", desc: "Tableau de bord", accent: "from-ateliya-secondary to-amber-400" },
+  { icon: "check", title: "Livraisons", desc: "Planification", accent: "from-green-500 to-emerald-400" },
+  { icon: "star", title: "Qualite", desc: "Notes & avis", accent: "from-amber-500 to-yellow-400" },
+  { icon: "sparkles", title: "Mesures", desc: "Profils corporels", accent: "from-purple-500 to-violet-400" },
+];
+
+const CARD_COUNT = carouselCards.length;
 ---
 
-<section 
+<section
   id="hero"
   class="relative overflow-hidden min-h-[95vh] flex items-center bg-gradient-to-br from-[#D4F1F0] via-[#E8F9F8] to-[#D4F1F0]"
 >
-  <!-- Pattern africain subtil -->
-  <div class="absolute inset-0 opacity-[0.04] pointer-events-none pattern-mudcloth" aria-hidden="true" />
-
-  <!-- Bordure Kente animée -->
+  <!-- Kente border -->
   <div
-    class="absolute top-0 left-0 right-0 h-2 opacity-40"
+    class="absolute top-0 left-0 right-0 h-1.5 opacity-50 z-20"
     style="background: linear-gradient(90deg, #34C7B8 0%, #D4AF37 25%, #0D6B5F 50%, #34C7B8 75%); background-size: 200% 100%; animation: kente-slide 20s linear infinite;"
     aria-hidden="true"
-  />
+  ></div>
 
-  <!-- Éléments décoratifs flottants -->
-  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    <div class="absolute top-1/4 left-10 w-80 h-80 bg-ateliya-primary/8 rounded-full blur-3xl animate-float" />
-    <div class="absolute top-1/2 right-20 w-96 h-96 bg-ateliya-secondary/6 rounded-full blur-3xl animate-float" style="animation-delay: 2s;" />
-    <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-ateliya-accent/7 rounded-full blur-3xl animate-float" style="animation-delay: 4s;" />
+  <!-- Background Decorations -->
+  <div class="absolute right-0 top-0 w-[55%] h-full bg-gradient-to-bl from-ateliya-primary/6 via-ateliya-secondary/3 to-transparent rounded-bl-[140px]"></div>
+  <div class="absolute top-[15%] left-[8%] w-80 h-80 bg-ateliya-primary/8 rounded-full blur-[120px] hero-float-1"></div>
+  <div class="absolute top-[40%] right-[15%] w-96 h-96 bg-ateliya-secondary/6 rounded-full blur-[120px] hero-float-2"></div>
+  <div class="absolute bottom-[15%] left-[30%] w-64 h-64 bg-blue-400/5 rounded-full blur-[100px]"></div>
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #0D6B5F 1px, transparent 1px); background-size: 32px 32px;"></div>
+  <div class="absolute left-8 top-[22%] grid grid-cols-6 gap-2 opacity-35">
+    {[...Array(30)].map((_, i) => (
+      <div class={`w-2 h-2 rounded-full ${i % 5 === 0 ? "bg-ateliya-primary" : i % 5 === 1 ? "bg-ateliya-secondary/60" : i % 5 === 2 ? "bg-teal-400/40" : i % 5 === 3 ? "bg-amber-400/30" : "bg-white/40"}`} />
+    ))}
+  </div>
+  <div class="absolute right-12 bottom-[12%] grid grid-cols-5 gap-3 opacity-25">
+    {[...Array(15)].map((_, i) => (
+      <div class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary/50" : "bg-white/40"}`} />
+    ))}
   </div>
 
-  <div class="container-wide relative z-10 section-padding">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      
-      <!-- Contenu (Gauche) -->
-      <div class="space-y-8 animate-fade-in">
-        
-        <!-- Badge -->
-        <div class="animate-slide-up" style="animation-delay: 100ms;">
-          <Badge variant="primary" size="lg" class="gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-            Couture Africaine Connectée
-          </Badge>
+  <!-- Content -->
+  <div class="container mx-auto px-6 lg:px-12 relative z-10 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+      <!-- Left -->
+      <div class="space-y-7 hero-content-entrance">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-sm border border-white/50 rounded-full">
+          <Icon name="sparkles" size="sm" class="text-ateliya-primary" />
+          <span class="text-sm font-bold text-gray-800">Couture Africaine Connectee</span>
         </div>
 
-        <!-- Titre principal -->
-        <div class="space-y-4 animate-slide-up" style="animation-delay: 200ms;">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
-            Transformez votre
-            <span class="block mt-2 text-gradient-primary">
-              atelier de couture
-            </span>
-            <span class="block mt-2">
-              dès aujourd'hui
-            </span>
-          </h1>
+        <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] xl:text-6xl font-black leading-[1.08] text-gray-900">
+          Transformez votre
+          <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-500 to-ateliya-secondary">atelier de couture</span>
+          <span class="block mt-2">des aujourd'hui</span>
+        </h1>
 
-          <p class="text-lg md:text-xl text-ateliya-text/80 leading-relaxed max-w-xl">
-            Gérez vos commandes, clients et finances avec 
-            <span class="font-bold text-ateliya-primary">
-              un essai gratuit de 14 jours
-            </span>
-          </p>
+        <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
+          Gerez vos commandes, clients et finances avec
+          <span class="font-bold text-ateliya-primary">un essai gratuit de 14 jours</span>
+        </p>
+
+        <!-- CTA Buttons — taille augmentee -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-1">
+          <a href="#download" class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold text-xl shadow-lg shadow-ateliya-primary/25 hover:shadow-xl hover:shadow-ateliya-primary/35 transition-all duration-300 hover:scale-105">
+            <span class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            <Icon name="download" size="lg" class="relative z-10 group-hover:translate-y-0.5 transition-transform duration-300" />
+            <span class="relative z-10">Demarrer Gratuitement</span>
+          </a>
+          <a href="#demo" class="group inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/70 text-gray-800 font-bold text-xl hover:bg-white/80 hover:border-ateliya-primary/30 transition-all duration-300 hover:scale-105">
+            <Icon name="play-circle" size="lg" class="text-ateliya-primary group-hover:scale-110 transition-transform duration-300" />
+            <span>Voir la Demo</span>
+          </a>
         </div>
 
-        <!-- Boutons CTA - REFAITS -->
-        <div class="flex flex-col sm:flex-row gap-4 animate-scale-in" style="animation-delay: 300ms;">
-          
-          <!-- Bouton Primary avec Download -->
-          <button class="group relative overflow-hidden px-8 py-4 rounded-2xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-xl hover:shadow-2xl hover:shadow-ateliya-primary/50 transition-all duration-300 hover:scale-105 active:scale-95 focus-ring flex items-center justify-center gap-3">
-            <span class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-            <Download class="w-6 h-6 relative z-10 group-hover:animate-bounce" />
-            <span class="relative z-10 text-lg">Démarrer Gratuitement</span>
-          </button>
-
-          <!-- Bouton Outline avec PlayCircle -->
-          <button class="group relative px-8 py-4 rounded-2xl border-2 border-ateliya-primary text-ateliya-primary font-bold hover:bg-ateliya-primary hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 focus-ring flex items-center justify-center gap-3">
-            <PlayCircle class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-            <span class="text-lg">Voir la Démo</span>
-          </button>
-        </div>
-
-        <!-- Statistiques -->
-        <div
-          class="grid grid-cols-3 gap-4 pt-8 border-t border-ateliya-primary/20 animate-slide-up"
-          style="animation-delay: 400ms;"
-        >
-          {stats.map((stat, i) => (
-            <div class="text-center space-y-1 p-3 rounded-xl hover:bg-white/50 transition-all duration-300">
-              <p class={`text-3xl md:text-4xl font-black ${stat.color} leading-none`}>
-                {stat.value}
-              </p>
-              <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
-                {stat.label}
-              </p>
+        <div class="grid grid-cols-3 gap-3 pt-6 border-t border-ateliya-primary/15">
+          {stats.map((stat) => (
+            <div class="text-center p-3 rounded-xl bg-white/30 backdrop-blur-sm border border-white/40 hover:bg-white/50 hover:shadow-md transition-all duration-300">
+              <p class={`text-2xl md:text-3xl font-black leading-none mb-1 ${stat.color || "text-ateliya-primary"}`}>{stat.value}</p>
+              <p class="text-[11px] md:text-xs text-gray-500 font-semibold">{stat.label}</p>
             </div>
           ))}
         </div>
 
-        <!-- Social proof -->
-        <div class="flex items-center gap-4 pt-4 animate-slide-up" style="animation-delay: 500ms;">
+        <div class="flex items-center gap-4 pt-2">
           <div class="flex -space-x-2">
             {[1, 2, 3, 4].map((i) => (
-              <div class="w-10 h-10 rounded-full border-2 border-white bg-gradient-primary flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                {i}
-              </div>
+              <div class="w-9 h-9 rounded-full border-2 border-white bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-xs shadow-md hover:scale-110 hover:z-10 transition-transform duration-300">{i}</div>
             ))}
+            <div class="w-9 h-9 rounded-full border-2 border-white bg-gray-800 flex items-center justify-center text-white font-bold text-[10px] shadow-md">+500</div>
           </div>
           <div class="flex items-center gap-2">
             <div class="flex gap-0.5">
-              {[...Array(5)].map(() => (
-                <Star class="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
-              ))}
+              {[...Array(5)].map(() => <Icon name="star" size="xs" class="text-amber-400" />)}
             </div>
-            <span class="text-sm text-ateliya-text/70 font-semibold">
-              500+ couturiers satisfaits
-            </span>
+            <span class="text-sm text-gray-600 font-semibold">500+ couturiers satisfaits</span>
           </div>
         </div>
       </div>
 
-      <!-- Mockup (Droite) -->
-      <div class="relative h-[500px] md:h-[650px] lg:h-[700px] flex items-center justify-center order-first lg:order-last">
-        <!-- Glow -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-[80%] h-[80%] bg-gradient-to-br from-ateliya-primary/20 via-ateliya-secondary/15 to-ateliya-accent/20 rounded-full blur-3xl opacity-60" />
-        </div>
+      <!-- Right: 3D Scene -->
+      <div class="relative min-h-[550px] md:min-h-[650px] flex items-center justify-center order-first lg:order-last">
 
-        <!-- Mockup -->
-        <div class="relative z-10 animate-scale-in" style="animation-delay: 200ms;">
-          <img
-            src="/Mobile-Mockup.webp"
-            alt="Interface mobile Ateliya"
-            class="w-full h-full object-contain drop-shadow-2xl"
-            loading="eager"
-          />
-          
-          <!-- Badge flottant 1 -->
-          <div class="absolute top-1/4 -left-8 md:-left-12 animate-float" style="animation-delay: 1s;">
-            <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-primary/20">
-              <div class="flex items-center gap-2">
-                <Check class="w-5 h-5 text-green-500" />
-                <span class="text-xs font-bold text-ateliya-dark">+250 commandes</span>
+        <div class="scene">
+          <!-- Carousel 3D -->
+          <div class="carousel">
+            {carouselCards.map((card, index) => (
+              <div
+                class="carousel__card"
+                style={`--card-index: ${index}; --card-total: ${CARD_COUNT};`}
+              >
+                <div class="carousel__card-inner">
+                  <div class={`carousel__card-icon bg-gradient-to-br ${card.accent}`}>
+                    <Icon name={card.icon} size="md" class="text-white" />
+                  </div>
+                  <p class="carousel__card-title">{card.title}</p>
+                  <p class="carousel__card-desc">{card.desc}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          <!-- Badge flottant 2 -->
-          <div class="absolute bottom-1/3 -right-8 md:-right-12 animate-float" style="animation-delay: 1.5s;">
-            <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-secondary/20">
-              <div class="flex items-center gap-2">
-                <TrendingUp class="w-5 h-5 text-ateliya-secondary" />
-                <span class="text-xs font-bold text-ateliya-dark">+35% revenus</span>
+          <!-- Phone -->
+          <div class="scene__phone">
+            <div class="scene__phone-body">
+              <div class="scene__phone-screen">
+                <div class="scene__phone-notch"></div>
+                <img
+                  src="/ateliya/app_images/accueil.png"
+                  alt="Interface mobile Ateliya"
+                  class="scene__phone-img"
+                  loading="eager"
+                />
               </div>
             </div>
+            <div class="scene__phone-sheen"></div>
+          </div>
+
+          <div class="scene__shadow"></div>
+        </div>
+
+        <!-- Notification cards -->
+        <div class="absolute top-[18%] -left-4 lg:left-[0%] z-30 hero-float-card" style="animation-delay: 2.2s">
+          <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0"><Icon name="check" size="sm" class="text-green-600" /></div>
+              <div><p class="text-[10px] text-gray-400 font-medium">Ce mois</p><p class="text-xs font-bold text-gray-900">+250 commandes</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-[20%] -right-4 lg:right-[0%] z-30 hero-float-card" style="animation-delay: 2.5s">
+          <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-lg bg-ateliya-secondary/15 flex items-center justify-center flex-shrink-0"><Icon name="trending-up" size="sm" class="text-ateliya-secondary" /></div>
+              <div><p class="text-[10px] text-gray-400 font-medium">Croissance</p><p class="text-xs font-bold text-gray-900">+35% revenus</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-[6%] left-[10%] z-30 hero-float-card" style="animation-delay: 2.8s">
+          <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-lg bg-ateliya-primary/10 flex items-center justify-center flex-shrink-0"><Icon name="users" size="sm" class="text-ateliya-primary" /></div>
+              <div><p class="text-[10px] text-gray-400 font-medium">Communaute</p><p class="text-xs font-bold text-gray-900">500+ tailleurs</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative -->
+        <div class="absolute top-[10%] left-[20%] w-3.5 h-3.5 rounded-full bg-ateliya-primary/40 hero-bounce-1"></div>
+        <div class="absolute top-[45%] right-[5%] w-4 h-4 rounded-full bg-ateliya-secondary/35 hero-bounce-2"></div>
+        <div class="absolute bottom-[28%] left-[5%] w-3 h-3 rounded-full bg-pink-400/30 hero-bounce-1"></div>
+        <div class="absolute top-[6%] left-[35%] w-9 h-9 rounded-lg rotate-45 bg-gradient-to-br from-ateliya-primary/12 to-ateliya-secondary/8"></div>
+        <div class="absolute top-[8%] left-[8%] z-10 hero-float-1">
+          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl rotate-12 shadow-lg shadow-indigo-500/25 flex items-center justify-center">
+            <Icon name="sparkles" size="sm" class="text-white -rotate-12" />
           </div>
         </div>
       </div>
@@ -159,14 +184,10 @@ import { stats } from "../data/data";
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:block animate-bounce-slow">
-    <a 
-      href="#features" 
-      class="flex flex-col items-center gap-2 text-ateliya-text/50 hover:text-ateliya-primary transition-colors duration-300 focus-ring rounded-lg p-2"
-      aria-label="Défiler vers le bas"
-    >
-      <span class="text-xs font-semibold uppercase tracking-wider">Découvrir</span>
-      <ChevronDown class="w-5 h-5" />
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 hero-scroll-pulse">
+    <a href="#features" class="flex flex-col items-center gap-1.5 text-gray-500 hover:text-ateliya-primary transition-colors duration-300 p-2" aria-label="Defiler vers le bas">
+      <span class="text-[10px] font-bold uppercase tracking-[0.15em]">Decouvrir</span>
+      <Icon name="chevron-down" size="sm" />
     </a>
   </div>
 </section>
@@ -175,5 +196,325 @@ import { stats } from "../data/data";
   @keyframes kente-slide {
     0% { background-position: 0% 0; }
     100% { background-position: 200% 0; }
+  }
+
+  @keyframes heroContentEntrance {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroFloatCard {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroFloat1 { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-14px); } }
+  @keyframes heroFloat2 { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+  @keyframes heroBounce1 { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-8px) scale(1.1); } }
+  @keyframes heroBounce2 { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-5px) scale(0.9); } }
+  @keyframes scrollPulse { 0%,100% { opacity:0.5;transform:translateX(-50%) translateY(0); } 50% { opacity:1;transform:translateX(-50%) translateY(4px); } }
+
+  .hero-content-entrance { animation: heroContentEntrance 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+  .hero-float-card { animation: heroFloatCard 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+  .hero-float-1 { animation: heroFloat1 4s ease-in-out infinite; }
+  .hero-float-2 { animation: heroFloat2 5s ease-in-out infinite; }
+  .hero-bounce-1 { animation: heroBounce1 3s ease-in-out infinite; }
+  .hero-bounce-2 { animation: heroBounce2 3.5s ease-in-out infinite; }
+  .hero-scroll-pulse { animation: scrollPulse 2s ease-in-out infinite; }
+
+  /* ======================================================
+     3D SCENE
+     ====================================================== */
+
+  .scene {
+    position: relative;
+    width: 520px;
+    height: 640px;
+    perspective: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation:
+      carouselExpand 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both,
+      carouselSpin 22s linear 2.1s infinite;
+  }
+
+  @keyframes carouselExpand {
+    0% { transform: rotateY(0deg) scale(0.7); }
+    100% { transform: rotateY(0deg) scale(1); }
+  }
+
+  @keyframes carouselSpin {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+  }
+
+  .carousel__card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130px;
+    height: 140px;
+    margin-left: -65px;
+    margin-top: -70px;
+    transform-style: preserve-3d;
+    animation: cardSpread 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    --target-tz: 280px;
+  }
+
+  @keyframes cardSpread {
+    0% {
+      transform: rotateY(calc(360deg / var(--card-total) * var(--card-index))) translateZ(40px);
+      opacity: 0.4;
+    }
+    100% {
+      transform: rotateY(calc(360deg / var(--card-total) * var(--card-index))) translateZ(var(--target-tz));
+      opacity: 1;
+    }
+  }
+
+  .carousel__card {
+    transform:
+      rotateY(calc(360deg / var(--card-total) * var(--card-index)))
+      translateZ(var(--target-tz));
+  }
+
+  .carousel__card-inner {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(13, 107, 95, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 12px;
+    animation: cardCounterSpin 22s linear 2.1s infinite;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .carousel__card-inner:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(13, 107, 95, 0.1);
+  }
+
+  @keyframes cardCounterSpin {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(-360deg); }
+  }
+
+  .carousel__card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel__card-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1a202c;
+    line-height: 1;
+  }
+
+  .carousel__card-desc {
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  .scene__phone {
+    position: relative;
+    z-index: 10;
+    animation: phoneSurge 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  }
+
+  @keyframes phoneSurge {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) translateY(30px) translateZ(-100px);
+      filter: blur(6px) drop-shadow(0 0 0 transparent);
+    }
+    30% { opacity: 1; filter: blur(0px); }
+    70% {
+      transform: scale(1.04) translateY(-14px) translateZ(0px);
+      filter: blur(0px) drop-shadow(0 50px 80px rgba(0, 0, 0, 0.3));
+    }
+    85% { transform: scale(0.99) translateY(-2px) translateZ(0px); }
+    100% {
+      transform: scale(1) translateY(0) translateZ(0px);
+      filter: blur(0px) drop-shadow(0 30px 60px rgba(0, 0, 0, 0.2));
+    }
+  }
+
+  .scene__phone-body {
+    position: relative;
+    background: #111827;
+    border-radius: 3rem;
+    padding: 12px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    animation: phoneBreathe 5s ease-in-out 2.2s infinite;
+  }
+
+  @keyframes phoneBreathe {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+    50% {
+      transform: translateY(-10px) scale(1.015);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+    }
+  }
+
+  .scene__phone-screen {
+    position: relative;
+    background: white;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    width: 280px;
+    height: 580px;
+  }
+
+  .scene__phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    background: #111827;
+    border-radius: 0 0 20px 20px;
+    z-index: 20;
+  }
+
+  .scene__phone-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .scene__phone-sheen {
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.12) 45%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.12) 55%,
+      transparent 70%
+    );
+    border-radius: 3rem;
+    animation: sheenSlide 5s ease-in-out 2.2s infinite;
+    pointer-events: none;
+    z-index: 15;
+  }
+
+  @keyframes sheenSlide {
+    0%, 65% { left: -120%; }
+    80%     { left: 120%; }
+    100%    { left: 120%; }
+  }
+
+  .scene__phone::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 3.5rem;
+    background: radial-gradient(ellipse at center, rgba(52, 199, 184, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    animation: surgeGlow 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  @keyframes surgeGlow {
+    0%  { opacity: 0; transform: scale(0.5); }
+    40% { opacity: 1; transform: scale(1.3); }
+    100% { opacity: 0; transform: scale(1.6); }
+  }
+
+  .scene__shadow {
+    position: absolute;
+    bottom: -4%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 30px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation:
+      shadowAppear 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both,
+      shadowBreathe 5s ease-in-out 2.2s infinite;
+    z-index: 1;
+  }
+
+  @keyframes shadowAppear {
+    0%   { opacity: 0; width: 80px; }
+    100% { opacity: 0.8; width: 180px; }
+  }
+
+  @keyframes shadowBreathe {
+    0%, 100% { width: 180px; opacity: 0.8; }
+    50%      { width: 220px; opacity: 0.5; }
+  }
+
+  /* ======================================================
+     RESPONSIVE
+     ====================================================== */
+
+  @media (max-width: 768px) {
+    .scene { width: 380px; height: 540px; perspective: 900px; }
+    .carousel__card { width: 100px; height: 110px; margin-left: -50px; margin-top: -55px; --target-tz: 210px; }
+    .carousel__card-icon { width: 38px; height: 38px; border-radius: 11px; }
+    .carousel__card-title { font-size: 11px; }
+    .carousel__card-desc { display: none; }
+    .scene__phone-screen { width: 230px; height: 470px; }
+  }
+
+  @media (max-width: 480px) {
+    .scene { width: 320px; height: 480px; perspective: 800px; }
+    .carousel__card { width: 80px; height: 90px; margin-left: -40px; margin-top: -45px; --target-tz: 170px; }
+    .carousel__card-icon { width: 32px; height: 32px; border-radius: 9px; }
+    .carousel__card-title { font-size: 10px; }
+    .scene__phone-screen { width: 200px; height: 410px; }
+    .scene__phone-body { border-radius: 2rem; padding: 8px; }
+    .scene__phone-screen { border-radius: 1.8rem; }
+    .scene__phone-notch { width: 100px; height: 22px; border-radius: 0 0 16px 16px; }
+  }
+
+  @media (min-width: 1280px) {
+    .scene { width: 560px; height: 680px; perspective: 1400px; }
+    .carousel__card { width: 140px; height: 150px; margin-left: -70px; margin-top: -75px; --target-tz: 310px; }
+    .scene__phone-screen { width: 300px; height: 620px; }
+  }
+
+  @media (min-width: 1536px) {
+    .scene { width: 600px; height: 720px; }
+    .carousel__card { --target-tz: 340px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>

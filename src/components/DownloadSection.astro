@@ -11,21 +11,25 @@ import Icon from "../components/Icon.astro";
   <!-- Large shape blob -->
   <div
     class="absolute right-0 top-0 w-[50%] h-[70%] bg-gradient-to-bl from-ateliya-primary/5 via-ateliya-secondary/3 to-transparent rounded-bl-[120px]"
-  ></div>
+  >
+  </div>
 
   <!-- Gradient orbs -->
   <div
     class="absolute top-[15%] right-[25%] w-80 h-80 bg-ateliya-primary/8 rounded-full blur-[120px]"
-  ></div>
+  >
+  </div>
   <div
     class="absolute bottom-[10%] left-[15%] w-64 h-64 bg-ateliya-secondary/6 rounded-full blur-[100px]"
-  ></div>
+  >
+  </div>
 
   <!-- Radial dot bg -->
   <div
     class="absolute inset-0 opacity-[0.025]"
     style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"
-  ></div>
+  >
+  </div>
 
   <!-- Dot grid top-left -->
   <div class="absolute left-8 top-[12%] grid grid-cols-6 gap-2 opacity-35">
@@ -52,7 +56,8 @@ import Icon from "../components/Icon.astro";
   <!-- Dashed orbit circle -->
   <div
     class="absolute top-1/2 right-[20%] -translate-y-1/2 w-[500px] h-[500px] rounded-full border-2 border-dashed border-ateliya-primary/8 dl-spin-slow hidden lg:block"
-  ></div>
+  >
+  </div>
 
   <!-- ---- Content ---- -->
   <div class="container mx-auto px-6 lg:px-12 relative z-10">
@@ -60,7 +65,9 @@ import Icon from "../components/Icon.astro";
       <!-- Left Content -->
       <div class="space-y-8 order-2 lg:order-1">
         <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full"
+        >
           <Icon name="download" size="sm" class="text-ateliya-primary" />
           <span class="text-sm font-bold text-ateliya-primary"
             >Application Mobile</span
@@ -122,7 +129,7 @@ import Icon from "../components/Icon.astro";
 
           <!-- Google Play -->
           <a
-            href="#googleplay"
+            href="https://play.google.com/store/apps/details?id=com.ateliya.app"
             class="group flex-1 flex items-center gap-4 px-5 py-4 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-2xl hover:shadow-xl hover:shadow-ateliya-primary/25 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
           >
             <!-- Shimmer -->
@@ -229,19 +236,19 @@ import Icon from "../components/Icon.astro";
         <!-- Background fill circle -->
         <div
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-ateliya-primary/6 to-ateliya-secondary/4"
-        ></div>
+        >
+        </div>
 
         <!-- Phone Mockup - Large -->
         <div class="relative z-20 dl-phone-entrance">
-          <div
-            class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl"
-          >
+          <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
             <div
               class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[600px]"
             >
               <div
                 class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"
-              ></div>
+              >
+              </div>
               <img
                 src="/ateliya/app_images/accueil.png"
                 alt="Application mobile Ateliya"
@@ -258,13 +265,7 @@ import Icon from "../components/Icon.astro";
         >
           <svg viewBox="0 0 200 200" class="w-full h-full">
             <defs>
-              <linearGradient
-                id="dlArc"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
+              <linearGradient id="dlArc" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" style="stop-color:#34C7B8;stop-opacity:0.6"
                 ></stop>
                 <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.4"
@@ -337,9 +338,7 @@ import Icon from "../components/Icon.astro";
                 <Icon name="users" size="sm" class="text-ateliya-primary" />
               </div>
               <div>
-                <p class="text-[10px] text-gray-400 font-medium">
-                  Communaute
-                </p>
+                <p class="text-[10px] text-gray-400 font-medium">Communaute</p>
                 <p class="text-xs font-bold text-gray-900">500K+ tailleurs</p>
               </div>
             </div>
@@ -351,24 +350,29 @@ import Icon from "../components/Icon.astro";
           <div
             class="w-full h-full rounded-full"
             style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #34C7B840 2.5px, #34C7B840 5px);"
-          ></div>
+          >
+          </div>
         </div>
 
         <!-- Bouncing dots -->
         <div
           class="absolute top-[12%] left-[20%] w-3.5 h-3.5 rounded-full bg-ateliya-primary/50 dl-bounce-1"
-        ></div>
+        >
+        </div>
         <div
           class="absolute top-[40%] right-[8%] w-4 h-4 rounded-full bg-ateliya-secondary/40 dl-bounce-2"
-        ></div>
+        >
+        </div>
         <div
           class="absolute bottom-[30%] left-[5%] w-2.5 h-2.5 rounded-full bg-pink-400/40 dl-bounce-1"
-        ></div>
+        >
+        </div>
 
         <!-- Rotated square -->
         <div
           class="absolute top-[8%] right-[25%] w-8 h-8 rounded-lg rotate-45 bg-gradient-to-br from-ateliya-primary/15 to-ateliya-secondary/10"
-        ></div>
+        >
+        </div>
 
         <!-- Numbered ball -->
         <div class="absolute top-[5%] left-[15%] z-10">

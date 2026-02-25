@@ -1,29 +1,11 @@
 ---
-import Icon from "./Icon.astro";
 import { socials, navLinks, legalLinks } from "../data/footer";
 ---
 
-<footer class="relative overflow-hidden bg-ateliya-dark text-white">
-  <!-- BG -->
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div
-      class="absolute top-0 right-0 w-[500px] h-[500px] bg-ateliya-primary/6 rounded-full blur-[150px]"
-    >
-    </div>
-    <div
-      class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-ateliya-secondary/5 rounded-full blur-[120px]"
-    >
-    </div>
-    <div
-      class="absolute inset-0 opacity-[0.015]"
-      style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 40px 40px;"
-    >
-    </div>
-  </div>
-
+<footer class="bg-[#0F172A] text-white">
   <!-- Kente accent top -->
   <div
-    class="h-1 bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-ateliya-primary opacity-40"
+    class="h-1 bg-gradient-to-r from-ateliya-primary via-africa-gold to-ateliya-primary"
   >
   </div>
 
@@ -37,11 +19,13 @@ import { socials, navLinks, legalLinks } from "../data/footer";
       <!-- Brand -->
       <div class="lg:col-span-4">
         <a href="/" class="inline-flex items-center gap-3 mb-6 group">
-          <div
-            class="w-11 h-11 bg-gradient-to-br from-ateliya-primary to-ateliya-secondary rounded-xl flex items-center justify-center text-white font-black text-lg group-hover:scale-110 transition-transform duration-300"
-          >
-            A
-          </div>
+          <img
+            src="/ateliya.webp"
+            alt="Ateliya"
+            width="44"
+            height="44"
+            class="rounded-xl group-hover:scale-110 transition-transform duration-300"
+          />
           <span
             class="text-2xl font-black bg-gradient-to-r from-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent"
           >
@@ -151,14 +135,6 @@ import { socials, navLinks, legalLinks } from "../data/footer";
     </div>
   </div>
 
-  <!-- Scroll to top -->
-  <button
-    id="scroll-to-top"
-    class="fixed bottom-8 right-8 w-11 h-11 flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/15 text-white/60 hover:text-white hover:bg-ateliya-primary/20 hover:border-ateliya-primary/40 rounded-xl opacity-0 pointer-events-none translate-y-4 transition-all duration-300 z-50"
-    aria-label="Retour en haut"
-  >
-    <Icon name="chevron-up" size="sm" />
-  </button>
 </footer>
 
 <style>
@@ -258,21 +234,5 @@ import { socials, navLinks, legalLinks } from "../data/footer";
       }, 2000);
     });
 
-    /* Scroll to top */
-    const scrollBtn = document.getElementById("scroll-to-top");
-    if (!scrollBtn) return;
-
-    const toggle = () => {
-      const show = window.scrollY > 400;
-      scrollBtn.classList.toggle("opacity-0", !show);
-      scrollBtn.classList.toggle("pointer-events-none", !show);
-      scrollBtn.classList.toggle("translate-y-4", !show);
-    };
-
-    window.addEventListener("scroll", toggle, { passive: true });
-    scrollBtn.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" }),
-    );
-    toggle();
   });
 </script>

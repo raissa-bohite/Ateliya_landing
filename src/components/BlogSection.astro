@@ -98,6 +98,9 @@ import { blogPosts } from "../data/data";
                     alt={post.title}
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="416"
                   />
                 ) : (
                   <div class="w-full h-full bg-gradient-to-br from-gray-50 to-ateliya-primary/5 flex items-center justify-center">
@@ -161,7 +164,7 @@ import { blogPosts } from "../data/data";
 
     <!-- CTA Banner -->
     <div
-      class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-ateliya-primary to-ateliya-secondary p-[1px]"
+      class="relative rounded-2xl overflow-hidden border-ateliya-light p-[1px]"
     >
       <div
         class="relative rounded-2xl bg-gradient-to-br from-teal-50 via-white to-amber-50/30 overflow-hidden"

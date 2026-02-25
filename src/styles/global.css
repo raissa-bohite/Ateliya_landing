@@ -23,6 +23,42 @@
   }
 }
 
+/* ===== PERFORMANCE : content-visibility pour sections sous le fold ===== */
+section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* ===== PERFORMANCE : désactiver animations décoratives sur mobile ===== */
+@media (max-width: 768px) {
+  .hero-spin-slow,
+  .hero-spin-slow-reverse,
+  .hero-float-1,
+  .hero-float-2,
+  .hero-bounce-1,
+  .hero-bounce-2,
+  .feature-phone-entrance,
+  .feature-photo-entrance,
+  .feature-phone-slide,
+  .feature-photo-reveal,
+  .feature-float-card {
+    animation: none !important;
+  }
+
+  /* Supprimer les blobs flottants coûteux sur mobile */
+  [class*="blur-[80px]"],
+  [class*="blur-[100px]"],
+  [class*="blur-[120px]"] {
+    display: none;
+  }
+}
+
+/* ===== PERFORMANCE : will-change uniquement sur les éléments animés critiques ===== */
+.hero-float-1,
+.hero-float-2 {
+  will-change: transform;
+}
+
 /* ===== PRINT STYLES ===== */
 @media print {
   body {

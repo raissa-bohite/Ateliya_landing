@@ -1,30 +1,27 @@
 export const contactMethods = [
   {
-    icon: "mail",
-    title: "Email",
-    description: "Notre équipe vous répond sous 24h",
-    value: "support@ateliya.com",
-    href: "mailto:support@ateliya.com",
-    color: "from-ateliya-primary/20 to-ateliya-primary/10",
-    iconColor: "text-ateliya-primary",
+    icon: "message-circle",
+    title: "WhatsApp",
+    description: "Réponse rapide garantie",
+    value: "+225 05 01 24 29 29",
+    href: "https://wa.me/2250501242929?text=Bonjour%2C%20je%20voudrais%20en%20savoir%20plus%20sur%20Ateliya.",
+    gradient: "from-green-500 to-emerald-400",
   },
   {
     icon: "phone",
     title: "Téléphone",
-    description: "Lun - Ven, 9h - 18h GMT",
-    value: "+225 27 XX XX XX XX",
-    href: "tel:+22527XXXXXXXX",
-    color: "from-ateliya-secondary/20 to-ateliya-secondary/10",
-    iconColor: "text-ateliya-secondary",
+    description: "Appelez-nous directement",
+    value: "+225 05 01 24 29 29",
+    href: "tel:+2250501242929",
+    gradient: "from-ateliya-primary to-ateliya-secondary",
   },
   {
-    icon: "mapPin",
-    title: "Adresse",
-    description: "Visitez notre bureau",
-    value: "Abidjan, Côte d'Ivoire",
-    href: "#",
-    color: "from-ateliya-accent/20 to-ateliya-accent/10",
-    iconColor: "text-ateliya-accent",
+    icon: "mail",
+    title: "Email",
+    description: "Pour les demandes détaillées",
+    value: "support@ateliya.com",
+    href: "mailto:support@ateliya.com",
+    gradient: "from-ateliya-secondary to-teal-400",
   },
 ];
 
@@ -107,11 +104,4 @@ export const faqCategories = [
       },
     ],
   },
-];
-
-// Quick stats
-export const stats = [
-  { value: "5000+", label: "Artisans actifs" },
-  { value: "24h", label: "Temps de réponse" },
-  { value: "99%", label: "Satisfaction" },
 ];

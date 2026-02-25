@@ -23,15 +23,15 @@ export const socials = [
 
 // Navigation links
 export const navLinks = [
-  { label: "Fonctionnalités", href: "#features" },
-  { label: "Tarification", href: "#pricing" },
-  { label: "Témoignages", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Accueil", href: "/" },
+  { label: "Fonctionnalités", href: "/featuresDetails" },
+  { label: "Tarification", href: "/pricing" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 // Liens légaux
 export const legalLinks = [
   { label: "Politique de Confidentialité", href: "/politique" },
   { label: "Conditions d'Utilisation", href: "/conditions" },
-  { label: "Cookies", href: "#cookies" },
 ];

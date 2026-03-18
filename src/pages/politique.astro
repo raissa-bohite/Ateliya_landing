@@ -32,7 +32,7 @@ import Layout from "../layouts/Layout.astro";
   <div class="container mx-auto max-w-5xl px-6 py-16 md:py-24 relative z-10">
     
     <!-- Header -->
-    <div class="text-center mb-12 space-y-4">
+    <div class="text-center mb-16 space-y-6">
       <!-- Badge -->
       <div class="inline-block">
         <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-ateliya-primary/10 via-ateliya-primary/15 to-ateliya-primary/10 border border-ateliya-primary/30 backdrop-blur-sm">
@@ -44,7 +44,7 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <!-- Title -->
-      <h1 class="text-3xl md:text-3xl lg:text-5xl font-black text-gray-900 leading-tight">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight">
         <span class="block">Politique de</span>
         <span class="relative inline-block mt-2">
           <span class="bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-ateliya-primary bg-clip-text text-transparent">
@@ -53,21 +53,17 @@ import Layout from "../layouts/Layout.astro";
         </span>
       </h1>
 
-       <p class="text-lg text-ateliya-text/70 max-w-3xl mx-auto">
-        Lisez attentivement cette politique avant d'utiliser l'application Ateliya
-      </p>
-
       <!-- Quick Navigation -->
-      <!-- <div class="flex flex-wrap justify-center gap-3 pt-6">
+      <div class="flex flex-wrap justify-center gap-3 pt-6">
         {sections.slice(0, 6).map((section) => (
-          <a 
+          <a
             href={`#section-${section.number}`}
-            class="px-4 py-2 rounded-xl bg-white border-2 border-ateliya-primary/20 hover:border-ateliya-primary text-sm font-semibold text-gray-900 hover:bg-ateliya-primary/5 transition-all duration-300"
+            class="px-4 py-2 rounded-xl bg-white border border-ateliya-primary/20 hover:border-ateliya-primary text-sm font-semibold text-gray-900 hover:bg-ateliya-primary/5 transition-all duration-300"
           >
             {section.number}. {section.title}
           </a>
         ))}
-      </div> -->
+      </div>
     </div>
 
     <!-- Content Sections -->

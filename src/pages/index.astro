@@ -21,14 +21,20 @@ import Pricing from "../components/Pricing.astro";
   title="Ateliya - Gestion d'Atelier Intelligente"
   description="Transformez votre atelier de couture avec Ateliya. Gestion des clients, commandes, mesures et paiements intégrés. Essai gratuit."
 >
-  <link slot="head" rel="preload" as="image" href="/ateliya/app_images/accueil.png" fetchpriority="high" />
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href="/ateliya/app_images/accueil.png"
+    fetchpriority="high"
+  />
 
   <Header />
 
-  <HeroSection />
+  <HeroSection client:load />
   <StepsSection />
   <FeaturesDatails />
-  <GalleryCarousel />
+  <GalleryCarousel client:visible />
   <TestimonialsStatsSection />
   <DownloadSection />
   <BlogSection />

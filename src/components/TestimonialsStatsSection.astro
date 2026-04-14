@@ -72,7 +72,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
         </div>
 
         <h2
-          class="text-4xl md:text-5xl font-black leading-tight text-gray-900"
+          class="text-4xl md:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900"
         >
           Ce que nos
           <span
@@ -83,7 +83,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
           <span class="block mt-1">disent de nous</span>
         </h2>
 
-        <p class="text-lg text-gray-500 leading-relaxed max-w-lg">
+        <p class="text-lg text-gray-500 leading-relaxed max-w-lg tracking-wide">
           Plus de <span class="font-bold text-ateliya-primary"
             >500 ateliers</span
           > en Afrique font confiance a Ateliya pour transformer leur gestion quotidienne.
@@ -196,7 +196,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
 
           <!-- Quote text -->
           <blockquote
-            class="text-gray-700 text-lg leading-relaxed mb-7 font-medium"
+            class="text-gray-700 text-lg leading-relaxed mb-7 font-medium tracking-wide"
           >
             "{
               testimonials[0]?.text ||
@@ -228,7 +228,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
 
             <div class="flex-1">
               <p
-                class="font-bold text-gray-900 group-hover/card:text-ateliya-primary transition-colors duration-300"
+                class="font-serif font-extrabold tracking-tighter text-gray-900 group-hover/card:text-ateliya-primary transition-colors duration-300"
               >
                 {testimonials[0]?.author || "Artisan Ateliya"}
               </p>
@@ -292,7 +292,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
                   {t.author.split(" ")[1]?.charAt(0) || ""}
                 </div>
                 <div>
-                  <p class="text-sm font-bold text-gray-900">{t.author}</p>
+                  <p class="text-sm font-serif font-extrabold tracking-tighter text-gray-900">{t.author}</p>
                   <p class="text-xs text-gray-400">{t.role}</p>
                 </div>
               </div>
@@ -302,7 +302,41 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
       </div>
     </div>
 
-   
+    <!-- ---- Stats Banner ---- -->
+    <div class="relative pt-12 border-t border-gray-100">
+      <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+        {
+          statsConfig.map((stat, idx) => (
+            <div
+              class="group/stat relative text-center p-6 rounded-3xl hover:bg-white/50 transition-all duration-500 testi-stat-reveal min-w-[160px]"
+              style={`animation-delay: ${idx * 150}ms`}
+            >
+              <div
+                class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-50 mb-4 group-hover/stat:scale-110 group-hover/stat:bg-white group-hover/stat:shadow-lg transition-all duration-500"
+              >
+                <Icon
+                  name={stat.icon}
+                  size="md"
+                  class={`${stat.color} transition-colors duration-500`}
+                />
+              </div>
+              <div class="space-y-1">
+                <div class="text-3xl md:text-4xl font-serif font-extrabold tracking-tighter text-gray-900">
+                  {stat.value}
+                </div>
+                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest text-[10px] md:text-sm">
+                  {stat.label}
+                </div>
+              </div>
+              
+              <!-- Indicator line -->
+              <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-gray-100 group-hover/stat:w-12 group-hover/stat:bg-ateliya-primary transition-all duration-500" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>

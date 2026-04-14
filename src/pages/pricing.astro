@@ -163,14 +163,14 @@ const faqPricing = [
             <span class="text-sm font-bold text-ateliya-primary">Tarifs Transparents</span>
           </div>
 
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
             <span class="block">Un prix juste</span>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
               pour chaque atelier
             </span>
           </h1>
 
-          <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+          <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed tracking-wide">
             Commencez avec <span class="font-bold text-ateliya-primary">14 jours gratuits</span>.
             Aucune carte requise. Annulation en 1 clic.
           </p>
@@ -189,7 +189,9 @@ const faqPricing = [
             </button>
             <span class="text-sm font-bold text-gray-400 toggle-label" data-period="annual">
               Annuel
-              <span class="ml-1.5 px-2 py-0.5 text-[10px] font-black bg-ateliya-primary/10 text-ateliya-primary rounded-full uppercase tracking-wide">-17%</span>
+              <span class="ml-1.5 px-2 py-0.5 text-[10px] font-black bg-ateliya-primary text-white rounded-full uppercase tracking-wide animate-pulse shadow-sm shadow-ateliya-primary/20">
+                -17%
+              </span>
             </span>
           </div>
         </div>
@@ -239,7 +241,7 @@ const faqPricing = [
 
                     {/* Title */}
                     <div class="space-y-1 mb-4">
-                      <h3 class="text-xl md:text-2xl font-black text-gray-900 leading-tight">{plan.name}</h3>
+                      <h3 class="text-xl md:text-2xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight">{plan.name}</h3>
                       <div class={`w-12 h-1 bg-gradient-to-r ${plan.barGradient} rounded-full group-hover/plan:w-20 transition-all duration-500`}></div>
                       <p class="text-sm text-gray-500 pt-0.5">{plan.description}</p>
                     </div>
@@ -248,7 +250,7 @@ const faqPricing = [
                     <div class="mb-4">
                       <div class="flex items-baseline gap-1.5">
                         <span
-                          class="text-4xl md:text-5xl font-black text-gray-900 tabular-nums price-value"
+                          class="text-4xl md:text-5xl font-extrabold text-gray-900 tabular-nums price-value"
                           data-monthly={plan.price.monthly}
                           data-annual={plan.price.annual}
                         >
@@ -345,7 +347,7 @@ const faqPricing = [
             <span class="text-sm font-bold text-ateliya-secondary">Comparaison Complete</span>
           </div>
 
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
             <span class="block">Tout ce qui est inclus</span>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
               dans chaque plan
@@ -378,13 +380,13 @@ const faqPricing = [
                     <div class={`flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br ${category.bg} shadow-sm`}>
                       <Icon name={category.icon} size="sm" class={category.color} />
                     </div>
-                    <h3 class="text-base font-black text-gray-900">{category.category}</h3>
+                    <h3 class="text-base font-serif font-extrabold tracking-tighter text-gray-900">{category.category}</h3>
                   </div>
 
                   {/* Rows */}
                   <div class="space-y-0">
                     {category.features.map((feature, idx) => (
-                      <div class={`grid grid-cols-4 gap-4 py-3 ${idx > 0 ? "border-t border-gray-50" : ""} -mx-2 px-2 rounded-lg`}>
+                      <div class={`grid grid-cols-4 gap-4 py-[14px] ${idx > 0 ? "border-t border-gray-50" : ""} -mx-2 px-2 rounded-lg transition-colors duration-300 hover:bg-gray-50/50`}>
                         <div class="text-sm font-medium text-gray-600">{feature.name}</div>
                         {["starter", "pro", "enterprise"].map((tier) => {
                           const val = feature[tier as keyof typeof feature];
@@ -437,7 +439,7 @@ const faqPricing = [
             <span class="text-sm font-bold text-ateliya-primary">FAQ</span>
           </div>
 
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
             <span class="block">Questions</span>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
               frequentes
@@ -513,14 +515,14 @@ const faqPricing = [
           <span class="text-sm font-bold text-ateliya-primary">Lancez-vous</span>
         </div>
 
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
           <span class="block">Pret a transformer</span>
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
             votre atelier ?
           </span>
         </h2>
 
-        <p class="text-lg text-gray-500 leading-relaxed max-w-lg mx-auto">
+        <p class="text-lg text-gray-500 leading-relaxed max-w-lg mx-auto tracking-wide">
           Rejoignez <span class="font-bold text-ateliya-primary">500+ couturiers</span> qui gerent leur atelier plus efficacement avec Ateliya.
         </p>
 

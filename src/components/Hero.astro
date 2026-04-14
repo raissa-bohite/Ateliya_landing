@@ -97,7 +97,7 @@ const CARD_COUNT = carouselCards.length;
         </div>
 
         <h1
-          class="text-4xl md:text-5xl lg:text-[3.5rem] xl:text-6xl font-black leading-[1.08] text-gray-900"
+          class="text-4xl md:text-5xl lg:text-[3.5rem] xl:text-6xl font-serif font-extrabold tracking-tighter leading-[1.08] text-gray-900"
         >
           Transformez votre
           <span
@@ -107,7 +107,7 @@ const CARD_COUNT = carouselCards.length;
           <span class="block mt-2">des aujourd'hui</span>
         </h1>
 
-        <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
+        <p class="text-lg text-gray-600 leading-relaxed max-w-lg tracking-wide">
           Gerez vos commandes, clients et finances avec
           <span class="font-bold text-ateliya-primary"
             >un essai gratuit de 14 jours</span
@@ -204,7 +204,7 @@ const CARD_COUNT = carouselCards.length;
               carouselCards.map((card, index) => (
                 <div
                   class="carousel__card"
-                  style={`--card-index: ${index}; --card-total: ${CARD_COUNT};`}
+                  style={`--card-index: ${index}; --card-total: ${CARD_COUNT}; --init-rot: ${(360 / CARD_COUNT) * index}deg;`}
                 >
                   <div class="carousel__card-inner">
                     <div
@@ -527,8 +527,8 @@ const CARD_COUNT = carouselCards.length;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.08),
-      0 2px 8px rgba(13, 107, 95, 0.06);
+      0 12px 32px rgba(0, 0, 0, 0.05),
+      0 4px 12px rgba(13, 107, 95, 0.04);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -536,6 +536,7 @@ const CARD_COUNT = carouselCards.length;
     gap: 8px;
     padding: 16px 12px;
     will-change: transform;
+    /* Plus besoin de masquer la face arrière avec le nouveau calcul de rotation */
     /* Spin différé à 6s pour ne pas perturber Lighthouse */
     animation: cardCounterSpin 22s linear 6s infinite;
     transition: box-shadow 0.3s ease;
@@ -549,10 +550,10 @@ const CARD_COUNT = carouselCards.length;
 
   @keyframes cardCounterSpin {
     from {
-      transform: rotateY(0deg);
+      transform: rotateY(calc(-1 * var(--init-rot, 0deg)));
     }
     to {
-      transform: rotateY(-360deg);
+      transform: rotateY(calc(-360deg - var(--init-rot, 0deg)));
     }
   }
 
@@ -568,7 +569,9 @@ const CARD_COUNT = carouselCards.length;
 
   .carousel__card-title {
     font-size: 13px;
+    font-family: Fraunces, serif;
     font-weight: 800;
+    letter-spacing: -0.05em;
     color: #1a202c;
     line-height: 1;
   }

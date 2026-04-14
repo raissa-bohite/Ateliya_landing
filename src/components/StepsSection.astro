@@ -1,6 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from "../components/Icon.astro";
 import { steps } from "../data/data";
+import gestionImg from '../assets/app_images/gestion.png';
+import rapportImg from '../assets/app_images/rapport.png';
 
 const stepStyles = [
   { icon: "user-plus", color: "text-ateliya-primary", bgColor: "from-ateliya-primary/20 to-ateliya-primary/10" },
@@ -306,14 +309,12 @@ const appFeatures = [
                 <div
                   class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-b-2xl z-20"
                 ></div>
-                <img
-                  src="/ateliya/app_images/gestion.png"
+                <Image
+                  src={gestionImg}
                   alt="Terminal de paiement"
                   class="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
-                  width="390"
-                  height="844"
                 />
               </div>
             </div>
@@ -342,14 +343,12 @@ const appFeatures = [
                 <div
                   class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-b-2xl z-20"
                 ></div>
-                <img
-                  src="/ateliya/app_images/rapport.png"
+                <Image
+                  src={rapportImg}
                   alt="Application mobile"
                   class="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
-                  width="390"
-                  height="844"
                 />
               </div>
             </div>

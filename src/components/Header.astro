@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { navItems } from "../data/header";
 import Icon from "./Icon.astro";
+import logoImg from "../assets/ateliya.webp";
 
 interface Props {
   class?: string;
@@ -44,12 +46,10 @@ const { class: className = "" } = Astro.props;
       class="flex items-center gap-1.5 group"
       aria-label="Retour a l'accueil"
     >
-      <img
-        src="/ateliya.webp"
+      <Image
+        src={logoImg}
         alt="logo Ateliya"
         class="h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
-        width="80"
-        height="40"
         loading="eager"
         fetchpriority="high"
         decoding="sync"
@@ -80,10 +80,21 @@ const { class: className = "" } = Astro.props;
 
     <!-- Right -->
     <div class="flex items-center gap-2">
+      <!-- Register link - Desktop -->
+      <a
+        href="/connexion"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:inline-flex nav-link relative px-4 py-1.5 text-[13px] font-semibold text-ateliya-primary hover:text-ateliya-primary rounded-full transition-all duration-300 hover:bg-white/80"
+      >
+        S'inscrire
+      </a>
+
       <!-- Store buttons - Desktop -->
       <div class="hidden lg:flex items-center gap-2">
         <a
-          href="#"
+          href="https://apps.apple.com/us/app/ateliya/id6755125319"
+          target="_blank"
           class="store-btn flex items-center gap-2.5 px-4 py-2 bg-gray-900 text-white rounded-xl border border-gray-800 transition-all duration-300 group/store"
         >
           <svg
@@ -105,6 +116,7 @@ const { class: className = "" } = Astro.props;
 
         <a
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
+          target="_blank"
           class="store-btn flex items-center gap-2.5 px-4 py-2 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-md shadow-ateliya-primary/20"
         >
           <svg
@@ -165,8 +177,42 @@ const { class: className = "" } = Astro.props;
         ))
       }
 
+      <!-- Mobile register -->
+      <a
+        href="/connexion"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-nav-link flex items-center gap-3 px-4 py-3 text-ateliya-primary font-semibold text-sm rounded-xl hover:bg-ateliya-primary/[0.06] transition-all duration-200"
+      >
+        <span
+          class="flex items-center justify-center w-8 h-8 rounded-lg bg-ateliya-primary/10"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle
+              cx="9"
+              cy="7"
+              r="4"></circle><line x1="19" x2="19" y1="8" y2="14"></line><line
+              x1="22"
+              x2="16"
+              y1="11"
+              y2="11"></line></svg
+          >
+        </span>
+        <span class="flex-1 text-ateliya-primary">S'inscrire</span>
+        <Icon name="chevron-right" size="xs" class="text-gray-400" />
+      </a>
+
       <!-- Mobile store -->
-      <div class="pt-3 grid grid-cols-2 gap-2">
+      <div class="pt-2 grid grid-cols-2 gap-2">
         <a
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
           class="flex items-center justify-center gap-2.5 px-4 py-3 bg-gray-900 text-white rounded-xl transition-all duration-300"
@@ -188,7 +234,8 @@ const { class: className = "" } = Astro.props;
           </div>
         </a>
         <a
-          href="#"
+          href="https://play.google.com/store/apps/details?id=com.ateliya.app"
+          target="_blank"
           class="flex items-center justify-center gap-2.5 px-4 py-3 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-md shadow-ateliya-primary/20"
         >
           <svg

@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import Icon from "../components/Icon.astro";
 import { stats } from "../data/data";
+import accueilImg from "../assets/app_images/accueil.png";
 
 const carouselCards = [
   {
@@ -79,15 +81,6 @@ const CARD_COUNT = carouselCards.length;
       ))
     }
   </div>
-  <div class="absolute right-12 bottom-[12%] grid grid-cols-5 gap-3 opacity-25">
-    {
-      [...Array(15)].map((_, i) => (
-        <div
-          class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary/50" : "bg-white/40"}`}
-        />
-      ))
-    }
-  </div>
 
   <!-- Content -->
   <div class="container mx-auto px-6 lg:px-12 relative z-10 py-20">
@@ -123,20 +116,21 @@ const CARD_COUNT = carouselCards.length;
 
         <!-- CTA Buttons — taille augmentee -->
         <div class="flex flex-col sm:flex-row gap-4 pt-1">
-          <a
-            href="#download"
+          <button
+            id="open-register-modal"
+            type="button"
             class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold text-xl shadow-lg shadow-ateliya-primary/25 hover:shadow-xl hover:shadow-ateliya-primary/35 transition-all duration-300 hover:scale-105"
           >
             <span
               class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
             ></span>
             <Icon
-              name="download"
+              name="user-plus"
               size="lg"
-              class="relative z-10 group-hover:translate-y-0.5 transition-transform duration-300"
+              class="relative z-10 group-hover:scale-110 transition-transform duration-300"
             />
-            <span class="relative z-10">Demarrer Gratuitement</span>
-          </a>
+            <span class="relative z-10">S'inscrire Gratuitement</span>
+          </button>
           <a
             href="#demo"
             class="group inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/70 text-gray-800 font-bold text-xl hover:bg-white/80 hover:border-ateliya-primary/30 transition-all duration-300 hover:scale-105"
@@ -231,14 +225,12 @@ const CARD_COUNT = carouselCards.length;
             <div class="scene__phone-body">
               <div class="scene__phone-screen">
                 <div class="scene__phone-notch"></div>
-                <img
-                  src="/ateliya/app_images/accueil.png"
+                <Image
+                  src={accueilImg}
                   alt="Interface mobile Ateliya"
                   class="scene__phone-img"
                   loading="eager"
                   fetchpriority="high"
-                  width="390"
-                  height="844"
                   decoding="sync"
                 />
               </div>
@@ -283,11 +275,11 @@ const CARD_COUNT = carouselCards.length;
                   class="text-ateliya-secondary"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <p class="text-[10px] text-gray-400 font-medium">
                   Croissance
                 </p><p class="text-xs font-bold text-gray-900">+35% revenus</p>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

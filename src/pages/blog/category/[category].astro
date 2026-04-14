@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from "../../../components/Icon.astro";
 import "../../../styles/global.css";
 import { blogPosts } from "../../../data/blog";
@@ -167,10 +168,14 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
                   
                   <!-- Image -->
                   <div class="relative h-64 overflow-hidden">
-                    <img 
-                      src={post.image} 
+                    <Image
+                      src={post.image}
                       alt={post.title}
                       class="w-full h-full object-cover group-hover/post:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                      width={600}
+                      height={256}
+                      decoding="async"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-ateliya-dark/30 to-transparent opacity-0 group-hover/post:opacity-100 transition-opacity duration-500" />
                     

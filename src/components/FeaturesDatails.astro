@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from "../components/Icon.astro";
 import { features } from "../data/data";
+import accueilImg from '../assets/app_images/accueil.png';
 ---
 
 <section
@@ -180,14 +182,12 @@ import { features } from "../data/data";
                                 class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-2xl z-20"
                             >
                             </div>
-                            <img
-                                src="/ateliya/app_images/accueil.png"
+                            <Image
+                                src={accueilImg}
                                 alt="Ateliya - Gestion complete d'atelier"
                                 class="w-full h-full object-cover"
                                 loading="lazy"
                                 decoding="async"
-                                width="390"
-                                height="844"
                             />
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from "../../components/Icon.astro";
 import "../../styles/global.css";
 import Layout from "../../layouts/Layout.astro";
@@ -32,7 +33,7 @@ const article = {
     avatar: '/images/authors/default.jpg',
     bio: 'Contenu éditorial Ateliya.'
   },
-  image: articleData.image || 'https://images.unsplash.com/photo-1558769132-cb1aea3c1c2d?w=1200',
+  image: articleData.image || 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200',
   tags: articleData.tags || ['général'],
   content: articleData.content || '<p>Contenu temporaire. L\'article sera bientôt disponible.</p>'
 };
@@ -87,10 +88,14 @@ const categoryColors: Record<string, string> = {
         <!-- Hero Section -->
         <section class="relative h-[70vh] min-h-[500px] overflow-hidden">
           <!-- Image -->
-          <img
+          <Image
             src={article.image}
             alt={article.title}
             class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            width={1200}
+            height={630}
+            decoding="async"
           />
           <div
             class="absolute inset-0 bg-gradient-to-t from-ateliya-dark/90 via-ateliya-dark/50 to-transparent"
@@ -437,10 +442,14 @@ const categoryColors: Record<string, string> = {
                       relatedArticles.map((related) => (
                         <a href={related.url} class="group block">
                           <div class="flex gap-4">
-                            <img
+                            <Image
                               src={related.image}
                               alt={related.title}
                               class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform"
+                              loading="lazy"
+                              width={96}
+                              height={96}
+                              decoding="async"
                             />
                             <div class="flex-1">
                               <span class="text-xs font-bold text-ateliya-primary mb-1 block">

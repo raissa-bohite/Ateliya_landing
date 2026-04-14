@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Icon from "../components/Icon.astro";
+import accueilImg from "../assets/app_images/accueil.png";
 ---
 
 <section
@@ -98,7 +100,8 @@ import Icon from "../components/Icon.astro";
         <div class="flex flex-col sm:flex-row gap-3">
           <!-- App Store -->
           <a
-            href="#appstore"
+            href="https://apps.apple.com/us/app/ateliya/id6755125319"
+            target="_blank"
             class="group flex-1 flex items-center gap-4 px-5 py-4 bg-white rounded-2xl border border-gray-200 hover:border-ateliya-primary/40 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
           >
             <div
@@ -130,6 +133,7 @@ import Icon from "../components/Icon.astro";
           <!-- Google Play -->
           <a
             href="https://play.google.com/store/apps/details?id=com.ateliya.app"
+            target="_blank"
             class="group flex-1 flex items-center gap-4 px-5 py-4 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-2xl hover:shadow-xl hover:shadow-ateliya-primary/25 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
           >
             <!-- Shimmer -->
@@ -249,15 +253,13 @@ import Icon from "../components/Icon.astro";
                 class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"
               >
               </div>
-              <img
-                src="/ateliya/app_images/accueil.png"
+              <Image
+                src={accueilImg}
                 alt="Application mobile Ateliya"
                 class="w-full h-full object-cover"
                 loading="eager"
                 fetchpriority="high"
                 decoding="sync"
-                width="390"
-                height="844"
               />
             </div>
           </div>

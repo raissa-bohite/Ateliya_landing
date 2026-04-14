@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import onboardingImg from '../assets/app_images/onboarding.png';
+import blog2Img from '../assets/blog2.jpg';
 import { features, workflow } from "../data/features";
 
 const featuresByCategory = {
@@ -182,7 +185,7 @@ const gradientColors = [
               <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
                 <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]">
                   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"></div>
-                  <img src="/ateliya/app_images/onboarding.png" alt="Interface Ateliya" class="w-full h-full object-cover" loading="eager" />
+                  <Image src={onboardingImg} alt="Interface Ateliya" class="w-full h-full object-cover" loading="eager" />
                 </div>
               </div>
             </div>
@@ -201,7 +204,7 @@ const gradientColors = [
                 </svg>
               </div>
               <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-2xl">
-                <img src="/blog2.jpg" alt="Tailleur utilisant Ateliya" class="w-full h-full object-cover" loading="eager" />
+                <Image src={blog2Img} alt="Tailleur utilisant Ateliya" class="w-full h-full object-cover" loading="eager" />
               </div>
             </div>
 
@@ -366,7 +369,7 @@ const gradientColors = [
                   <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl transition-transform duration-500 hover:scale-[1.03]">
                     <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]">
                       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20" />
-                      <img src={cat.phoneSrc} alt={cat.phoneAlt} class="w-full h-full object-cover" loading="lazy" />
+                      <img src={cat.phoneSrc} alt={cat.phoneAlt} class="w-full h-full object-cover" loading="lazy" width="288" height="580" decoding="async" />
                     </div>
                   </div>
                 </div>
@@ -392,7 +395,7 @@ const gradientColors = [
                     </svg>
                   </div>
                   <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-2xl">
-                    <img src={cat.photoSrc} alt={cat.photoAlt} class="w-full h-full object-cover" loading="lazy" />
+                    <img src={cat.photoSrc} alt={cat.photoAlt} class="w-full h-full object-cover" loading="lazy" width="320" height="320" decoding="async" />
                   </div>
 
                   {/* Hatched circle */}

@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { socials, navLinks, legalLinks } from "../data/footer";
+import logoImg from '../assets/ateliya.webp';
 ---
 
 <footer class="bg-[#0F172A] text-white">
@@ -19,12 +21,13 @@ import { socials, navLinks, legalLinks } from "../data/footer";
       <!-- Brand -->
       <div class="lg:col-span-4">
         <a href="/" class="inline-flex items-center gap-3 mb-6 group">
-          <img
-            src="/ateliya.webp"
+          <Image
+            src={logoImg}
             alt="Ateliya"
-            width="44"
-            height="44"
+            width={44}
+            height={44}
             class="rounded-xl group-hover:scale-110 transition-transform duration-300"
+            loading="lazy"
           />
           <span
             class="text-2xl font-black bg-gradient-to-r from-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent"

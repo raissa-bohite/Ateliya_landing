@@ -119,12 +119,15 @@ import { galleryItems } from "../data/data";
                       alt={item.label}
                       class="w-full h-full object-cover"
                       loading="lazy"
+                      width="390"
+                      height="844"
+                      decoding="async"
                     />
                   ) : (
                     <div class="w-full h-full flex items-center justify-center bg-gray-50">
                       <Icon
                         name={item.icon || "image"}
-                        size="3xl"
+                        size="2xl"
                         class="text-ateliya-primary/50"
                       />
                     </div>
@@ -165,12 +168,15 @@ import { galleryItems } from "../data/data";
                       alt=""
                       class="w-full h-full object-cover"
                       loading="lazy"
+                      width="390"
+                      height="844"
+                      decoding="async"
                     />
                   ) : (
                     <div class="w-full h-full flex items-center justify-center bg-gray-50">
                       <Icon
                         name={item.icon || "image"}
-                        size="3xl"
+                        size="2xl"
                         class="text-ateliya-primary/50"
                       />
                     </div>

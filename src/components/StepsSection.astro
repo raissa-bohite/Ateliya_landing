@@ -1,32 +1,51 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import Icon from "../components/Icon.astro";
 import { steps } from "../data/data";
-import gestionImg from '../assets/app_images/gestion.png';
-import rapportImg from '../assets/app_images/rapport.png';
+import gestionImg from "../assets/app_images/gestion.png";
+import rapportImg from "../assets/app_images/rapport.png";
 
 const stepStyles = [
-  { icon: "user-plus", color: "text-ateliya-primary", bgColor: "from-ateliya-primary/20 to-ateliya-primary/10" },
-  { icon: "settings", color: "text-ateliya-secondary", bgColor: "from-ateliya-secondary/20 to-ateliya-secondary/10" },
-  { icon: "upload", color: "text-blue-500", bgColor: "from-blue-500/20 to-blue-500/10" },
-  { icon: "rocket", color: "text-amber-500", bgColor: "from-amber-500/20 to-amber-500/10" },
+  {
+    icon: "user-plus",
+    color: "text-ateliya-primary",
+    bgColor: "from-ateliya-primary/20 to-ateliya-primary/10",
+  },
+  {
+    icon: "settings",
+    color: "text-ateliya-secondary",
+    bgColor: "from-ateliya-secondary/20 to-ateliya-secondary/10",
+  },
+  {
+    icon: "upload",
+    color: "text-blue-500",
+    bgColor: "from-blue-500/20 to-blue-500/10",
+  },
+  {
+    icon: "rocket",
+    color: "text-amber-500",
+    bgColor: "from-amber-500/20 to-amber-500/10",
+  },
 ];
 
 const appFeatures = [
   {
     icon: "cloud",
     title: "Gestion Cloud Complete",
-    description: "Accedez a vos donnees depuis n'importe ou avec notre solution cloud securisee et synchronisee en temps reel",
+    description:
+      "Accedez a vos donnees depuis n'importe ou avec notre solution cloud securisee et synchronisee en temps reel",
   },
   {
     icon: "clock",
     title: "Gain de Temps Optimal",
-    description: "Automatisez vos taches repetitives et reduisez le temps de saisie des donnees de 70%",
+    description:
+      "Automatisez vos taches repetitives et reduisez le temps de saisie des donnees de 70%",
   },
   {
     icon: "dollar-sign",
     title: "Suivi Financier Precis",
-    description: "Suivez vos revenus, depenses et marges en temps reel avec des rapports detailles",
+    description:
+      "Suivez vos revenus, depenses et marges en temps reel avec des rapports detailles",
   },
 ];
 ---
@@ -38,15 +57,18 @@ const appFeatures = [
   <!-- ---- Background Decorations ---- -->
   <div
     class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/5 rounded-full blur-[120px]"
-  ></div>
+  >
+  </div>
   <div
     class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/4 rounded-full blur-[100px]"
-  ></div>
+  >
+  </div>
 
   <div
     class="absolute inset-0 opacity-[0.02]"
     style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"
-  ></div>
+  >
+  </div>
 
   <!-- Dot grid top-right -->
   <div class="absolute right-8 top-[6%] grid grid-cols-5 gap-2 opacity-25">
@@ -71,13 +93,13 @@ const appFeatures = [
         >
       </div>
 
-     <h3
-              class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900"
-            >
+      <h3
+        class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900"
+      >
         <span class="block">4 Etapes</span>
-         <span
-                class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary"
-              >
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary"
+        >
           pour vous connecter
         </span>
       </h3>
@@ -90,7 +112,9 @@ const appFeatures = [
     </div>
 
     <!-- ---- Steps Grid (KEPT AS-IS with Icon component) ---- -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 md:mb-28">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 md:mb-28"
+    >
       {
         steps.map((step, i) => (
           <div class="group/step h-full">
@@ -158,18 +182,19 @@ const appFeatures = [
       <!-- Section bg decorations -->
       <div
         class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/4 to-transparent rounded-bl-[80px]"
-      ></div>
+      >
+      </div>
       <div
         class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/5 rounded-full blur-[100px]"
-      ></div>
+      >
+      </div>
       <div
         class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/4 rounded-full blur-[80px]"
-      ></div>
+      >
+      </div>
 
       <!-- Dot grid -->
-      <div
-        class="absolute left-6 top-[10%] grid grid-cols-5 gap-2 opacity-25"
-      >
+      <div class="absolute left-6 top-[10%] grid grid-cols-5 gap-2 opacity-25">
         {
           [...Array(20)].map((_, i) => (
             <div
@@ -194,9 +219,12 @@ const appFeatures = [
       <div
         class="absolute inset-0 opacity-[0.02]"
         style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 32px 32px;"
-      ></div>
+      >
+      </div>
 
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+      <div
+        class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10"
+      >
         <!-- Left: Content -->
         <div class="space-y-7 order-2 lg:order-1">
           <div
@@ -235,11 +263,7 @@ const appFeatures = [
                   style={`animation-delay: ${i * 80}ms`}
                 >
                   <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center shadow-md group-hover/feat:scale-110 transition-transform duration-300">
-                    <Icon
-                      name={feature.icon}
-                      size="sm"
-                      class="text-white"
-                    />
+                    <Icon name={feature.icon} size="sm" class="text-white" />
                   </div>
                   <div class="flex-1 min-w-0">
                     <h4 class="text-base font-bold text-gray-900 group-hover/feat:text-ateliya-primary transition-colors duration-300 mb-0.5">
@@ -283,32 +307,29 @@ const appFeatures = [
         </div>
 
         <!-- Right: Mockup Composite -->
-        <div
-          class="relative min-h-[480px] md:min-h-[560px] order-1 lg:order-2"
-        >
+        <div class="relative min-h-[480px] md:min-h-[560px] order-1 lg:order-2">
           <!-- BG circle -->
           <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-ateliya-primary/5 to-ateliya-secondary/3"
-          ></div>
+          >
+          </div>
 
           <!-- Dashed orbit -->
           <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] rounded-full border-2 border-dashed border-ateliya-primary/8 steps-spin-slow hidden md:block"
-          ></div>
+          >
+          </div>
 
           <!-- Device 1: Terminal (back) -->
-          <div
-            class="absolute left-[2%] top-[8%] z-10 steps-device-1"
-          >
-            <div
-              class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl"
-            >
+          <div class="absolute left-[2%] top-[8%] z-10 steps-device-1">
+            <div class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl">
               <div
                 class="relative bg-white rounded-[2rem] overflow-hidden w-56 md:w-64 h-[400px] md:h-[460px]"
               >
                 <div
                   class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-b-2xl z-20"
-                ></div>
+                >
+                </div>
                 <Image
                   src={gestionImg}
                   alt="Terminal de paiement"
@@ -331,18 +352,15 @@ const appFeatures = [
           </div>
 
           <!-- Device 2: Mobile (front) -->
-          <div
-            class="absolute right-[2%] top-[18%] z-20 steps-device-2"
-          >
-            <div
-              class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl"
-            >
+          <div class="absolute right-[2%] top-[18%] z-20 steps-device-2">
+            <div class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl">
               <div
                 class="relative bg-white rounded-[2rem] overflow-hidden w-56 md:w-64 h-[400px] md:h-[460px]"
               >
                 <div
                   class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-900 rounded-b-2xl z-20"
-                ></div>
+                >
+                </div>
                 <Image
                   src={rapportImg}
                   alt="Application mobile"
@@ -377,9 +395,8 @@ const appFeatures = [
                   x2="100%"
                   y2="100%"
                 >
-                  <stop
-                    offset="0%"
-                    style="stop-color:#D4AF37;stop-opacity:0.5"></stop>
+                  <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.5"
+                  ></stop>
                   <stop
                     offset="100%"
                     style="stop-color:#34C7B8;stop-opacity:0.3"></stop>
@@ -399,20 +416,6 @@ const appFeatures = [
             class="absolute top-[5%] left-[35%] z-30 steps-float-card"
             style="animation-delay: 0.5s"
           >
-            <div
-              class="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl shadow-gray-200/50 p-3 border border-gray-100"
-            >
-              <div class="flex items-center gap-2">
-                <div
-                  class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center"
-                >
-                  <Icon name="check" size="xs" class="text-green-600" />
-                </div>
-                <span class="text-xs font-bold text-gray-900"
-                  >Synchronise</span
-                >
-              </div>
-            </div>
           </div>
 
           <div
@@ -426,11 +429,7 @@ const appFeatures = [
                 <div
                   class="w-8 h-8 rounded-lg bg-ateliya-primary/10 flex items-center justify-center"
                 >
-                  <Icon
-                    name="shield"
-                    size="xs"
-                    class="text-ateliya-primary"
-                  />
+                  <Icon name="shield" size="xs" class="text-ateliya-primary" />
                 </div>
                 <span class="text-xs font-bold text-gray-900">Securise</span>
               </div>
@@ -440,22 +439,24 @@ const appFeatures = [
           <!-- Bouncing dots -->
           <div
             class="absolute top-[15%] right-[30%] w-3 h-3 rounded-full bg-ateliya-primary/40 steps-bounce-1"
-          ></div>
+          >
+          </div>
           <div
             class="absolute bottom-[20%] left-[25%] w-3.5 h-3.5 rounded-full bg-ateliya-secondary/35 steps-bounce-2"
-          ></div>
+          >
+          </div>
           <div
             class="absolute top-[50%] right-[5%] w-2.5 h-2.5 rounded-full bg-pink-400/30 steps-bounce-1"
-          ></div>
+          >
+          </div>
 
           <!-- Hatched circle -->
-          <div
-            class="absolute bottom-[5%] left-[12%] w-16 h-16 opacity-30"
-          >
+          <div class="absolute bottom-[5%] left-[12%] w-16 h-16 opacity-30">
             <div
               class="w-full h-full rounded-full"
               style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #D4AF3740 2.5px, #D4AF3740 5px);"
-            ></div>
+            >
+            </div>
           </div>
         </div>
       </div>

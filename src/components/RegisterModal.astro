@@ -621,6 +621,8 @@
 </div>
 
 <script>
+  import { BASE_URL } from "../lib/environment";
+
   // ─── Types ────────────────────────────────────────────────────────────────────
   interface PaysItem {
     id: number;
@@ -791,7 +793,7 @@
     if (paysData.length > 0) return;
     paysLoading.classList.remove("hidden");
     try {
-      const res = await fetch("https://backend.ateliya.com/api/pays/actif");
+      const res = await fetch(`${BASE_URL}/pays/actif`);
       if (!res.ok) throw new Error("HTTP " + res.status);
       const json = await res.json();
       paysData = (json.data || []) as PaysItem[];
@@ -907,7 +909,7 @@
     if (fields.codeParrain) payload.codeParrain = fields.codeParrain;
 
     try {
-      const res = await fetch("https://backend.ateliya.com/api/user/create", {
+      const res = await fetch(`${BASE_URL}/user/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

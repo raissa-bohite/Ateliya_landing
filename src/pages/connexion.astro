@@ -267,6 +267,8 @@ import "../styles/global.css";
 </Layout>
 
 <script>
+  import { BASE_URL } from "../lib/environment";
+
   interface PaysItem { id: number; libelle: string; code: string; indicatif: string; }
   let paysData: PaysItem[] = [];
   let isSubmitting = false;
@@ -413,7 +415,7 @@ import "../styles/global.css";
   async function loadPays() {
     paysLoading.classList.remove("hidden");
     try {
-      const res  = await fetch("https://backend.ateliya.com/api/pays/actif");
+      const res  = await fetch(`${BASE_URL}/pays/actif`);
       if (!res.ok) throw new Error();
       const json = await res.json();
       paysData   = (json.data || []) as PaysItem[];
@@ -482,7 +484,7 @@ import "../styles/global.css";
       };
       if (fields.codeParrain) payload.codeParrain = fields.codeParrain;
 
-      const res = await fetch("https://backend.ateliya.com/api/user/create", {
+      const res = await fetch(`${BASE_URL}/user/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

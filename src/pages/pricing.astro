@@ -3,122 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-
-const plans = [
-  {
-    name: "Starter",
-    description: "Pour debuter et tester Ateliya",
-    price: { monthly: 5000, annual: 50000 },
-    popular: false,
-    icon: "zap",
-    iconColor: "text-ateliya-primary",
-    iconBg: "from-ateliya-primary/20 to-ateliya-primary/10",
-    glowBg: "from-ateliya-primary/15 to-teal-400/10",
-    barGradient: "from-ateliya-primary to-teal-400",
-    number: "01",
-    features: [
-      { text: "Jusqu'a 50 commandes/mois", included: true },
-      { text: "Gestion clients & stock", included: true },
-      { text: "Notifications SMS (50/mois)", included: true },
-      { text: "1 utilisateur", included: true },
-      { text: "Support email", included: true },
-      { text: "Rapports basiques", included: true },
-      { text: "Paiements mobile money", included: true },
-      { text: "Mode hors ligne", included: false },
-      { text: "API & integrations", included: false },
-      { text: "Formation personnalisee", included: false },
-    ],
-    cta: "Commencer gratuitement",
-  },
-  {
-    name: "Professionnel",
-    description: "Pour les ateliers etablis",
-    price: { monthly: 15000, annual: 150000 },
-    popular: true,
-    icon: "star",
-    iconColor: "text-ateliya-secondary",
-    iconBg: "from-ateliya-secondary/20 to-ateliya-secondary/10",
-    glowBg: "from-ateliya-secondary/15 to-amber-400/10",
-    barGradient: "from-ateliya-secondary to-amber-400",
-    number: "02",
-    features: [
-      { text: "Commandes illimitees", included: true },
-      { text: "Gestion clients & stock", included: true },
-      { text: "Notifications SMS illimitees", included: true },
-      { text: "Jusqu'a 3 utilisateurs", included: true },
-      { text: "Support prioritaire 24/7", included: true },
-      { text: "Rapports avances", included: true },
-      { text: "Paiements mobile money", included: true },
-      { text: "Mode hors ligne", included: true },
-      { text: "API & integrations", included: true },
-      { text: "Formation personnalisee", included: false },
-    ],
-    cta: "Essayer 14 jours gratuit",
-  },
-  {
-    name: "Enterprise",
-    description: "Pour les grandes structures",
-    price: { monthly: 35000, annual: 350000 },
-    popular: false,
-    icon: "shield",
-    iconColor: "text-blue-500",
-    iconBg: "from-blue-500/20 to-blue-500/10",
-    glowBg: "from-blue-500/15 to-indigo-400/10",
-    barGradient: "from-blue-500 to-indigo-400",
-    number: "03",
-    features: [
-      { text: "Commandes illimitees", included: true },
-      { text: "Gestion clients & stock", included: true },
-      { text: "Notifications SMS illimitees", included: true },
-      { text: "Utilisateurs illimites", included: true },
-      { text: "Support dedie 24/7", included: true },
-      { text: "Rapports personnalises", included: true },
-      { text: "Paiements mobile money", included: true },
-      { text: "Mode hors ligne", included: true },
-      { text: "API & integrations avancees", included: true },
-      { text: "Formation personnalisee", included: true },
-    ],
-    cta: "Nous contacter",
-  },
-];
-
-const featureComparison = [
-  {
-    category: "Gestion",
-    icon: "scissors",
-    color: "text-ateliya-primary",
-    bg: "from-ateliya-primary/20 to-ateliya-primary/10",
-    features: [
-      { name: "Commandes par mois", starter: "50", pro: "Illimite", enterprise: "Illimite" },
-      { name: "Clients", starter: "Illimite", pro: "Illimite", enterprise: "Illimite" },
-      { name: "Produits/Tissus", starter: "Illimite", pro: "Illimite", enterprise: "Illimite" },
-      { name: "Gestion stock", starter: true, pro: true, enterprise: true },
-    ],
-  },
-  {
-    category: "Communication",
-    icon: "mail",
-    color: "text-ateliya-secondary",
-    bg: "from-ateliya-secondary/20 to-ateliya-secondary/10",
-    features: [
-      { name: "SMS par mois", starter: "50", pro: "Illimite", enterprise: "Illimite" },
-      { name: "Email notifications", starter: true, pro: true, enterprise: true },
-      { name: "WhatsApp (bientot)", starter: false, pro: true, enterprise: true },
-    ],
-  },
-  {
-    category: "Support & extras",
-    icon: "headphones",
-    color: "text-blue-500",
-    bg: "from-blue-500/20 to-blue-500/10",
-    features: [
-      { name: "Support email", starter: true, pro: true, enterprise: true },
-      { name: "Support telephone", starter: false, pro: true, enterprise: true },
-      { name: "Support dedie", starter: false, pro: false, enterprise: true },
-      { name: "Formation", starter: false, pro: false, enterprise: true },
-    ],
-  },
-];
+import PricingSection from "../components/abonnement/PricingSection.tsx";
 
 const faqPricing = [
   { question: "Puis-je essayer gratuitement ?", answer: "Oui ! Tous les plans incluent 14 jours d'essai gratuit, sans carte bancaire requise." },
@@ -138,7 +23,7 @@ const faqPricing = [
     <!-- ============================================
          HERO
          ============================================ -->
-    <section class="relative py-12 lg:py-16 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
+    <section class="relative pt-24 lg:pt-28 pb-10 lg:pb-14 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
 
       <div class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/5 rounded-full blur-[120px]"></div>
       <div class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/4 rounded-full blur-[100px]"></div>
@@ -156,7 +41,7 @@ const faqPricing = [
       </div>
 
       <div class="container mx-auto px-6 lg:px-12 relative z-10">
-        <div class="text-center mb-8 space-y-4">
+        <div class="text-center space-y-4">
 
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
             <Icon name="tag" size="sm" class="text-ateliya-primary" />
@@ -171,148 +56,27 @@ const faqPricing = [
           </h1>
 
           <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed tracking-wide">
-            Commencez avec <span class="font-bold text-ateliya-primary">14 jours gratuits</span>.
-            Aucune carte requise. Annulation en 1 clic.
+            Choisissez l'offre qui vous correspond. <span class="font-bold text-ateliya-primary">Activation instantanée</span> après paiement.
           </p>
-
-          <!-- Toggle -->
-          <div class="flex items-center justify-center gap-4 pt-2">
-            <span class="text-sm font-bold text-gray-900 toggle-label" data-period="monthly">Mensuel</span>
-            <button
-              id="billingToggle"
-              class="pricing-toggle"
-              role="switch"
-              aria-checked="false"
-              aria-label="Basculer entre mensuel et annuel"
-            >
-              <span class="pricing-toggle__thumb"></span>
-            </button>
-            <span class="text-sm font-bold text-gray-400 toggle-label" data-period="annual">
-              Annuel
-              <span class="ml-1.5 px-2 py-0.5 text-[10px] font-black bg-ateliya-primary text-white rounded-full uppercase tracking-wide animate-pulse shadow-sm shadow-ateliya-primary/20">
-                -17%
-              </span>
-            </span>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================
-         PRICING CARDS
+         FORFAITS (dynamiques depuis l'API)
          ============================================ -->
-    <section class="relative py-4 -mt-6">
+    <section class="relative pb-8 lg:pb-10">
       <div class="container mx-auto px-6 lg:px-12 max-w-7xl">
+        <PricingSection client:only="react" />
+      </div>
+    </section>
 
-        <div class="grid md:grid-cols-3 gap-5 md:gap-6">
-          {plans.map((plan, idx) => (
-            <div class={`group/plan h-full ${plan.popular ? "md:-mt-4" : ""}`}>
-              <div class="h-full relative">
-
-                <div class={`absolute -inset-1 bg-gradient-to-br ${plan.glowBg} rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-60 transition-all duration-700 -z-10`} />
-
-                <div class={`h-full p-5 md:p-6 rounded-2xl bg-white border-2 transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden ${
-                  plan.popular
-                    ? "border-ateliya-primary/30 shadow-none"
-                    : "border-gray-100 group-hover/plan:border-ateliya-primary/30"
-                }`}>
-
-                  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/plan:opacity-100 transition-opacity duration-500"></div>
-
-                  {plan.popular && (
-                    <div class="absolute -top-px left-0 right-0 flex justify-center">
-                      <div class="px-5 py-1.5 rounded-b-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-[11px] font-black tracking-wide uppercase shadow-sm shadow-ateliya-primary/15">
-                        Le plus populaire
-                      </div>
-                    </div>
-                  )}
-
-                  <div class={`relative z-10 flex flex-col h-full ${plan.popular ? "pt-5" : ""}`}>
-
-                    {/* Header : icon + number */}
-                    <div class="flex items-start justify-between mb-4">
-                      <div class={`relative flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${plan.iconBg} group-hover/plan:scale-110 transition-all duration-500 shadow-sm`}>
-                        <Icon name={plan.icon} size="md" class={plan.iconColor} />
-                      </div>
-                      <div class="text-5xl md:text-6xl font-black text-ateliya-primary/8 leading-none select-none">
-                        {plan.number}
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <div class="space-y-1 mb-4">
-                      <h3 class="text-xl md:text-2xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight">{plan.name}</h3>
-                      <div class={`w-12 h-1 bg-gradient-to-r ${plan.barGradient} rounded-full group-hover/plan:w-20 transition-all duration-500`}></div>
-                      <p class="text-sm text-gray-500 pt-0.5">{plan.description}</p>
-                    </div>
-
-                    {/* Price */}
-                    <div class="mb-4">
-                      <div class="flex items-baseline gap-1.5">
-                        <span
-                          class="text-4xl md:text-5xl font-extrabold text-gray-900 tabular-nums price-value"
-                          data-monthly={plan.price.monthly}
-                          data-annual={plan.price.annual}
-                        >
-                          {plan.price.monthly.toLocaleString()}
-                        </span>
-                        <span class="text-base text-gray-400 font-bold">FCFA</span>
-                      </div>
-                      <p class="text-sm text-gray-400 mt-0.5 price-period">par mois</p>
-                      <p class="text-xs text-ateliya-primary font-bold mt-1 annual-savings hidden">
-                        Economisez {(plan.price.monthly * 12 - plan.price.annual).toLocaleString()} FCFA/an
-                      </p>
-                    </div>
-
-                    {/* CTA */}
-                    <div class="mb-4">
-                      <button class={`w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] ${
-                        plan.popular
-                          ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-sm shadow-ateliya-primary/15 hover:shadow-md hover:shadow-ateliya-primary/20"
-                          : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-dark"
-                      }`}>
-                        {plan.cta}
-                      </button>
-                    </div>
-
-                    {/* Features */}
-                    <div class="space-y-2.5 flex-grow">
-                      {plan.features.map((feature) => (
-                        <div class={`flex items-start gap-2.5 ${!feature.included ? "opacity-40" : ""}`}>
-                          <div class={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
-                            feature.included
-                              ? "bg-ateliya-primary/10"
-                              : "bg-gray-100"
-                          }`}>
-                            <Icon
-                              name={feature.included ? "check" : "x"}
-                              size="xs"
-                              class={feature.included ? "text-ateliya-primary" : "text-gray-300"}
-                            />
-                          </div>
-                          <span class="text-sm text-gray-600 leading-snug">{feature.text}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Link */}
-                    <div class="flex items-center gap-2 text-ateliya-primary font-bold text-sm group/link cursor-pointer mt-4 pt-3 border-t border-gray-100">
-                      <span>En savoir plus</span>
-                      <Icon name="arrow-right" size="sm" class="group-hover/link:translate-x-2 transition-transform duration-300" />
-                    </div>
-
-                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
-                      <div class={`h-full w-0 bg-gradient-to-r ${plan.barGradient} group-hover/plan:w-full transition-all duration-1000`}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Trust badges */}
-        <div class="flex flex-wrap items-center justify-center gap-3 mt-10">
+    <!-- ============================================
+         TRUST BADGES
+         ============================================ -->
+    <section class="relative pb-14">
+      <div class="container mx-auto px-6 lg:px-12 max-w-5xl">
+        <div class="flex flex-wrap items-center justify-center gap-3">
           {[
             { icon: "shield", text: "Paiement securise" },
             { icon: "check", text: "Sans engagement" },
@@ -324,93 +88,6 @@ const faqPricing = [
                 <Icon name={badge.icon} size="sm" class="text-ateliya-primary" />
               </div>
               <span class="text-sm font-bold text-gray-600">{badge.text}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         COMPARISON TABLE
-         ============================================ -->
-    <section class="relative py-14 lg:py-18 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
-
-      <div class="absolute top-[10%] left-[10%] w-72 h-72 bg-ateliya-primary/4 rounded-full blur-[120px]"></div>
-      <div class="absolute bottom-[10%] right-[15%] w-64 h-64 bg-ateliya-secondary/3 rounded-full blur-[100px]"></div>
-      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"></div>
-
-      <div class="container mx-auto px-6 lg:px-12 max-w-6xl relative z-10">
-
-        <div class="text-center mb-10 md:mb-12 space-y-4">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-secondary/10 rounded-full">
-            <Icon name="list" size="sm" class="text-ateliya-secondary" />
-            <span class="text-sm font-bold text-ateliya-secondary">Comparaison Complete</span>
-          </div>
-
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
-            <span class="block">Tout ce qui est inclus</span>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
-              dans chaque plan
-            </span>
-          </h2>
-        </div>
-
-        {/* Table header - sticky */}
-        <div class="comparison-head sticky top-0 z-20 mb-3">
-          <div class="grid grid-cols-4 gap-4 p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-gray-100 shadow-none">
-            <div class="text-sm font-bold text-gray-400 uppercase tracking-wider">Fonctionnalite</div>
-            <div class="text-center text-sm font-black text-gray-900">Starter</div>
-            <div class="text-center">
-              <span class="text-sm font-black text-ateliya-primary">Pro</span>
-              <div class="w-6 h-0.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary rounded-full mx-auto mt-1"></div>
-            </div>
-            <div class="text-center text-sm font-black text-gray-900">Enterprise</div>
-          </div>
-        </div>
-
-        {/* Category groups */}
-        <div class="space-y-4">
-          {featureComparison.map((category) => (
-            <div>
-              <div class="relative">
-                <div class="p-5 md:p-6 rounded-2xl bg-white border-2 border-gray-100 overflow-hidden relative">
-
-                  {/* Category header */}
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class={`flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br ${category.bg} shadow-sm`}>
-                      <Icon name={category.icon} size="sm" class={category.color} />
-                    </div>
-                    <h3 class="text-base font-serif font-extrabold tracking-tighter text-gray-900">{category.category}</h3>
-                  </div>
-
-                  {/* Rows */}
-                  <div class="space-y-0">
-                    {category.features.map((feature, idx) => (
-                      <div class={`grid grid-cols-4 gap-4 py-[14px] ${idx > 0 ? "border-t border-gray-50" : ""} -mx-2 px-2 rounded-lg transition-colors duration-300 hover:bg-gray-50/50`}>
-                        <div class="text-sm font-medium text-gray-600">{feature.name}</div>
-                        {["starter", "pro", "enterprise"].map((tier) => {
-                          const val = feature[tier as keyof typeof feature];
-                          return (
-                            <div class="text-center flex items-center justify-center">
-                              {typeof val === "boolean" ? (
-                                val ? (
-                                  <div class="w-6 h-6 rounded-full bg-ateliya-primary/10 flex items-center justify-center">
-                                    <Icon name="check" size="xs" class="text-ateliya-primary" />
-                                  </div>
-                                ) : (
-                                  <span class="text-gray-200 font-bold">-</span>
-                                )
-                              ) : (
-                                <span class="text-sm font-bold text-gray-900 px-3 py-1 bg-gray-50 rounded-lg">{val}</span>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           ))}
         </div>
@@ -491,66 +168,29 @@ const faqPricing = [
       <div class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/4 rounded-full blur-[80px]"></div>
       <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 32px 32px;"></div>
 
-      <div class="absolute left-6 top-[10%] grid grid-cols-5 gap-2 opacity-25">
-        {[...Array(20)].map((_, i) => (
-          <div class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : i % 3 === 1 ? "bg-ateliya-secondary/40" : "bg-gray-300"}`} />
-        ))}
-      </div>
-
-      <div class="absolute top-[5%] right-[5%] w-[140px] h-[140px] opacity-50">
-        <svg viewBox="0 0 200 200" class="w-full h-full">
-          <defs>
-            <linearGradient id="ctaArc" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.5" />
-              <stop offset="100%" style="stop-color:#34C7B8;stop-opacity:0.3" />
-            </linearGradient>
-          </defs>
-          <path d="M 100,18 A 82,82 0 0,1 182,100" fill="none" stroke="url(#ctaArc)" stroke-width="25" stroke-linecap="round" />
-        </svg>
-      </div>
-
       <div class="relative z-10 text-center max-w-2xl mx-auto space-y-5">
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
           <Icon name="rocket" size="sm" class="text-ateliya-primary" />
-          <span class="text-sm font-bold text-ateliya-primary">Lancez-vous</span>
+          <span class="text-sm font-bold text-ateliya-primary">Besoin d'aide ?</span>
         </div>
 
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
-          <span class="block">Pret a transformer</span>
+          <span class="block">Une question</span>
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
-            votre atelier ?
+            avant de vous lancer ?
           </span>
         </h2>
 
         <p class="text-lg text-gray-500 leading-relaxed max-w-lg mx-auto tracking-wide">
-          Rejoignez <span class="font-bold text-ateliya-primary">500+ couturiers</span> qui gerent leur atelier plus efficacement avec Ateliya.
+          Notre equipe est disponible pour vous accompagner dans le choix de votre formule.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
-          <a href="#download" class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-sm shadow-ateliya-primary/10 hover:shadow-md hover:shadow-ateliya-primary/20 transition-all duration-300 hover:scale-105 active:scale-[0.97]">
+          <a href="/contact" class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-sm shadow-ateliya-primary/10 hover:shadow-md hover:shadow-ateliya-primary/20 transition-all duration-300 hover:scale-105 active:scale-[0.97]">
             <span class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-            <Icon name="download" size="md" class="relative z-10" />
-            <span class="relative z-10">Demarrer gratuitement</span>
+            <Icon name="mail" size="md" class="relative z-10" />
+            <span class="relative z-10">Nous contacter</span>
           </a>
-          <a href="#demo" class="group inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-white/60 backdrop-blur-sm border border-gray-100 text-gray-800 font-bold hover:bg-white/90 hover:border-ateliya-primary/30 transition-all duration-300 hover:scale-105 active:scale-[0.97]">
-            <Icon name="play-circle" size="md" class="text-ateliya-primary group-hover:scale-110 transition-transform" />
-            <span>Voir la demo</span>
-          </a>
-        </div>
-
-        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-          {[
-            { icon: "check", text: "14 jours gratuits" },
-            { icon: "check", text: "Sans carte bancaire" },
-            { icon: "check", text: "Annulation libre" },
-          ].map((item) => (
-            <div class="flex items-center gap-2 text-sm text-gray-500">
-              <div class="w-5 h-5 rounded-full bg-ateliya-primary/10 flex items-center justify-center">
-                <Icon name={item.icon} size="xs" class="text-ateliya-primary" />
-              </div>
-              <span class="font-semibold">{item.text}</span>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -561,46 +201,6 @@ const faqPricing = [
 </Layout>
 
 <style>
-  .pricing-toggle {
-    position: relative;
-    width: 52px;
-    height: 28px;
-    border-radius: 999px;
-    background: #e5e7eb;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    flex-shrink: 0;
-  }
-
-  .pricing-toggle[aria-checked="true"] {
-    background: #34C7B8;
-  }
-
-  .pricing-toggle__thumb {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .pricing-toggle[aria-checked="true"] .pricing-toggle__thumb {
-    transform: translateX(24px);
-  }
-
-  .price-value {
-    transition: opacity 0.2s ease;
-  }
-
-  .price-value.is-changing {
-    opacity: 0.3;
-  }
-
   .faq-answer {
     max-height: 0;
     overflow: hidden;
@@ -615,23 +215,6 @@ const faqPricing = [
     border-color: rgba(52, 199, 184, 0.25);
   }
 
-  .faq-item.is-open .faq-item-glow {
-    opacity: 0.5;
-  }
-
-  .faq-item.is-open .faq-item-accent {
-    opacity: 1;
-  }
-
-  .faq-item.is-open .faq-item-bar {
-    width: 100%;
-  }
-
-  .faq-item.is-open .faq-item-icon {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, rgba(52, 199, 184, 0.25), rgba(52, 199, 184, 0.1));
-  }
-
   .faq-item.is-open .faq-chevron {
     background: rgba(52, 199, 184, 0.1);
   }
@@ -639,17 +222,6 @@ const faqPricing = [
   .faq-item.is-open .faq-chevron :global(svg) {
     transform: rotate(180deg);
     color: #34C7B8;
-  }
-
-  @media (max-width: 768px) {
-    .comparison-head .grid {
-      grid-template-columns: 1.5fr repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .comparison-head .grid > div:first-child {
-      font-size: 10px;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -663,44 +235,6 @@ const faqPricing = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("billingToggle");
-    const priceValues = document.querySelectorAll(".price-value");
-    const pricePeriods = document.querySelectorAll(".price-period");
-    const annualSavings = document.querySelectorAll(".annual-savings");
-    const toggleLabels = document.querySelectorAll(".toggle-label");
-
-    let isAnnual = false;
-
-    toggle?.addEventListener("click", () => {
-      isAnnual = !isAnnual;
-      toggle.setAttribute("aria-checked", String(isAnnual));
-
-      priceValues.forEach((el) => {
-        el.classList.add("is-changing");
-        setTimeout(() => {
-          const monthly = parseInt(el.getAttribute("data-monthly") || "0");
-          const annual = parseInt(el.getAttribute("data-annual") || "0");
-          el.textContent = (isAnnual ? Math.round(annual / 12) : monthly).toLocaleString();
-          el.classList.remove("is-changing");
-        }, 200);
-      });
-
-      pricePeriods.forEach((p) => {
-        p.textContent = isAnnual ? "par mois (facture annuellement)" : "par mois";
-      });
-
-      annualSavings.forEach((s) => s.classList.toggle("hidden", !isAnnual));
-
-      toggleLabels.forEach((label) => {
-        const period = label.getAttribute("data-period");
-        const active =
-          (period === "annual" && isAnnual) || (period === "monthly" && !isAnnual);
-        label.classList.toggle("text-gray-900", active && period === "monthly");
-        label.classList.toggle("text-ateliya-primary", active && period === "annual");
-        label.classList.toggle("text-gray-400", !active);
-      });
-    });
-
     document.querySelectorAll(".faq-item button").forEach((btn) => {
       btn.addEventListener("click", () => {
         const item = btn.closest(".faq-item");

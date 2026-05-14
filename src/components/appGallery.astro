@@ -25,7 +25,7 @@ import { galleryItems } from "../data/data";
   <!-- Radial dot bg -->
   <div
     class="absolute inset-0 opacity-[0.025]"
-    style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"
+    style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
   ></div>
 
   <!-- Dot grid top-right -->
@@ -33,7 +33,7 @@ import { galleryItems } from "../data/data";
     {
       [...Array(24)].map((_, i) => (
         <div
-          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/50" : i % 4 === 2 ? "bg-blue-400/30" : "bg-gray-300"}`}
+          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/50" : i % 4 === 2 ? "bg-ateliya-secondary/20" : "bg-gray-300"}`}
         />
       ))
     }
@@ -80,7 +80,7 @@ import { galleryItems } from "../data/data";
   </div>
 
   <!-- Gallery Carousel (constrained width) -->
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
     <div class="relative">
       <!-- Fade edges -->
       <div
@@ -103,15 +103,15 @@ import { galleryItems } from "../data/data";
         {
           galleryItems.slice(0, 6).map((item, idx) => (
             <div
-              class="gallery-card group relative flex-shrink-0 w-[300px] h-[600px] rounded-[3rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
+              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
               style={`animation-delay: ${idx * 80}ms`}
             >
               {/* Phone Mockup Structure (Matches Hero) */}
-              <div class="relative w-full h-full bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-2xl">
                 {/* Screen Container */}
-                <div class="relative w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
+                <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
                   {/* Notch */}
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"></div>
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
                   
                   {item.image ? (
                     <img
@@ -155,12 +155,12 @@ import { galleryItems } from "../data/data";
           {
           galleryItems.slice(0, 6).map((item, idx) => (
             <div
-              class="gallery-card group relative flex-shrink-0 w-[300px] h-[600px] rounded-[3rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
+              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
               aria-hidden="true"
             >
-              <div class="relative w-full h-full bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
-                <div class="relative w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"></div>
+              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-2xl">
+                <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
                   
                   {item.image ? (
                     <img
@@ -246,7 +246,7 @@ import { galleryItems } from "../data/data";
     const totalOriginal = cards.length / 2;
     const getCardWidth = () => {
       const card = cards[0];
-      if (!card) return 320; // 300 width + 20 gap
+      if (!card) return 296; // 276 width + 20 gap
       return card.offsetWidth + 20;
     };
 

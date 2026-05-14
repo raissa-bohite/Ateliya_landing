@@ -3,32 +3,32 @@
 
 :root {
   /* Couleurs Ateliya */
-  --color-primary: #34c7b8;
-  --color-secondary: #2ba39f;
-  --color-accent: #1eb5a0;
-  --color-light: #4fd9cc;
-  --color-dark: #0d6b5f;
+  --color-primary: #2fafa4;
+  --color-secondary: #257f78;
+  --color-accent: #9a7b4f;
+  --color-light: #cfece8;
+  --color-dark: #123f3b;
 
   /* Couleurs Africa */
-  --color-africa-gold: #d4af37;
-  --color-africa-terra: #b85c38;
-  --color-africa-ochre: #d4a574;
-  --color-africa-clay: #8b6f47;
-  --color-africa-sand: #c9b59a;
-  --color-africa-sage: #6b8e5c;
-  --color-africa-burgundy: #8b3a3a;
-  --color-africa-ebony: #2c2c2c;
+  --color-africa-gold: #b99752;
+  --color-africa-terra: #9e5a40;
+  --color-africa-ochre: #c8a474;
+  --color-africa-clay: #766247;
+  --color-africa-sand: #d8ccb8;
+  --color-africa-sage: #6f8068;
+  --color-africa-burgundy: #7a3e3c;
+  --color-africa-ebony: #242522;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #34c7b8 0%, #2ba39f 100%);
-  --gradient-africa: linear-gradient(135deg, #b85c38 0%, #d4af37 100%);
-  --gradient-blend: linear-gradient(135deg, #34c7b8 0%, #8b6f47 50%, #d4af37 100%);
+  --gradient-primary: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+  --gradient-africa: linear-gradient(135deg, #9e5a40 0%, #b99752 100%);
+  --gradient-blend: linear-gradient(135deg, #2fafa4 0%, #766247 50%, #b99752 100%);
 
   /* Shadows */
-  --shadow-glow-primary: 0 0 30px rgba(52, 199, 184, 0.3);
-  --shadow-glow-primary-lg: 0 0 50px rgba(52, 199, 184, 0.4);
-  --shadow-glow-africa: 0 0 30px rgba(212, 175, 116, 0.3);
-  --shadow-glow-africa-lg: 0 0 50px rgba(212, 175, 116, 0.4);
+  --shadow-glow-primary: 0 12px 32px rgba(37, 127, 120, 0.14);
+  --shadow-glow-primary-lg: 0 18px 44px rgba(37, 127, 120, 0.2);
+  --shadow-glow-africa: 0 12px 32px rgba(154, 123, 79, 0.14);
+  --shadow-glow-africa-lg: 0 18px 44px rgba(154, 123, 79, 0.2);
 
   /* Timing */
   --transition-fast: 150ms;
@@ -59,7 +59,7 @@
 /* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    --shadow-glow-primary: 0 0 40px rgba(52, 199, 184, 0.5);
-    --shadow-glow-africa: 0 0 40px rgba(212, 175, 116, 0.5);
+    --shadow-glow-primary: 0 18px 48px rgba(47, 175, 164, 0.24);
+    --shadow-glow-africa: 0 18px 48px rgba(185, 151, 82, 0.22);
   }
 }

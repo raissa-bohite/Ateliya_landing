@@ -208,7 +208,7 @@
                 height="14"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#0D6B5F"
+                stroke="#123F3B"
                 stroke-width="2.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -903,7 +903,7 @@
       denominationEntreprise: fields.denominationEntreprise,
       emailEntreprise: fields.emailEntreprise,
       device: "web",
-      numeroEntreprise: fields.numeroEntreprise,
+      numeroEntreprise: (phonePrefix.textContent?.trim() || "") + fields.numeroEntreprise,
       pays: parseInt(fields.pays, 10),
     };
     if (fields.codeParrain) payload.codeParrain = fields.codeParrain;

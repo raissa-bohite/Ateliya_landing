@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Check,
   CheckCircle2,
@@ -29,27 +29,50 @@ const PLAN_ICONS = [
 
 const PLAN_NUMBERS = ["01", "02", "03"];
 
+interface PricingSectionProps {
+  initialPays?: PaysOption[];
+  initialPaysChoisiId?: number;
+  initialModules?: ModuleBackend[];
+}
+
 function getFlagEmoji(countryCode: string): string {
   const codePoints = [...countryCode.toUpperCase()].map(
-    (c) => 127397 + c.charCodeAt(0)
+    (c) => 127397 + c.charCodeAt(0),
   );
   return String.fromCodePoint(...codePoints);
 }
 
-export default function PricingSection() {
-  const [pays, setPays] = useState<PaysOption[]>([]);
-  const [paysChoisi, setPaysChoisi] = useState<PaysOption | null>(null);
-  const [loadingPays, setLoadingPays] = useState(true);
+export default function PricingSection({
+  initialPays = [],
+  initialPaysChoisiId,
+  initialModules = [],
+}: PricingSectionProps) {
+  const initialPaysChoisi =
+    initialPays.find((p) => p.id === initialPaysChoisiId) ??
+    initialPays[0] ??
+    null;
+  const hasInitialPays = initialPays.length > 0;
+  const firstModulesLoad = useRef(true);
+
+  const [pays, setPays] = useState<PaysOption[]>(initialPays);
+  const [paysChoisi, setPaysChoisi] = useState<PaysOption | null>(
+    initialPaysChoisi,
+  );
+  const [loadingPays, setLoadingPays] = useState(!hasInitialPays);
   const [errorPays, setErrorPays] = useState("");
 
-  const [modules, setModules] = useState<ModuleBackend[]>([]);
+  const [modules, setModules] = useState<ModuleBackend[]>(initialModules);
   const [loadingModules, setLoadingModules] = useState(false);
   const [errorModules, setErrorModules] = useState("");
 
-  const [planSelectionne, setPlanSelectionne] = useState<ModuleBackend | null>(null);
+  const [planSelectionne, setPlanSelectionne] = useState<ModuleBackend | null>(
+    null,
+  );
 
   // Charger les pays au montage + auto-select premier
   useEffect(() => {
+    if (hasInitialPays) return;
+
     getPaysDisponibles()
       .then((d) => {
         if (d.success && d.data.length > 0) {
@@ -66,6 +89,17 @@ export default function PricingSection() {
   // Charger les modules quand le pays change
   useEffect(() => {
     if (!paysChoisi) return;
+
+    if (
+      firstModulesLoad.current &&
+      hasInitialPays &&
+      paysChoisi.id === initialPaysChoisi?.id
+    ) {
+      firstModulesLoad.current = false;
+      return;
+    }
+
+    firstModulesLoad.current = false;
     setLoadingModules(true);
     setErrorModules("");
     getModulesDisponibles(paysChoisi.id)
@@ -78,16 +112,9 @@ export default function PricingSection() {
   }, [paysChoisi]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* ── Sélecteur de pays ── */}
       <div className="flex flex-col items-center gap-3">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
-          <Globe size={14} className="text-ateliya-primary" />
-          <span className="text-xs font-bold text-ateliya-primary uppercase tracking-wider">
-            Votre pays
-          </span>
-        </div>
-
         {loadingPays && (
           <div className="flex flex-wrap items-center justify-center gap-2">
             {[0, 1, 2].map((i) => (
@@ -119,7 +146,9 @@ export default function PricingSection() {
                       : "border-gray-100 bg-white text-gray-600 hover:border-ateliya-primary/40 hover:text-ateliya-primary"
                   }`}
                 >
-                  <span className="text-base leading-none">{getFlagEmoji(p.code)}</span>
+                  <span className="text-base leading-none">
+                    {getFlagEmoji(p.code)}
+                  </span>
                   <span>{p.libelle}</span>
                 </button>
               );
@@ -176,11 +205,14 @@ export default function PricingSection() {
         </p>
       )}
 
-      {!loadingModules && !errorModules && modules.length === 0 && paysChoisi && (
-        <p className="text-center text-sm text-gray-400 py-12">
-          Aucune offre disponible pour {paysChoisi.libelle} pour le moment.
-        </p>
-      )}
+      {!loadingModules &&
+        !errorModules &&
+        modules.length === 0 &&
+        paysChoisi && (
+          <p className="text-center text-sm text-gray-400 py-12">
+            Aucune offre disponible pour {paysChoisi.libelle} pour le moment.
+          </p>
+        )}
 
       {!loadingModules && modules.length > 0 && (
         <div className="grid md:grid-cols-3 gap-5 md:gap-6">
@@ -197,8 +229,8 @@ export default function PricingSection() {
                       idx === 0
                         ? "from-ateliya-primary/15 to-teal-400/10"
                         : idx === 1
-                        ? "from-ateliya-secondary/15 to-amber-400/10"
-                        : "from-africa-gold/15 to-blue-500/10"
+                          ? "from-ateliya-secondary/15 to-amber-400/10"
+                          : "from-africa-gold/15 to-ateliya-primary/8"
                     } rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-60 transition-all duration-700 -z-10`}
                   />
 
@@ -214,7 +246,8 @@ export default function PricingSection() {
                     {popular && (
                       <div className="absolute -top-px left-0 right-0 flex justify-center">
                         <div className="px-5 py-1.5 rounded-b-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-[11px] font-black tracking-wide uppercase shadow-sm shadow-ateliya-primary/15 flex items-center gap-1">
-                          <Star size={10} fill="currentColor" /> Le plus populaire
+                          <Star size={10} fill="currentColor" /> Le plus
+                          populaire
                         </div>
                       </div>
                     )}
@@ -229,8 +262,8 @@ export default function PricingSection() {
                             idx === 0
                               ? "bg-gradient-to-br from-ateliya-primary/20 to-ateliya-primary/10 text-ateliya-primary"
                               : idx === 1
-                              ? "bg-gradient-to-br from-ateliya-secondary/20 to-ateliya-secondary/10 text-ateliya-secondary"
-                              : "bg-gradient-to-br from-blue-500/20 to-blue-500/10 text-blue-500"
+                                ? "bg-gradient-to-br from-ateliya-secondary/20 to-ateliya-secondary/10 text-ateliya-secondary"
+                                : "bg-gradient-to-br from-ateliya-primary/15 to-ateliya-primary/8 text-ateliya-primary"
                           }`}
                         >
                           {PLAN_ICONS[idx] ?? PLAN_ICONS[0]}
@@ -250,11 +283,13 @@ export default function PricingSection() {
                             idx === 0
                               ? "from-ateliya-primary to-teal-400"
                               : idx === 1
-                              ? "from-ateliya-secondary to-amber-400"
-                              : "from-blue-500 to-indigo-400"
+                                ? "from-ateliya-secondary to-amber-400"
+                                : "from-ateliya-secondary to-ateliya-primary"
                           } rounded-full group-hover/plan:w-20 transition-all duration-500`}
                         />
-                        <p className="text-sm text-gray-500 pt-0.5">{mod.description}</p>
+                        <p className="text-sm text-gray-500 pt-0.5">
+                          {mod.description}
+                        </p>
                       </div>
 
                       {/* Price */}
@@ -263,29 +298,13 @@ export default function PricingSection() {
                           <span className="text-4xl md:text-5xl font-extrabold text-gray-900 tabular-nums">
                             {parseInt(mod.montant).toLocaleString("fr-FR")}
                           </span>
-                          <span className="text-base text-gray-400 font-bold">FCFA</span>
+                          <span className="text-base text-gray-400 font-bold">
+                            FCFA
+                          </span>
                         </div>
                         <p className="text-sm text-gray-400 mt-0.5">
                           pour {mod.duree} jours
                         </p>
-                      </div>
-
-                      {/* CTA */}
-                      <div className="mb-4">
-                        <button
-                          onClick={() => setPlanSelectionne(mod)}
-                          className={`group/btn w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] inline-flex items-center justify-center gap-2 ${
-                            popular
-                              ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-sm shadow-ateliya-primary/15 hover:shadow-md hover:shadow-ateliya-primary/25"
-                              : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-primary"
-                          }`}
-                        >
-                          <span>Choisir ce forfait</span>
-                          <ArrowRight
-                            size={14}
-                            className="group-hover/btn:translate-x-0.5 transition-transform"
-                          />
-                        </button>
                       </div>
 
                       {/* Features */}
@@ -309,17 +328,22 @@ export default function PricingSection() {
                         </div>
                       )}
 
-                      {/* Bottom accent */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-ateliya-primary/10 rounded-b-2xl overflow-hidden">
-                        <div
-                          className={`h-full w-0 bg-gradient-to-r ${
-                            idx === 0
-                              ? "from-ateliya-primary to-teal-400"
-                              : idx === 1
-                              ? "from-ateliya-secondary to-amber-400"
-                              : "from-blue-500 to-indigo-400"
-                          } group-hover/plan:w-full transition-all duration-1000`}
-                        />
+                      {/* CTA */}
+                      <div className="pt-5 mt-5 border-t border-gray-100">
+                        <button
+                          onClick={() => setPlanSelectionne(mod)}
+                          className={`group/btn w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] inline-flex items-center justify-center gap-2 ${
+                            popular
+                              ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-sm shadow-ateliya-primary/15 hover:shadow-md hover:shadow-ateliya-primary/25"
+                              : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-primary"
+                          }`}
+                        >
+                          <span>Choisir ce forfait</span>
+                          <ArrowRight
+                            size={14}
+                            className="group-hover/btn:translate-x-0.5 transition-transform"
+                          />
+                        </button>
                       </div>
                     </div>
                   </div>

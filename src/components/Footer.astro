@@ -4,19 +4,35 @@ import { socials, navLinks, legalLinks } from "../data/footer";
 import logoImg from '../assets/ateliya.webp';
 ---
 
-<footer class="bg-[#0F172A] text-white">
-  <!-- Kente accent top -->
+<footer
+  class="relative overflow-hidden border-t border-ateliya-primary/10 bg-gradient-to-br from-gray-50 via-white to-teal-50/30 text-gray-900"
+>
   <div
-    class="h-1 bg-gradient-to-r from-ateliya-primary via-africa-gold to-ateliya-primary"
+    class="absolute right-0 top-0 h-72 w-72 rounded-full bg-ateliya-primary/6 blur-[100px]"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-ateliya-secondary/5 blur-[100px]"
+  >
+  </div>
+  <div
+    class="absolute inset-0 opacity-[0.025]"
+    style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
+  >
+  </div>
+
+  <!-- Top accent -->
+  <div
+    class="relative z-10 h-px bg-gradient-to-r from-transparent via-ateliya-primary/35 to-transparent"
   >
   </div>
 
   <div
-    class="container mx-auto px-6 lg:px-12 relative z-10 pt-16 md:pt-20 pb-10"
+    class="container mx-auto px-6 lg:px-10 relative z-10 pt-16 md:pt-20 pb-8"
   >
     <!-- ---- MAIN GRID ---- -->
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16 pb-16 border-b border-white/10"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12 pb-12 border-b border-ateliya-primary/10"
     >
       <!-- Brand -->
       <div class="lg:col-span-4">
@@ -26,17 +42,17 @@ import logoImg from '../assets/ateliya.webp';
             alt="Ateliya"
             width={44}
             height={44}
-            class="rounded-xl group-hover:scale-110 transition-transform duration-300"
+            class="rounded-xl shadow-sm group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
           />
           <span
-            class="text-2xl font-serif font-extrabold tracking-tighter bg-gradient-to-r from-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent"
+            class="text-2xl font-semibold tracking-tight text-gray-900 group-hover:text-ateliya-primary transition-colors duration-300"
           >
             Ateliya
           </span>
         </a>
 
-        <p class="text-white/50 leading-relaxed mb-8 max-w-sm text-sm tracking-wide">
+        <p class="text-gray-500 leading-relaxed mb-8 max-w-sm text-sm tracking-wide">
           La solution moderne pour gerer votre atelier de couture efficacement
           et professionnellement.
         </p>
@@ -47,7 +63,7 @@ import logoImg from '../assets/ateliya.webp';
             socials.map((social) => (
               <a
                 href={social.href}
-                class="footer-social w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-ateliya-primary/20 hover:border-ateliya-primary/40 transition-all duration-300"
+                class="footer-social w-10 h-10 flex items-center justify-center rounded-xl bg-white/70 border border-ateliya-primary/10 text-gray-500 shadow-sm shadow-ateliya-primary/5 hover:text-ateliya-primary hover:bg-white hover:border-ateliya-primary/25 hover:-translate-y-0.5 transition-all duration-300"
                 aria-label={social.name}
                 set:html={social.svg}
               />
@@ -58,7 +74,7 @@ import logoImg from '../assets/ateliya.webp';
 
       <!-- Navigation -->
       <div class="lg:col-span-2">
-        <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-5">
+        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-[0.18em] mb-5">
           Navigation
         </h3>
         <ul class="space-y-3">
@@ -67,9 +83,9 @@ import logoImg from '../assets/ateliya.webp';
               <li>
                 <a
                   href={link.href}
-                  class="group flex items-center gap-2.5 text-sm text-white/50 hover:text-ateliya-primary transition-colors duration-300"
+                  class="group flex items-center gap-2.5 text-sm font-medium text-gray-500 hover:text-ateliya-primary transition-colors duration-300"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-ateliya-primary group-hover:scale-150 transition-all duration-300" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-150 transition-all duration-300" />
                   {link.label}
                 </a>
               </li>
@@ -80,7 +96,7 @@ import logoImg from '../assets/ateliya.webp';
 
       <!-- Legal -->
       <div class="lg:col-span-2">
-        <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-5">
+        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-[0.18em] mb-5">
           Legal
         </h3>
         <ul class="space-y-3">
@@ -89,9 +105,9 @@ import logoImg from '../assets/ateliya.webp';
               <li>
                 <a
                   href={link.href}
-                  class="group flex items-center gap-2.5 text-sm text-white/50 hover:text-ateliya-primary transition-colors duration-300"
+                  class="group flex items-center gap-2.5 text-sm font-medium text-gray-500 hover:text-ateliya-primary transition-colors duration-300"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-ateliya-primary group-hover:scale-150 transition-all duration-300" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-150 transition-all duration-300" />
                   {link.label}
                 </a>
               </li>
@@ -102,10 +118,13 @@ import logoImg from '../assets/ateliya.webp';
 
       <!-- Newsletter -->
       <div class="lg:col-span-4">
-        <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-3">
+        <div
+          class="rounded-[1.5rem] border border-white/70 bg-white/60 p-5 shadow-[0_18px_55px_rgba(18,63,59,0.08)] backdrop-blur-xl"
+        >
+        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-[0.18em] mb-3">
           Newsletter
         </h3>
-        <p class="text-sm text-white/40 mb-5">
+        <p class="text-sm text-gray-500 mb-5">
           Recevez nos conseils et offres exclusives.
         </p>
 
@@ -124,15 +143,16 @@ import logoImg from '../assets/ateliya.webp';
           </div>
         </form>
 
-        <p class="text-xs text-white/30 mt-3">
+        <p class="text-xs text-gray-400 mt-3">
           Desabonnement possible a tout moment.
         </p>
+        </div>
       </div>
     </div>
 
     <!-- ---- BOTTOM ---- -->
     <div class="flex justify-center">
-      <p class="text-sm text-white/40">
+      <p class="text-sm text-gray-400">
         &copy; {new Date().getFullYear()} Ateliya. Tous droits reserves.
       </p>
     </div>
@@ -146,15 +166,24 @@ import logoImg from '../assets/ateliya.webp';
     display: flex;
     gap: 0;
     border-radius: 0.875rem;
-    border: 2px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(47, 175, 164, 0.34);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 10px 28px rgba(18, 63, 59, 0.05);
     overflow: hidden;
-    transition: border-color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      background 0.3s ease;
   }
 
   .footer-newsletter-group:focus-within {
-    border-color: rgba(52, 199, 184, 0.3);
-    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(47, 175, 164, 0.62);
+    background: #ffffff;
+    box-shadow:
+      0 0 0 4px rgba(47, 175, 164, 0.1),
+      0 14px 32px rgba(18, 63, 59, 0.07);
   }
 
   .footer-input {
@@ -162,25 +191,27 @@ import logoImg from '../assets/ateliya.webp';
     padding: 0.75rem 1rem;
     background: transparent;
     border: none;
-    color: white;
+    color: #123f3b;
     font-size: 0.875rem;
     outline: none;
   }
 
   .footer-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: #94a3b8;
   }
 
   .footer-submit {
     flex-shrink: 0;
     padding: 0.75rem 1.25rem;
-    background: linear-gradient(135deg, #34c7b8, #0d6b5f);
+    background: linear-gradient(135deg, #2fafa4, #257f78);
     color: white;
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition:
+      filter 0.3s ease,
+      transform 0.2s ease;
   }
 
   .footer-submit:hover {

@@ -29,7 +29,7 @@ import accueilImg from "../assets/app_images/accueil.png";
   <!-- Radial dot bg -->
   <div
     class="absolute inset-0 opacity-[0.025]"
-    style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"
+    style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
   >
   </div>
 
@@ -38,7 +38,7 @@ import accueilImg from "../assets/app_images/accueil.png";
     {
       [...Array(30)].map((_, i) => (
         <div
-          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/60" : i % 4 === 2 ? "bg-blue-400/40" : "bg-gray-300"}`}
+          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/60" : i % 4 === 2 ? "bg-ateliya-primary/40" : "bg-gray-300"}`}
         />
       ))
     }
@@ -62,7 +62,7 @@ import accueilImg from "../assets/app_images/accueil.png";
   </div>
 
   <!-- ---- Content ---- -->
-  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+  <div class="container mx-auto px-6 lg:px-10 relative z-10">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
       <!-- Left Content -->
       <div class="space-y-8 order-2 lg:order-1">
@@ -89,7 +89,9 @@ import accueilImg from "../assets/app_images/accueil.png";
             </span>
           </h2>
 
-          <p class="text-lg text-gray-500 leading-relaxed max-w-lg tracking-wide">
+          <p
+            class="text-lg text-gray-500 leading-relaxed max-w-lg tracking-wide"
+          >
             Disponible sur <span class="font-bold text-ateliya-primary"
               >iOS et Android</span
             >. Gerez votre atelier de couture ou que vous soyez, a tout moment.
@@ -119,10 +121,16 @@ import accueilImg from "../assets/app_images/accueil.png";
               </svg>
             </div>
             <div class="text-left flex-1">
-              <div class="text-[11px] text-gray-400 font-bold uppercase tracking-widest">
+              <div
+                class="text-[11px] text-gray-400 font-bold uppercase tracking-widest"
+              >
                 Telecharger sur
               </div>
-              <div class="text-base font-serif font-extrabold tracking-tighter text-gray-900">App Store</div>
+              <div
+                class="text-base font-serif font-extrabold tracking-tighter text-gray-900"
+              >
+                App Store
+              </div>
             </div>
             <Icon
               name="arrow-right"
@@ -156,10 +164,16 @@ import accueilImg from "../assets/app_images/accueil.png";
                 </svg>
               </div>
               <div class="text-left flex-1">
-                <div class="text-[11px] opacity-80 font-bold uppercase tracking-widest">
+                <div
+                  class="text-[11px] opacity-80 font-bold uppercase tracking-widest"
+                >
                   Telecharger sur
                 </div>
-                <div class="text-base font-serif font-extrabold tracking-tighter">Google Play</div>
+                <div
+                  class="text-base font-serif font-extrabold tracking-tighter"
+                >
+                  Google Play
+                </div>
               </div>
               <Icon
                 name="arrow-right"
@@ -168,51 +182,6 @@ import accueilImg from "../assets/app_images/accueil.png";
               />
             </div>
           </a>
-        </div>
-
-        <!-- Stats Row -->
-        <div class="grid grid-cols-3 gap-3 pt-2">
-          <div
-            class="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-          >
-            <div
-              class="w-10 h-10 mx-auto mb-2.5 rounded-lg bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center shadow-md"
-            >
-              <Icon name="download" size="sm" class="text-white" />
-            </div>
-            <p class="text-2xl font-serif font-extrabold tracking-tighter text-gray-900">500K+</p>
-            <p class="text-xs text-gray-400 font-semibold mt-0.5">
-              Telechargements
-            </p>
-          </div>
-
-          <div
-            class="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-          >
-            <div
-              class="w-10 h-10 mx-auto mb-2.5 rounded-lg bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-md"
-            >
-              <Icon name="star" size="sm" class="text-white" />
-            </div>
-            <p class="text-2xl font-serif font-extrabold tracking-tighter text-gray-900">4.9</p>
-            <p class="text-xs text-gray-400 font-semibold mt-0.5">
-              Note moyenne
-            </p>
-          </div>
-
-          <div
-            class="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-          >
-            <div
-              class="w-10 h-10 mx-auto mb-2.5 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-md"
-            >
-              <Icon name="check" size="sm" class="text-white" />
-            </div>
-            <p class="text-2xl font-serif font-extrabold tracking-tighter text-gray-900">98%</p>
-            <p class="text-xs text-gray-400 font-semibold mt-0.5">
-              Satisfaction
-            </p>
-          </div>
         </div>
 
         <!-- QR Code -->
@@ -225,7 +194,9 @@ import accueilImg from "../assets/app_images/accueil.png";
             <Icon name="qr-code" size="xl" class="text-ateliya-primary" />
           </div>
           <div>
-            <p class="text-base font-serif font-extrabold tracking-tighter text-gray-900">
+            <p
+              class="text-base font-serif font-extrabold tracking-tighter text-gray-900"
+            >
               Scannez pour telecharger
             </p>
             <p class="text-sm text-gray-400 mt-0.5">
@@ -274,9 +245,9 @@ import accueilImg from "../assets/app_images/accueil.png";
           <svg viewBox="0 0 200 200" class="w-full h-full">
             <defs>
               <linearGradient id="dlArc" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#34C7B8;stop-opacity:0.6"
+                <stop offset="0%" style="stop-color:#2FAFA4;stop-opacity:0.6"
                 ></stop>
-                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.4"
+                <stop offset="100%" style="stop-color:#B99752;stop-opacity:0.4"
                 ></stop>
               </linearGradient>
             </defs>
@@ -357,7 +328,7 @@ import accueilImg from "../assets/app_images/accueil.png";
         <div class="absolute bottom-[15%] right-[15%] w-20 h-20 opacity-35">
           <div
             class="w-full h-full rounded-full"
-            style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #34C7B840 2.5px, #34C7B840 5px);"
+            style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #2FAFA440 2.5px, #2FAFA440 5px);"
           >
           </div>
         </div>
@@ -372,7 +343,7 @@ import accueilImg from "../assets/app_images/accueil.png";
         >
         </div>
         <div
-          class="absolute bottom-[30%] left-[5%] w-2.5 h-2.5 rounded-full bg-pink-400/40 dl-bounce-1"
+          class="absolute bottom-[30%] left-[5%] w-2.5 h-2.5 rounded-full bg-africa-gold/25 dl-bounce-1"
         >
         </div>
 
@@ -386,7 +357,7 @@ import accueilImg from "../assets/app_images/accueil.png";
         <div class="absolute top-[5%] left-[15%] z-10">
           <div
             class="w-14 h-14 rounded-full bg-gradient-to-br from-ateliya-primary to-ateliya-secondary shadow-xl flex items-center justify-center"
-            style="box-shadow: 0 8px 32px #34C7B840;"
+            style="box-shadow: 0 8px 32px #2FAFA440;"
           >
             <Icon name="download" size="md" class="text-white" />
           </div>

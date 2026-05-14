@@ -7,50 +7,50 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Manrope", "Inter", "sans-serif"],
         serif: ["Fraunces", "serif"],
       },
       colors: {
         ateliya: {
           // Couleurs principales
-          primary: "#34C7B8",
-          secondary: "#2BA39F",
-          accent: "#1EB5A0",
-          light: "#4FD9CC",
-          dark: "#0D6B5F",
+          primary: "#2FAFA4",
+          secondary: "#257F78",
+          accent: "#9A7B4F",
+          light: "#CFECE8",
+          dark: "#123F3B",
 
           // Backgrounds
-          background: "#FFFFFF",
-          "bg-light": "#F8FAFB",
-          "bg-dark": "#0F172A",
+          background: "#FFFEFB",
+          "bg-light": "#F7F5EF",
+          "bg-dark": "#111918",
 
           // Text
-          text: "#1F2937",
-          "text-light": "#6B7280",
-          "text-dark": "#F3F4F6",
+          text: "#26312F",
+          "text-light": "#68706E",
+          "text-dark": "#F5F2EA",
 
           // Borders
-          border: "#E5E7EB",
-          "border-dark": "#1E293B",
+          border: "#E8E2D8",
+          "border-dark": "#263A36",
         },
 
         // Couleurs africaines
         africa: {
-          gold: "#D4AF37",
-          terra: "#B85C38",
-          ochre: "#D4A574",
-          clay: "#8B6F47",
-          sand: "#C9B59A",
-          sage: "#6B8E5C",
-          burgundy: "#8B3A3A",
-          ebony: "#2C2C2C",
+          gold: "#B99752",
+          terra: "#9E5A40",
+          ochre: "#C8A474",
+          clay: "#766247",
+          sand: "#D8CCB8",
+          sage: "#6F8068",
+          burgundy: "#7A3E3C",
+          ebony: "#242522",
         },
       },
 
       backgroundImage: {
-        "gradient-primary": "linear-gradient(135deg, #34C7B8 0%, #2BA39F 100%)",
-        "gradient-accent": "linear-gradient(135deg, #2BA39F 0%, #0D6B5F 100%)",
-        "gradient-africa": "linear-gradient(135deg, #B85C38 0%, #D4AF37 100%)",
+        "gradient-primary": "linear-gradient(135deg, #2FAFA4 0%, #257F78 100%)",
+        "gradient-accent": "linear-gradient(135deg, #9A7B4F 0%, #257F78 100%)",
+        "gradient-africa": "linear-gradient(135deg, #9E5A40 0%, #B99752 100%)",
       },
 
       animation: {
@@ -110,13 +110,13 @@ export default {
       },
 
       boxShadow: {
-        "glow-primary": "0 0 30px rgba(52, 199, 184, 0.3)",
-        "glow-primary-lg": "0 0 50px rgba(52, 199, 184, 0.4)",
-        "glow-africa": "0 0 30px rgba(212, 175, 116, 0.3)",
-        "glow-africa-lg": "0 0 50px rgba(212, 175, 116, 0.4)",
-        soft: "0 10px 30px rgba(0, 0, 0, 0.1)",
-        medium: "0 20px 40px rgba(0, 0, 0, 0.15)",
-        hard: "0 30px 60px rgba(0, 0, 0, 0.2)",
+        "glow-primary": "0 12px 32px rgba(37, 127, 120, 0.14)",
+        "glow-primary-lg": "0 18px 44px rgba(37, 127, 120, 0.2)",
+        "glow-africa": "0 12px 32px rgba(154, 123, 79, 0.14)",
+        "glow-africa-lg": "0 18px 44px rgba(154, 123, 79, 0.2)",
+        soft: "0 10px 30px rgba(18, 63, 59, 0.08)",
+        medium: "0 20px 40px rgba(18, 63, 59, 0.12)",
+        hard: "0 30px 60px rgba(18, 63, 59, 0.16)",
       },
 
       spacing: {
@@ -146,19 +146,19 @@ export default {
     function ({ addUtilities }) {
       addUtilities({
         ".text-gradient-primary": {
-          background: "linear-gradient(135deg, #34C7B8 0%, #4FD9CC 100%)",
+          background: "linear-gradient(135deg, #257F78 0%, #2FAFA4 100%)",
           "-webkit-background-clip": "text",
           "-webkit-text-fill-color": "transparent",
           "background-clip": "text",
         },
         ".text-gradient-africa": {
-          background: "linear-gradient(135deg, #B85C38 0%, #D4AF37 100%)",
+          background: "linear-gradient(135deg, #9E5A40 0%, #B99752 100%)",
           "-webkit-background-clip": "text",
           "-webkit-text-fill-color": "transparent",
           "background-clip": "text",
         },
         ".text-gradient-earth": {
-          background: "linear-gradient(135deg, #8B6F47 0%, #D4A574 100%)",
+          background: "linear-gradient(135deg, #766247 0%, #C8A474 100%)",
           "-webkit-background-clip": "text",
           "-webkit-text-fill-color": "transparent",
           "background-clip": "text",

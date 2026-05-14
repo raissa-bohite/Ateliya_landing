@@ -4,7 +4,7 @@ export const stats = [
     label: "Ateliers Actifs",
     icon: "users",
     color: "text-ateliya-primary",
-    hoverColor: "group-hover/stat:text-[#D4AF37]",
+    hoverColor: "group-hover/stat:text-[#B99752]",
     delay: "100ms",
   },
   {

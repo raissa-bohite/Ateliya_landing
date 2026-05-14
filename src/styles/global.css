@@ -19,6 +19,52 @@
   }
 }
 
+@layer components {
+  .container {
+    max-width: 76rem;
+  }
+}
+
+/* ===== PREMIUM SOFTENING ===== */
+@layer utilities {
+  .font-black {
+    font-weight: 700;
+  }
+
+  .font-extrabold {
+    font-weight: 700;
+  }
+
+  .font-bold {
+    font-weight: 600;
+  }
+
+  .tracking-tighter,
+  .tracking-tight {
+    letter-spacing: -0.015em;
+  }
+
+  .tracking-wide {
+    letter-spacing: 0.005em;
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #257f78 0%, #2fafa4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .text-gradient-africa {
+    background: linear-gradient(135deg, #9e5a40 0%, #b99752 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .bg-gradient-primary {
+    background-image: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+  }
+}
+
 /* ===== DARK MODE ===== */
 @media (prefers-color-scheme: dark) {
   body {

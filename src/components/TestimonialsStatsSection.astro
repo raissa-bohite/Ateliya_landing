@@ -22,26 +22,30 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
   <!-- ---- Background Decorations ---- -->
   <div
     class="absolute left-0 top-0 w-[45%] h-[60%] bg-gradient-to-br from-ateliya-primary/4 to-transparent rounded-br-[100px]"
-  ></div>
+  >
+  </div>
 
   <div
     class="absolute top-[10%] right-[20%] w-72 h-72 bg-ateliya-primary/5 rounded-full blur-[120px]"
-  ></div>
+  >
+  </div>
   <div
     class="absolute bottom-[10%] left-[20%] w-60 h-60 bg-ateliya-secondary/4 rounded-full blur-[100px]"
-  ></div>
+  >
+  </div>
 
   <div
     class="absolute inset-0 opacity-[0.02]"
-    style="background-image: radial-gradient(circle, #34C7B8 1px, transparent 1px); background-size: 36px 36px;"
-  ></div>
+    style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
+  >
+  </div>
 
   <!-- Dot grids -->
   <div class="absolute right-8 top-[8%] grid grid-cols-6 gap-2 opacity-25">
     {
       [...Array(24)].map((_, i) => (
         <div
-          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/50" : i % 4 === 2 ? "bg-blue-400/30" : "bg-gray-300"}`}
+          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/50" : i % 4 === 2 ? "bg-ateliya-secondary/20" : "bg-gray-300"}`}
         />
       ))
     }
@@ -57,7 +61,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
   </div>
 
   <!-- ---- Content ---- -->
-  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+  <div class="container mx-auto px-6 lg:px-10 relative z-10">
     <!-- Main Grid -->
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-20">
       <!-- Left: Header + Trust -->
@@ -101,7 +105,9 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
                 ))
               }
             </div>
-            <span class="text-sm font-bold text-gray-600">4.9/5 sur 500+ avis</span>
+            <span class="text-sm font-bold text-gray-600"
+              >4.9/5 sur 500+ avis</span
+            >
           </div>
 
           <div class="flex -space-x-2">
@@ -136,19 +142,15 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
       <!-- Right: Featured Testimonial Card -->
       <div class="relative">
         <!-- Decorative arc -->
-        <div class="absolute -top-4 -right-4 w-[220px] h-[220px] testi-arc-entrance hidden lg:block">
+        <div
+          class="absolute -top-4 -right-4 w-[220px] h-[220px] testi-arc-entrance hidden lg:block"
+        >
           <svg viewBox="0 0 200 200" class="w-full h-full">
             <defs>
-              <linearGradient
-                id="testiArc"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" style="stop-color:#34C7B8;stop-opacity:0.5"
+              <linearGradient id="testiArc" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#2FAFA4;stop-opacity:0.5"
                 ></stop>
-                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.3"
+                <stop offset="100%" style="stop-color:#B99752;stop-opacity:0.3"
                 ></stop>
               </linearGradient>
             </defs>
@@ -164,10 +166,12 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
         <!-- Bouncing dots -->
         <div
           class="absolute -top-6 left-[30%] w-3 h-3 rounded-full bg-ateliya-primary/40 testi-bounce-1 hidden lg:block"
-        ></div>
+        >
+        </div>
         <div
           class="absolute -bottom-4 right-[20%] w-3.5 h-3.5 rounded-full bg-ateliya-secondary/35 testi-bounce-2 hidden lg:block"
-        ></div>
+        >
+        </div>
 
         <!-- Card -->
         <div
@@ -176,7 +180,8 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
           <!-- Top accent -->
           <div
             class="absolute top-0 left-6 right-6 h-[2px] rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"
-          ></div>
+          >
+          </div>
 
           <!-- Quote icon -->
           <div
@@ -207,7 +212,8 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
           <!-- Divider -->
           <div
             class="h-px bg-gradient-to-r from-ateliya-primary/30 via-ateliya-primary/10 to-transparent mb-6"
-          ></div>
+          >
+          </div>
 
           <!-- Author -->
           <div class="flex items-center gap-4">
@@ -238,10 +244,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
               <div class="flex items-center gap-1 mt-0.5">
                 <Icon name="map-pin" size="xs" class="text-gray-400" />
                 <span class="text-xs text-gray-400 font-medium">
-                  {
-                    testimonials[0]?.location ||
-                      "Abidjan, Cote d'Ivoire"
-                  }
+                  {testimonials[0]?.location || "Abidjan, Cote d'Ivoire"}
                 </span>
               </div>
             </div>
@@ -250,7 +253,8 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
           <!-- Shine effect -->
           <div
             class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/0 to-transparent group-hover/card:via-white/10 transition-all duration-1000 -translate-x-full group-hover/card:translate-x-full pointer-events-none rounded-2xl"
-          ></div>
+          >
+          </div>
         </div>
 
         <!-- Hatched circle decoration -->
@@ -259,14 +263,15 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
         >
           <div
             class="w-full h-full rounded-full"
-            style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #34C7B840 2.5px, #34C7B840 5px);"
-          ></div>
+            style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #2FAFA440 2.5px, #2FAFA440 5px);"
+          >
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ---- Additional Testimonials Carousel ---- -->
-    <div class="mb-20">
+    <div class="mb-10">
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {
           testimonials.slice(1, 4).map((t, idx) => (
@@ -292,45 +297,12 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
                   {t.author.split(" ")[1]?.charAt(0) || ""}
                 </div>
                 <div>
-                  <p class="text-sm font-serif font-extrabold tracking-tighter text-gray-900">{t.author}</p>
+                  <p class="text-sm font-serif font-extrabold tracking-tighter text-gray-900">
+                    {t.author}
+                  </p>
                   <p class="text-xs text-gray-400">{t.role}</p>
                 </div>
               </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- ---- Stats Banner ---- -->
-    <div class="relative pt-12 border-t border-gray-100">
-      <div class="flex flex-wrap justify-center gap-8 md:gap-16">
-        {
-          statsConfig.map((stat, idx) => (
-            <div
-              class="group/stat relative text-center p-6 rounded-3xl hover:bg-white/50 transition-all duration-500 testi-stat-reveal min-w-[160px]"
-              style={`animation-delay: ${idx * 150}ms`}
-            >
-              <div
-                class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-50 mb-4 group-hover/stat:scale-110 group-hover/stat:bg-white group-hover/stat:shadow-lg transition-all duration-500"
-              >
-                <Icon
-                  name={stat.icon}
-                  size="md"
-                  class={`${stat.color} transition-colors duration-500`}
-                />
-              </div>
-              <div class="space-y-1">
-                <div class="text-3xl md:text-4xl font-serif font-extrabold tracking-tighter text-gray-900">
-                  {stat.value}
-                </div>
-                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest text-[10px] md:text-sm">
-                  {stat.label}
-                </div>
-              </div>
-              
-              <!-- Indicator line -->
-              <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-gray-100 group-hover/stat:w-12 group-hover/stat:bg-ateliya-primary transition-all duration-500" />
             </div>
           ))
         }

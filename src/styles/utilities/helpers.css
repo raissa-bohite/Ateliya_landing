@@ -3,7 +3,7 @@
 
 /* Layout */
 .container-wide {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  @apply max-w-[76rem] mx-auto px-4 sm:px-6 lg:px-10;
 }
 
 .section-padding {
@@ -76,7 +76,7 @@
 
 /* Hero gradients */
 .hero-gradient {
-  background: linear-gradient(135deg, #34c7b8 0%, #2ba39f 50%, #0d6b5f 100%);
+  background: linear-gradient(135deg, #2fafa4 0%, #257f78 52%, #123f3b 100%);
   position: relative;
 }
 
@@ -93,7 +93,7 @@
 }
 
 .hero-gradient-africa {
-  background: linear-gradient(135deg, #b85c38 0%, #d4af37 50%, #d4a574 100%);
+  background: linear-gradient(135deg, #9e5a40 0%, #b99752 50%, #c8a474 100%);
   position: relative;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .hero-gradient-blend {
-  background: linear-gradient(135deg, #34c7b8 0%, #8b6f47 50%, #d4af37 100%);
+  background: linear-gradient(135deg, #2fafa4 0%, #766247 50%, #b99752 100%);
   position: relative;
 }
 

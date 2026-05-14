@@ -1,54 +1,31 @@
 ---
-import { Image } from "astro:assets";
 import Icon from "../components/Icon.astro";
-import { stats } from "../data/data";
-import accueilImg from "../assets/app_images/accueil.png";
 
-const carouselCards = [
+const phoneScreens = [
   {
-    icon: "scissors",
-    title: "Commandes",
-    desc: "Suivi en temps reel",
-    accent: "from-ateliya-primary to-teal-500",
+    src: "/ateliya/app_images/accueil.png",
+    alt: "Ecran d'accueil Ateliya",
   },
   {
-    icon: "users",
-    title: "Clients",
-    desc: "Fiches & mesures",
-    accent: "from-blue-500 to-cyan-400",
+    src: "/ateliya/app_images/gestion.png",
+    alt: "Gestion des commandes dans Ateliya",
   },
   {
-    icon: "trending-up",
-    title: "Revenus",
-    desc: "Tableau de bord",
-    accent: "from-ateliya-secondary to-amber-400",
+    src: "/ateliya/app_images/rendez-vous.png",
+    alt: "Planning des rendez-vous dans Ateliya",
   },
   {
-    icon: "check",
-    title: "Livraisons",
-    desc: "Planification",
-    accent: "from-green-500 to-emerald-400",
-  },
-  {
-    icon: "star",
-    title: "Qualite",
-    desc: "Notes & avis",
-    accent: "from-amber-500 to-yellow-400",
-  },
-  {
-    icon: "sparkles",
-    title: "Mesures",
-    desc: "Profils corporels",
-    accent: "from-purple-500 to-violet-400",
+    src: "/ateliya/app_images/rapport.png",
+    alt: "Rapports et statistiques dans Ateliya",
   },
 ];
 
-const CARD_COUNT = carouselCards.length;
+const phoneScreensCount = phoneScreens.length;
 ---
 
 <section
   id="hero"
-  class="relative overflow-hidden min-h-[95vh] flex items-center bg-gradient-to-br from-[#D4F1F0] via-[#E8F9F8] to-[#D4F1F0]"
+  class="relative overflow-hidden min-h-[95vh] flex items-center bg-gradient-to-br from-gray-50 via-white to-teal-50/30"
 >
   <!-- Background Decorations -->
   <div
@@ -64,12 +41,12 @@ const CARD_COUNT = carouselCards.length;
   >
   </div>
   <div
-    class="absolute bottom-[15%] left-[30%] w-64 h-64 bg-blue-400/5 rounded-full blur-[100px]"
+    class="absolute bottom-[15%] left-[30%] w-64 h-64 bg-ateliya-primary/4 rounded-full blur-[100px]"
   >
   </div>
   <div
     class="absolute inset-0 opacity-[0.03]"
-    style="background-image: radial-gradient(circle, #0D6B5F 1px, transparent 1px); background-size: 32px 32px;"
+    style="background-image: radial-gradient(circle, #123F3B 1px, transparent 1px); background-size: 32px 32px;"
   >
   </div>
   <div class="absolute left-8 top-[22%] grid grid-cols-6 gap-2 opacity-35">
@@ -83,7 +60,7 @@ const CARD_COUNT = carouselCards.length;
   </div>
 
   <!-- Content -->
-  <div class="container mx-auto px-6 lg:px-12 relative z-10 py-20">
+  <div class="container mx-auto px-6 lg:px-10 relative z-10 py-20">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
       <!-- Left -->
       <div class="space-y-7 hero-content-entrance">
@@ -126,41 +103,22 @@ const CARD_COUNT = carouselCards.length;
             ></span>
             <Icon
               name="user-plus"
-              size="lg"
+              size="md"
               class="relative z-10 group-hover:scale-110 transition-transform duration-300"
             />
-            <span class="relative z-10">S'inscrire Gratuitement</span>
+            <span class="relative z-10">S'inscrire</span>
           </button>
           <a
             href="#demo"
-            class="group inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/70 text-gray-800 font-bold text-xl hover:bg-white/80 hover:border-ateliya-primary/30 transition-all duration-300 hover:scale-105"
+            class="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/70 text-gray-800 font-bold text-xl hover:bg-white/80 hover:border-ateliya-primary/30 transition-all duration-300 hover:scale-105"
           >
             <Icon
               name="play-circle"
-              size="lg"
+              size="md"
               class="text-ateliya-primary group-hover:scale-110 transition-transform duration-300"
             />
             <span>Voir la Demo</span>
           </a>
-        </div>
-
-        <div
-          class="grid grid-cols-3 gap-3 pt-6 border-t border-ateliya-primary/15"
-        >
-          {
-            stats.map((stat) => (
-              <div class="text-center p-3 rounded-xl bg-white/30 backdrop-blur-sm border border-white/40 hover:bg-white/50 hover:shadow-md transition-all duration-300">
-                <p
-                  class={`text-2xl md:text-3xl font-black leading-none mb-1 ${stat.color || "text-ateliya-primary"}`}
-                >
-                  {stat.value}
-                </p>
-                <p class="text-[11px] md:text-xs text-gray-500 font-semibold">
-                  {stat.label}
-                </p>
-              </div>
-            ))
-          }
         </div>
 
         <div class="flex items-center gap-4 pt-2">
@@ -193,115 +151,122 @@ const CARD_COUNT = carouselCards.length;
         </div>
       </div>
 
-      <!-- Right: 3D Scene -->
+      <!-- Right: phone mockup -->
       <div
         class="relative min-h-[550px] md:min-h-[650px] flex items-center justify-center order-first lg:order-last"
       >
         <div class="scene">
-          <!-- Carousel 3D -->
-          <div class="carousel">
-            {
-              carouselCards.map((card, index) => (
-                <div
-                  class="carousel__card"
-                  style={`--card-index: ${index}; --card-total: ${CARD_COUNT}; --init-rot: ${(360 / CARD_COUNT) * index}deg;`}
-                >
-                  <div class="carousel__card-inner">
-                    <div
-                      class={`carousel__card-icon bg-gradient-to-br ${card.accent}`}
-                    >
-                      <Icon name={card.icon} size="md" class="text-white" />
-                    </div>
-                    <p class="carousel__card-title">{card.title}</p>
-                    <p class="carousel__card-desc">{card.desc}</p>
-                  </div>
-                </div>
-              ))
-            }
+          <!-- Circular photo for layered depth -->
+          <div class="scene__photo" aria-hidden="true">
+            <div class="scene__photo-arc">
+              <svg viewBox="0 0 200 200" class="w-full h-full">
+                <defs>
+                  <linearGradient
+                    id="heroPhoneArc"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop
+                      offset="0%"
+                      style="stop-color:#2FAFA4;stop-opacity:0.78"></stop>
+                    <stop
+                      offset="100%"
+                      style="stop-color:#B99752;stop-opacity:0.48"></stop>
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 100,15 A 85,85 0 0,1 185,100"
+                  fill="none"
+                  stroke="url(#heroPhoneArc)"
+                  stroke-width="32"
+                  stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <div class="scene__photo-frame">
+              <img
+                src="/premium_seamstress.png"
+                alt=""
+                class="scene__photo-img"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
           </div>
 
           <!-- Phone -->
           <div class="scene__phone">
             <div class="scene__phone-body">
-              <div class="scene__phone-screen">
+              <div
+                class="scene__phone-screen"
+                style={`--screen-total: ${phoneScreensCount};`}
+              >
                 <div class="scene__phone-notch"></div>
-                <Image
-                  src={accueilImg}
-                  alt="Interface mobile Ateliya"
-                  class="scene__phone-img"
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="sync"
-                />
+                <div class="scene__phone-slides">
+                  {
+                    phoneScreens.map((screen, index) => (
+                      <img
+                        src={screen.src}
+                        alt={screen.alt}
+                        class="scene__phone-img"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : "auto"}
+                        decoding={index === 0 ? "sync" : "async"}
+                        style={`--screen-index: ${index}; --screen-total: ${phoneScreensCount};`}
+                      />
+                    ))
+                  }
+                </div>
               </div>
             </div>
             <div class="scene__phone-sheen"></div>
           </div>
 
           <div class="scene__shadow"></div>
-        </div>
 
-        <!-- Notification cards -->
-        <div
-          class="absolute top-[18%] -left-4 lg:left-[0%] z-30 hero-float-card"
-          style="animation-delay: 0.5s"
-        >
+          <!-- Notification cards -->
+
           <div
-            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60"
+            class="hero-stat hero-stat--trend hero-float-card"
+            style="animation-delay: 0.6s"
           >
-            <div class="flex items-center gap-2.5">
-              <div
-                class="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0"
-              >
-                <Icon name="check" size="sm" class="text-green-600" />
+            <div
+              class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="w-9 h-9 rounded-lg bg-ateliya-secondary/15 flex items-center justify-center flex-shrink-0"
+                >
+                  <Icon
+                    name="trending-up"
+                    size="sm"
+                    class="text-ateliya-secondary"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="absolute bottom-[20%] -right-4 lg:right-[0%] z-30 hero-float-card"
-          style="animation-delay: 0.6s"
-        >
           <div
-            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60"
+            class="hero-stat hero-stat--community hero-float-card"
+            style="animation-delay: 0.7s"
           >
-            <div class="flex items-center gap-2.5">
-              <div
-                class="w-9 h-9 rounded-lg bg-ateliya-secondary/15 flex items-center justify-center flex-shrink-0"
-              >
-                <Icon
-                  name="trending-up"
-                  size="sm"
-                  class="text-ateliya-secondary"
-                />
-              </div>
-              <!-- <div>
-                <p class="text-[10px] text-gray-400 font-medium">
-                  Croissance
-                </p><p class="text-xs font-bold text-gray-900">+35% revenus</p>
-              </div> -->
-            </div>
-          </div>
-        </div>
-        <div
-          class="absolute bottom-[6%] left-[10%] z-30 hero-float-card"
-          style="animation-delay: 0.7s"
-        >
-          <div
-            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60"
-          >
-            <div class="flex items-center gap-2.5">
-              <div
-                class="w-9 h-9 rounded-lg bg-ateliya-primary/10 flex items-center justify-center flex-shrink-0"
-              >
-                <Icon name="users" size="sm" class="text-ateliya-primary" />
-              </div>
-              <div>
-                <p class="text-[10px] text-gray-400 font-medium">
-                  Communaute
-                </p><p class="text-xs font-bold text-gray-900">
-                  500+ tailleurs
-                </p>
+            <div
+              class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60"
+            >
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="w-9 h-9 rounded-lg bg-ateliya-primary/10 flex items-center justify-center flex-shrink-0"
+                >
+                  <Icon name="users" size="sm" class="text-ateliya-primary" />
+                </div>
+                <div>
+                  <p class="text-[10px] text-gray-400 font-medium">
+                    Communaute
+                  </p><p class="text-xs font-bold text-gray-900">
+                    500+ tailleurs
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -317,7 +282,7 @@ const CARD_COUNT = carouselCards.length;
         >
         </div>
         <div
-          class="absolute bottom-[28%] left-[5%] w-3 h-3 rounded-full bg-pink-400/30 hero-bounce-1"
+          class="absolute bottom-[28%] left-[5%] w-3 h-3 rounded-full bg-africa-gold/25 hero-bounce-1"
         >
         </div>
       </div>
@@ -427,6 +392,26 @@ const CARD_COUNT = carouselCards.length;
     animation: heroFloatCard 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  .hero-stat {
+    position: absolute;
+    z-index: 40;
+  }
+
+  .hero-stat--check {
+    top: 24%;
+    left: 0;
+  }
+
+  .hero-stat--trend {
+    right: 18%;
+    bottom: 22%;
+  }
+
+  .hero-stat--community {
+    left: -12%;
+    bottom: 3%;
+  }
+
   /* Animations continues différées à 6s pour ne pas perturber Lighthouse */
   .hero-float-1 {
     animation: heroFloat1 4s ease-in-out 6s infinite;
@@ -449,142 +434,67 @@ const CARD_COUNT = carouselCards.length;
      ====================================================== */
 
   .scene {
+    --phone-offset: -58px;
+    --phone-y: 34px;
     position: relative;
     width: 520px;
     height: 640px;
-    perspective: 1200px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .carousel {
+  .scene__photo {
     position: absolute;
+    top: 6%;
+    right: 1%;
+    width: 300px;
+    height: 300px;
+    z-index: 5;
+    animation: photoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  }
+
+  .scene__photo-arc {
+    position: absolute;
+    inset: -22px -24px auto auto;
+    width: 330px;
+    height: 330px;
+    pointer-events: none;
+  }
+
+  .scene__photo-frame {
+    position: relative;
     width: 100%;
     height: 100%;
-    transform-style: preserve-3d;
-    will-change: transform;
-    animation:
-      carouselExpand 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both,
-      carouselSpin 22s linear 6s infinite;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 6px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+      0 26px 70px rgba(18, 63, 59, 0.16),
+      0 8px 24px rgba(18, 63, 59, 0.08);
   }
 
-  @keyframes carouselExpand {
-    0% {
-      transform: rotateY(0deg) scale(0.7);
-    }
-    100% {
-      transform: rotateY(0deg) scale(1);
-    }
+  .scene__photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  @keyframes carouselSpin {
+  @keyframes photoEntrance {
     from {
-      transform: rotateY(0deg);
+      opacity: 0;
+      transform: translateX(26px) scale(0.9);
     }
     to {
-      transform: rotateY(360deg);
-    }
-  }
-
-  .carousel__card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 130px;
-    height: 140px;
-    margin-left: -65px;
-    margin-top: -70px;
-    transform-style: preserve-3d;
-    will-change: transform;
-    animation: cardSpread 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-    --target-tz: 280px;
-  }
-
-  @keyframes cardSpread {
-    0% {
-      transform: rotateY(calc(360deg / var(--card-total) * var(--card-index)))
-        translateZ(40px);
-      opacity: 0.4;
-    }
-    100% {
-      transform: rotateY(calc(360deg / var(--card-total) * var(--card-index)))
-        translateZ(var(--target-tz));
       opacity: 1;
+      transform: translateX(0) scale(1);
     }
-  }
-
-  .carousel__card {
-    transform: rotateY(calc(360deg / var(--card-total) * var(--card-index)))
-      translateZ(var(--target-tz));
-  }
-
-  .carousel__card-inner {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow:
-      0 12px 32px rgba(0, 0, 0, 0.05),
-      0 4px 12px rgba(13, 107, 95, 0.04);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 16px 12px;
-    will-change: transform;
-    /* Plus besoin de masquer la face arrière avec le nouveau calcul de rotation */
-    /* Spin différé à 6s pour ne pas perturber Lighthouse */
-    animation: cardCounterSpin 22s linear 6s infinite;
-    transition: box-shadow 0.3s ease;
-  }
-
-  .carousel__card-inner:hover {
-    box-shadow:
-      0 16px 48px rgba(0, 0, 0, 0.12),
-      0 4px 16px rgba(13, 107, 95, 0.1);
-  }
-
-  @keyframes cardCounterSpin {
-    from {
-      transform: rotateY(calc(-1 * var(--init-rot, 0deg)));
-    }
-    to {
-      transform: rotateY(calc(-360deg - var(--init-rot, 0deg)));
-    }
-  }
-
-  .carousel__card-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .carousel__card-title {
-    font-size: 13px;
-    font-family: Fraunces, serif;
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    color: #1a202c;
-    line-height: 1;
-  }
-
-  .carousel__card-desc {
-    font-size: 10px;
-    color: #64748b;
-    font-weight: 500;
   }
 
   .scene__phone {
     position: relative;
     z-index: 10;
+    transform: translateX(var(--phone-offset)) translateY(var(--phone-y));
     will-change: transform;
     animation: phoneSurge 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
@@ -593,20 +503,24 @@ const CARD_COUNT = carouselCards.length;
   @keyframes phoneSurge {
     0% {
       opacity: 0;
-      transform: scale(0.5) translateY(30px);
+      transform: translateX(var(--phone-offset))
+        translateY(calc(var(--phone-y) + 30px)) scale(0.5);
     }
     30% {
       opacity: 1;
     }
     70% {
-      transform: scale(1.04) translateY(-14px);
+      transform: translateX(var(--phone-offset))
+        translateY(calc(var(--phone-y) - 14px)) scale(1.04);
     }
     85% {
-      transform: scale(0.99) translateY(-2px);
+      transform: translateX(var(--phone-offset))
+        translateY(calc(var(--phone-y) - 2px)) scale(0.99);
     }
     100% {
       opacity: 1;
-      transform: scale(1) translateY(0);
+      transform: translateX(var(--phone-offset)) translateY(var(--phone-y))
+        scale(1);
     }
   }
 
@@ -655,9 +569,38 @@ const CARD_COUNT = carouselCards.length;
   }
 
   .scene__phone-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0;
+    transform: scale(1.015);
+    animation: phoneScreenFade calc(var(--screen-total) * 4s) ease-in-out
+      infinite;
+    animation-delay: calc(var(--screen-index) * 4s);
+  }
+
+  .scene__phone-slides {
+    position: absolute;
+    inset: 0;
+  }
+
+  @keyframes phoneScreenFade {
+    0%,
+    21% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    26%,
+    95% {
+      opacity: 0;
+      transform: scale(1.015);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   /* Correction: transform au lieu de left — propriété non-compositée */
@@ -776,54 +719,59 @@ const CARD_COUNT = carouselCards.length;
 
   @media (max-width: 768px) {
     .scene {
+      --phone-offset: -38px;
+      --phone-y: 24px;
       width: 380px;
       height: 540px;
-      perspective: 900px;
     }
-    .carousel__card {
-      width: 100px;
-      height: 110px;
-      margin-left: -50px;
-      margin-top: -55px;
-      --target-tz: 210px;
+    .scene__photo {
+      top: 7%;
+      right: 0;
+      width: 220px;
+      height: 220px;
     }
-    .carousel__card-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-    }
-    .carousel__card-title {
-      font-size: 11px;
-    }
-    .carousel__card-desc {
-      display: none;
+    .scene__photo-arc {
+      width: 246px;
+      height: 246px;
+      inset: -16px -18px auto auto;
     }
     .scene__phone-screen {
       width: 230px;
       height: 470px;
     }
+    .hero-stat--check {
+      left: -2%;
+    }
+    .hero-stat--trend {
+      right: 13%;
+      bottom: 24%;
+    }
+    .hero-stat--community {
+      left: -3%;
+      bottom: 8%;
+    }
   }
 
   @media (max-width: 480px) {
     .scene {
+      --phone-offset: -26px;
+      --phone-y: 18px;
       width: 320px;
       height: 480px;
-      perspective: 800px;
     }
-    .carousel__card {
-      width: 80px;
-      height: 90px;
-      margin-left: -40px;
-      margin-top: -45px;
-      --target-tz: 170px;
+    .scene__photo {
+      top: 10%;
+      right: 4%;
+      width: 170px;
+      height: 170px;
     }
-    .carousel__card-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
+    .scene__photo-arc {
+      width: 194px;
+      height: 194px;
+      inset: -14px -14px auto auto;
     }
-    .carousel__card-title {
-      font-size: 10px;
+    .scene__photo-frame {
+      border-width: 4px;
     }
     .scene__phone-screen {
       width: 200px;
@@ -841,20 +789,34 @@ const CARD_COUNT = carouselCards.length;
       height: 22px;
       border-radius: 0 0 16px 16px;
     }
+    .hero-stat--check {
+      left: -2%;
+      top: 25%;
+    }
+    .hero-stat--trend {
+      right: 4%;
+      bottom: 26%;
+    }
+    .hero-stat--community {
+      left: -5%;
+      bottom: 10%;
+    }
   }
 
   @media (min-width: 1280px) {
     .scene {
+      --phone-offset: -64px;
+      --phone-y: 36px;
       width: 560px;
       height: 680px;
-      perspective: 1400px;
     }
-    .carousel__card {
-      width: 140px;
-      height: 150px;
-      margin-left: -70px;
-      margin-top: -75px;
-      --target-tz: 310px;
+    .scene__photo {
+      width: 330px;
+      height: 330px;
+    }
+    .scene__photo-arc {
+      width: 360px;
+      height: 360px;
     }
     .scene__phone-screen {
       width: 300px;
@@ -864,11 +826,10 @@ const CARD_COUNT = carouselCards.length;
 
   @media (min-width: 1536px) {
     .scene {
+      --phone-offset: -70px;
+      --phone-y: 40px;
       width: 600px;
       height: 720px;
-    }
-    .carousel__card {
-      --target-tz: 340px;
     }
   }
 
@@ -879,6 +840,16 @@ const CARD_COUNT = carouselCards.length;
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+
+    .scene__phone-img {
+      animation: none !important;
+      opacity: 0;
+      transform: none;
+    }
+
+    .scene__phone-img:first-child {
+      opacity: 1;
     }
   }
 </style>

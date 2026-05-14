@@ -15,24 +15,55 @@ import "../styles/global.css";
     <div class="deco deco-4"></div>
 
     <!-- ══ POPUP SUCCÈS ══ -->
-  <div id="success-popup" class="popup-overlay hidden" role="dialog" aria-modal="true">
-    <div class="popup-card">
-      <div class="popup-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <h3 class="popup-title">Compte créé avec succès !</h3>
-      <p class="popup-text">Votre compte a bien été créé. Téléchargez l'application mobile Ateliya pour vous connecter et commencer à gérer votre atelier.</p>
-      <div class="popup-actions">
-        <button id="popup-close" class="popup-btn-secondary">Fermer</button>
-        <a href="/" class="popup-btn">
-          Retour à l'accueil
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+    <div
+      id="success-popup"
+      class="popup-overlay hidden"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="popup-card">
+        <div class="popup-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline
+              points="22 4 12 14.01 9 11.01"></polyline></svg
+          >
+        </div>
+        <h3 class="popup-title">Compte créé avec succès !</h3>
+        <p class="popup-text">
+          Votre compte a bien été créé. Téléchargez l'application mobile Ateliya
+          pour vous connecter et commencer à gérer votre atelier.
+        </p>
+        <div class="popup-actions">
+          <button id="popup-close" class="popup-btn-secondary">Fermer</button>
+          <a href="/" class="popup-btn">
+            Retour à l'accueil
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+            >
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Barre logo -->
+    <!-- Barre logo -->
     <div class="top-bar">
       <a href="/" class="top-logo">
         <img src="/ateliya.webp" alt="Ateliya" width="26" height="26" />
@@ -42,13 +73,15 @@ import "../styles/global.css";
 
     <!-- Deux cartes côte à côte -->
     <div class="two-cols">
-
       <!-- CARTE GAUCHE : message d'accueil -->
       <div class="card card-left">
         <div class="welcome-inner">
           <div class="welcome-badge">✦ Essai gratuit 14 jours</div>
           <h2 class="welcome-title">Gérez votre atelier comme un pro.</h2>
-          <p class="welcome-text">Rejoignez des centaines d'artisans qui font confiance à Ateliya pour piloter leur activité au quotidien.</p>
+          <p class="welcome-text">
+            Rejoignez des centaines d'artisans qui font confiance à Ateliya pour
+            piloter leur activité au quotidien.
+          </p>
           <ul class="welcome-features">
             <li>
               <span class="wf-check">✓</span>
@@ -76,230 +109,497 @@ import "../styles/global.css";
 
       <!-- CARTE DROITE : formulaire -->
       <div class="card card-right" id="form-wrap">
+        <!-- Titre -->
+        <h1 class="card-title">Créer votre compte</h1>
 
-      <!-- Titre -->
-      <h1 class="card-title">Créer votre compte</h1>
-
-      <!-- Stepper -->
-      <div class="stepper">
-        <div class="step active" id="step-dot-1">
-          <div class="step-circle"><span>1</span></div>
-          <p class="step-label">Entreprise</p>
-        </div>
-        <div class="step-line" id="line-1"></div>
-        <div class="step" id="step-dot-2">
-          <div class="step-circle"><span>2</span></div>
-          <p class="step-label">Administrateur</p>
-        </div>
-        <div class="step-line" id="line-2"></div>
-        <div class="step" id="step-dot-3">
-          <div class="step-circle"><span>3</span></div>
-          <p class="step-label">Confirmation</p>
-        </div>
-      </div>
-
-      <!-- Alertes erreur uniquement -->
-
-      <div id="error-message" class="alert alert-err hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
-        <span id="error-text">Une erreur est survenue.</span>
-      </div>
-
-      <form id="register-form" novalidate>
-
-        <!-- ══ ÉTAPE 1 : ENTREPRISE ══ -->
-        <div class="form-step active" id="step-1">
-          <h2 class="step-title">Informations entreprise</h2>
-
-          <div class="field">
-            <label for="denominationEntreprise" class="label">Nom de l'entreprise <em>*</em></label>
-            <input id="denominationEntreprise" name="denominationEntreprise" type="text" class="input" placeholder="Ex: Fashion Boutique CI" required maxlength="100" autocomplete="organization" />
+        <!-- Stepper -->
+        <div class="stepper">
+          <div class="step active" id="step-dot-1">
+            <div class="step-circle"><span>1</span></div>
+            <p class="step-label">Entreprise</p>
           </div>
-
-          <div class="field">
-            <label for="pays" class="label">Pays <em>*</em></label>
-            <div class="select-wrap">
-              <select id="pays" name="pays" class="input input-select" required>
-                <option value="" disabled selected>Sélectionnez un pays</option>
-              </select>
-              <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </div>
-            <div id="pays-loading" class="hint hidden">
-              <svg class="spin-icon" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-              Chargement des pays…
-            </div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step" id="step-dot-2">
+            <div class="step-circle"><span>2</span></div>
+            <p class="step-label">Administrateur</p>
           </div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step" id="step-dot-3">
+            <div class="step-circle"><span>3</span></div>
+            <p class="step-label">Confirmation</p>
+          </div>
+        </div>
 
-          <div class="row-2">
+        <!-- Alertes erreur uniquement -->
+
+        <div id="error-message" class="alert alert-err hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><circle cx="12" cy="12" r="10"></circle><line
+              x1="12"
+              x2="12"
+              y1="8"
+              y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"
+            ></line></svg
+          >
+          <span id="error-text">Une erreur est survenue.</span>
+        </div>
+
+        <form id="register-form" novalidate>
+          <!-- ══ ÉTAPE 1 : ENTREPRISE ══ -->
+          <div class="form-step active" id="step-1">
+            <h2 class="step-title">Informations entreprise</h2>
+
             <div class="field">
-              <label for="emailEntreprise" class="label">Email entreprise <em>*</em></label>
-              <input id="emailEntreprise" name="emailEntreprise" type="email" class="input" placeholder="contact@boutique.com" required maxlength="100" autocomplete="email" />
+              <label for="denominationEntreprise" class="label"
+                >Nom de l'entreprise <em>*</em></label
+              >
+              <input
+                id="denominationEntreprise"
+                name="denominationEntreprise"
+                type="text"
+                class="input"
+                placeholder="Ex: Fashion Boutique CI"
+                required
+                maxlength="100"
+                autocomplete="organization"
+              />
             </div>
+
             <div class="field">
-              <label for="numeroEntreprise" class="label">Téléphone <em>*</em></label>
-              <div class="phone-wrap">
-                <span id="phone-prefix" class="phone-code">+--</span>
-                <input id="numeroEntreprise" name="numeroEntreprise" type="tel" class="input input-phone" placeholder="XX XX XX XX" required maxlength="20" autocomplete="tel-national" inputmode="tel" />
+              <label for="pays" class="label">Pays <em>*</em></label>
+              <div class="select-wrap">
+                <select
+                  id="pays"
+                  name="pays"
+                  class="input input-select"
+                  required
+                >
+                  <option value="" disabled selected
+                    >Sélectionnez un pays</option
+                  >
+                </select>
+                <svg
+                  class="chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg
+                >
+              </div>
+              <div id="pays-loading" class="hint hidden">
+                <svg
+                  class="spin-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg
+                >
+                Chargement des pays…
               </div>
             </div>
-          </div>
 
-          <!-- Code de parrainage -->
-          <div class="field">
-            <label for="codeParrain" class="label">
-              Code de parrainage
-              <span class="label-opt">(optionnel)</span>
-            </label>
-            <input
-              id="codeParrain"
-              name="codeParrain"
-              type="text"
-              class="input"
-              placeholder="Ex: ATL-XXXX"
-              maxlength="32"
-              autocomplete="off"
-            />
-          </div>
-
-          <div class="step-actions">
-            <span></span>
-            <button type="button" class="btn-next" id="btn-next-1">
-              Suivant
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- ══ ÉTAPE 2 : ADMIN ══ -->
-        <div class="form-step" id="step-2">
-          <h2 class="step-title">Compte administrateur</h2>
-
-          <div class="field">
-            <label for="email" class="label">Email de connexion <em>*</em></label>
-            <input id="email" name="email" type="email" class="input" placeholder="admin@boutique.com" required maxlength="100" autocomplete="username" />
-          </div>
-
-          <div class="row-2">
-            <div class="field">
-              <label for="password" class="label">Mot de passe <em>*</em></label>
-              <div class="pw-wrap">
-                <input id="password" name="password" type="password" class="input" placeholder="Min. 8 caractères" required minlength="8" maxlength="128" autocomplete="new-password" />
-                <button type="button" class="eye-btn" data-target="password" aria-label="Afficher/masquer">
-                  <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-                </button>
+            <div class="row-2">
+              <div class="field">
+                <label for="emailEntreprise" class="label"
+                  >Email entreprise <em>*</em></label
+                >
+                <input
+                  id="emailEntreprise"
+                  name="emailEntreprise"
+                  type="email"
+                  class="input"
+                  placeholder="contact@boutique.com"
+                  required
+                  maxlength="100"
+                  autocomplete="email"
+                />
+              </div>
+              <div class="field">
+                <label for="numeroEntreprise" class="label"
+                  >Téléphone <em>*</em></label
+                >
+                <div class="phone-wrap">
+                  <span id="phone-prefix" class="phone-code">+--</span>
+                  <input
+                    id="numeroEntreprise"
+                    name="numeroEntreprise"
+                    type="tel"
+                    class="input input-phone"
+                    placeholder="XX XX XX XX"
+                    required
+                    maxlength="20"
+                    autocomplete="tel-national"
+                    inputmode="tel"
+                  />
+                </div>
               </div>
             </div>
+
+            <!-- Code de parrainage -->
             <div class="field">
-              <label for="confirmPassword" class="label">Confirmation <em>*</em></label>
-              <div class="pw-wrap">
-                <input id="confirmPassword" name="confirmPassword" type="password" class="input" placeholder="Confirmez" required maxlength="128" autocomplete="new-password" />
-                <button type="button" class="eye-btn" data-target="confirmPassword" aria-label="Afficher/masquer">
-                  <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-                </button>
+              <label for="codeParrain" class="label">
+                Code de parrainage
+                <span class="label-opt">(optionnel)</span>
+              </label>
+              <input
+                id="codeParrain"
+                name="codeParrain"
+                type="text"
+                class="input"
+                placeholder="Ex: ATL-XXXX"
+                maxlength="32"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="step-actions">
+              <span></span>
+              <button type="button" class="btn-next" id="btn-next-1">
+                Suivant
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
+                  ></path></svg
+                >
+              </button>
+            </div>
+          </div>
+
+          <!-- ══ ÉTAPE 2 : ADMIN ══ -->
+          <div class="form-step" id="step-2">
+            <h2 class="step-title">Compte administrateur</h2>
+
+            <div class="field">
+              <label for="email" class="label"
+                >Email de connexion <em>*</em></label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                class="input"
+                placeholder="admin@boutique.com"
+                required
+                maxlength="100"
+                autocomplete="username"
+              />
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="password" class="label"
+                  >Mot de passe <em>*</em></label
+                >
+                <div class="pw-wrap">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    class="input"
+                    placeholder="Min. 8 caractères"
+                    required
+                    minlength="8"
+                    maxlength="128"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    data-target="password"
+                    aria-label="Afficher/masquer"
+                  >
+                    <svg
+                      class="eye-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"
+                      ></path><circle cx="12" cy="12" r="3"></circle></svg
+                    >
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="confirmPassword" class="label"
+                  >Confirmation <em>*</em></label
+                >
+                <div class="pw-wrap">
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    class="input"
+                    placeholder="Confirmez"
+                    required
+                    maxlength="128"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    data-target="confirmPassword"
+                    aria-label="Afficher/masquer"
+                  >
+                    <svg
+                      class="eye-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"
+                      ></path><circle cx="12" cy="12" r="3"></circle></svg
+                    >
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Force du mot de passe -->
-          <div class="pw-meter">
-            <div class="pw-track"><div class="pw-fill" id="pw-fill"></div></div>
-            <span class="pw-label" id="pw-label">Min. 8 caractères</span>
-          </div>
-
-          <div class="step-actions">
-            <button type="button" class="btn-back" id="btn-back-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-              Précédent
-            </button>
-            <button type="button" class="btn-next" id="btn-next-2">
-              Suivant
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- ══ ÉTAPE 3 : CONFIRMATION ══ -->
-        <div class="form-step" id="step-3">
-          <h2 class="step-title">Vérification</h2>
-          <p class="step-desc">Vérifiez vos informations avant de créer le compte.</p>
-
-          <div class="recap">
-            <div class="recap-group">
-              <p class="recap-section">Entreprise</p>
-              <div class="recap-row"><span class="recap-key">Nom</span><span class="recap-val" id="rc-nom">—</span></div>
-              <div class="recap-row"><span class="recap-key">Pays</span><span class="recap-val" id="rc-pays">—</span></div>
-              <div class="recap-row"><span class="recap-key">Email</span><span class="recap-val" id="rc-email-ent">—</span></div>
-              <div class="recap-row"><span class="recap-key">Téléphone</span><span class="recap-val" id="rc-tel">—</span></div>
+            <!-- Force du mot de passe -->
+            <div class="pw-meter">
+              <div class="pw-track">
+                <div class="pw-fill" id="pw-fill"></div>
+              </div>
+              <span class="pw-label" id="pw-label">Min. 8 caractères</span>
             </div>
-            <div class="recap-group">
-              <p class="recap-section">Administrateur</p>
-              <div class="recap-row"><span class="recap-key">Email</span><span class="recap-val" id="rc-email-adm">—</span></div>
-              <div class="recap-row"><span class="recap-key">Mot de passe</span><span class="recap-val">••••••••</span></div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-back" id="btn-back-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"
+                  ></path></svg
+                >
+                Précédent
+              </button>
+              <button type="button" class="btn-next" id="btn-next-2">
+                Suivant
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
+                  ></path></svg
+                >
+              </button>
             </div>
           </div>
 
-          <div class="step-actions">
-            <button type="button" class="btn-back" id="btn-back-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-              Précédent
-            </button>
-            <button type="submit" id="submit-btn" class="btn-next">
-              <span class="btn-shine"></span>
-              <span id="submit-text">Créer mon compte</span>
-              <svg id="submit-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              <svg id="submit-spinner" class="btn-spin hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-            </button>
+          <!-- ══ ÉTAPE 3 : CONFIRMATION ══ -->
+          <div class="form-step" id="step-3">
+            <h2 class="step-title">Vérification</h2>
+            <p class="step-desc">
+              Vérifiez vos informations avant de créer le compte.
+            </p>
+
+            <div class="recap">
+              <div class="recap-group">
+                <p class="recap-section">Entreprise</p>
+                <div class="recap-row">
+                  <span class="recap-key">Nom</span><span
+                    class="recap-val"
+                    id="rc-nom">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Pays</span><span
+                    class="recap-val"
+                    id="rc-pays">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Email</span><span
+                    class="recap-val"
+                    id="rc-email-ent">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Téléphone</span><span
+                    class="recap-val"
+                    id="rc-tel">—</span
+                  >
+                </div>
+              </div>
+              <div class="recap-group">
+                <p class="recap-section">Administrateur</p>
+                <div class="recap-row">
+                  <span class="recap-key">Email</span><span
+                    class="recap-val"
+                    id="rc-email-adm">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Mot de passe</span><span
+                    class="recap-val">••••••••</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-back" id="btn-back-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"
+                  ></path></svg
+                >
+                Précédent
+              </button>
+              <button type="submit" id="submit-btn" class="btn-next">
+                <span class="btn-shine"></span>
+                <span id="submit-text">Créer mon compte</span>
+                <svg
+                  id="submit-arrow"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
+                  ></path></svg
+                >
+                <svg
+                  id="submit-spinner"
+                  class="btn-spin hidden"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg
+                >
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
 
-      </form>
-
-      <!-- Legal -->
-      <p class="legal">
-        En créant un compte, vous acceptez nos
-        <a href="/conditions">Conditions</a> et notre
-        <a href="/politique">Politique de confidentialité</a>.
-      </p>
-
-    </div><!-- fin card-right -->
+        <!-- Legal -->
+        <p class="legal">
+          En créant un compte, vous acceptez nos
+          <a href="/conditions">Conditions</a> et notre
+          <a href="/politique">Politique de confidentialité</a>.
+        </p>
+      </div><!-- fin card-right -->
     </div><!-- fin two-cols -->
   </div><!-- fin bg -->
 </Layout>
 
 <script>
-  import { BASE_URL } from "../lib/environment";
+  import { BASE_URL_INSCRIPTION, BASE_URL } from "../lib/environment";
 
-  interface PaysItem { id: number; libelle: string; code: string; indicatif: string; }
+  interface PaysItem {
+    id: number;
+    libelle: string;
+    code: string;
+    indicatif: string;
+  }
   let paysData: PaysItem[] = [];
   let isSubmitting = false;
   let currentStep = 1;
 
-  const form        = document.getElementById("register-form") as HTMLFormElement;
-  const paysSelect  = document.getElementById("pays") as HTMLSelectElement;
+  const form = document.getElementById("register-form") as HTMLFormElement;
+  const paysSelect = document.getElementById("pays") as HTMLSelectElement;
   const phonePrefix = document.getElementById("phone-prefix") as HTMLElement;
   const paysLoading = document.getElementById("pays-loading") as HTMLElement;
-  const submitBtn   = document.getElementById("submit-btn") as HTMLButtonElement;
-  const submitText  = document.getElementById("submit-text") as HTMLElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitText = document.getElementById("submit-text") as HTMLElement;
   const submitArrow = document.getElementById("submit-arrow") as HTMLElement;
-  const submitSpinner = document.getElementById("submit-spinner") as HTMLElement;
+  const submitSpinner = document.getElementById(
+    "submit-spinner",
+  ) as HTMLElement;
   const successPopup = document.getElementById("success-popup") as HTMLElement;
   document.getElementById("popup-close")?.addEventListener("click", () => {
     successPopup.classList.add("hidden");
   });
-  const errorMsg    = document.getElementById("error-message") as HTMLElement;
-  const errorText   = document.getElementById("error-text") as HTMLElement;
-  const pwFill      = document.getElementById("pw-fill") as HTMLElement;
-  const pwLabel     = document.getElementById("pw-label") as HTMLElement;
-  const pwInput     = document.getElementById("password") as HTMLInputElement;
+  const errorMsg = document.getElementById("error-message") as HTMLElement;
+  const errorText = document.getElementById("error-text") as HTMLElement;
+  const pwFill = document.getElementById("pw-fill") as HTMLElement;
+  const pwLabel = document.getElementById("pw-label") as HTMLElement;
+  const pwInput = document.getElementById("password") as HTMLInputElement;
 
-  const EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  const EMAIL_RE =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
   const PHONE_RE = /^\+?[\d\s\-().]{5,20}$/;
 
   // ── Stepper ──
   function goToStep(n: number) {
-    document.querySelectorAll<HTMLElement>(".form-step").forEach(el => el.classList.remove("active"));
-    document.querySelectorAll<HTMLElement>(".step").forEach(el => el.classList.remove("active", "done"));
-    document.querySelectorAll<HTMLElement>(".step-line").forEach(el => el.classList.remove("done"));
+    document
+      .querySelectorAll<HTMLElement>(".form-step")
+      .forEach((el) => el.classList.remove("active"));
+    document
+      .querySelectorAll<HTMLElement>(".step")
+      .forEach((el) => el.classList.remove("active", "done"));
+    document
+      .querySelectorAll<HTMLElement>(".step-line")
+      .forEach((el) => el.classList.remove("done"));
 
     const target = document.getElementById(`step-${n}`);
     if (target) target.classList.add("active");
@@ -307,8 +607,12 @@ import "../styles/global.css";
     for (let i = 1; i <= 3; i++) {
       const dot = document.getElementById(`step-dot-${i}`);
       if (!dot) continue;
-      if (i < n)  { dot.classList.add("done"); }
-      if (i === n){ dot.classList.add("active"); }
+      if (i < n) {
+        dot.classList.add("done");
+      }
+      if (i === n) {
+        dot.classList.add("active");
+      }
     }
     for (let i = 1; i <= 2; i++) {
       const line = document.getElementById(`line-${i}`);
@@ -320,24 +624,37 @@ import "../styles/global.css";
 
   // ── Validation étape 1 ──
   function validateStep1(): string | null {
-    const denom = (document.getElementById("denominationEntreprise") as HTMLInputElement).value.trim();
-    const emailEnt = (document.getElementById("emailEntreprise") as HTMLInputElement).value.trim();
-    const tel = (document.getElementById("numeroEntreprise") as HTMLInputElement).value.trim();
+    const denom = (
+      document.getElementById("denominationEntreprise") as HTMLInputElement
+    ).value.trim();
+    const emailEnt = (
+      document.getElementById("emailEntreprise") as HTMLInputElement
+    ).value.trim();
+    const tel = (
+      document.getElementById("numeroEntreprise") as HTMLInputElement
+    ).value.trim();
     const pays = (document.getElementById("pays") as HTMLSelectElement).value;
     if (!denom) return "Le nom de l'entreprise est obligatoire.";
-    if (!emailEnt || !EMAIL_RE.test(emailEnt)) return "L'email de l'entreprise n'est pas valide.";
-    if (!tel || !PHONE_RE.test(tel)) return "Le numéro de téléphone n'est pas valide.";
+    if (!emailEnt || !EMAIL_RE.test(emailEnt))
+      return "L'email de l'entreprise n'est pas valide.";
+    if (!tel || !PHONE_RE.test(tel))
+      return "Le numéro de téléphone n'est pas valide.";
     if (!pays || isNaN(Number(pays))) return "Veuillez sélectionner un pays.";
     return null;
   }
 
   // ── Validation étape 2 ──
   function validateStep2(): string | null {
-    const email = (document.getElementById("email") as HTMLInputElement).value.trim();
+    const email = (
+      document.getElementById("email") as HTMLInputElement
+    ).value.trim();
     const pw = (document.getElementById("password") as HTMLInputElement).value;
-    const cpw = (document.getElementById("confirmPassword") as HTMLInputElement).value;
-    if (!email || !EMAIL_RE.test(email)) return "L'email de connexion n'est pas valide.";
-    if (!pw || pw.length < 8) return "Le mot de passe doit contenir au moins 8 caractères.";
+    const cpw = (document.getElementById("confirmPassword") as HTMLInputElement)
+      .value;
+    if (!email || !EMAIL_RE.test(email))
+      return "L'email de connexion n'est pas valide.";
+    if (!pw || pw.length < 8)
+      return "Le mot de passe doit contenir au moins 8 caractères.";
     if (pw !== cpw) return "Les mots de passe ne correspondent pas.";
     return null;
   }
@@ -345,60 +662,79 @@ import "../styles/global.css";
   // ── Recap étape 3 ──
   function fillRecap() {
     (document.getElementById("rc-nom") as HTMLElement).textContent =
-      (document.getElementById("denominationEntreprise") as HTMLInputElement).value.trim() || "—";
+      (
+        document.getElementById("denominationEntreprise") as HTMLInputElement
+      ).value.trim() || "—";
     const selectedOpt = paysSelect.selectedOptions[0];
     (document.getElementById("rc-pays") as HTMLElement).textContent =
       selectedOpt?.textContent?.trim() || "—";
     (document.getElementById("rc-email-ent") as HTMLElement).textContent =
-      (document.getElementById("emailEntreprise") as HTMLInputElement).value.trim() || "—";
+      (
+        document.getElementById("emailEntreprise") as HTMLInputElement
+      ).value.trim() || "—";
     (document.getElementById("rc-tel") as HTMLElement).textContent =
-      (phonePrefix.textContent || "") + " " +
-      (document.getElementById("numeroEntreprise") as HTMLInputElement).value.trim() || "—";
+      (phonePrefix.textContent || "") +
+        " " +
+        (
+          document.getElementById("numeroEntreprise") as HTMLInputElement
+        ).value.trim() || "—";
     (document.getElementById("rc-email-adm") as HTMLElement).textContent =
-      (document.getElementById("email") as HTMLInputElement).value.trim() || "—";
+      (document.getElementById("email") as HTMLInputElement).value.trim() ||
+      "—";
   }
 
   // ── Boutons navigation ──
   document.getElementById("btn-next-1")?.addEventListener("click", () => {
     const err = validateStep1();
-    if (err) { showError(err); return; }
+    if (err) {
+      showError(err);
+      return;
+    }
     goToStep(2);
   });
   document.getElementById("btn-next-2")?.addEventListener("click", () => {
     const err = validateStep2();
-    if (err) { showError(err); return; }
+    if (err) {
+      showError(err);
+      return;
+    }
     fillRecap();
     goToStep(3);
   });
-  document.getElementById("btn-back-2")?.addEventListener("click", () => goToStep(1));
-  document.getElementById("btn-back-3")?.addEventListener("click", () => goToStep(2));
+  document
+    .getElementById("btn-back-2")
+    ?.addEventListener("click", () => goToStep(1));
+  document
+    .getElementById("btn-back-3")
+    ?.addEventListener("click", () => goToStep(2));
 
   // ── Force du mot de passe ──
   pwInput?.addEventListener("input", () => {
     const v = pwInput.value;
     let s = 0;
-    if (v.length >= 8)          s++;
-    if (v.length >= 12)         s++;
-    if (/[A-Z]/.test(v))        s++;
-    if (/[0-9]/.test(v))        s++;
+    if (v.length >= 8) s++;
+    if (v.length >= 12) s++;
+    if (/[A-Z]/.test(v)) s++;
+    if (/[0-9]/.test(v)) s++;
     if (/[^A-Za-z0-9]/.test(v)) s++;
-    const c = ["#ef4444","#f97316","#eab308","#22c55e","#0d6b5f"];
-    const l = ["Très faible","Faible","Moyen","Fort","Très fort"];
+    const c = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#123f3b"];
+    const l = ["Très faible", "Faible", "Moyen", "Fort", "Très fort"];
     const p = Math.min(s, 5) * 20;
-    pwFill.style.width      = p + "%";
+    pwFill.style.width = p + "%";
     pwFill.style.background = c[Math.min(s, 4)];
-    pwLabel.textContent     = v.length === 0 ? "Min. 8 caractères" : l[Math.min(s, 4)];
-    pwLabel.style.color     = v.length === 0 ? "#9ca3af" : c[Math.min(s, 4)];
+    pwLabel.textContent =
+      v.length === 0 ? "Min. 8 caractères" : l[Math.min(s, 4)];
+    pwLabel.style.color = v.length === 0 ? "#9ca3af" : c[Math.min(s, 4)];
   });
 
   // ── Oeil ──
   const EYE_OPEN = `<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>`;
   const EYE_SHUT = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" x2="23" y1="1" y2="23"/>`;
-  document.querySelectorAll<HTMLButtonElement>(".eye-btn").forEach(btn => {
+  document.querySelectorAll<HTMLButtonElement>(".eye-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const tid = btn.dataset.target;
       if (!tid) return;
-      const inp = document.getElementById(tid) as HTMLInputElement|null;
+      const inp = document.getElementById(tid) as HTMLInputElement | null;
       if (!inp) return;
       const show = inp.type === "password";
       inp.type = show ? "text" : "password";
@@ -409,18 +745,20 @@ import "../styles/global.css";
 
   // ── Pays ──
   paysSelect.addEventListener("change", () => {
-    phonePrefix.textContent = paysSelect.selectedOptions[0]?.dataset.indicatif || "+--";
+    phonePrefix.textContent =
+      paysSelect.selectedOptions[0]?.dataset.indicatif || "+--";
   });
 
   async function loadPays() {
     paysLoading.classList.remove("hidden");
     try {
-      const res  = await fetch(`${BASE_URL}/pays/actif`);
+      const res = await fetch(`${BASE_URL}/pays/actif`);
       if (!res.ok) throw new Error();
       const json = await res.json();
-      paysData   = (json.data || []) as PaysItem[];
-      paysSelect.innerHTML = '<option value="" disabled selected>Sélectionnez un pays</option>';
-      paysData.forEach(p => {
+      paysData = (json.data || []) as PaysItem[];
+      paysSelect.innerHTML =
+        '<option value="" disabled selected>Sélectionnez un pays</option>';
+      paysData.forEach((p) => {
         const opt = document.createElement("option");
         opt.value = String(Number(p.id));
         opt.textContent = String(p.libelle).slice(0, 60);
@@ -429,7 +767,9 @@ import "../styles/global.css";
       });
     } catch {
       const opt = document.createElement("option");
-      opt.value = ""; opt.textContent = "Erreur de chargement"; opt.disabled = true;
+      opt.value = "";
+      opt.textContent = "Erreur de chargement";
+      opt.disabled = true;
       paysSelect.appendChild(opt);
     } finally {
       paysLoading.classList.add("hidden");
@@ -452,45 +792,53 @@ import "../styles/global.css";
     submitText.textContent = on ? "Création en cours…" : "Créer mon compte";
   }
 
-  form.addEventListener("submit", async e => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (isSubmitting) return;
     isSubmitting = true;
     setLoading(true);
     hideMessages();
 
-    const data   = new FormData(form);
+    const data = new FormData(form);
     const fields = {
-      denominationEntreprise: ((data.get("denominationEntreprise") as string) ?? "").trim(),
-      emailEntreprise:        ((data.get("emailEntreprise") as string) ?? "").trim().toLowerCase(),
-      numeroEntreprise:       ((data.get("numeroEntreprise") as string) ?? "").trim(),
-      pays:                   ((data.get("pays") as string) ?? "").trim(),
-      email:                  ((data.get("email") as string) ?? "").trim().toLowerCase(),
-      password:               (data.get("password") as string) ?? "",
-      confirmPassword:        (data.get("confirmPassword") as string) ?? "",
-      codeParrain:            ((data.get("codeParrain") as string) ?? "").trim().toUpperCase(),
+      denominationEntreprise: (
+        (data.get("denominationEntreprise") as string) ?? ""
+      ).trim(),
+      emailEntreprise: ((data.get("emailEntreprise") as string) ?? "")
+        .trim()
+        .toLowerCase(),
+      numeroEntreprise: ((data.get("numeroEntreprise") as string) ?? "").trim(),
+      pays: ((data.get("pays") as string) ?? "").trim(),
+      email: ((data.get("email") as string) ?? "").trim().toLowerCase(),
+      password: (data.get("password") as string) ?? "",
+      confirmPassword: (data.get("confirmPassword") as string) ?? "",
+      codeParrain: ((data.get("codeParrain") as string) ?? "")
+        .trim()
+        .toUpperCase(),
     };
 
     try {
       const payload: Record<string, unknown> = {
-        email:                  fields.email,
-        password:               fields.password,
-        confirmPassword:        fields.confirmPassword,
+        email: fields.email,
+        password: fields.password,
+        confirmPassword: fields.confirmPassword,
         denominationEntreprise: fields.denominationEntreprise,
-        emailEntreprise:        fields.emailEntreprise,
-        device:                 "web",
-        numeroEntreprise:       fields.numeroEntreprise,
-        pays:                   parseInt(fields.pays, 10),
+        emailEntreprise: fields.emailEntreprise,
+        device: "web",
+        numeroEntreprise: (phonePrefix.textContent?.trim() || "") + fields.numeroEntreprise,
+        pays: parseInt(fields.pays, 10),
       };
       if (fields.codeParrain) payload.codeParrain = fields.codeParrain;
 
-      const res = await fetch(`${BASE_URL}/user/create`, {
+      const res = await fetch(`${BASE_URL_INSCRIPTION}/user/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       let json: any = {};
-      try { json = await res.json(); } catch {}
+      try {
+        json = await res.json();
+      } catch {}
       if (res.ok && json.code === 200) {
         form.reset();
         phonePrefix.textContent = "+--";
@@ -499,12 +847,16 @@ import "../styles/global.css";
       } else {
         showError(
           (typeof json.message === "string" && json.message) ||
-          (Array.isArray(json.errors) && typeof json.errors[0] === "string" && json.errors[0]) ||
-          `Erreur ${res.status}. Veuillez réessayer.`
+            (Array.isArray(json.errors) &&
+              typeof json.errors[0] === "string" &&
+              json.errors[0]) ||
+            `Erreur ${res.status}. Veuillez réessayer.`,
         );
       }
     } catch {
-      showError("Impossible de contacter le serveur. Vérifiez votre connexion.");
+      showError(
+        "Impossible de contacter le serveur. Vérifiez votre connexion.",
+      );
     } finally {
       setLoading(false);
       isSubmitting = false;
@@ -512,11 +864,19 @@ import "../styles/global.css";
   });
 
   loadPays();
-  requestAnimationFrame(() => document.querySelector<HTMLElement>(".two-cols")?.classList.add("visible"));
+  requestAnimationFrame(() =>
+    document.querySelector<HTMLElement>(".two-cols")?.classList.add("visible"),
+  );
 </script>
 
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
   /* ══ FOND ══ */
   .bg {
@@ -529,7 +889,11 @@ import "../styles/global.css";
     padding: 1.5rem 1rem 3rem;
     position: relative;
     overflow: hidden;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 
   /* Cercles décoratifs */
@@ -539,24 +903,32 @@ import "../styles/global.css";
     pointer-events: none;
   }
   .deco-1 {
-    width: 320px; height: 320px;
-    background: rgba(255,255,255,0.12);
-    top: -80px; left: -80px;
+    width: 320px;
+    height: 320px;
+    background: rgba(255, 255, 255, 0.12);
+    top: -80px;
+    left: -80px;
   }
   .deco-2 {
-    width: 200px; height: 200px;
-    background: rgba(255,255,255,0.09);
-    top: 60px; right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.09);
+    top: 60px;
+    right: -50px;
   }
   .deco-3 {
-    width: 240px; height: 240px;
-    background: rgba(255,255,255,0.07);
-    bottom: -60px; right: 80px;
+    width: 240px;
+    height: 240px;
+    background: rgba(255, 255, 255, 0.07);
+    bottom: -60px;
+    right: 80px;
   }
   .deco-4 {
-    width: 160px; height: 160px;
-    background: rgba(255,255,255,0.1);
-    bottom: 40px; left: -40px;
+    width: 160px;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.1);
+    bottom: 40px;
+    left: -40px;
   }
 
   /* ══ BARRE HAUT ══ */
@@ -581,9 +953,10 @@ import "../styles/global.css";
     letter-spacing: -0.03em;
   }
   .top-logo img {
-    width: 28px; height: 28px;
+    width: 28px;
+    height: 28px;
     border-radius: 7px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     padding: 2px;
   }
 
@@ -598,29 +971,38 @@ import "../styles/global.css";
     max-width: 1000px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.14);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.14);
     opacity: 0;
     transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
   }
-  .two-cols.visible { opacity: 1; transform: translateY(0); }
+  .two-cols.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* Carte gauche — teal foncé */
   .card-left {
     width: 380px;
     min-width: 380px;
-    background: linear-gradient(160deg, #34c7b8 0%, #1fa99c 50%, #0d8f82 100%);
+    background: linear-gradient(160deg, #2fafa4 0%, #1fa99c 50%, #0d8f82 100%);
     padding: 2.5rem 2.25rem;
     display: flex;
     flex-direction: column;
   }
 
-  .welcome-inner { display: flex; flex-direction: column; height: 100%; }
+  .welcome-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
   .welcome-badge {
     display: inline-block;
     width: fit-content;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     color: #fff;
     font-size: 0.72rem;
     font-weight: 700;
@@ -628,7 +1010,7 @@ import "../styles/global.css";
     padding: 0.35rem 0.875rem;
     border-radius: 100px;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .welcome-title {
@@ -642,7 +1024,7 @@ import "../styles/global.css";
 
   .welcome-text {
     font-size: 0.845rem;
-    color: rgba(255,255,255,0.72);
+    color: rgba(255, 255, 255, 0.72);
     font-weight: 400;
     line-height: 1.65;
     margin-bottom: 1.75rem;
@@ -660,13 +1042,14 @@ import "../styles/global.css";
     align-items: center;
     gap: 0.65rem;
     font-size: 0.83rem;
-    color: rgba(255,255,255,0.88);
+    color: rgba(255, 255, 255, 0.88);
     font-weight: 500;
   }
   .wf-check {
-    width: 20px; height: 20px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.18);
+    background: rgba(255, 255, 255, 0.18);
     color: #fff;
     font-size: 0.65rem;
     font-weight: 900;
@@ -679,10 +1062,18 @@ import "../styles/global.css";
   .welcome-footer {
     margin-top: 2rem;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(255,255,255,0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
-  .stars { font-size: 0.8rem; color: #f5c842; margin-bottom: 0.25rem; }
-  .stars-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); font-weight: 500; }
+  .stars {
+    font-size: 0.8rem;
+    color: #f5c842;
+    margin-bottom: 0.25rem;
+  }
+  .stars-label {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+  }
 
   /* Carte droite — formulaire blanc */
   .card-right {
@@ -692,7 +1083,9 @@ import "../styles/global.css";
   }
 
   /* Compat ancien sélecteur */
-  .card { position: relative; }
+  .card {
+    position: relative;
+  }
 
   .card-title {
     font-size: 1.4rem;
@@ -735,18 +1128,20 @@ import "../styles/global.css";
   }
 
   .step.active .step-circle {
-    background: linear-gradient(160deg, #34c7b8 0%, #1fa99c 100%);
-    border-color: #34c7b8;
+    background: linear-gradient(160deg, #2fafa4 0%, #1fa99c 100%);
+    border-color: #2fafa4;
     color: #fff;
-    box-shadow: 0 0 0 4px rgba(52,199,184,0.2);
+    box-shadow: 0 0 0 4px rgba(52, 199, 184, 0.2);
   }
 
   .step.done .step-circle {
-    background: linear-gradient(160deg, #34c7b8 0%, #0d8f82 100%);
+    background: linear-gradient(160deg, #2fafa4 0%, #0d8f82 100%);
     border-color: #1fa99c;
     color: #fff;
   }
-  .step.done .step-circle span { display: none; }
+  .step.done .step-circle span {
+    display: none;
+  }
   .step.done .step-circle::after {
     content: "";
     display: block;
@@ -765,7 +1160,9 @@ import "../styles/global.css";
     transition: color 0.3s;
   }
   .step.active .step-label,
-  .step.done .step-label { color: #1fa99c; }
+  .step.done .step-label {
+    color: #1fa99c;
+  }
 
   .step-line {
     flex: 1;
@@ -776,7 +1173,9 @@ import "../styles/global.css";
     min-width: 40px;
     transition: background 0.3s;
   }
-  .step-line.done { background: linear-gradient(90deg, #34c7b8, #0d8f82); }
+  .step-line.done {
+    background: linear-gradient(90deg, #2fafa4, #0d8f82);
+  }
 
   /* ══ ALERTES ══ */
   .alert {
@@ -790,14 +1189,31 @@ import "../styles/global.css";
     line-height: 1.5;
     margin-bottom: 1.25rem;
   }
-  .alert strong { font-weight: 700; margin-right: 0.25rem; }
-  .alert-ok  { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
-  .alert-err { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
-  .alert.hidden { display: none; }
+  .alert strong {
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+  .alert-ok {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+  }
+  .alert-err {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+  }
+  .alert.hidden {
+    display: none;
+  }
 
   /* ══ ÉTAPES ══ */
-  .form-step { display: none; }
-  .form-step.active { display: block; }
+  .form-step {
+    display: none;
+  }
+  .form-step.active {
+    display: block;
+  }
 
   .step-title {
     font-size: 1rem;
@@ -811,11 +1227,17 @@ import "../styles/global.css";
     color: #64748b;
     margin-bottom: 1.25rem;
   }
-  .step-title { margin-bottom: 1.25rem; }
+  .step-title {
+    margin-bottom: 1.25rem;
+  }
 
   /* ══ CHAMPS ══ */
-  .field { margin-bottom: 1rem; }
-  .field:last-of-type { margin-bottom: 0; }
+  .field {
+    margin-bottom: 1rem;
+  }
+  .field:last-of-type {
+    margin-bottom: 0;
+  }
 
   .label {
     display: block;
@@ -824,8 +1246,17 @@ import "../styles/global.css";
     color: #374151;
     margin-bottom: 0.35rem;
   }
-  .label em { color: #ef4444; font-style: normal; margin-left: 1px; }
-  .label-opt { font-weight: 400; color: #94a3b8; font-size: 0.69rem; margin-left: 0.3rem; }
+  .label em {
+    color: #ef4444;
+    font-style: normal;
+    margin-left: 1px;
+  }
+  .label-opt {
+    font-weight: 400;
+    color: #94a3b8;
+    font-size: 0.69rem;
+    margin-left: 0.3rem;
+  }
 
   .input {
     width: 100%;
@@ -837,21 +1268,29 @@ import "../styles/global.css";
     border-radius: 8px;
     outline: none;
     font-family: inherit;
-    transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+    transition:
+      border-color 0.18s,
+      box-shadow 0.18s,
+      background 0.18s;
     appearance: none;
   }
   .input:focus {
-    border-color: #34c7b8;
-    box-shadow: 0 0 0 3px rgba(52,199,184,0.1);
+    border-color: #2fafa4;
+    box-shadow: 0 0 0 3px rgba(52, 199, 184, 0.1);
     background: #fff;
   }
-  .input::placeholder { color: #b8c4cf; }
+  .input::placeholder {
+    color: #b8c4cf;
+  }
 
   /* Select */
   .select-wrap {
     position: relative;
   }
-  .input-select { cursor: pointer; padding-right: 2.25rem; }
+  .input-select {
+    cursor: pointer;
+    padding-right: 2.25rem;
+  }
   .chevron {
     position: absolute;
     right: 0.75rem;
@@ -863,7 +1302,7 @@ import "../styles/global.css";
   }
   .select-wrap:focus-within .chevron {
     transform: translateY(-50%) rotate(180deg);
-    color: #34c7b8;
+    color: #2fafa4;
   }
 
   /* Hint */
@@ -876,7 +1315,9 @@ import "../styles/global.css";
     font-weight: 500;
     margin-top: 0.35rem;
   }
-  .hint.hidden { display: none; }
+  .hint.hidden {
+    display: none;
+  }
 
   /* Téléphone */
   .phone-wrap {
@@ -885,11 +1326,13 @@ import "../styles/global.css";
     border-radius: 8px;
     overflow: hidden;
     background: #f8fafc;
-    transition: border-color 0.18s, box-shadow 0.18s;
+    transition:
+      border-color 0.18s,
+      box-shadow 0.18s;
   }
   .phone-wrap:focus-within {
-    border-color: #34c7b8;
-    box-shadow: 0 0 0 3px rgba(52,199,184,0.1);
+    border-color: #2fafa4;
+    box-shadow: 0 0 0 3px rgba(52, 199, 184, 0.1);
     background: #fff;
   }
   .phone-code {
@@ -902,7 +1345,7 @@ import "../styles/global.css";
     border-right: 1.5px solid #e9edf2;
     font-size: 0.74rem;
     font-weight: 800;
-    color: #0d6b5f;
+    color: #123f3b;
     flex-shrink: 0;
   }
   .input-phone {
@@ -911,7 +1354,10 @@ import "../styles/global.css";
     background: transparent;
     box-shadow: none !important;
   }
-  .input-phone:focus { border: none; box-shadow: none; }
+  .input-phone:focus {
+    border: none;
+    box-shadow: none;
+  }
 
   /* Mot de passe */
   .pw-wrap {
@@ -919,7 +1365,9 @@ import "../styles/global.css";
     display: flex;
     align-items: center;
   }
-  .pw-wrap .input { padding-right: 2.5rem; }
+  .pw-wrap .input {
+    padding-right: 2.5rem;
+  }
   .eye-btn {
     position: absolute;
     right: 0.75rem;
@@ -932,7 +1380,9 @@ import "../styles/global.css";
     padding: 0;
     transition: color 0.18s;
   }
-  .eye-btn:hover { color: #34c7b8; }
+  .eye-btn:hover {
+    color: #2fafa4;
+  }
 
   /* Force mot de passe */
   .pw-meter {
@@ -953,7 +1403,9 @@ import "../styles/global.css";
     height: 100%;
     width: 0%;
     border-radius: 3px;
-    transition: width 0.3s ease, background 0.3s ease;
+    transition:
+      width 0.3s ease,
+      background 0.3s ease;
   }
   .pw-label {
     font-size: 0.67rem;
@@ -966,7 +1418,11 @@ import "../styles/global.css";
   }
 
   /* Grille 2 colonnes */
-  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+  }
 
   /* ══ RECAP ══ */
   .recap {
@@ -976,8 +1432,12 @@ import "../styles/global.css";
     overflow: hidden;
     margin-bottom: 1.5rem;
   }
-  .recap-group { padding: 1rem 1.25rem; }
-  .recap-group + .recap-group { border-top: 1px solid #e9edf2; }
+  .recap-group {
+    padding: 1rem 1.25rem;
+  }
+  .recap-group + .recap-group {
+    border-top: 1px solid #e9edf2;
+  }
   .recap-section {
     font-size: 0.68rem;
     font-weight: 700;
@@ -1020,7 +1480,7 @@ import "../styles/global.css";
     align-items: center;
     gap: 0.45rem;
     padding: 0.7rem 1.5rem;
-    background: #34c7b8;
+    background: #2fafa4;
     color: #fff;
     font-size: 0.875rem;
     font-weight: 700;
@@ -1030,26 +1490,42 @@ import "../styles/global.css";
     letter-spacing: 0.01em;
     position: relative;
     overflow: hidden;
-    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-    box-shadow: 0 2px 8px rgba(52,199,184,0.3);
+    transition:
+      background 0.2s,
+      box-shadow 0.2s,
+      transform 0.15s;
+    box-shadow: 0 2px 8px rgba(52, 199, 184, 0.3);
   }
   .btn-next:hover {
     background: #2ab3a5;
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(52,199,184,0.4);
+    box-shadow: 0 4px 14px rgba(52, 199, 184, 0.4);
   }
-  .btn-next:active { transform: translateY(0); }
-  .btn-next:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn-next:active {
+    transform: translateY(0);
+  }
+  .btn-next:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
 
   .btn-shine {
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.15) 50%, transparent 62%);
+    background: linear-gradient(
+      105deg,
+      transparent 38%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 62%
+    );
     transform: translateX(-100%);
     transition: transform 0.55s ease;
     pointer-events: none;
   }
-  .btn-next:hover .btn-shine { transform: translateX(100%); }
+  .btn-next:hover .btn-shine {
+    transform: translateX(100%);
+  }
 
   .btn-back {
     display: inline-flex;
@@ -1063,9 +1539,16 @@ import "../styles/global.css";
     border: 1.5px solid #e2e8f0;
     border-radius: 8px;
     cursor: pointer;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition:
+      color 0.2s,
+      border-color 0.2s,
+      background 0.2s;
   }
-  .btn-back:hover { color: #0d6b5f; border-color: #34c7b8; background: rgba(52,199,184,0.04); }
+  .btn-back:hover {
+    color: #123f3b;
+    border-color: #2fafa4;
+    background: rgba(52, 199, 184, 0.04);
+  }
 
   /* ══ LEGAL ══ */
   .legal {
@@ -1075,14 +1558,20 @@ import "../styles/global.css";
     line-height: 1.6;
     margin-top: 1.25rem;
   }
-  .legal a { color: #34c7b8; font-weight: 600; text-decoration: none; }
-  .legal a:hover { color: #0d6b5f; }
+  .legal a {
+    color: #2fafa4;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .legal a:hover {
+    color: #123f3b;
+  }
 
   /* ══ POPUP SUCCÈS ══ */
   .popup-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(4px);
     z-index: 9999;
     display: flex;
@@ -1091,33 +1580,46 @@ import "../styles/global.css";
     padding: 1rem;
     animation: fadeIn 0.25s ease;
   }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
   .popup-card {
     background: #fff;
     border-radius: 20px;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.18);
     padding: 2.5rem 2.25rem;
     max-width: 420px;
     width: 100%;
     text-align: center;
-    animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   @keyframes popIn {
-    from { transform: scale(0.85); opacity: 0; }
-    to   { transform: scale(1);    opacity: 1; }
+    from {
+      transform: scale(0.85);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 
   .popup-icon {
     width: 68px;
     height: 68px;
     border-radius: 50%;
-    background: linear-gradient(160deg, #34c7b8 0%, #0d8f82 100%);
+    background: linear-gradient(160deg, #2fafa4 0%, #0d8f82 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.25rem;
-    box-shadow: 0 8px 24px rgba(52,199,184,0.35);
+    box-shadow: 0 8px 24px rgba(52, 199, 184, 0.35);
   }
 
   .popup-title {
@@ -1148,7 +1650,7 @@ import "../styles/global.css";
     align-items: center;
     gap: 0.45rem;
     padding: 0.72rem 1.5rem;
-    background: linear-gradient(160deg, #34c7b8 0%, #0d8f82 100%);
+    background: linear-gradient(160deg, #2fafa4 0%, #0d8f82 100%);
     color: #fff;
     font-size: 0.875rem;
     font-weight: 700;
@@ -1156,10 +1658,15 @@ import "../styles/global.css";
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
-    transition: opacity 0.2s, transform 0.15s;
-    box-shadow: 0 4px 14px rgba(52,199,184,0.35);
+    transition:
+      opacity 0.2s,
+      transform 0.15s;
+    box-shadow: 0 4px 14px rgba(52, 199, 184, 0.35);
   }
-  .popup-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .popup-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
 
   .popup-btn-secondary {
     display: inline-flex;
@@ -1172,33 +1679,77 @@ import "../styles/global.css";
     border: 1.5px solid #e2e8f0;
     border-radius: 8px;
     cursor: pointer;
-    transition: color 0.2s, border-color 0.2s;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
   }
-  .popup-btn-secondary:hover { color: #0d6b5f; border-color: #34c7b8; }
+  .popup-btn-secondary:hover {
+    color: #123f3b;
+    border-color: #2fafa4;
+  }
 
   /* Utilitaires */
-  .hidden { display: none !important; }
-  .btn-spin  { animation: spin 0.7s linear infinite; }
-  .spin-icon { animation: spin 0.7s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  .hidden {
+    display: none !important;
+  }
+  .btn-spin {
+    animation: spin 0.7s linear infinite;
+  }
+  .spin-icon {
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
   /* ══ RESPONSIVE ══ */
   @media (max-width: 860px) {
-    .two-cols { flex-direction: column; max-width: 520px; }
-    .card-left { width: 100%; min-width: unset; padding: 1.75rem 1.75rem 1.5rem; }
-    .welcome-features { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
-    .welcome-footer { display: none; }
-    .card-right { padding: 1.75rem 1.5rem; }
+    .two-cols {
+      flex-direction: column;
+      max-width: 520px;
+    }
+    .card-left {
+      width: 100%;
+      min-width: unset;
+      padding: 1.75rem 1.75rem 1.5rem;
+    }
+    .welcome-features {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .welcome-footer {
+      display: none;
+    }
+    .card-right {
+      padding: 1.75rem 1.5rem;
+    }
   }
   @media (max-width: 540px) {
-    .card-left { display: none; }
-    .two-cols { max-width: 440px; }
-    .card-right { padding: 1.5rem 1.25rem; }
-    .row-2 { grid-template-columns: 1fr; }
-    .stepper { gap: 0; }
-    .step-line { min-width: 24px; }
+    .card-left {
+      display: none;
+    }
+    .two-cols {
+      max-width: 440px;
+    }
+    .card-right {
+      padding: 1.5rem 1.25rem;
+    }
+    .row-2 {
+      grid-template-columns: 1fr;
+    }
+    .stepper {
+      gap: 0;
+    }
+    .step-line {
+      min-width: 24px;
+    }
   }
   @media (max-width: 400px) {
-    .step-label { display: none; }
+    .step-label {
+      display: none;
+    }
   }
 </style>

@@ -37,15 +37,15 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
     <meta name="keywords" content={keywords} />
     <meta name="author" content={author} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    
+
     <link rel="canonical" href={canonicalURL} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
 
-    <meta name="theme-color" content="#34C7B8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#2FAFA4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111918" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
 
     <meta property="og:title" content={title} />
@@ -65,28 +65,30 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..800&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..800&family=Manrope:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
     </noscript>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Security-Policy" 
-          content="default-src 'self'; 
-                   script-src 'self' 'unsafe-inline' https://cdn.example.com https://www.googletagmanager.com; 
-                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
-                   font-src 'self' https://fonts.gstatic.com; 
-                   connect-src 'self' https://www.google-analytics.com; 
-                   img-src 'self' data: https:; 
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                   font-src 'self' https://fonts.gstatic.com;
+                   connect-src 'self' https://www.google-analytics.com https://backendprod.ateliya.com https://backend.ateliya.com;
+                   img-src 'self' data: https:;
+                   frame-src 'self' https:;
+                   base-uri 'self';
+                   form-action 'self';
                    object-src 'none';" />
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="format-detection" content="telephone=no" />
@@ -133,82 +135,56 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
       }
     </script>
 
-    <link rel="preload" as="font" href="/fonts/inter.woff2" type="font/woff2" crossorigin />
-    <link rel="prefetch" href="/" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        'anonymize_ip': true,
-        'page_path': window.location.pathname,
-      });
-    </script>
+    <slot name="head" />
   </head>
 
   <body>
-    <main>
+    <main class="min-h-screen">
       <slot />
     </main>
 
-    <button
-      id="scroll-to-top"
-      class="fixed bottom-8 right-8 z-40 hidden opacity-0 translate-y-10 transition-all duration-300 p-3 rounded-full shadow-lg focus-ring hover:scale-110"
-      style="background: linear-gradient(135deg, var(--color-primary), var(--color-africa-gold)); box-shadow: 0 8px 24px rgba(52, 199, 184, 0.3);"
-      aria-label="Retour en haut"
-    >
-      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 10l7-7m0 0l7 7m-7-7v18"
-        />
-      </svg>
-    </button>
+    <!-- Boutons flottants : conteneur flex-col, scroll-to-top au-dessus, WhatsApp en bas -->
+    <div id="float-btns">
+      <button id="scroll-top-btn" aria-label="Retour en haut">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+      </button>
 
-  
+      <a
+        id="whatsapp-float"
+        href="https://wa.me/2250501242929?text=Bonjour%2C%20je%20voudrais%20en%20savoir%20plus%20sur%20Ateliya."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contacter Ateliya sur WhatsApp"
+      >
+        <span class="wa-pulse"></span>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z"/>
+        </svg>
+      </a>
+    </div>
 
     <script>
-      const scrollBtn = document.getElementById('scroll-to-top');
-      const scrollThreshold = 300;
-      let ticking = false;
-
-      function updateScrollButton() {
-        const isVisible = window.scrollY > scrollThreshold;
-        
-        if (isVisible) {
-          scrollBtn?.classList.remove('hidden', 'opacity-0', 'translate-y-10');
-        } else {
-          scrollBtn?.classList.add('hidden', 'opacity-0', 'translate-y-10');
-        }
-        
-        ticking = false;
-      }
+      // Scroll to top
+      const scrollTopBtn = document.getElementById('scroll-top-btn');
 
       window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateScrollButton);
-          ticking = true;
+        if (!scrollTopBtn) return;
+        if (window.scrollY > 300) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
         }
-      });
+      }, { passive: true });
 
-      scrollBtn?.addEventListener('click', () => {
+      scrollTopBtn?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px',
-      };
-
+      // Intersection Observer pour animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -216,12 +192,13 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
             observer.unobserve(entry.target);
           }
         });
-      }, observerOptions);
+      }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
       document.querySelectorAll('[data-observe]').forEach((el) => {
         observer.observe(el);
       });
 
+      // Smooth scroll ancres
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
           const href = this.getAttribute('href');
@@ -235,13 +212,6 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
           }
         });
       });
-
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'page_view', {
-          page_title: document.title,
-          page_path: window.location.pathname,
-        });
-      }
     </script>
   </body>
 </html>
@@ -249,5 +219,77 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
 <style>
   :root {
     color-scheme: light dark;
+  }
+
+  /* ── Conteneur flottant ── */
+  #float-btns {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ── Bouton scroll-to-top ── */
+  #scroll-top-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #2FAFA4, #B99752);
+    box-shadow: 0 10px 28px rgba(37, 127, 120, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Caché par défaut */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+  }
+
+  #scroll-top-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #scroll-top-btn:hover {
+    transform: scale(1.1);
+  }
+
+  /* ── Bouton WhatsApp ── */
+  #whatsapp-float {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #25D366;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  #whatsapp-float:hover {
+    transform: scale(1.1);
+  }
+
+  .wa-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #25D366;
+    opacity: 0;
+    animation: waPulse 2.5s ease-out 3s infinite;
+  }
+
+  @keyframes waPulse {
+    0%   { transform: scale(1);   opacity: 0.6; }
+    100% { transform: scale(1.8); opacity: 0;   }
   }
 </style>

@@ -1,163 +1,378 @@
 ---
 import Icon from "../components/Icon.astro";
 import { galleryItems } from "../data/data";
-import "../styles/global.css";
 ---
 
-<section class="section-padding-xl bg-ateliya-bg-light relative overflow-hidden">
-  <!-- Subtle Background Gradient -->
-  <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-ateliya-primary/3 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-ateliya-dark/2 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 right-0 w-72 h-72 bg-ateliya-accent/2 rounded-full blur-3xl"></div>
+<section
+  id="gallery"
+  class="relative py-24 lg:py-28 overflow-hidden bg-gradient-to-br from-teal-50/60 via-white to-amber-50/20"
+>
+  <!-- ---- Background Decorations ---- -->
+
+  <!-- Large shape blob -->
+  <div
+    class="absolute left-0 top-0 w-[45%] h-[65%] bg-gradient-to-br from-ateliya-primary/4 to-transparent rounded-br-[100px]"
+  ></div>
+
+  <!-- Gradient orbs -->
+  <div
+    class="absolute top-[10%] left-[20%] w-72 h-72 bg-ateliya-primary/6 rounded-full blur-[120px]"
+  ></div>
+  <div
+    class="absolute bottom-[10%] right-[15%] w-60 h-60 bg-ateliya-secondary/5 rounded-full blur-[100px]"
+  ></div>
+
+  <!-- Radial dot bg -->
+  <div
+    class="absolute inset-0 opacity-[0.025]"
+    style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
+  ></div>
+
+  <!-- Dot grid top-right -->
+  <div class="absolute right-8 top-[10%] grid grid-cols-6 gap-2 opacity-30">
+    {
+      [...Array(24)].map((_, i) => (
+        <div
+          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/50" : i % 4 === 2 ? "bg-ateliya-secondary/20" : "bg-gray-300"}`}
+        />
+      ))
+    }
   </div>
 
- <div class="absolute inset-0 pointer-events-none opacity-[0.02]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><defs><pattern id=%22features-pattern%22 patternUnits=%22userSpaceOnUse%22 width=%22120%22 height=%22120%22><circle cx=%2260%22 cy=%2260%22 r=%222%22 fill=%22%230D6B5F%22/><circle cx=%2290%22 cy=%2290%22 r=%221%22 fill=%22%23D4AF37%22/><line x1=%2260%22 y1=%2260%22 x2=%2290%22 y2=%2290%22 stroke=%22%2334C7B8%22 stroke-width=%220.5%22/></pattern></defs><rect width=%221200%22 height=%22600%22 fill=%22url(%23features-pattern)%22/></svg>');"></div>
-<div
-    class="absolute inset-0 pointer-events-none opacity-[0.03]"
-    style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><defs><pattern id=%22etapes-pattern%22 patternUnits=%22userSpaceOnUse%22 width=%22100%22 height=%22100%22><path d=%22M50,0 Q75,25 50,50 Q25,75 0,50 Q25,25 50,0%22 fill=%22none%22 stroke=%22%230D6B5F%22 stroke-width=%220.5%22/></pattern></defs><rect width=%221200%22 height=%22600%22 fill=%22url(%23etapes-pattern)%22/></svg>');"
-  >
+  <!-- Dot grid bottom-left -->
+  <div class="absolute left-10 bottom-[8%] grid grid-cols-5 gap-3 opacity-20">
+    {
+      [...Array(15)].map((_, i) => (
+        <div
+          class={`w-2 h-2 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary/40" : "bg-ateliya-secondary/25"}`}
+        />
+      ))
+    }
   </div>
-  <div class="container-wide relative z-10">
-    <!-- Header Section -->
-    <div class="text-center mb-16 md:mb-20 animate-fade-in">
-      
-       <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-ateliya-dark">
-        Découvrez l' <span class="text-ateliya-primary"> Application</span> Ateliya
+
+  <!-- ---- Content ---- -->
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full mb-5"
+      >
+        <Icon name="image" size="sm" class="text-ateliya-primary" />
+        <span class="text-sm font-bold text-ateliya-primary">Apercu</span>
+      </div>
+
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-4"
+      >
+        Decouvrez l'
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-400 to-ateliya-secondary"
+        >
+          Application
+        </span> Ateliya
       </h2>
-      <p class="text-lg text-ateliya-text-light max-w-2xl mx-auto leading-relaxed">
-        Interface intuitive et puissante pour gérer tous les aspects de votre atelier avec fluidité
+
+      <p class="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+        Interface intuitive et puissante pour gerer tous les aspects de votre
+        atelier avec fluidite
       </p>
     </div>
+  </div>
 
-    <!-- Gallery Container -->
-    <div class="relative group">
-      <!-- Gallery Wrapper -->
-      <div class="overflow-x-auto rounded-3xl px-6 py-4 scrollbar-hide">
-        <!-- Gallery Track -->
-        <div 
-          class="flex gap-6"
+  <!-- Gallery Carousel (constrained width) -->
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="relative">
+      <!-- Fade edges -->
+      <div
+        class="absolute left-0 top-0 bottom-0 w-20 lg:w-32 bg-gradient-to-r from-teal-50/80 via-teal-50/40 to-transparent z-10 pointer-events-none"
+      ></div>
+      <div
+        class="absolute right-0 top-0 bottom-0 w-20 lg:w-32 bg-gradient-to-l from-white/80 via-white/40 to-transparent z-10 pointer-events-none"
+      ></div>
+
+      <!-- Scrollable track -->
+      <div
+        id="gallery-scroll"
+        class="overflow-x-auto scrollbar-hide py-4"
+      >
+        <div
+          id="gallery-track"
+          class="flex gap-5"
           style="width: fit-content;"
         >
-          {
-            galleryItems.slice(0, 6).map((item, idx) => (
-              <div
-                key={`item-${idx}`}
-                class="carousel-card group/card relative flex-shrink-0 w-[450px] h-[550px] rounded-2xl overflow-hidden animate-scale-in hover:z-20"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <!-- Card Border & Background -->
-                <div class="absolute inset-0  group-hover/card:border-ateliya-primary/50 rounded-2xl transition-all duration-500"></div>
-
-                <!-- Top Accent Line (Kente inspired) -->
-                <div class="absolute top-0 left-0 right-0 h-0.5  group-hover/card:opacity-100 transition-opacity duration-500"></div>
-
-                <!-- Image or Icon Background -->
-                {item.image ? (
-                  <img 
-                    src={item.image} 
-                    alt={item.label}
-                    class="absolute inset-0 w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700"
-                  />
-                ) : (
-                  <div class="absolute inset-0 bg-gradient-to-br from-ateliya-bg-light via-white to-ateliya-accent/5 flex items-center justify-center" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><pattern id=%22gallery-pattern%22 patternUnits=%22userSpaceOnUse%22 width=%2250%22 height=%2250%22><circle cx=%2225%22 cy=%2225%22 r=%221.5%22 fill=%22%2334C7B8%22 opacity=%220.04%22/></pattern></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23gallery-pattern)%22/></svg>');">
-                  </div>
-                )}
-
-                <!-- Gradient Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-t from-ateliya-text via-ateliya-text/20 to-transparent opacity-40 group-hover/card:opacity-20 transition-opacity duration-500"></div>
-
-                <!-- Shine Effect -->
-                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent group-hover/card:via-white/15 transition-all duration-700 pointer-events-none opacity-0 group-hover/card:opacity-100"></div>
-
-                <!-- Content Overlay -->
-                <div class="relative h-full flex flex-col items-center justify-center p-8 z-10">
-                  <!-- Icon Wrapper -->
-                  {!item.image && (
-                    <div class="mb-6 p-4 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/30 group-hover/card:bg-ateliya-primary/15 group-hover/card:border-ateliya-primary/50 transition-all duration-500">
-                      <Icon name={item.icon} size="3xl" class="text-ateliya-primary group-hover/card:scale-110 transition-transform duration-500" />
+        {
+          galleryItems.slice(0, 6).map((item, idx) => (
+            <div
+              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
+              style={`animation-delay: ${idx * 80}ms`}
+            >
+              {/* Phone Mockup Structure (Matches Hero) */}
+              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-2xl">
+                {/* Screen Container */}
+                <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
+                  {/* Notch */}
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
+                  
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={item.label}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      width="390"
+                      height="844"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div class="w-full h-full flex items-center justify-center bg-gray-50">
+                      <Icon
+                        name={item.icon || "image"}
+                        size="2xl"
+                        class="text-ateliya-primary/50"
+                      />
                     </div>
                   )}
 
-                  <!-- Label -->
-                  <p class="text-ateliya-text font-bold text-center text-xl drop-shadow-sm mb-2 group-hover/card:text-ateliya-dark transition-colors duration-500">
-                    {item.label}
-                  </p>
-
-                  <!-- Description -->
-                  <p class="text-ateliya-text-light text-sm text-center opacity-70 group-hover/card:opacity-100 transition-all duration-500 drop-shadow-sm group-hover/card:text-ateliya-text">
-                    {item.description || "Cliquez pour explorer"}
-                  </p>
+                  {/* Text Overlay - keeping it subtle at the bottom or hidden? 
+                      The user wants it like the hero, hero has no text overlay on the phone itself.
+                      But the gallery cardHAD text. I will keep the text overlay but make it respect the rounded corners.
+                  */}
+                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  
+                  <div class="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <p class="text-white font-bold text-xl mb-1">{item.label}</p>
+                    <p class="text-white/80 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-
-                <!-- Bottom Accent Bar -->
-                <div class="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-transparent scale-x-0 group-hover/card:scale-x-100 transition-transform duration-500 origin-left"></div>
               </div>
+            </div>
+          ))
+        }
+
+        {/* Duplicate for infinite scroll illusion */}
+          {
+          galleryItems.slice(0, 6).map((item, idx) => (
+            <div
+              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
+              aria-hidden="true"
+            >
+              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-2xl">
+                <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
+                  
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt=""
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      width="390"
+                      height="844"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div class="w-full h-full flex items-center justify-center bg-gray-50">
+                      <Icon
+                        name={item.icon || "image"}
+                        size="2xl"
+                        class="text-ateliya-primary/50"
+                      />
+                    </div>
+                  )}
+
+                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  
+                  <div class="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <p class="text-white font-bold text-xl mb-1">{item.label}</p>
+                    <p class="text-white/80 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Navigation arrows -->
+    <div class="container mx-auto px-6 lg:px-12 relative z-20">
+      <div class="flex items-center justify-center gap-3 mt-8">
+        <button
+          id="gallery-prev"
+          class="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-ateliya-primary/40 hover:shadow-md transition-all duration-300 hover:scale-105"
+          aria-label="Precedent"
+        >
+          <Icon name="chevron-left" size="sm" class="text-gray-600" />
+        </button>
+
+        <!-- Progress dots -->
+        <div class="flex items-center gap-1.5 px-3" id="gallery-dots">
+          {
+            galleryItems.slice(0, 6).map((_, i) => (
+              <div
+                class={`gallery-dot rounded-full transition-all duration-300 ${i === 0 ? "w-6 h-2 bg-ateliya-primary" : "w-2 h-2 bg-gray-300"}`}
+              />
             ))
           }
         </div>
-      </div>
 
+        <button
+          id="gallery-next"
+          class="w-11 h-11 rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white flex items-center justify-center hover:shadow-lg hover:shadow-ateliya-primary/25 transition-all duration-300 hover:scale-105"
+          aria-label="Suivant"
+        >
+          <Icon name="chevron-right" size="sm" class="text-white" />
+        </button>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
-  const gallery = document.querySelector('.overflow-x-auto');
-  const track = gallery.querySelector('div[style*="width: fit-content"]');
-  
-  let scrollPosition = 0;
-  
-  function autoScroll() {
-    scrollPosition += 2;
-    gallery.scrollLeft = scrollPosition;
-    
-    // Restart scroll when reaching the end
-    if (scrollPosition >= track.offsetWidth - gallery.offsetWidth) {
-      scrollPosition = 0;
-    }
+  function initGallery() {
+    const scrollContainer = document.getElementById("gallery-scroll");
+    const track = document.getElementById("gallery-track");
+    const prevBtn = document.getElementById("gallery-prev");
+    const nextBtn = document.getElementById("gallery-next");
+    const dots = document.querySelectorAll(".gallery-dot");
+
+    if (!scrollContainer || !track) return;
+
+    const cards = track.querySelectorAll(".gallery-card");
+    const totalOriginal = cards.length / 2;
+    const getCardWidth = () => {
+      const card = cards[0];
+      if (!card) return 296; // 276 width + 20 gap
+      return card.offsetWidth + 20;
+    };
+
+    let autoScrollId: number | null = null;
+    let isHovering = false;
+
+    const updateDots = () => {
+      const cardWidth = getCardWidth();
+      const currentIndex =
+        Math.round(scrollContainer.scrollLeft / cardWidth) % totalOriginal;
+
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.remove("w-2", "h-2", "bg-gray-300");
+          dot.classList.add("w-6", "h-2", "bg-ateliya-primary");
+        } else {
+          dot.classList.remove("w-6", "bg-ateliya-primary");
+          dot.classList.add("w-2", "h-2", "bg-gray-300");
+        }
+      });
+    };
+
+    const scrollByCard = (direction: number) => {
+      const cardWidth = getCardWidth();
+      scrollContainer.scrollBy({
+        left: cardWidth * direction,
+        behavior: "smooth",
+      });
+    };
+
+    const resetScrollIfNeeded = () => {
+      const cardWidth = getCardWidth();
+      const halfPoint = cardWidth * totalOriginal;
+
+      if (scrollContainer.scrollLeft >= halfPoint) {
+        scrollContainer.scrollLeft -= halfPoint;
+      }
+      if (scrollContainer.scrollLeft <= 0 && totalOriginal > 0) {
+        scrollContainer.scrollLeft += halfPoint;
+      }
+    };
+
+    const startAutoScroll = () => {
+      if (autoScrollId) return;
+      autoScrollId = window.setInterval(() => {
+        if (isHovering) return;
+        scrollContainer.scrollLeft += 1;
+        resetScrollIfNeeded();
+        updateDots();
+      }, 30);
+    };
+
+    const stopAutoScroll = () => {
+      if (autoScrollId) {
+        clearInterval(autoScrollId);
+        autoScrollId = null;
+      }
+    };
+
+    scrollContainer.addEventListener("mouseenter", () => {
+      isHovering = true;
+    });
+    scrollContainer.addEventListener("mouseleave", () => {
+      isHovering = false;
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      stopAutoScroll();
+      scrollByCard(-1);
+      setTimeout(() => {
+        resetScrollIfNeeded();
+        updateDots();
+        startAutoScroll();
+      }, 400);
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      stopAutoScroll();
+      scrollByCard(1);
+      setTimeout(() => {
+        resetScrollIfNeeded();
+        updateDots();
+        startAutoScroll();
+      }, 400);
+    });
+
+    scrollContainer.addEventListener("scroll", () => {
+      updateDots();
+    }, { passive: true });
+
+    startAutoScroll();
   }
-  
-  // Auto-scroll every 50ms
-  setInterval(autoScroll, 50);
+
+  document.addEventListener("DOMContentLoaded", initGallery);
+  document.addEventListener("astro:page-load", initGallery);
 </script>
 
 <style>
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
 
-  @keyframes scale-in {
+  .gallery-card {
+    animation: galleryCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes galleryCardIn {
     from {
       opacity: 0;
-      transform: scale(0.95);
+      transform: scale(0.96) translateY(12px);
     }
     to {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) translateY(0);
     }
   }
 
-  .animate-scale-in {
-    animation: scale-in 0.6s ease-out forwards;
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-card {
+      animation: none;
     }
-    to {
-      opacity: 1;
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.8s ease-out;
   }
 </style>

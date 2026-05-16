@@ -1,0 +1,1815 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout
+  title="Inscription — Ateliya"
+  description="Créez votre compte Ateliya et commencez à gérer votre atelier de couture."
+>
+  <!-- Fond teal avec cercles décoratifs -->
+  <div class="bg">
+    <div class="deco deco-1"></div>
+    <div class="deco deco-2"></div>
+    <div class="deco deco-3"></div>
+    <div class="deco deco-4"></div>
+
+    <!-- ══ POPUP SUCCÈS ══ -->
+    <div
+      id="success-popup"
+      class="popup-overlay hidden"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="popup-card">
+        <div class="popup-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline
+              points="22 4 12 14.01 9 11.01"></polyline></svg
+          >
+        </div>
+        <h3 class="popup-title">Compte créé avec succès !</h3>
+        <p class="popup-text">
+          Votre compte a bien été créé. Téléchargez l'application mobile Ateliya
+          pour vous connecter et commencer à gérer votre atelier.
+        </p>
+        <div class="popup-actions">
+          <button id="popup-close" class="popup-btn-secondary">Fermer</button>
+          <a href="/" class="popup-btn">
+            Retour à l'accueil
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+            >
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barre logo -->
+    <div class="top-bar">
+      <a href="/" class="top-logo">
+        <img src="/ateliya.webp" alt="Ateliya" width="26" height="26" />
+        <span>Ateliya</span>
+      </a>
+    </div>
+
+    <!-- Deux cartes côte à côte -->
+    <div class="two-cols">
+      <!-- CARTE GAUCHE : message d'accueil -->
+      <div class="card card-left">
+        <div class="welcome-inner">
+          <div class="welcome-badge">✦ Essai gratuit 14 jours</div>
+          <h2 class="welcome-title">Gérez votre atelier comme un pro.</h2>
+          <p class="welcome-text">
+            Rejoignez des centaines d'artisans qui font confiance à Ateliya pour
+            piloter leur activité au quotidien.
+          </p>
+          <ul class="welcome-features">
+            <li>
+              <span class="wf-check">✓</span>
+              Gestion clients & prises de mesures
+            </li>
+            <li>
+              <span class="wf-check">✓</span>
+              Suivi des commandes en temps réel
+            </li>
+            <li>
+              <span class="wf-check">✓</span>
+              Facturation & paiements simplifiés
+            </li>
+            <li>
+              <span class="wf-check">✓</span>
+              Application mobile incluse
+            </li>
+          </ul>
+          <div class="welcome-footer">
+            <div class="stars">★★★★★</div>
+            <p class="stars-label">Noté 4.8 · Aucune carte bancaire requise</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARTE DROITE : formulaire -->
+      <div class="card card-right" id="form-wrap">
+        <!-- Titre -->
+        <h1 class="card-title">Créer votre compte</h1>
+
+        <!-- Stepper -->
+        <div class="stepper">
+          <div class="step active" id="step-dot-1">
+            <div class="step-circle"><span>1</span></div>
+            <p class="step-label">Entreprise</p>
+          </div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step" id="step-dot-2">
+            <div class="step-circle"><span>2</span></div>
+            <p class="step-label">Administrateur</p>
+          </div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step" id="step-dot-3">
+            <div class="step-circle"><span>3</span></div>
+            <p class="step-label">Confirmation</p>
+          </div>
+        </div>
+
+        <!-- Alertes erreur uniquement -->
+
+        <div id="error-message" class="alert alert-err hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><circle cx="12" cy="12" r="10"></circle><line
+              x1="12"
+              x2="12"
+              y1="8"
+              y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"
+            ></line></svg
+          >
+          <span id="error-text">Une erreur est survenue.</span>
+        </div>
+
+        <form id="register-form" novalidate>
+          <!-- ══ ÉTAPE 1 : ENTREPRISE ══ -->
+          <div class="form-step active" id="step-1">
+            <h2 class="step-title">Informations entreprise</h2>
+
+            <div class="field">
+              <label for="denominationEntreprise" class="label"
+                >Nom de l'entreprise <em>*</em></label
+              >
+              <input
+                id="denominationEntreprise"
+                name="denominationEntreprise"
+                type="text"
+                class="input"
+                placeholder="Ex: Fashion Boutique CI"
+                required
+                maxlength="100"
+                autocomplete="organization"
+              />
+            </div>
+
+            <div class="field">
+              <label for="pays" class="label">Pays <em>*</em></label>
+              <div class="select-wrap">
+                <select
+                  id="pays"
+                  name="pays"
+                  class="input input-select"
+                  required
+                >
+                  <option value="" disabled selected
+                    >Sélectionnez un pays</option
+                  >
+                </select>
+                <svg
+                  class="chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg
+                >
+              </div>
+              <div id="pays-loading" class="hint hidden">
+                <svg
+                  class="spin-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg
+                >
+                Chargement des pays…
+              </div>
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="emailEntreprise" class="label"
+                  >Email entreprise <em>*</em></label
+                >
+                <input
+                  id="emailEntreprise"
+                  name="emailEntreprise"
+                  type="email"
+                  class="input"
+                  placeholder="contact@boutique.com"
+                  required
+                  maxlength="100"
+                  autocomplete="email"
+                />
+              </div>
+              <div class="field">
+                <label for="numeroEntreprise" class="label"
+                  >Téléphone <em>*</em></label
+                >
+                <div class="phone-wrap">
+                  <span id="phone-prefix" class="phone-code">+--</span>
+                  <input
+                    id="numeroEntreprise"
+                    name="numeroEntreprise"
+                    type="tel"
+                    class="input input-phone"
+                    placeholder="XX XX XX XX"
+                    required
+                    maxlength="20"
+                    autocomplete="tel-national"
+                    inputmode="tel"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Code de parrainage -->
+            <div class="field">
+              <label for="codeParrain" class="label">
+                Code de parrainage
+                <span class="label-opt">(optionnel)</span>
+              </label>
+              <input
+                id="codeParrain"
+                name="codeParrain"
+                type="text"
+                class="input"
+                placeholder="Ex: ATL-XXXX"
+                maxlength="32"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="step-actions">
+              <span></span>
+              <button type="button" class="btn-next" id="btn-next-1">
+                Suivant
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
+                  ></path></svg
+                >
+              </button>
+            </div>
+          </div>
+
+          <!-- ══ ÉTAPE 2 : ADMIN ══ -->
+          <div class="form-step" id="step-2">
+            <h2 class="step-title">Compte administrateur</h2>
+
+            <div class="field">
+              <label for="email" class="label"
+                >Email de connexion <em>*</em></label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                class="input"
+                placeholder="admin@boutique.com"
+                required
+                maxlength="100"
+                autocomplete="username"
+              />
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="password" class="label"
+                  >Mot de passe <em>*</em></label
+                >
+                <div class="pw-wrap">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    class="input"
+                    placeholder="Min. 8 caractères"
+                    required
+                    minlength="8"
+                    maxlength="128"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    data-target="password"
+                    aria-label="Afficher/masquer"
+                  >
+                    <svg
+                      class="eye-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"
+                      ></path><circle cx="12" cy="12" r="3"></circle></svg
+                    >
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="confirmPassword" class="label"
+                  >Confirmation <em>*</em></label
+                >
+                <div class="pw-wrap">
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    class="input"
+                    placeholder="Confirmez"
+                    required
+                    maxlength="128"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    data-target="confirmPassword"
+                    aria-label="Afficher/masquer"
+                  >
+                    <svg
+                      class="eye-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"
+                      ></path><circle cx="12" cy="12" r="3"></circle></svg
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Force du mot de passe -->
+            <div class="pw-meter">
+              <div class="pw-track">
+                <div class="pw-fill" id="pw-fill"></div>
+              </div>
+              <span class="pw-label" id="pw-label">Min. 8 caractères</span>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-back" id="btn-back-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"
+                  ></path></svg
+                >
+                Précédent
+              </button>
+              <button type="button" class="btn-next" id="btn-next-2">
+                Suivant
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
+                  ></path></svg
+                >
+              </button>
+            </div>
+          </div>
+
+          <!-- ══ ÉTAPE 3 : CONFIRMATION ══ -->
+          <div class="form-step" id="step-3">
+            <h2 class="step-title">Vérification</h2>
+            <p class="step-desc">
+              Vérifiez vos informations avant de créer le compte.
+            </p>
+
+            <div class="recap">
+              <div class="recap-group">
+                <p class="recap-section">Entreprise</p>
+                <div class="recap-row">
+                  <span class="recap-key">Nom</span><span
+                    class="recap-val"
+                    id="rc-nom">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Pays</span><span
+                    class="recap-val"
+                    id="rc-pays">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Email</span><span
+                    class="recap-val"
+                    id="rc-email-ent">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Téléphone</span><span
+                    class="recap-val"
+                    id="rc-tel">—</span
+                  >
+                </div>
+              </div>
+              <div class="recap-group">
+                <p class="recap-section">Administrateur</p>
+                <div class="recap-row">
+                  <span class="recap-key">Email</span><span
+                    class="recap-val"
+                    id="rc-email-adm">—</span
+                  >
+                </div>
+                <div class="recap-row">
+                  <span class="recap-key">Mot de passe</span><span
+                    class="recap-val">••••••••</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-back" id="btn-back-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"
+                  ></path></svg
+                >
+                Précédent
+              </button>
+              <button type="submit" id="submit-btn" class="btn-next">
+                <span class="btn-shine"></span>
+                <span id="submit-text">Créer mon compte</span>
+                <svg
+                  id="submit-arrow"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"
+                  ></path></svg
+                >
+                <svg
+                  id="submit-spinner"
+                  class="btn-spin hidden"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg
+                >
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Legal -->
+        <p class="legal">
+          En créant un compte, vous acceptez nos
+          <a href="/conditions">Conditions</a> et notre
+          <a href="/politique">Politique de confidentialité</a>.
+        </p>
+      </div><!-- fin card-right -->
+    </div><!-- fin two-cols -->
+  </div><!-- fin bg -->
+</Layout>
+
+<script>
+  import { BASE_URL_INSCRIPTION, BASE_URL } from "../lib/environment";
+
+  interface PaysItem {
+    id: number;
+    libelle: string;
+    code: string;
+    indicatif: string;
+  }
+  let paysData: PaysItem[] = [];
+  let isSubmitting = false;
+  let currentStep = 1;
+
+  const form = document.getElementById("register-form") as HTMLFormElement;
+  const paysSelect = document.getElementById("pays") as HTMLSelectElement;
+  const phonePrefix = document.getElementById("phone-prefix") as HTMLElement;
+  const paysLoading = document.getElementById("pays-loading") as HTMLElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitText = document.getElementById("submit-text") as HTMLElement;
+  const submitArrow = document.getElementById("submit-arrow") as HTMLElement;
+  const submitSpinner = document.getElementById(
+    "submit-spinner",
+  ) as HTMLElement;
+  const successPopup = document.getElementById("success-popup") as HTMLElement;
+  document.getElementById("popup-close")?.addEventListener("click", () => {
+    successPopup.classList.add("hidden");
+  });
+  const errorMsg = document.getElementById("error-message") as HTMLElement;
+  const errorText = document.getElementById("error-text") as HTMLElement;
+  const pwFill = document.getElementById("pw-fill") as HTMLElement;
+  const pwLabel = document.getElementById("pw-label") as HTMLElement;
+  const pwInput = document.getElementById("password") as HTMLInputElement;
+
+  const EMAIL_RE =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  const PHONE_RE = /^\+?[\d\s\-().]{5,20}$/;
+
+  // ── Stepper ──
+  function goToStep(n: number) {
+    document
+      .querySelectorAll<HTMLElement>(".form-step")
+      .forEach((el) => el.classList.remove("active"));
+    document
+      .querySelectorAll<HTMLElement>(".step")
+      .forEach((el) => el.classList.remove("active", "done"));
+    document
+      .querySelectorAll<HTMLElement>(".step-line")
+      .forEach((el) => el.classList.remove("done"));
+
+    const target = document.getElementById(`step-${n}`);
+    if (target) target.classList.add("active");
+
+    for (let i = 1; i <= 3; i++) {
+      const dot = document.getElementById(`step-dot-${i}`);
+      if (!dot) continue;
+      if (i < n) {
+        dot.classList.add("done");
+      }
+      if (i === n) {
+        dot.classList.add("active");
+      }
+    }
+    for (let i = 1; i <= 2; i++) {
+      const line = document.getElementById(`line-${i}`);
+      if (line && i < n) line.classList.add("done");
+    }
+    currentStep = n;
+    hideMessages();
+  }
+
+  // ── Validation étape 1 ──
+  function validateStep1(): string | null {
+    const denom = (
+      document.getElementById("denominationEntreprise") as HTMLInputElement
+    ).value.trim();
+    const emailEnt = (
+      document.getElementById("emailEntreprise") as HTMLInputElement
+    ).value.trim();
+    const tel = (
+      document.getElementById("numeroEntreprise") as HTMLInputElement
+    ).value.trim();
+    const pays = (document.getElementById("pays") as HTMLSelectElement).value;
+    if (!denom) return "Le nom de l'entreprise est obligatoire.";
+    if (!emailEnt || !EMAIL_RE.test(emailEnt))
+      return "L'email de l'entreprise n'est pas valide.";
+    if (!tel || !PHONE_RE.test(tel))
+      return "Le numéro de téléphone n'est pas valide.";
+    if (!pays || isNaN(Number(pays))) return "Veuillez sélectionner un pays.";
+    return null;
+  }
+
+  // ── Validation étape 2 ──
+  function validateStep2(): string | null {
+    const email = (
+      document.getElementById("email") as HTMLInputElement
+    ).value.trim();
+    const pw = (document.getElementById("password") as HTMLInputElement).value;
+    const cpw = (document.getElementById("confirmPassword") as HTMLInputElement)
+      .value;
+    if (!email || !EMAIL_RE.test(email))
+      return "L'email de connexion n'est pas valide.";
+    if (!pw || pw.length < 8)
+      return "Le mot de passe doit contenir au moins 8 caractères.";
+    if (pw !== cpw) return "Les mots de passe ne correspondent pas.";
+    return null;
+  }
+
+  // ── Recap étape 3 ──
+  function fillRecap() {
+    (document.getElementById("rc-nom") as HTMLElement).textContent =
+      (
+        document.getElementById("denominationEntreprise") as HTMLInputElement
+      ).value.trim() || "—";
+    const selectedOpt = paysSelect.selectedOptions[0];
+    (document.getElementById("rc-pays") as HTMLElement).textContent =
+      selectedOpt?.textContent?.trim() || "—";
+    (document.getElementById("rc-email-ent") as HTMLElement).textContent =
+      (
+        document.getElementById("emailEntreprise") as HTMLInputElement
+      ).value.trim() || "—";
+    (document.getElementById("rc-tel") as HTMLElement).textContent =
+      (phonePrefix.textContent || "") +
+        " " +
+        (
+          document.getElementById("numeroEntreprise") as HTMLInputElement
+        ).value.trim() || "—";
+    (document.getElementById("rc-email-adm") as HTMLElement).textContent =
+      (document.getElementById("email") as HTMLInputElement).value.trim() ||
+      "—";
+  }
+
+  // ── Boutons navigation ──
+  document.getElementById("btn-next-1")?.addEventListener("click", () => {
+    const err = validateStep1();
+    if (err) {
+      showError(err);
+      return;
+    }
+    goToStep(2);
+  });
+  document.getElementById("btn-next-2")?.addEventListener("click", () => {
+    const err = validateStep2();
+    if (err) {
+      showError(err);
+      return;
+    }
+    fillRecap();
+    goToStep(3);
+  });
+  document
+    .getElementById("btn-back-2")
+    ?.addEventListener("click", () => goToStep(1));
+  document
+    .getElementById("btn-back-3")
+    ?.addEventListener("click", () => goToStep(2));
+
+  // ── Force du mot de passe ──
+  pwInput?.addEventListener("input", () => {
+    const v = pwInput.value;
+    let s = 0;
+    if (v.length >= 8) s++;
+    if (v.length >= 12) s++;
+    if (/[A-Z]/.test(v)) s++;
+    if (/[0-9]/.test(v)) s++;
+    if (/[^A-Za-z0-9]/.test(v)) s++;
+    const c = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#123f3b"];
+    const l = ["Très faible", "Faible", "Moyen", "Fort", "Très fort"];
+    const p = Math.min(s, 5) * 20;
+    pwFill.style.width = p + "%";
+    pwFill.style.background = c[Math.min(s, 4)];
+    pwLabel.textContent =
+      v.length === 0 ? "Min. 8 caractères" : l[Math.min(s, 4)];
+    pwLabel.style.color = v.length === 0 ? "#9ca3af" : c[Math.min(s, 4)];
+  });
+
+  // ── Oeil ──
+  const EYE_OPEN = `<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>`;
+  const EYE_SHUT = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" x2="23" y1="1" y2="23"/>`;
+  document.querySelectorAll<HTMLButtonElement>(".eye-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tid = btn.dataset.target;
+      if (!tid) return;
+      const inp = document.getElementById(tid) as HTMLInputElement | null;
+      if (!inp) return;
+      const show = inp.type === "password";
+      inp.type = show ? "text" : "password";
+      const icon = btn.querySelector<SVGElement>(".eye-icon");
+      if (icon) icon.innerHTML = show ? EYE_SHUT : EYE_OPEN;
+    });
+  });
+
+  // ── Pays ──
+  paysSelect.addEventListener("change", () => {
+    phonePrefix.textContent =
+      paysSelect.selectedOptions[0]?.dataset.indicatif || "+--";
+  });
+
+  async function loadPays() {
+    paysLoading.classList.remove("hidden");
+    try {
+      const res = await fetch(`${BASE_URL}/pays/actif`);
+      if (!res.ok) throw new Error();
+      const json = await res.json();
+      paysData = (json.data || []) as PaysItem[];
+      paysSelect.innerHTML =
+        '<option value="" disabled selected>Sélectionnez un pays</option>';
+      paysData.forEach((p) => {
+        const opt = document.createElement("option");
+        opt.value = String(Number(p.id));
+        opt.textContent = String(p.libelle).slice(0, 60);
+        opt.dataset.indicatif = String(p.indicatif).slice(0, 10);
+        paysSelect.appendChild(opt);
+      });
+    } catch {
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "Erreur de chargement";
+      opt.disabled = true;
+      paysSelect.appendChild(opt);
+    } finally {
+      paysLoading.classList.add("hidden");
+    }
+  }
+
+  function showError(msg: string) {
+    errorText.textContent = msg;
+    errorMsg.classList.remove("hidden");
+    errorMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+  function hideMessages() {
+    errorMsg.classList.add("hidden");
+  }
+
+  function setLoading(on: boolean) {
+    submitBtn.disabled = on;
+    submitArrow.classList.toggle("hidden", on);
+    submitSpinner.classList.toggle("hidden", !on);
+    submitText.textContent = on ? "Création en cours…" : "Créer mon compte";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+    isSubmitting = true;
+    setLoading(true);
+    hideMessages();
+
+    const data = new FormData(form);
+    const fields = {
+      denominationEntreprise: (
+        (data.get("denominationEntreprise") as string) ?? ""
+      ).trim(),
+      emailEntreprise: ((data.get("emailEntreprise") as string) ?? "")
+        .trim()
+        .toLowerCase(),
+      numeroEntreprise: ((data.get("numeroEntreprise") as string) ?? "").trim(),
+      pays: ((data.get("pays") as string) ?? "").trim(),
+      email: ((data.get("email") as string) ?? "").trim().toLowerCase(),
+      password: (data.get("password") as string) ?? "",
+      confirmPassword: (data.get("confirmPassword") as string) ?? "",
+      codeParrain: ((data.get("codeParrain") as string) ?? "")
+        .trim()
+        .toUpperCase(),
+    };
+
+    try {
+      const payload: Record<string, unknown> = {
+        email: fields.email,
+        password: fields.password,
+        confirmPassword: fields.confirmPassword,
+        denominationEntreprise: fields.denominationEntreprise,
+        emailEntreprise: fields.emailEntreprise,
+        device: "web",
+        numeroEntreprise: (phonePrefix.textContent?.trim() || "") + fields.numeroEntreprise,
+        pays: parseInt(fields.pays, 10),
+      };
+      if (fields.codeParrain) payload.codeParrain = fields.codeParrain;
+
+      const res = await fetch(`${BASE_URL_INSCRIPTION}/user/create`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      let json: any = {};
+      try {
+        json = await res.json();
+      } catch {}
+      if (res.ok && json.code === 200) {
+        form.reset();
+        phonePrefix.textContent = "+--";
+        goToStep(1);
+        successPopup.classList.remove("hidden");
+      } else {
+        showError(
+          (typeof json.message === "string" && json.message) ||
+            (Array.isArray(json.errors) &&
+              typeof json.errors[0] === "string" &&
+              json.errors[0]) ||
+            `Erreur ${res.status}. Veuillez réessayer.`,
+        );
+      }
+    } catch {
+      showError(
+        "Impossible de contacter le serveur. Vérifiez votre connexion.",
+      );
+    } finally {
+      setLoading(false);
+      isSubmitting = false;
+    }
+  });
+
+  loadPays();
+  requestAnimationFrame(() =>
+    document.querySelector<HTMLElement>(".two-cols")?.classList.add("visible"),
+  );
+</script>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(:root) {
+    color-scheme: light;
+  }
+
+  /* ══ FOND ══ */
+  .bg {
+    min-height: 100dvh;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(47, 175, 164, 0.13), transparent 30rem),
+      radial-gradient(circle at 86% 24%, rgba(47, 175, 164, 0.08), transparent 24rem),
+      linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f0fdfa 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.25rem, 4vw, 2.5rem) 1rem 3rem;
+    position: relative;
+    overflow: hidden;
+    font-family:
+      "Manrope",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    color: #26312f;
+  }
+
+  .bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: radial-gradient(circle, #123f3b 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Cercles décoratifs */
+  .deco {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(2px);
+  }
+  .deco-1 {
+    width: 360px;
+    height: 360px;
+    background: rgba(47, 175, 164, 0.1);
+    top: -120px;
+    left: -120px;
+  }
+  .deco-2 {
+    width: 240px;
+    height: 240px;
+    background: rgba(47, 175, 164, 0.08);
+    top: 80px;
+    right: -70px;
+  }
+  .deco-3 {
+    width: 280px;
+    height: 280px;
+    background: rgba(37, 127, 120, 0.08);
+    bottom: -90px;
+    right: 10%;
+  }
+  .deco-4 {
+    width: 170px;
+    height: 170px;
+    background: rgba(37, 127, 120, 0.08);
+    bottom: 9%;
+    left: -55px;
+  }
+
+  /* ══ BARRE HAUT ══ */
+  .top-bar {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1040px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.75rem;
+  }
+
+  .top-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #123f3b;
+    letter-spacing: -0.015em;
+  }
+  .top-logo img {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.76);
+    padding: 2px;
+    box-shadow: 0 10px 26px rgba(18, 63, 59, 0.08);
+  }
+
+  /* ══ DEUX CARTES ══ */
+  .two-cols {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    max-width: 1040px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(232, 226, 216, 0.9);
+    box-shadow:
+      0 30px 80px rgba(18, 63, 59, 0.12),
+      0 1px 0 rgba(255, 255, 255, 0.75) inset;
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+  .two-cols.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Carte gauche — teal foncé */
+  .card-left {
+    width: 380px;
+    min-width: 380px;
+    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    padding: 2.5rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .card-left::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.1;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(135deg, black 0%, transparent 72%);
+  }
+
+  .card-left::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -82px;
+    bottom: -78px;
+    border-radius: 999px;
+    border: 34px solid rgba(255, 255, 255, 0.14);
+    pointer-events: none;
+  }
+
+  .welcome-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .welcome-badge {
+    display: inline-block;
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 0.35rem 0.875rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(10px);
+  }
+
+  .welcome-title {
+    font-size: 1.65rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+    margin-bottom: 0.875rem;
+    text-wrap: balance;
+  }
+
+  .welcome-text {
+    font-size: 0.845rem;
+    color: rgba(255, 255, 255, 0.74);
+    font-weight: 400;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+  }
+
+  .welcome-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+  }
+  .welcome-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.83rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+  }
+  .wf-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .welcome-footer {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(207, 236, 232, 0.2);
+  }
+  .stars {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 0.25rem;
+  }
+  .stars-label {
+    font-size: 0.72rem;
+    color: rgba(229, 247, 245, 0.68);
+    font-weight: 500;
+  }
+
+  /* Carte droite — formulaire blanc */
+  .card-right {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.94);
+    padding: 2.25rem 2.5rem 1.75rem;
+    backdrop-filter: blur(16px);
+  }
+
+  /* Compat ancien sélecteur */
+  .card {
+    position: relative;
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 800;
+    color: #123f3b;
+    letter-spacing: -0.015em;
+    text-align: center;
+    margin-bottom: 1.75rem;
+  }
+
+  /* ══ STEPPER ══ */
+  .stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2rem;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .step-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid #e5e7eb;
+    background: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #8d9894;
+    transition: all 0.3s ease;
+  }
+
+  .step.active .step-circle {
+    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    border-color: #2fafa4;
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(47, 175, 164, 0.16);
+  }
+
+  .step.done .step-circle {
+    background: linear-gradient(135deg, #257f78 0%, #123f3b 100%);
+    border-color: #257f78;
+    color: #fff;
+  }
+  .step.done .step-circle span {
+    display: none;
+  }
+  .step.done .step-circle::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 6px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) translateY(-1px);
+  }
+
+  .step-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #8d9894;
+    white-space: nowrap;
+    transition: color 0.3s;
+  }
+  .step.active .step-label,
+  .step.done .step-label {
+    color: #257f78;
+  }
+
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background: #e5e7eb;
+    margin: 0 0.5rem;
+    margin-bottom: 1.2rem;
+    min-width: 40px;
+    transition: background 0.3s;
+  }
+  .step-line.done {
+    background: linear-gradient(90deg, #2fafa4, #257f78);
+  }
+
+  /* ══ ALERTES ══ */
+  .alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+  .alert strong {
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+  .alert-ok {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+  }
+  .alert-err {
+    background: #fff4f2;
+    border: 1px solid #f3c7bd;
+    color: #9e5a40;
+  }
+  .alert.hidden {
+    display: none;
+  }
+
+  /* ══ ÉTAPES ══ */
+  .form-step {
+    display: none;
+  }
+  .form-step.active {
+    display: block;
+  }
+
+  .step-title {
+    font-size: 1rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 800;
+    color: #123f3b;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+  }
+  .step-desc {
+    font-size: 0.8rem;
+    color: #68706e;
+    margin-bottom: 1.25rem;
+  }
+  .step-title {
+    margin-bottom: 1.25rem;
+  }
+
+  /* ══ CHAMPS ══ */
+  .field {
+    margin-bottom: 1rem;
+  }
+  .field:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #26312f;
+    margin-bottom: 0.35rem;
+  }
+  .label em {
+    color: #ef4444;
+    font-style: normal;
+    margin-left: 1px;
+  }
+  .label-opt {
+    font-weight: 400;
+    color: #8d9894;
+    font-size: 0.69rem;
+    margin-left: 0.3rem;
+  }
+
+  .input {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.845rem;
+    color: #26312f;
+    background: #f9fafb;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    transition:
+      border-color 0.18s,
+      box-shadow 0.18s,
+      background 0.18s;
+    appearance: none;
+  }
+  .input:focus {
+    border-color: #2fafa4;
+    box-shadow: 0 0 0 3px rgba(47, 175, 164, 0.12);
+    background: #fff;
+  }
+  .input::placeholder {
+    color: #9aa5a1;
+  }
+
+  /* Select */
+  .select-wrap {
+    position: relative;
+  }
+  .input-select {
+    cursor: pointer;
+    padding-right: 2.25rem;
+  }
+  .chevron {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #9aa5a1;
+    transition: transform 0.2s;
+  }
+  .select-wrap:focus-within .chevron {
+    transform: translateY(-50%) rotate(180deg);
+    color: #257f78;
+  }
+
+  /* Hint */
+  .hint {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.69rem;
+    color: #68706e;
+    font-weight: 500;
+    margin-top: 0.35rem;
+  }
+  .hint.hidden {
+    display: none;
+  }
+
+  /* Téléphone */
+  .phone-wrap {
+    display: flex;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f9fafb;
+    transition:
+      border-color 0.18s,
+      box-shadow 0.18s;
+  }
+  .phone-wrap:focus-within {
+    border-color: #2fafa4;
+    box-shadow: 0 0 0 3px rgba(47, 175, 164, 0.12);
+    background: #fff;
+  }
+  .phone-code {
+    padding: 0 0.8rem;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(207, 236, 232, 0.45);
+    border-right: 1.5px solid #e5e7eb;
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: #123f3b;
+    flex-shrink: 0;
+  }
+  .input-phone {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none !important;
+  }
+  .input-phone:focus {
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Mot de passe */
+  .pw-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .pw-wrap .input {
+    padding-right: 2.5rem;
+  }
+  .eye-btn {
+    position: absolute;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #8d9894;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transition: color 0.18s;
+  }
+  .eye-btn:hover {
+    color: #257f78;
+  }
+
+  /* Force mot de passe */
+  .pw-meter {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .pw-track {
+    flex: 1;
+    height: 3px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pw-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+    transition:
+      width 0.3s ease,
+      background 0.3s ease;
+  }
+  .pw-label {
+    font-size: 0.67rem;
+    font-weight: 600;
+    color: #68706e;
+    white-space: nowrap;
+    min-width: 64px;
+    text-align: right;
+    transition: color 0.3s;
+  }
+
+  /* Grille 2 colonnes */
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+  }
+
+  /* ══ RECAP ══ */
+  .recap {
+    background: #f9fafb;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .recap-group {
+    padding: 1rem 1.25rem;
+  }
+  .recap-group + .recap-group {
+    border-top: 1px solid #e5e7eb;
+  }
+  .recap-section {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #257f78;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.625rem;
+  }
+  .recap-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.3rem 0;
+  }
+  .recap-key {
+    font-size: 0.78rem;
+    color: #68706e;
+    font-weight: 500;
+  }
+  .recap-val {
+    font-size: 0.78rem;
+    color: #123f3b;
+    font-weight: 600;
+    text-align: right;
+    word-break: break-all;
+  }
+
+  /* ══ ACTIONS ══ */
+  .step-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .btn-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+    transition:
+      background 0.2s,
+      box-shadow 0.2s,
+      transform 0.15s;
+    box-shadow: 0 12px 28px rgba(37, 127, 120, 0.2);
+  }
+  .btn-next:hover {
+    background: linear-gradient(135deg, #34bdb1 0%, #257f78 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 38px rgba(37, 127, 120, 0.24);
+  }
+  .btn-next:active {
+    transform: translateY(0) scale(0.99);
+  }
+  .btn-next:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 38%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 62%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.55s ease;
+    pointer-events: none;
+  }
+  .btn-next:hover .btn-shine {
+    transform: translateX(100%);
+  }
+
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.1rem;
+    background: transparent;
+    color: #68706e;
+    font-size: 0.845rem;
+    font-weight: 600;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+      color 0.2s,
+      border-color 0.2s,
+      background 0.2s;
+  }
+  .btn-back:hover {
+    color: #123f3b;
+    border-color: rgba(47, 175, 164, 0.45);
+    background: rgba(47, 175, 164, 0.07);
+  }
+
+  /* ══ LEGAL ══ */
+  .legal {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #68706e;
+    line-height: 1.6;
+    margin-top: 1.25rem;
+  }
+  .legal a {
+    color: #257f78;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .legal a:hover {
+    color: #123f3b;
+  }
+
+  /* ══ POPUP SUCCÈS ══ */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 63, 59, 0.44);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .popup-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    box-shadow: 0 32px 80px rgba(18, 63, 59, 0.18);
+    padding: 2.5rem 2.25rem;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes popIn {
+    from {
+      transform: scale(0.85);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .popup-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    box-shadow: 0 14px 32px rgba(37, 127, 120, 0.24);
+  }
+
+  .popup-title {
+    font-size: 1.25rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 800;
+    color: #123f3b;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.625rem;
+  }
+
+  .popup-text {
+    font-size: 0.845rem;
+    color: #68706e;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+  }
+
+  .popup-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .popup-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.72rem 1.5rem;
+    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      opacity 0.2s,
+      transform 0.15s;
+    box-shadow: 0 12px 28px rgba(37, 127, 120, 0.2);
+  }
+  .popup-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .popup-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.72rem 1.25rem;
+    background: transparent;
+    color: #68706e;
+    font-size: 0.845rem;
+    font-weight: 600;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .popup-btn-secondary:hover {
+    color: #123f3b;
+    border-color: rgba(47, 175, 164, 0.45);
+  }
+
+  /* Utilitaires */
+  .hidden {
+    display: none !important;
+  }
+  .btn-spin {
+    animation: spin 0.7s linear infinite;
+  }
+  .spin-icon {
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* ══ RESPONSIVE ══ */
+  @media (max-width: 860px) {
+    .two-cols {
+      flex-direction: column;
+      max-width: 520px;
+    }
+    .card-left {
+      width: 100%;
+      min-width: unset;
+      padding: 1.75rem 1.75rem 1.5rem;
+    }
+    .welcome-features {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .welcome-footer {
+      display: none;
+    }
+    .card-right {
+      padding: 1.75rem 1.5rem;
+    }
+  }
+  @media (max-width: 540px) {
+    .card-left {
+      display: none;
+    }
+    .two-cols {
+      max-width: 440px;
+    }
+    .card-right {
+      padding: 1.5rem 1.25rem;
+    }
+    .row-2 {
+      grid-template-columns: 1fr;
+    }
+    .stepper {
+      gap: 0;
+    }
+    .step-line {
+      min-width: 24px;
+    }
+  }
+  @media (max-width: 400px) {
+    .step-label {
+      display: none;
+    }
+  }
+</style>

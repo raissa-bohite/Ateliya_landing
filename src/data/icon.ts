@@ -9,8 +9,8 @@ export const sizeMap = {
 
 export const colorMap = {
   currentColor: "currentColor",
-  primary: "#34C7B8",
-  light: "#4FD9CC",
+  primary: "#2FAFA4",
+  light: "#CFECE8",
   accent: "#1EB5A0",
   white: "#FFFFFF",
   dark: "#0F172A",

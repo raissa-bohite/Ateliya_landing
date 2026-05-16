@@ -1,6 +1,32 @@
 ---
 import Icon from "../components/Icon.astro";
-import { galleryItems } from "../data/data";
+import accueilImg from "../assets/app_images/accueil.png";
+import gestionImg from "../assets/app_images/gestion.png";
+import onboardingImg from "../assets/app_images/onboarding.png";
+import rapportImg from "../assets/app_images/rapport.png";
+
+const galleryItems = [
+  {
+    label: "Accueil",
+    description: "Vue d'ensemble de l'activite et des actions du jour",
+    image: accueilImg,
+  },
+  {
+    label: "Gestion",
+    description: "Commandes, clients et suivi de l'atelier au meme endroit",
+    image: gestionImg,
+  },
+  {
+    label: "Onboarding",
+    description: "Configuration rapide pour demarrer sans friction",
+    image: onboardingImg,
+  },
+  {
+    label: "Rapports",
+    description: "Indicateurs clairs pour suivre la performance",
+    image: rapportImg,
+  },
+];
 ---
 
 <section
@@ -62,7 +88,7 @@ import { galleryItems } from "../data/data";
       </div>
 
       <h2
-        class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-4"
+        class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight mb-4"
       >
         Decouvrez l'
         <span
@@ -115,7 +141,7 @@ import { galleryItems } from "../data/data";
                   
                   {item.image ? (
                     <img
-                      src={item.image}
+                      src={item.image.src}
                       alt={item.label}
                       class="w-full h-full object-cover"
                       loading="lazy"
@@ -126,7 +152,7 @@ import { galleryItems } from "../data/data";
                   ) : (
                     <div class="w-full h-full flex items-center justify-center bg-gray-50">
                       <Icon
-                        name={item.icon || "image"}
+                        name="image"
                         size="2xl"
                         class="text-ateliya-primary/50"
                       />
@@ -164,7 +190,7 @@ import { galleryItems } from "../data/data";
                   
                   {item.image ? (
                     <img
-                      src={item.image}
+                      src={item.image.src}
                       alt=""
                       class="w-full h-full object-cover"
                       loading="lazy"
@@ -175,7 +201,7 @@ import { galleryItems } from "../data/data";
                   ) : (
                     <div class="w-full h-full flex items-center justify-center bg-gray-50">
                       <Icon
-                        name={item.icon || "image"}
+                        name="image"
                         size="2xl"
                         class="text-ateliya-primary/50"
                       />

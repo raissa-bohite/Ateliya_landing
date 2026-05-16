@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
     date: "8 Nov 2024",
     readTime: "7 min",
     author: "Amara Diallo",
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea3c1c2d?w=800",
+    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800",
     tags: ["digital", "technologie", "modernisation", "outils"],
   },
   {
@@ -111,7 +111,7 @@ export const blogPosts: BlogPost[] = [
     date: "3 Nov 2024",
     readTime: "9 min",
     author: "Fatou Traoré",
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea3c1c2d?w=800",
+    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800",
     tags: ["marketing", "réseaux-sociaux", "clients", "communication"],
   },
 ];

@@ -50,7 +50,7 @@ export const workflow = [
     title: "Notification client",
     description: "SMS automatique quand c'est prêt, pas besoin d'appeler",
     icon: "messageCircle",
-    gradient: "from-[#D4AF37] to-[#B8941F]",
+    gradient: "from-[#B99752] to-[#B8941F]",
   },
   {
     step: "5",
@@ -132,9 +132,9 @@ export const featureColors = [
     borderColor: "border-ateliya-accent/20",
   },
   {
-    color: "text-[#D4AF37]",
-    bgColor: "from-[#D4AF37]/20 to-[#D4AF37]/10",
-    borderColor: "border-[#D4AF37]/20",
+    color: "text-[#B99752]",
+    bgColor: "from-[#B99752]/20 to-[#B99752]/10",
+    borderColor: "border-[#B99752]/20",
   },
   {
     color: "text-ateliya-primary",

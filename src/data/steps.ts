@@ -17,8 +17,8 @@ const stepIcons = [
   },
   {
     name: "rocket",
-    color: "text-[#D4AF37]",
-    bgColor: "from-[#D4AF37]/20 to-[#D4AF37]/10",
+    color: "text-[#B99752]",
+    bgColor: "from-[#B99752]/20 to-[#B99752]/10",
   },
 ];
 

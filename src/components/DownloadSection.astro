@@ -1,189 +1,365 @@
 ---
-import { Download, Star, ArrowRight, Check, QrCode } from 'lucide-astro';
-import Button from "./Button-Improved.astro";
-import "../styles/global.css";
+import { Image } from "astro:assets";
+import Icon from "../components/Icon.astro";
+import accueilImg from "../assets/app_images/accueil.png";
 ---
 
 <section
   id="download"
-  class="section-padding-xl relative overflow-hidden"
-  style="background: linear-gradient(135deg, #f0f9f8 0%, #e8f9f8 50%, #f0f9f8 100%);"
+  class="relative py-24 lg:py-32 overflow-hidden bg-gradient-to-br from-teal-50/80 via-white to-amber-50/30"
 >
-  <!-- Background Subtil -->
-  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-ateliya-primary/5 rounded-full blur-3xl" />
-    <div class="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-ateliya-secondary/4 rounded-full blur-3xl" />
+  <!-- ---- Background Decorations ---- -->
+
+  <!-- Large shape blob -->
+  <div
+    class="absolute right-0 top-0 w-[50%] h-[70%] bg-gradient-to-bl from-ateliya-primary/5 via-ateliya-secondary/3 to-transparent rounded-bl-[120px]"
+  >
   </div>
 
-  <div class="container-wide relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-      
-      <!-- Content Section (Gauche) -->
+  <!-- Gradient orbs -->
+  <div
+    class="absolute top-[15%] right-[25%] w-80 h-80 bg-ateliya-primary/8 rounded-full blur-[120px]"
+  >
+  </div>
+  <div
+    class="absolute bottom-[10%] left-[15%] w-64 h-64 bg-ateliya-secondary/6 rounded-full blur-[100px]"
+  >
+  </div>
+
+  <!-- Radial dot bg -->
+  <div
+    class="absolute inset-0 opacity-[0.025]"
+    style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
+  >
+  </div>
+
+  <!-- Dot grid top-left -->
+  <div class="absolute left-8 top-[12%] grid grid-cols-6 gap-2 opacity-35">
+    {
+      [...Array(30)].map((_, i) => (
+        <div
+          class={`w-1.5 h-1.5 rounded-full ${i % 4 === 0 ? "bg-ateliya-primary" : i % 4 === 1 ? "bg-ateliya-secondary/60" : i % 4 === 2 ? "bg-ateliya-primary/40" : "bg-gray-300"}`}
+        />
+      ))
+    }
+  </div>
+
+  <!-- Dot grid bottom-right -->
+  <div class="absolute right-10 bottom-[10%] grid grid-cols-5 gap-3 opacity-25">
+    {
+      [...Array(15)].map((_, i) => (
+        <div
+          class={`w-2 h-2 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary/50" : "bg-ateliya-secondary/30"}`}
+        />
+      ))
+    }
+  </div>
+
+  <!-- Dashed orbit circle -->
+  <div
+    class="absolute top-1/2 right-[20%] -translate-y-1/2 w-[500px] h-[500px] rounded-full border-2 border-dashed border-ateliya-primary/8 dl-spin-slow hidden lg:block"
+  >
+  </div>
+
+  <!-- ---- Content ---- -->
+  <div class="container mx-auto px-6 lg:px-10 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <!-- Left Content -->
       <div class="space-y-8 order-2 lg:order-1">
-        
         <!-- Badge -->
-        <div class="inline-block">
-          <div class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-gradient-to-r from-ateliya-primary/10 to-ateliya-primary/15 border border-ateliya-primary/30 backdrop-blur-sm">
-            <Download class="w-5 h-5 text-ateliya-primary" />
-            <span class="text-sm font-bold text-ateliya-dark">
-              Application Mobile
-            </span>
-          </div>
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full"
+        >
+          <Icon name="download" size="sm" class="text-ateliya-primary" />
+          <span class="text-sm font-bold text-ateliya-primary"
+            >Application Mobile</span
+          >
         </div>
 
         <!-- Title -->
         <div class="space-y-4">
-          <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
-            <span class="block">Téléchargez</span>
-            <span class="block mt-2 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent">
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold tracking-tighter leading-[1.1] text-gray-900"
+          >
+            <span class="block">Telechargez</span>
+            <span
+              class="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-400 to-ateliya-secondary"
+            >
               Ateliya
             </span>
           </h2>
 
-          <p class="text-lg md:text-xl text-ateliya-text/80 leading-relaxed max-w-xl">
-            Disponible sur <span class="font-bold text-ateliya-primary">iOS et Android</span>. 
-            Gérez votre atelier où que vous soyez.
+          <p
+            class="text-lg text-gray-500 leading-relaxed max-w-lg tracking-wide"
+          >
+            Disponible sur <span class="font-bold text-ateliya-primary"
+              >iOS et Android</span
+            >. Gerez votre atelier de couture ou que vous soyez, a tout moment.
           </p>
         </div>
 
-        <!-- Download Buttons - Couleurs Ateliya -->
-        <div class="flex flex-col sm:flex-row gap-4">
-          
-          <!-- App Store - Ateliya Primary avec icône Apple dark -->
-          <a 
-            href="#appstore" 
-            class="group flex-1 flex items-center gap-4 px-6 py-4 rounded-xl bg-white border-2 border-ateliya-primary/30 hover:border-ateliya-primary hover:bg-ateliya-primary/5 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+        <!-- Store Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <!-- App Store -->
+          <a
+            href="https://apps.apple.com/us/app/ateliya/id6755125319"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-3 px-4 py-3 bg-white rounded-2xl border border-gray-200 hover:border-ateliya-primary/40 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] min-w-[180px]"
           >
-            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-ateliya-primary/10">
-              <svg class="w-7 h-7 text-ateliya-dark" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+            <div
+              class="flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 group-hover:bg-ateliya-primary/10 transition-colors duration-300"
+            >
+              <svg
+                class="w-7 h-7 text-gray-700 group-hover:text-ateliya-primary transition-colors duration-300"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                ></path>
               </svg>
             </div>
             <div class="text-left flex-1">
-              <div class="text-xs text-ateliya-text/60 font-semibold">Télécharger sur</div>
-              <div class="text-lg font-black text-ateliya-primary">App Store</div>
+              <div
+                class="text-[11px] text-gray-400 font-bold uppercase tracking-widest"
+              >
+                Telecharger sur
+              </div>
+              <div
+                class="text-base font-serif font-extrabold tracking-tighter text-gray-900"
+              >
+                App Store
+              </div>
             </div>
-            <ArrowRight class="w-5 h-5 text-ateliya-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+            <Icon
+              name="arrow-right"
+              size="sm"
+              class="text-ateliya-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
+            />
           </a>
 
-          <!-- Google Play - Dégradé Ateliya avec icône Play Store et texte blanc -->
-          <a 
-            href="#googleplay" 
-            class="group flex-1 flex items-center gap-4 px-6 py-4 rounded-xl bg-gradient-to-r from-ateliya-primary via-ateliya-dark to-ateliya-primary text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl hover:shadow-ateliya-primary/30 relative overflow-hidden"
+          <!-- Google Play -->
+          <a
+            href="https://play.google.com/store/apps/details?id=com.ateliya.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-2xl hover:shadow-xl hover:shadow-ateliya-primary/25 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-w-[180px]"
           >
-            <!-- Shimmer effect -->
-            <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent bg-[length:200%_100%] animate-shimmer-slow"></span>
-            
-            <div class="relative z-10 flex items-center gap-4 w-full">
-              <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-white/20">
-                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M3.609 1.814L13.792 12 3.61 22.186c-.316-.237-.522-.623-.522-1.073V2.887c0-.45.206-.836.521-1.073zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626c.591.342.591 1.252 0 1.594l-2.807 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"></path>
+            <!-- Shimmer -->
+            <span class="absolute inset-0 dl-shimmer"></span>
+
+            <div class="relative z-10 flex items-center gap-3 w-full">
+              <div
+                class="flex items-center justify-center w-12 h-12 rounded-xl bg-white/15"
+              >
+                <svg
+                  class="w-7 h-7 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3.609 1.814L13.792 12 3.61 22.186c-.316-.237-.522-.623-.522-1.073V2.887c0-.45.206-.836.521-1.073zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626c.591.342.591 1.252 0 1.594l-2.807 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"
+                  ></path>
                 </svg>
               </div>
               <div class="text-left flex-1">
-                <div class="text-xs opacity-90 font-semibold">Télécharger sur</div>
-                <div class="text-lg font-black">Google Play</div>
+                <div
+                  class="text-[11px] opacity-80 font-bold uppercase tracking-widest"
+                >
+                  Telecharger sur
+                </div>
+                <div
+                  class="text-base font-serif font-extrabold tracking-tighter"
+                >
+                  Google Play
+                </div>
               </div>
-              <ArrowRight class="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+              <Icon
+                name="arrow-right"
+                size="sm"
+                class="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
+              />
             </div>
           </a>
         </div>
 
-        <!-- Stats avec icônes visibles -->
-        <div class="grid grid-cols-3 gap-4 pt-6">
-          <div class="text-center p-4 rounded-xl bg-white border border-ateliya-primary/20 hover:shadow-lg transition-all duration-300">
-            <div class="flex justify-center mb-2">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center shadow-lg">
-                <Download class="w-6 h-6 text-white" />
-              </div>
-            </div>
-            <p class="text-2xl md:text-3xl font-black text-ateliya-primary mb-1">
-              500K+
-            </p>
-            <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
-              Téléchargements
-            </p>
-          </div>
-
-          <div class="text-center p-4 rounded-xl bg-white border border-ateliya-primary/20 hover:shadow-lg transition-all duration-300">
-            <div class="flex justify-center mb-2">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-lg">
-                <Star class="w-6 h-6 text-white fill-white" />
-              </div>
-            </div>
-            <p class="text-2xl md:text-3xl font-black text-ateliya-primary mb-1">
-              4.9
-            </p>
-            <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
-              Note moyenne
-            </p>
-          </div>
-
-          <div class="text-center p-4 rounded-xl bg-white border border-ateliya-primary/20 hover:shadow-lg transition-all duration-300">
-            <div class="flex justify-center mb-2">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg">
-                <Check class="w-6 h-6 text-white" />
-              </div>
-            </div>
-            <p class="text-2xl md:text-3xl font-black text-ateliya-primary mb-1">
-              98%
-            </p>
-            <p class="text-xs md:text-sm text-ateliya-text/70 font-semibold">
-              Satisfaction
-            </p>
-          </div>
-        </div>
-
-        <!-- QR Code Intégré -->
-        <div class="flex items-center gap-6 p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-ateliya-primary/20 hover:border-ateliya-primary/40 transition-all duration-300">
-          <div class="flex-shrink-0 w-24 h-24 rounded-xl bg-gradient-to-br from-ateliya-primary/15 to-ateliya-primary/10 flex items-center justify-center border border-ateliya-primary/30">
-            <QrCode class="w-16 h-16 text-ateliya-primary" />
+        <!-- QR Code -->
+        <div
+          class="flex items-center gap-5 p-5 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-ateliya-primary/30 hover:shadow-md transition-all duration-300"
+        >
+          <div
+            class="flex-shrink-0 w-20 h-20 rounded-xl bg-gradient-to-br from-ateliya-primary/10 to-ateliya-primary/5 border border-ateliya-primary/20 flex items-center justify-center"
+          >
+            <Icon name="qr-code" size="xl" class="text-ateliya-primary" />
           </div>
           <div>
-            <p class="text-lg font-black text-ateliya-dark mb-1">
-              Scannez pour télécharger
+            <p
+              class="text-base font-serif font-extrabold tracking-tighter text-gray-900"
+            >
+              Scannez pour telecharger
             </p>
-            <p class="text-sm text-ateliya-text/70">
-              Accès rapide à l'application
+            <p class="text-sm text-gray-400 mt-0.5">
+              Acces instantane a l'application
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Mockup Section (Droite) - Simplifié -->
-      <div class="relative h-[500px] md:h-[600px] lg:h-[650px] flex items-center justify-center order-1 lg:order-2">
-        
-        <!-- Glow Subtil -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-[75%] h-[75%] bg-gradient-to-br from-ateliya-primary/20 via-ateliya-secondary/15 to-ateliya-accent/20 rounded-full blur-3xl opacity-40" />
+      <!-- Right - Phone Mockup Composite -->
+      <div
+        class="relative min-h-[550px] md:min-h-[650px] flex items-center justify-center order-1 lg:order-2"
+      >
+        <!-- Background fill circle -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-ateliya-primary/6 to-ateliya-secondary/4"
+        >
         </div>
 
-        <!-- Mockup -->
-        <div class="relative z-10">
-          <img
-            src="/Download-App.webp"
-            alt="Application mobile Ateliya"
-            class="object-contain drop-shadow-2xl"
-            loading="eager"
-          />
-        </div>
-
-        <!-- Badges Flottants Simplifiés -->
-        <div class="absolute top-1/4 -left-8 lg:left-0">
-          <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-primary/20">
-            <div class="flex items-center gap-2">
-              <Check class="w-5 h-5 text-green-500" />
-              <span class="text-xs font-bold text-ateliya-dark whitespace-nowrap">Disponible</span>
+        <!-- Phone Mockup - Large -->
+        <div class="relative z-20 dl-phone-entrance">
+          <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+            <div
+              class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[600px]"
+            >
+              <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"
+              >
+              </div>
+              <Image
+                src={accueilImg}
+                alt="Application mobile Ateliya"
+                class="w-full h-full object-cover"
+                loading="eager"
+                fetchpriority="high"
+                decoding="sync"
+              />
             </div>
           </div>
         </div>
 
-        <div class="absolute bottom-1/3 -right-8 lg:right-0">
-          <div class="bg-white rounded-xl shadow-xl p-3 border border-ateliya-secondary/20">
-            <div class="flex items-center gap-2">
-              <Star class="w-5 h-5 text-[#D4AF37] fill-[#D4AF37]" />
-              <span class="text-xs font-bold text-ateliya-dark whitespace-nowrap">4.9/5</span>
+        <!-- Decorative arc -->
+        <div
+          class="absolute top-[5%] right-[5%] w-[320px] h-[320px] dl-photo-entrance"
+        >
+          <svg viewBox="0 0 200 200" class="w-full h-full">
+            <defs>
+              <linearGradient id="dlArc" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#2FAFA4;stop-opacity:0.6"
+                ></stop>
+                <stop offset="100%" style="stop-color:#B99752;stop-opacity:0.4"
+                ></stop>
+              </linearGradient>
+            </defs>
+            <path
+              d="M 100,18 A 82,82 0 0,1 182,100"
+              fill="none"
+              stroke="url(#dlArc)"
+              stroke-width="30"
+              stroke-linecap="round"></path>
+          </svg>
+        </div>
+
+        <!-- Floating notification cards -->
+        <div
+          class="absolute top-[18%] -left-4 lg:left-[2%] z-30 dl-float-card"
+          style="animation-delay: 0.6s"
+        >
+          <div
+            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 p-3.5 border border-gray-100"
+          >
+            <div class="flex items-center gap-2.5">
+              <div
+                class="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0"
+              >
+                <Icon name="check" size="sm" class="text-green-600" />
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 font-medium">Statut</p>
+                <p class="text-xs font-bold text-gray-900">Disponible</p>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute bottom-[22%] -right-4 lg:right-[2%] z-30 dl-float-card"
+          style="animation-delay: 1s"
+        >
+          <div
+            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 p-3.5 border border-gray-100"
+          >
+            <div class="flex items-center gap-2.5">
+              <div
+                class="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0"
+              >
+                <Icon name="star" size="sm" class="text-amber-500" />
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 font-medium">Note</p>
+                <p class="text-xs font-bold text-gray-900">4.9/5</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute bottom-[8%] left-[10%] z-30 dl-float-card"
+          style="animation-delay: 1.4s"
+        >
+          <div
+            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 p-3.5 border border-gray-100"
+          >
+            <div class="flex items-center gap-2.5">
+              <div
+                class="w-9 h-9 rounded-lg bg-ateliya-primary/10 flex items-center justify-center flex-shrink-0"
+              >
+                <Icon name="users" size="sm" class="text-ateliya-primary" />
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 font-medium">Communaute</p>
+                <p class="text-xs font-bold text-gray-900">500K+ tailleurs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hatched circle decoration -->
+        <div class="absolute bottom-[15%] right-[15%] w-20 h-20 opacity-35">
+          <div
+            class="w-full h-full rounded-full"
+            style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #2FAFA440 2.5px, #2FAFA440 5px);"
+          >
+          </div>
+        </div>
+
+        <!-- Bouncing dots -->
+        <div
+          class="absolute top-[12%] left-[20%] w-3.5 h-3.5 rounded-full bg-ateliya-primary/50 dl-bounce-1"
+        >
+        </div>
+        <div
+          class="absolute top-[40%] right-[8%] w-4 h-4 rounded-full bg-ateliya-secondary/40 dl-bounce-2"
+        >
+        </div>
+        <div
+          class="absolute bottom-[30%] left-[5%] w-2.5 h-2.5 rounded-full bg-africa-gold/25 dl-bounce-1"
+        >
+        </div>
+
+        <!-- Rotated square -->
+        <div
+          class="absolute top-[8%] right-[25%] w-8 h-8 rounded-lg rotate-45 bg-gradient-to-br from-ateliya-primary/15 to-ateliya-secondary/10"
+        >
+        </div>
+
+        <!-- Numbered ball -->
+        <div class="absolute top-[5%] left-[15%] z-10">
+          <div
+            class="w-14 h-14 rounded-full bg-gradient-to-br from-ateliya-primary to-ateliya-secondary shadow-xl flex items-center justify-center"
+            style="box-shadow: 0 8px 32px #2FAFA440;"
+          >
+            <Icon name="download" size="md" class="text-white" />
           </div>
         </div>
       </div>
@@ -192,8 +368,70 @@ import "../styles/global.css";
 </section>
 
 <style>
-  /* Animation shimmer */
-  @keyframes shimmer-slow {
+  /* ---- Animations ---- */
+  @keyframes dlPhoneEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes dlPhotoEntrance {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes dlFloatCard {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes dlSpinSlow {
+    from {
+      transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+      transform: translateY(-50%) rotate(360deg);
+    }
+  }
+
+  @keyframes dlBounce1 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.1);
+    }
+  }
+
+  @keyframes dlBounce2 {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-5px) scale(0.9);
+    }
+  }
+
+  @keyframes dlShimmer {
     0% {
       background-position: 200% 0;
     }
@@ -202,11 +440,42 @@ import "../styles/global.css";
     }
   }
 
-  .animate-shimmer-slow {
-    animation: shimmer-slow 3s linear infinite;
+  .dl-phone-entrance {
+    animation: dlPhoneEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
 
-  /* Accessibilité */
+  .dl-photo-entrance {
+    animation: dlPhotoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .dl-float-card {
+    animation: dlFloatCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .dl-spin-slow {
+    animation: dlSpinSlow 30s linear infinite;
+  }
+
+  .dl-bounce-1 {
+    animation: dlBounce1 3s ease-in-out infinite;
+  }
+
+  .dl-bounce-2 {
+    animation: dlBounce2 3.5s ease-in-out infinite;
+  }
+
+  .dl-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: dlShimmer 3s linear infinite;
+  }
+
+  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

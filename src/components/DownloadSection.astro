@@ -12,29 +12,29 @@ import accueilImg from "../assets/app_images/accueil.png";
 
   <!-- Large shape blob -->
   <div
-    class="absolute right-0 top-0 w-[50%] h-[70%] bg-gradient-to-bl from-ateliya-primary/5 via-ateliya-secondary/3 to-transparent rounded-bl-[120px]"
+    class="absolute right-0 top-0 w-[50%] h-[70%] bg-gradient-to-bl from-ateliya-primary/[0.03] via-ateliya-secondary/[0.02] to-transparent rounded-bl-[120px]"
   >
   </div>
 
   <!-- Gradient orbs -->
   <div
-    class="absolute top-[15%] right-[25%] w-80 h-80 bg-ateliya-primary/8 rounded-full blur-[120px]"
+    class="absolute top-[15%] right-[25%] w-80 h-80 bg-ateliya-primary/[0.04] rounded-full blur-[120px]"
   >
   </div>
   <div
-    class="absolute bottom-[10%] left-[15%] w-64 h-64 bg-ateliya-secondary/6 rounded-full blur-[100px]"
+    class="absolute bottom-[10%] left-[15%] w-64 h-64 bg-ateliya-secondary/[0.035] rounded-full blur-[100px]"
   >
   </div>
 
   <!-- Radial dot bg -->
   <div
-    class="absolute inset-0 opacity-[0.025]"
+    class="absolute inset-0 opacity-[0.014]"
     style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
   >
   </div>
 
   <!-- Dot grid top-left -->
-  <div class="absolute left-8 top-[12%] grid grid-cols-6 gap-2 opacity-35">
+  <div class="absolute left-8 top-[12%] grid grid-cols-6 gap-2 opacity-[0.16]">
     {
       [...Array(30)].map((_, i) => (
         <div
@@ -45,7 +45,7 @@ import accueilImg from "../assets/app_images/accueil.png";
   </div>
 
   <!-- Dot grid bottom-right -->
-  <div class="absolute right-10 bottom-[10%] grid grid-cols-5 gap-3 opacity-25">
+  <div class="absolute right-10 bottom-[10%] grid grid-cols-5 gap-3 opacity-[0.14]">
     {
       [...Array(15)].map((_, i) => (
         <div
@@ -57,7 +57,7 @@ import accueilImg from "../assets/app_images/accueil.png";
 
   <!-- Dashed orbit circle -->
   <div
-    class="absolute top-1/2 right-[20%] -translate-y-1/2 w-[500px] h-[500px] rounded-full border-2 border-dashed border-ateliya-primary/8 dl-spin-slow hidden lg:block"
+    class="absolute top-1/2 right-[20%] -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-dashed border-ateliya-primary/[0.07] dl-spin-slow hidden lg:block"
   >
   </div>
 
@@ -105,7 +105,7 @@ import accueilImg from "../assets/app_images/accueil.png";
             href="https://apps.apple.com/us/app/ateliya/id6755125319"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center gap-3 px-4 py-3 bg-white rounded-2xl border border-gray-200 hover:border-ateliya-primary/40 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] min-w-[180px]"
+            class="group flex items-center gap-3 px-4 py-3 bg-white/[0.96] rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/[0.35] hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-all duration-300 hover:-translate-y-0.5 min-w-[180px]"
           >
             <div
               class="flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 group-hover:bg-ateliya-primary/10 transition-colors duration-300"
@@ -144,7 +144,7 @@ import accueilImg from "../assets/app_images/accueil.png";
             href="https://play.google.com/store/apps/details?id=com.ateliya.app"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-2xl hover:shadow-xl hover:shadow-ateliya-primary/25 transition-all duration-300 hover:scale-[1.02] relative overflow-hidden min-w-[180px]"
+            class="group flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-2xl shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] transition-all duration-300 hover:-translate-y-0.5 relative overflow-hidden min-w-[180px]"
           >
             <!-- Shimmer -->
             <span class="absolute inset-0 dl-shimmer"></span>
@@ -186,7 +186,7 @@ import accueilImg from "../assets/app_images/accueil.png";
 
         <!-- QR Code -->
         <div
-          class="flex items-center gap-5 p-5 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-ateliya-primary/30 hover:shadow-md transition-all duration-300"
+          class="flex items-center gap-5 p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-all duration-300"
         >
           <div
             class="flex-shrink-0 w-20 h-20 rounded-xl bg-gradient-to-br from-ateliya-primary/10 to-ateliya-primary/5 border border-ateliya-primary/20 flex items-center justify-center"
@@ -212,13 +212,13 @@ import accueilImg from "../assets/app_images/accueil.png";
       >
         <!-- Background fill circle -->
         <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-ateliya-primary/6 to-ateliya-secondary/4"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-ateliya-primary/[0.035] to-ateliya-secondary/[0.025]"
         >
         </div>
 
         <!-- Phone Mockup - Large -->
         <div class="relative z-20 dl-phone-entrance">
-          <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+          <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
             <div
               class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[600px]"
             >
@@ -266,7 +266,7 @@ import accueilImg from "../assets/app_images/accueil.png";
           style="animation-delay: 0.6s"
         >
           <div
-            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 p-3.5 border border-gray-100"
+            class="bg-white/[0.96] backdrop-blur-sm rounded-2xl shadow-[0_10px_24px_rgba(18,63,59,0.07)] p-3.5 border border-ateliya-border/[0.55]"
           >
             <div class="flex items-center gap-2.5">
               <div
@@ -287,7 +287,7 @@ import accueilImg from "../assets/app_images/accueil.png";
           style="animation-delay: 1s"
         >
           <div
-            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 p-3.5 border border-gray-100"
+            class="bg-white/[0.96] backdrop-blur-sm rounded-2xl shadow-[0_10px_24px_rgba(18,63,59,0.07)] p-3.5 border border-ateliya-border/[0.55]"
           >
             <div class="flex items-center gap-2.5">
               <div
@@ -308,7 +308,7 @@ import accueilImg from "../assets/app_images/accueil.png";
           style="animation-delay: 1.4s"
         >
           <div
-            class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 p-3.5 border border-gray-100"
+            class="bg-white/[0.96] backdrop-blur-sm rounded-2xl shadow-[0_10px_24px_rgba(18,63,59,0.07)] p-3.5 border border-ateliya-border/[0.55]"
           >
             <div class="flex items-center gap-2.5">
               <div
@@ -325,7 +325,7 @@ import accueilImg from "../assets/app_images/accueil.png";
         </div>
 
         <!-- Hatched circle decoration -->
-        <div class="absolute bottom-[15%] right-[15%] w-20 h-20 opacity-35">
+        <div class="absolute bottom-[15%] right-[15%] w-20 h-20 opacity-20">
           <div
             class="w-full h-full rounded-full"
             style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #2FAFA440 2.5px, #2FAFA440 5px);"
@@ -335,11 +335,11 @@ import accueilImg from "../assets/app_images/accueil.png";
 
         <!-- Bouncing dots -->
         <div
-          class="absolute top-[12%] left-[20%] w-3.5 h-3.5 rounded-full bg-ateliya-primary/50 dl-bounce-1"
+          class="absolute top-[12%] left-[20%] w-3.5 h-3.5 rounded-full bg-ateliya-primary/28 dl-bounce-1"
         >
         </div>
         <div
-          class="absolute top-[40%] right-[8%] w-4 h-4 rounded-full bg-ateliya-secondary/40 dl-bounce-2"
+          class="absolute top-[40%] right-[8%] w-4 h-4 rounded-full bg-ateliya-secondary/24 dl-bounce-2"
         >
         </div>
         <div
@@ -356,8 +356,7 @@ import accueilImg from "../assets/app_images/accueil.png";
         <!-- Numbered ball -->
         <div class="absolute top-[5%] left-[15%] z-10">
           <div
-            class="w-14 h-14 rounded-full bg-gradient-to-br from-ateliya-primary to-ateliya-secondary shadow-xl flex items-center justify-center"
-            style="box-shadow: 0 8px 32px #2FAFA440;"
+            class="w-14 h-14 rounded-full bg-gradient-to-br from-ateliya-primary to-ateliya-secondary shadow-[0_10px_24px_rgba(47,175,164,0.16)] flex items-center justify-center"
           >
             <Icon name="download" size="md" class="text-white" />
           </div>

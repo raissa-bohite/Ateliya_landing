@@ -20,7 +20,7 @@ const { class: className = "" } = Astro.props;
 >
   <!-- Background -->
   <div
-    class="header-bg absolute inset-y-0 left-4 right-4 rounded-b-[1.35rem] border border-t-0 border-white/70 bg-white/55 shadow-[0_18px_55px_rgba(18,63,59,0.08)] backdrop-blur-xl transition-all duration-300 lg:left-1/2 lg:right-auto lg:w-[min(calc(100%-2rem),76rem)] lg:-translate-x-1/2"
+    class="header-bg absolute inset-y-0 left-4 right-4 rounded-b-[1.35rem] border border-t-0 border-ateliya-border/[0.55] bg-white/[0.92] shadow-[0_10px_28px_rgba(18,63,59,0.055)] backdrop-blur-xl transition-all duration-300 lg:left-1/2 lg:right-auto lg:w-[min(calc(100%-2rem),76rem)] lg:-translate-x-1/2"
   >
   </div>
 
@@ -64,13 +64,13 @@ const { class: className = "" } = Astro.props;
 
     <!-- Desktop Navigation -->
     <div
-      class="hidden md:flex items-center gap-0.5 rounded-full border border-white/60 bg-white/35 px-1 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]"
+      class="hidden md:flex items-center gap-0.5 rounded-full border border-ateliya-border/50 bg-white/[0.84] px-1 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]"
     >
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="nav-link relative px-3.5 py-1.5 text-[13px] font-medium text-gray-600 hover:text-ateliya-primary rounded-full transition-all duration-300 hover:bg-white/70"
+            class="nav-link relative px-3.5 py-1.5 text-[13px] font-medium text-gray-600 hover:text-ateliya-primary rounded-full transition-all duration-300 hover:bg-ateliya-primary/[0.06]"
           >
             {item.label}
           </a>
@@ -85,7 +85,7 @@ const { class: className = "" } = Astro.props;
         href="/connexion"
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden md:inline-flex nav-link relative px-3.5 py-1.5 text-[13px] font-medium text-ateliya-primary hover:text-ateliya-secondary rounded-full transition-all duration-300 hover:bg-white/70"
+        class="hidden md:inline-flex nav-link relative px-3.5 py-1.5 text-[13px] font-medium text-ateliya-primary hover:text-ateliya-secondary rounded-full transition-all duration-300 hover:bg-ateliya-primary/[0.06]"
       >
         S'inscrire
       </a>
@@ -96,7 +96,7 @@ const { class: className = "" } = Astro.props;
           href="https://apps.apple.com/us/app/ateliya/id6755125319"
           target="_blank"
           rel="noopener noreferrer"
-          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-white/70 text-gray-800 rounded-xl border border-ateliya-primary/25 transition-all duration-300 group/store shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
+          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-white/[0.96] text-gray-800 rounded-xl border border-ateliya-primary/20 transition-all duration-300 group/store shadow-[0_6px_16px_rgba(18,63,59,0.035),inset_0_1px_0_rgba(255,255,255,0.8)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -121,7 +121,7 @@ const { class: className = "" } = Astro.props;
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
           target="_blank"
           rel="noopener noreferrer"
-          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-sm shadow-ateliya-primary/20"
+          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -146,7 +146,7 @@ const { class: className = "" } = Astro.props;
       <!-- Mobile toggle -->
       <button
         id="menu-toggle"
-        class="md:hidden relative w-9 h-9 flex items-center justify-center rounded-xl bg-white/45 hover:bg-white/70 transition-colors duration-300"
+        class="md:hidden relative w-9 h-9 flex items-center justify-center rounded-xl border border-ateliya-border/50 bg-white/[0.92] hover:bg-white transition-colors duration-300 shadow-[0_6px_16px_rgba(18,63,59,0.04)]"
         aria-label="Ouvrir le menu"
         aria-expanded="false"
       >
@@ -162,7 +162,7 @@ const { class: className = "" } = Astro.props;
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="mobile-menu hidden md:hidden absolute top-[calc(100%+0.5rem)] left-4 right-4 rounded-3xl border border-white/70 bg-white/92 backdrop-blur-xl shadow-[0_18px_55px_rgba(18,63,59,0.12)]"
+    class="mobile-menu hidden md:hidden absolute top-[calc(100%+0.5rem)] left-4 right-4 rounded-3xl border border-ateliya-border/[0.55] bg-white/[0.96] backdrop-blur-xl shadow-[0_14px_38px_rgba(18,63,59,0.08)]"
   >
     <div class="container mx-auto px-4 py-3 space-y-1">
       {
@@ -223,7 +223,7 @@ const { class: className = "" } = Astro.props;
           href="https://apps.apple.com/us/app/ateliya/id6755125319"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-white/75 text-gray-800 rounded-xl border border-ateliya-primary/25 transition-all duration-300"
+          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-white/[0.96] text-gray-800 rounded-xl border border-ateliya-primary/20 transition-all duration-300 shadow-[0_6px_16px_rgba(18,63,59,0.035)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -245,7 +245,7 @@ const { class: className = "" } = Astro.props;
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-md shadow-ateliya-primary/20"
+          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -334,9 +334,9 @@ const { class: className = "" } = Astro.props;
 <style>
   /* ---- Scroll state ---- */
   #header.is-scrolled .header-bg {
-    background: rgba(255, 255, 255, 0.88);
-    border-color: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 18px 55px rgba(18, 63, 59, 0.11);
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(232, 226, 216, 0.72);
+    box-shadow: 0 12px 32px rgba(18, 63, 59, 0.07);
   }
 
   #header.is-scrolled .header-kente {

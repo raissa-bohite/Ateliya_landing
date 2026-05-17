@@ -19,7 +19,7 @@ const stepStyles = [
   {
     icon: "upload",
     color: "text-ateliya-primary",
-    bgColor: "from-ateliya-primary/15 to-ateliya-primary/8",
+    bgColor: "from-ateliya-primary/[0.15] to-ateliya-primary/[0.08]",
   },
   {
     icon: "rocket",
@@ -56,22 +56,22 @@ const appFeatures = [
 >
   <!-- ---- Background Decorations ---- -->
   <div
-    class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/5 rounded-full blur-[120px]"
+    class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/[0.035] rounded-full blur-[120px]"
   >
   </div>
   <div
-    class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/4 rounded-full blur-[100px]"
+    class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/[0.025] rounded-full blur-[100px]"
   >
   </div>
 
   <div
-    class="absolute inset-0 opacity-[0.02]"
+    class="absolute inset-0 opacity-[0.014]"
     style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
   >
   </div>
 
   <!-- Dot grid top-right -->
-  <div class="absolute right-8 top-[6%] grid grid-cols-5 gap-2 opacity-25">
+  <div class="absolute right-8 top-[6%] grid grid-cols-5 gap-2 opacity-[0.16]">
     {
       [...Array(20)].map((_, i) => (
         <div
@@ -122,16 +122,16 @@ const appFeatures = [
           <div class="group/step h-full">
             <div class="h-full relative">
               <div
-                class={`absolute -inset-1 bg-gradient-to-br ${stepStyles[i].bgColor} rounded-2xl blur-lg opacity-0 group-hover/step:opacity-60 transition-all duration-700 -z-10`}
+                class={`absolute -inset-1 bg-gradient-to-br ${stepStyles[i].bgColor} rounded-2xl blur-lg opacity-0 group-hover/step:opacity-24 transition-all duration-700 -z-10`}
               />
 
-              <div class="h-full p-6 md:p-8 rounded-2xl bg-white border-2 border-gray-100 group-hover/step:border-ateliya-primary/30 transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/step:opacity-100 transition-opacity duration-500" />
+              <div class="h-full p-6 md:p-8 rounded-2xl bg-white/[0.96] border border-ateliya-border/[0.55] group-hover/step:border-ateliya-primary/25 transition-all duration-500 hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ateliya-primary/[0.55] to-transparent opacity-0 group-hover/step:opacity-100 transition-opacity duration-500" />
 
                 <div class="relative z-10 flex flex-col h-full space-y-6">
                   <div class="flex items-start justify-between">
                     <div
-                      class={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepStyles[i].bgColor} group-hover/step:scale-110 transition-all duration-500 shadow-lg`}
+                      class={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepStyles[i].bgColor} group-hover/step:-translate-y-0.5 transition-all duration-500 shadow-[0_10px_24px_rgba(18,63,59,0.07)]`}
                     >
                       <Icon
                         name={stepStyles[i].icon}
@@ -154,15 +154,6 @@ const appFeatures = [
                   <p class="text-gray-500 leading-relaxed text-sm md:text-base flex-grow tracking-wide">
                     {step.description}
                   </p>
-
-                  <div class="flex items-center gap-2 text-ateliya-primary font-bold text-sm group/link cursor-pointer">
-                    <span>En savoir plus</span>
-                    <Icon
-                      name="arrow-right"
-                      size="sm"
-                      class="group-hover/link:translate-x-2 transition-transform duration-300"
-                    />
-                  </div>
                 </div>
               </div>
             </div>
@@ -175,24 +166,26 @@ const appFeatures = [
     <!-- ---- BOTTOM SECTION: Mockups + Features ---- -->
     <!-- ============================================== -->
     <div
-      class="relative py-16 px-8 lg:px-12 rounded-3xl overflow-hidden bg-gradient-to-br from-teal-50/60 via-white to-amber-50/20 border border-gray-100"
+      class="relative py-16 px-8 lg:px-12 rounded-3xl overflow-hidden bg-gradient-to-br from-teal-50/[0.55] via-white to-amber-50/[0.18] border border-ateliya-border/[0.55] shadow-[0_16px_44px_rgba(18,63,59,0.045)]"
     >
       <!-- Section bg decorations -->
       <div
-        class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/4 to-transparent rounded-bl-[80px]"
+        class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/[0.025] to-transparent rounded-bl-[80px]"
       >
       </div>
       <div
-        class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/5 rounded-full blur-[100px]"
+        class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/[0.03] rounded-full blur-[100px]"
       >
       </div>
       <div
-        class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/4 rounded-full blur-[80px]"
+        class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/[0.025] rounded-full blur-[80px]"
       >
       </div>
 
       <!-- Dot grid -->
-      <div class="absolute left-6 top-[10%] grid grid-cols-5 gap-2 opacity-25">
+      <div
+        class="absolute left-6 top-[10%] grid grid-cols-5 gap-2 opacity-[0.16]"
+      >
         {
           [...Array(20)].map((_, i) => (
             <div
@@ -202,7 +195,7 @@ const appFeatures = [
         }
       </div>
       <div
-        class="absolute right-6 bottom-[8%] grid grid-cols-4 gap-2.5 opacity-20"
+        class="absolute right-6 bottom-[8%] grid grid-cols-4 gap-2.5 opacity-[0.14]"
       >
         {
           [...Array(12)].map((_, i) => (
@@ -215,7 +208,7 @@ const appFeatures = [
 
       <!-- Radial dots -->
       <div
-        class="absolute inset-0 opacity-[0.02]"
+        class="absolute inset-0 opacity-[0.012]"
         style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"
       >
       </div>
@@ -259,10 +252,10 @@ const appFeatures = [
             {
               appFeatures.map((feature, i) => (
                 <div
-                  class="group/feat flex items-start gap-4 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-100 hover:border-ateliya-primary/25 hover:bg-white/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                  class="group/feat flex items-start gap-4 p-4 bg-white/[0.94] backdrop-blur-sm rounded-xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:bg-white hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] hover:-translate-y-0.5 transition-all duration-300"
                   style={`animation-delay: ${i * 80}ms`}
                 >
-                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center shadow-md group-hover/feat:scale-110 transition-transform duration-300">
+                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center shadow-[0_8px_18px_rgba(47,175,164,0.14)] group-hover/feat:-translate-y-0.5 transition-transform duration-300">
                     <Icon name={feature.icon} size="sm" class="text-white" />
                   </div>
                   <div class="flex-1 min-w-0">
@@ -281,7 +274,7 @@ const appFeatures = [
           <!-- Trust indicators -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
             <div
-              class="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100"
+              class="flex items-center gap-2 px-4 py-2.5 bg-white/[0.94] backdrop-blur-sm rounded-xl border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)]"
             >
               <div class="flex gap-0.5">
                 {
@@ -296,7 +289,7 @@ const appFeatures = [
             <div class="h-8 w-px bg-gray-200"></div>
 
             <div
-              class="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100"
+              class="flex items-center gap-2 px-4 py-2.5 bg-white/[0.94] backdrop-blur-sm rounded-xl border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)]"
             >
               <Icon name="users" size="sm" class="text-ateliya-primary" />
               <span class="text-sm font-bold text-gray-600"
@@ -310,19 +303,21 @@ const appFeatures = [
         <div class="relative min-h-[480px] md:min-h-[560px] order-1 lg:order-2">
           <!-- BG circle -->
           <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-ateliya-primary/5 to-ateliya-secondary/3"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-ateliya-primary/[0.035] to-ateliya-secondary/[0.02]"
           >
           </div>
 
           <!-- Dashed orbit -->
           <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] rounded-full border-2 border-dashed border-ateliya-primary/8 steps-spin-slow hidden md:block"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] rounded-full border border-dashed border-ateliya-primary/[0.07] steps-spin-slow hidden md:block"
           >
           </div>
 
           <!-- Device 1: Terminal (back) -->
           <div class="absolute left-[2%] top-[8%] z-10 steps-device-1">
-            <div class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl">
+            <div
+              class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-[0_18px_44px_rgba(18,63,59,0.14)]"
+            >
               <div
                 class="relative bg-white rounded-[2rem] overflow-hidden w-56 md:w-64 h-[400px] md:h-[460px]"
               >
@@ -343,7 +338,9 @@ const appFeatures = [
 
           <!-- Device 2: Mobile (front) -->
           <div class="absolute right-[2%] top-[18%] z-20 steps-device-2">
-            <div class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-2xl">
+            <div
+              class="relative bg-gray-900 rounded-[2.5rem] p-2.5 shadow-[0_18px_44px_rgba(18,63,59,0.14)]"
+            >
               <div
                 class="relative bg-white rounded-[2rem] overflow-hidden w-56 md:w-64 h-[400px] md:h-[460px]"
               >
@@ -364,7 +361,7 @@ const appFeatures = [
             <!-- Badge -->
             <div class="absolute -top-3 -left-3 z-30">
               <div
-                class="bg-gradient-to-r from-ateliya-secondary to-amber-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5"
+                class="bg-gradient-to-r from-ateliya-secondary to-amber-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-[0_8px_18px_rgba(185,151,82,0.16)] flex items-center gap-1.5"
               >
                 <Icon name="smartphone" size="xs" class="text-white" />
                 <span>Mobile</span>
@@ -413,7 +410,7 @@ const appFeatures = [
             style="animation-delay: 0.9s"
           >
             <div
-              class="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl shadow-gray-200/50 p-3 border border-gray-100"
+              class="bg-white/[0.96] backdrop-blur-sm rounded-xl shadow-[0_10px_24px_rgba(18,63,59,0.07)] p-3 border border-ateliya-border/[0.55]"
             >
               <div class="flex items-center gap-2">
                 <div
@@ -428,20 +425,20 @@ const appFeatures = [
 
           <!-- Bouncing dots -->
           <div
-            class="absolute top-[15%] right-[30%] w-3 h-3 rounded-full bg-ateliya-primary/40 steps-bounce-1"
+            class="absolute top-[15%] right-[30%] w-3 h-3 rounded-full bg-ateliya-primary/28 steps-bounce-1"
           >
           </div>
           <div
-            class="absolute bottom-[20%] left-[25%] w-3.5 h-3.5 rounded-full bg-ateliya-secondary/35 steps-bounce-2"
+            class="absolute bottom-[20%] left-[25%] w-3.5 h-3.5 rounded-full bg-ateliya-secondary/24 steps-bounce-2"
           >
           </div>
           <div
-            class="absolute top-[50%] right-[5%] w-2.5 h-2.5 rounded-full bg-africa-gold/25 steps-bounce-1"
+            class="absolute top-[50%] right-[5%] w-2.5 h-2.5 rounded-full bg-africa-gold/18 steps-bounce-1"
           >
           </div>
 
           <!-- Hatched circle -->
-          <div class="absolute bottom-[5%] left-[12%] w-16 h-16 opacity-30">
+          <div class="absolute bottom-[5%] left-[12%] w-16 h-16 opacity-20">
             <div
               class="w-full h-full rounded-full"
               style="background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, #B9975240 2.5px, #B9975240 5px);"

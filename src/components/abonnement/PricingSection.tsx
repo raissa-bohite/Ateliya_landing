@@ -6,7 +6,6 @@ import {
   Package,
   Rocket,
   Gem,
-  Globe,
   ArrowRight,
   X,
 } from "lucide-react";
@@ -68,6 +67,8 @@ export default function PricingSection({
   const [planSelectionne, setPlanSelectionne] = useState<ModuleBackend | null>(
     null,
   );
+  const paysPourModal =
+    paysChoisi ?? planSelectionne?.pays ?? initialPaysChoisi ?? pays[0] ?? null;
 
   // Charger les pays au montage + auto-select premier
   useEffect(() => {
@@ -138,12 +139,13 @@ export default function PricingSection({
               const selected = paysChoisi?.id === p.id;
               return (
                 <button
+                  type="button"
                   key={p.id}
                   onClick={() => setPaysChoisi(p)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 text-sm font-bold transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-bold transition-all ${
                     selected
-                      ? "border-ateliya-primary bg-ateliya-primary/10 text-ateliya-primary shadow-sm shadow-ateliya-primary/15"
-                      : "border-gray-100 bg-white text-gray-600 hover:border-ateliya-primary/40 hover:text-ateliya-primary"
+                      ? "border-ateliya-primary/35 bg-ateliya-primary/[0.08] text-ateliya-primary shadow-[0_6px_16px_rgba(18,63,59,0.035)]"
+                      : "border-ateliya-border/[0.55] bg-white/[0.96] text-gray-600 hover:border-ateliya-primary/40 hover:text-ateliya-primary"
                   }`}
                 >
                   <span className="text-base leading-none">
@@ -163,7 +165,7 @@ export default function PricingSection({
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className={`h-full p-5 md:p-6 rounded-2xl bg-white border-2 border-gray-100 ${
+              className={`h-full p-5 md:p-6 rounded-2xl bg-white/[0.96] border border-ateliya-border/[0.55] ${
                 i === 1 ? "md:-mt-4" : ""
               }`}
             >
@@ -227,25 +229,25 @@ export default function PricingSection({
                   <div
                     className={`absolute -inset-1 bg-gradient-to-br ${
                       idx === 0
-                        ? "from-ateliya-primary/15 to-teal-400/10"
+                        ? "from-ateliya-primary/[0.08] to-teal-400/[0.05]"
                         : idx === 1
-                          ? "from-ateliya-secondary/15 to-amber-400/10"
-                          : "from-africa-gold/15 to-ateliya-primary/8"
-                    } rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-60 transition-all duration-700 -z-10`}
+                          ? "from-ateliya-secondary/[0.08] to-amber-400/[0.05]"
+                          : "from-africa-gold/[0.08] to-ateliya-primary/[0.05]"
+                    } rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-50 transition-all duration-700 -z-10`}
                   />
 
                   <div
-                    className={`h-full p-5 md:p-6 rounded-2xl bg-white border-2 transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden ${
+                    className={`h-full p-5 md:p-6 rounded-2xl bg-white/[0.96] border transition-all duration-500 hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] hover:-translate-y-0.5 relative overflow-hidden ${
                       popular
                         ? "border-ateliya-primary/30"
-                        : "border-gray-100 group-hover/plan:border-ateliya-primary/30"
+                        : "border-ateliya-border/[0.55] group-hover/plan:border-ateliya-primary/30"
                     }`}
                   >
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/plan:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/plan:opacity-100 transition-opacity duration-500" />
 
                     {popular && (
                       <div className="absolute -top-px left-0 right-0 flex justify-center">
-                        <div className="px-5 py-1.5 rounded-b-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-[11px] font-black tracking-wide uppercase shadow-sm shadow-ateliya-primary/15 flex items-center gap-1">
+                        <div className="px-5 py-1.5 rounded-b-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-[11px] font-black tracking-wide uppercase shadow-[0_6px_16px_rgba(47,175,164,0.12)] flex items-center gap-1">
                           <Star size={10} fill="currentColor" /> Le plus
                           populaire
                         </div>
@@ -258,12 +260,12 @@ export default function PricingSection({
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div
-                          className={`relative flex items-center justify-center w-12 h-12 rounded-2xl group-hover/plan:scale-110 transition-all duration-500 shadow-sm ${
+                          className={`relative flex items-center justify-center w-12 h-12 rounded-2xl group-hover/plan:-translate-y-0.5 transition-all duration-500 shadow-[0_6px_16px_rgba(18,63,59,0.035)] ${
                             idx === 0
-                              ? "bg-gradient-to-br from-ateliya-primary/20 to-ateliya-primary/10 text-ateliya-primary"
+                              ? "bg-gradient-to-br from-ateliya-primary/[0.16] to-ateliya-primary/[0.08] text-ateliya-primary"
                               : idx === 1
-                                ? "bg-gradient-to-br from-ateliya-secondary/20 to-ateliya-secondary/10 text-ateliya-secondary"
-                                : "bg-gradient-to-br from-ateliya-primary/15 to-ateliya-primary/8 text-ateliya-primary"
+                                ? "bg-gradient-to-br from-ateliya-secondary/[0.16] to-ateliya-secondary/[0.08] text-ateliya-secondary"
+                                : "bg-gradient-to-br from-ateliya-primary/[0.12] to-ateliya-primary/[0.08] text-ateliya-primary"
                           }`}
                         >
                           {PLAN_ICONS[idx] ?? PLAN_ICONS[0]}
@@ -331,10 +333,11 @@ export default function PricingSection({
                       {/* CTA */}
                       <div className="pt-5 mt-5 border-t border-gray-100">
                         <button
+                          type="button"
                           onClick={() => setPlanSelectionne(mod)}
                           className={`group/btn w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] inline-flex items-center justify-center gap-2 ${
                             popular
-                              ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-sm shadow-ateliya-primary/15 hover:shadow-md hover:shadow-ateliya-primary/25"
+                              ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-[0_10px_24px_rgba(47,175,164,0.14)] hover:shadow-[0_14px_30px_rgba(47,175,164,0.18)]"
                               : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-primary"
                           }`}
                         >
@@ -355,10 +358,10 @@ export default function PricingSection({
       )}
 
       {/* ── Modale de checkout ── */}
-      {planSelectionne && paysChoisi && (
+      {planSelectionne && paysPourModal && (
         <AbonnementModal
           plan={planSelectionne}
-          pays={paysChoisi}
+          pays={paysPourModal}
           onClose={() => setPlanSelectionne(null)}
         />
       )}

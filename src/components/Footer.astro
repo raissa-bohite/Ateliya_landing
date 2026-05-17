@@ -8,22 +8,22 @@ import logoImg from '../assets/ateliya.webp';
   class="relative overflow-hidden border-t border-ateliya-primary/10 bg-gradient-to-br from-gray-50 via-white to-teal-50/30 text-gray-900"
 >
   <div
-    class="absolute right-0 top-0 h-72 w-72 rounded-full bg-ateliya-primary/6 blur-[100px]"
+    class="absolute right-0 top-0 h-72 w-72 rounded-full bg-ateliya-primary/[0.035] blur-[100px]"
   >
   </div>
   <div
-    class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-ateliya-secondary/5 blur-[100px]"
+    class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-ateliya-secondary/[0.03] blur-[100px]"
   >
   </div>
   <div
-    class="absolute inset-0 opacity-[0.025]"
+    class="absolute inset-0 opacity-[0.014]"
     style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
   >
   </div>
 
   <!-- Top accent -->
   <div
-    class="relative z-10 h-px bg-gradient-to-r from-transparent via-ateliya-primary/35 to-transparent"
+    class="relative z-10 h-px bg-gradient-to-r from-transparent via-ateliya-primary/[0.35] to-transparent"
   >
   </div>
 
@@ -42,7 +42,7 @@ import logoImg from '../assets/ateliya.webp';
             alt="Ateliya"
             width={44}
             height={44}
-            class="rounded-xl shadow-sm group-hover:scale-105 transition-transform duration-300"
+            class="rounded-xl shadow-[0_6px_16px_rgba(18,63,59,0.045)] group-hover:scale-[1.02] transition-transform duration-300"
             loading="lazy"
           />
           <span
@@ -63,7 +63,7 @@ import logoImg from '../assets/ateliya.webp';
             socials.map((social) => (
               <a
                 href={social.href}
-                class="footer-social w-10 h-10 flex items-center justify-center rounded-xl bg-white/70 border border-ateliya-primary/10 text-gray-500 shadow-sm shadow-ateliya-primary/5 hover:text-ateliya-primary hover:bg-white hover:border-ateliya-primary/25 hover:-translate-y-0.5 transition-all duration-300"
+                class="footer-social w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.94] border border-ateliya-border/[0.55] text-gray-500 shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:text-ateliya-primary hover:bg-white hover:border-ateliya-primary/[0.22] hover:-translate-y-0.5 transition-all duration-300"
                 aria-label={social.name}
                 set:html={social.svg}
               />
@@ -85,7 +85,7 @@ import logoImg from '../assets/ateliya.webp';
                   href={link.href}
                   class="group flex items-center gap-2.5 text-sm font-medium text-gray-500 hover:text-ateliya-primary transition-colors duration-300"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-150 transition-all duration-300" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-125 transition-all duration-300" />
                   {link.label}
                 </a>
               </li>
@@ -107,7 +107,7 @@ import logoImg from '../assets/ateliya.webp';
                   href={link.href}
                   class="group flex items-center gap-2.5 text-sm font-medium text-gray-500 hover:text-ateliya-primary transition-colors duration-300"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-150 transition-all duration-300" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-125 transition-all duration-300" />
                   {link.label}
                 </a>
               </li>
@@ -119,7 +119,7 @@ import logoImg from '../assets/ateliya.webp';
       <!-- Newsletter -->
       <div class="lg:col-span-4">
         <div
-          class="rounded-[1.5rem] border border-white/70 bg-white/60 p-5 shadow-[0_18px_55px_rgba(18,63,59,0.08)] backdrop-blur-xl"
+          class="rounded-[1.5rem] border border-ateliya-border/[0.55] bg-white/[0.92] p-5 shadow-[0_12px_32px_rgba(18,63,59,0.055)] backdrop-blur-xl"
         >
         <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-[0.18em] mb-3">
           Newsletter

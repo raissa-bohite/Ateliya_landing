@@ -29,27 +29,27 @@ const phoneScreensCount = phoneScreens.length;
 >
   <!-- Background Decorations -->
   <div
-    class="absolute right-0 top-0 w-[55%] h-full bg-gradient-to-bl from-ateliya-primary/6 via-ateliya-secondary/3 to-transparent rounded-bl-[140px]"
+    class="absolute right-0 top-0 w-[55%] h-full bg-gradient-to-bl from-ateliya-primary/[0.035] via-ateliya-secondary/[0.02] to-transparent rounded-bl-[140px]"
   >
   </div>
   <div
-    class="absolute top-[15%] left-[8%] w-80 h-80 bg-ateliya-primary/8 rounded-full blur-[120px] hero-float-1"
+    class="absolute top-[15%] left-[8%] w-80 h-80 bg-ateliya-primary/[0.045] rounded-full blur-[120px] hero-float-1"
   >
   </div>
   <div
-    class="absolute top-[40%] right-[15%] w-96 h-96 bg-ateliya-secondary/6 rounded-full blur-[120px] hero-float-2"
+    class="absolute top-[40%] right-[15%] w-96 h-96 bg-ateliya-secondary/[0.035] rounded-full blur-[120px] hero-float-2"
   >
   </div>
   <div
-    class="absolute bottom-[15%] left-[30%] w-64 h-64 bg-ateliya-primary/4 rounded-full blur-[100px]"
+    class="absolute bottom-[15%] left-[30%] w-64 h-64 bg-ateliya-primary/[0.025] rounded-full blur-[100px]"
   >
   </div>
   <div
-    class="absolute inset-0 opacity-[0.03]"
+    class="absolute inset-0 opacity-[0.018]"
     style="background-image: radial-gradient(circle, #123F3B 1px, transparent 1px); background-size: 32px 32px;"
   >
   </div>
-  <div class="absolute left-8 top-[22%] grid grid-cols-6 gap-2 opacity-35">
+  <div class="absolute left-8 top-[22%] grid grid-cols-6 gap-2 opacity-20">
     {
       [...Array(30)].map((_, i) => (
         <div
@@ -96,7 +96,7 @@ const phoneScreensCount = phoneScreens.length;
           <button
             id="open-register-modal"
             type="button"
-            class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold text-xl shadow-lg shadow-ateliya-primary/25 hover:shadow-xl hover:shadow-ateliya-primary/35 transition-all duration-300 hover:scale-105"
+            class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold text-xl shadow-[0_12px_28px_rgba(47,175,164,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)]"
           >
             <span
               class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
@@ -110,7 +110,7 @@ const phoneScreensCount = phoneScreens.length;
           </button>
           <a
             href="#demo"
-            class="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/70 text-gray-800 font-bold text-xl hover:bg-white/80 hover:border-ateliya-primary/30 transition-all duration-300 hover:scale-105"
+            class="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.58] backdrop-blur-sm border border-ateliya-border/[0.55] text-gray-800 font-bold text-xl shadow-[0_8px_22px_rgba(18,63,59,0.04)] hover:bg-white/[0.76] hover:border-ateliya-primary/25 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Icon
               name="play-circle"
@@ -125,13 +125,13 @@ const phoneScreensCount = phoneScreens.length;
           <div class="flex -space-x-2">
             {
               [1, 2, 3, 4].map((i) => (
-                <div class="w-9 h-9 rounded-full border-2 border-white bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-xs shadow-md hover:scale-110 hover:z-10 transition-transform duration-300">
+                <div class="w-9 h-9 rounded-full border-2 border-white bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-xs shadow-[0_6px_14px_rgba(18,63,59,0.08)] hover:-translate-y-0.5 hover:z-10 transition-transform duration-300">
                   {i}
                 </div>
               ))
             }
             <div
-              class="w-9 h-9 rounded-full border-2 border-white bg-gray-800 flex items-center justify-center text-white font-bold text-[10px] shadow-md"
+              class="w-9 h-9 rounded-full border-2 border-white bg-gray-800 flex items-center justify-center text-white font-bold text-[10px] shadow-[0_6px_14px_rgba(18,63,59,0.08)]"
             >
               +500
             </div>
@@ -232,7 +232,7 @@ const phoneScreensCount = phoneScreens.length;
             style="animation-delay: 0.6s"
           >
             <div
-              class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60"
+              class="bg-white/[0.96] backdrop-blur-sm rounded-2xl shadow-[0_12px_30px_rgba(18,63,59,0.07)] p-3.5 border border-ateliya-border/[0.55]"
             >
               <div class="flex items-center gap-2.5">
                 <div
@@ -252,7 +252,7 @@ const phoneScreensCount = phoneScreens.length;
             style="animation-delay: 0.7s"
           >
             <div
-              class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-300/30 p-3.5 border border-white/60"
+              class="bg-white backdrop-blur-sm rounded-2xl shadow-[0_12px_30px_rgba(18,63,59,0.07)] p-3.5 border border-ateliya-border/[0.55]"
             >
               <div class="flex items-center gap-2.5">
                 <div
@@ -278,7 +278,7 @@ const phoneScreensCount = phoneScreens.length;
         >
         </div>
         <div
-          class="absolute top-[45%] right-[5%] w-4 h-4 rounded-full bg-ateliya-secondary/35 hero-bounce-2"
+          class="absolute top-[45%] right-[5%] w-4 h-4 rounded-full bg-ateliya-secondary/[0.35] hero-bounce-2"
         >
         </div>
         <div
@@ -470,8 +470,8 @@ const phoneScreensCount = phoneScreens.length;
     overflow: hidden;
     border: 6px solid rgba(255, 255, 255, 0.9);
     box-shadow:
-      0 26px 70px rgba(18, 63, 59, 0.16),
-      0 8px 24px rgba(18, 63, 59, 0.08);
+      0 18px 44px rgba(18, 63, 59, 0.1),
+      0 6px 16px rgba(18, 63, 59, 0.05);
   }
 
   .scene__photo-img {
@@ -530,7 +530,7 @@ const phoneScreensCount = phoneScreens.length;
     border-radius: 3rem;
     padding: 12px;
     box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.2),
+      0 18px 42px rgba(18, 63, 59, 0.16),
       0 0 0 1px rgba(255, 255, 255, 0.1) inset;
     /* Différé à 6s + uniquement transform (pas box-shadow) */
     animation: phoneBreathe 5s ease-in-out 6s infinite;
@@ -645,7 +645,7 @@ const phoneScreensCount = phoneScreens.length;
     border-radius: 3.5rem;
     background: radial-gradient(
       ellipse at center,
-      rgba(52, 199, 184, 0.2) 0%,
+      rgba(52, 199, 184, 0.11) 0%,
       transparent 70%
     );
     opacity: 0;
@@ -678,7 +678,7 @@ const phoneScreensCount = phoneScreens.length;
     height: 30px;
     background: radial-gradient(
       ellipse,
-      rgba(0, 0, 0, 0.12) 0%,
+      rgba(18, 63, 59, 0.08) 0%,
       transparent 70%
     );
     border-radius: 50%;
@@ -696,7 +696,7 @@ const phoneScreensCount = phoneScreens.length;
       transform: translateX(-50%) scaleX(0.36);
     }
     100% {
-      opacity: 0.8;
+      opacity: 0.55;
       transform: translateX(-50%) scaleX(0.82);
     }
   }
@@ -705,11 +705,11 @@ const phoneScreensCount = phoneScreens.length;
     0%,
     100% {
       transform: translateX(-50%) scaleX(0.82);
-      opacity: 0.8;
+      opacity: 0.55;
     }
     50% {
       transform: translateX(-50%) scaleX(1);
-      opacity: 0.5;
+      opacity: 0.34;
     }
   }
 

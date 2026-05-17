@@ -42,20 +42,20 @@ const galleryItems = [
 
   <!-- Gradient orbs -->
   <div
-    class="absolute top-[10%] left-[20%] w-72 h-72 bg-ateliya-primary/6 rounded-full blur-[120px]"
+    class="absolute top-[10%] left-[20%] w-72 h-72 bg-ateliya-primary/[0.035] rounded-full blur-[120px]"
   ></div>
   <div
-    class="absolute bottom-[10%] right-[15%] w-60 h-60 bg-ateliya-secondary/5 rounded-full blur-[100px]"
+    class="absolute bottom-[10%] right-[15%] w-60 h-60 bg-ateliya-secondary/[0.03] rounded-full blur-[100px]"
   ></div>
 
   <!-- Radial dot bg -->
   <div
-    class="absolute inset-0 opacity-[0.025]"
+    class="absolute inset-0 opacity-[0.014]"
     style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"
   ></div>
 
   <!-- Dot grid top-right -->
-  <div class="absolute right-8 top-[10%] grid grid-cols-6 gap-2 opacity-30">
+  <div class="absolute right-8 top-[10%] grid grid-cols-6 gap-2 opacity-[0.16]">
     {
       [...Array(24)].map((_, i) => (
         <div
@@ -66,7 +66,7 @@ const galleryItems = [
   </div>
 
   <!-- Dot grid bottom-left -->
-  <div class="absolute left-10 bottom-[8%] grid grid-cols-5 gap-3 opacity-20">
+  <div class="absolute left-10 bottom-[8%] grid grid-cols-5 gap-3 opacity-[0.14]">
     {
       [...Array(15)].map((_, i) => (
         <div
@@ -129,11 +129,11 @@ const galleryItems = [
         {
           galleryItems.slice(0, 6).map((item, idx) => (
             <div
-              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
+              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-1"
               style={`animation-delay: ${idx * 80}ms`}
             >
               {/* Phone Mockup Structure (Matches Hero) */}
-              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-2xl">
+              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
                 {/* Screen Container */}
                 <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
                   {/* Notch */}
@@ -181,10 +181,10 @@ const galleryItems = [
           {
           galleryItems.slice(0, 6).map((item, idx) => (
             <div
-              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-2"
+              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-1"
               aria-hidden="true"
             >
-              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-2xl">
+              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
                 <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
                   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
                   
@@ -229,7 +229,7 @@ const galleryItems = [
       <div class="flex items-center justify-center gap-3 mt-8">
         <button
           id="gallery-prev"
-          class="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-ateliya-primary/40 hover:shadow-md transition-all duration-300 hover:scale-105"
+          class="w-11 h-11 rounded-full bg-white/[0.96] border border-ateliya-border/[0.55] flex items-center justify-center hover:border-ateliya-primary/[0.35] hover:shadow-[0_8px_18px_rgba(18,63,59,0.06)] transition-all duration-300 hover:-translate-y-0.5"
           aria-label="Precedent"
         >
           <Icon name="chevron-left" size="sm" class="text-gray-600" />
@@ -248,7 +248,7 @@ const galleryItems = [
 
         <button
           id="gallery-next"
-          class="w-11 h-11 rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white flex items-center justify-center hover:shadow-lg hover:shadow-ateliya-primary/25 transition-all duration-300 hover:scale-105"
+          class="w-11 h-11 rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white flex items-center justify-center shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:shadow-[0_10px_22px_rgba(47,175,164,0.18)] transition-all duration-300 hover:-translate-y-0.5"
           aria-label="Suivant"
         >
           <Icon name="chevron-right" size="sm" class="text-white" />

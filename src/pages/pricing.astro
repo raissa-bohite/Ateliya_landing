@@ -37,16 +37,16 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
          ============================================ -->
     <section class="relative pt-24 lg:pt-28 pb-10 lg:pb-14 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
 
-      <div class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/5 rounded-full blur-[120px]"></div>
-      <div class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/4 rounded-full blur-[100px]"></div>
-      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"></div>
+      <div class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/[0.035] rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/[0.025] rounded-full blur-[100px]"></div>
+      <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"></div>
 
-      <div class="absolute right-8 top-[6%] grid grid-cols-5 gap-2 opacity-25">
+      <div class="absolute right-8 top-[6%] grid grid-cols-5 gap-2 opacity-[0.16]">
         {[...Array(20)].map((_, i) => (
           <div class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : i % 3 === 1 ? "bg-ateliya-secondary/50" : "bg-gray-300"}`} />
         ))}
       </div>
-      <div class="absolute left-8 bottom-[10%] grid grid-cols-4 gap-2.5 opacity-20">
+      <div class="absolute left-8 bottom-[10%] grid grid-cols-4 gap-2.5 opacity-[0.14]">
         {[...Array(12)].map((_, i) => (
           <div class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary/50" : "bg-gray-300"}`} />
         ))}
@@ -100,8 +100,8 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
             { icon: "zap", text: "Activation instantanee" },
             { icon: "refresh", text: "Changement facile" },
           ].map((badge) => (
-            <div class="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-100">
-              <div class="w-7 h-7 rounded-lg bg-ateliya-primary/8 flex items-center justify-center">
+            <div class="flex items-center gap-2 px-4 py-2 bg-white/[0.94] backdrop-blur-sm rounded-xl border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)]">
+              <div class="w-7 h-7 rounded-lg bg-ateliya-primary/[0.08] flex items-center justify-center">
                 <Icon name={badge.icon} size="sm" class="text-ateliya-primary" />
               </div>
               <span class="text-sm font-bold text-gray-600">{badge.text}</span>
@@ -116,10 +116,10 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
          ============================================ -->
     <section class="relative py-14 lg:py-18 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
 
-      <div class="absolute top-[10%] right-[10%] w-72 h-72 bg-ateliya-primary/4 rounded-full blur-[120px]"></div>
-      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"></div>
+      <div class="absolute top-[10%] right-[10%] w-72 h-72 bg-ateliya-primary/[0.03] rounded-full blur-[120px]"></div>
+      <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"></div>
 
-      <div class="absolute right-8 top-[8%] grid grid-cols-5 gap-2 opacity-25">
+      <div class="absolute right-8 top-[8%] grid grid-cols-5 gap-2 opacity-[0.16]">
         {[...Array(15)].map((_, i) => (
           <div class={`w-1.5 h-1.5 rounded-full ${i % 3 === 0 ? "bg-ateliya-primary" : "bg-gray-300"}`} />
         ))}
@@ -145,7 +145,7 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
           {faqPricing.map((item, idx) => (
             <div class="faq-item">
               <div class="relative">
-                <div class="p-5 rounded-2xl bg-white border-2 border-gray-100 faq-item-card relative overflow-hidden">
+                <div class="p-5 rounded-2xl bg-white/[0.96] border border-ateliya-border/[0.55] shadow-[0_8px_20px_rgba(18,63,59,0.04)] faq-item-card relative overflow-hidden">
 
                   <button
                     class="w-full flex items-center justify-between gap-4 text-left"
@@ -178,12 +178,12 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
     <!-- ============================================
          CTA FINAL
          ============================================ -->
-    <section class="relative py-12 px-8 lg:px-12 mx-6 lg:mx-12 mb-14 rounded-3xl overflow-hidden bg-gradient-to-br from-teal-50/60 via-white to-amber-50/20 border border-gray-100">
+    <section class="relative py-12 px-8 lg:px-12 mx-6 lg:mx-12 mb-14 rounded-3xl overflow-hidden bg-gradient-to-br from-teal-50/55 via-white to-amber-50/[0.18] border border-ateliya-border/[0.55] shadow-[0_16px_44px_rgba(18,63,59,0.045)]">
 
-      <div class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/4 to-transparent rounded-bl-[80px]"></div>
-      <div class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/5 rounded-full blur-[100px]"></div>
-      <div class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/4 rounded-full blur-[80px]"></div>
-      <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
+      <div class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/[0.03] to-transparent rounded-bl-[80px]"></div>
+      <div class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/[0.035] rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/[0.025] rounded-full blur-[80px]"></div>
+      <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
 
       <div class="relative z-10 text-center max-w-2xl mx-auto space-y-5">
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-ateliya-primary/10 rounded-full">
@@ -203,7 +203,7 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
-          <a href="/contact" class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-sm shadow-ateliya-primary/10 hover:shadow-md hover:shadow-ateliya-primary/20 transition-all duration-300 hover:scale-105 active:scale-[0.97]">
+          <a href="/contact" class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
             <span class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
             <Icon name="mail" size="md" class="relative z-10" />
             <span class="relative z-10">Nous contacter</span>

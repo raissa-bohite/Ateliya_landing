@@ -111,25 +111,25 @@ const gradientColors = [
     <section class="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
 
       <!-- Large background shape -->
-      <div class="absolute top-0 right-0 w-[70%] h-full bg-gradient-to-bl from-ateliya-primary/5 via-ateliya-secondary/3 to-transparent rounded-bl-[120px]"></div>
+      <div class="absolute top-0 right-0 w-[70%] h-full bg-gradient-to-bl from-ateliya-primary/[0.035] via-ateliya-secondary/[0.025] to-transparent rounded-bl-[120px]"></div>
 
       <!-- Floating gradient orbs -->
-      <div class="absolute top-20 right-[20%] w-72 h-72 bg-ateliya-primary/10 rounded-full blur-[100px] hero-float-1"></div>
-      <div class="absolute bottom-20 left-[10%] w-56 h-56 bg-ateliya-secondary/10 rounded-full blur-[80px] hero-float-2"></div>
-      <div class="absolute top-1/2 right-[40%] w-40 h-40 bg-ateliya-primary/6 rounded-full blur-[60px]"></div>
+      <div class="absolute top-20 right-[20%] w-72 h-72 bg-ateliya-primary/[0.045] rounded-full blur-[100px] hero-float-1"></div>
+      <div class="absolute bottom-20 left-[10%] w-56 h-56 bg-ateliya-secondary/[0.04] rounded-full blur-[80px] hero-float-2"></div>
+      <div class="absolute top-1/2 right-[40%] w-40 h-40 bg-ateliya-primary/[0.025] rounded-full blur-[60px]"></div>
 
       <!-- Radial dot pattern background -->
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
+      <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
 
       <!-- Dot grid left -->
-      <div class="absolute left-8 top-[20%] grid grid-cols-6 gap-2 opacity-40">
+      <div class="absolute left-8 top-[20%] grid grid-cols-6 gap-2 opacity-[0.18]">
         {[...Array(30)].map((_, i) => (
           <div class={`w-2 h-2 rounded-full ${i % 5 === 0 ? 'bg-ateliya-primary' : i % 5 === 1 ? 'bg-ateliya-secondary/70' : i % 5 === 2 ? 'bg-ateliya-secondary/35' : i % 5 === 3 ? 'bg-africa-gold/25' : 'bg-gray-300'}`}></div>
         ))}
       </div>
 
       <!-- Dot grid bottom right -->
-      <div class="absolute right-12 bottom-[15%] grid grid-cols-5 gap-3 opacity-30">
+      <div class="absolute right-12 bottom-[15%] grid grid-cols-5 gap-3 opacity-[0.14]">
         {[...Array(15)].map((_, i) => (
           <div class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? 'bg-ateliya-primary' : 'bg-ateliya-secondary/50'}`}></div>
         ))}
@@ -166,7 +166,7 @@ const gradientColors = [
               Decouvrez comment Ateliya simplifie la gestion de votre atelier. Clients, commandes, paiements et productivite : tout est reuni dans une seule application pensee pour les tailleurs africains.
             </p>
 
-            <a href="#features" class="inline-flex items-center gap-3 px-7 py-3.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold rounded-2xl shadow-lg shadow-ateliya-primary/25 hover:shadow-xl hover:shadow-ateliya-primary/30 transition-all duration-300 hover:scale-105 group">
+            <a href="#features" class="inline-flex items-center gap-3 px-7 py-3.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold rounded-2xl shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] transition-all duration-300 hover:-translate-y-0.5 group">
               <span>Explorer les fonctionnalites</span>
               <Icon name="arrow-down" size="sm" class="group-hover:translate-y-0.5 transition-transform" />
             </a>
@@ -182,7 +182,7 @@ const gradientColors = [
 
             <!-- Phone mockup -->
             <div class="absolute left-[12%] top-[3%] z-30 feature-phone-entrance">
-              <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+              <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
                 <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]">
                   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"></div>
                   <Image src={onboardingImg} alt="Interface Ateliya" class="w-full h-full object-cover" loading="eager" />
@@ -203,7 +203,7 @@ const gradientColors = [
                   <path d="M 100,15 A 85,85 0 0,1 185,100" fill="none" stroke="url(#heroArc)" stroke-width="32" stroke-linecap="round"></path>
                 </svg>
               </div>
-              <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-2xl">
+              <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-[0_18px_44px_rgba(18,63,59,0.12)]">
                 <Image src={blog2Img} alt="Tailleur utilisant Ateliya" class="w-full h-full object-cover" loading="eager" />
               </div>
             </div>
@@ -221,7 +221,7 @@ const gradientColors = [
             
 
             <div class="absolute right-[-5%] bottom-[5%] z-40 feature-float-card" style="animation-delay: 1.2s">
-              <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 p-4 border border-gray-100">
+              <div class="bg-white/[0.96] backdrop-blur-sm rounded-2xl shadow-[0_10px_24px_rgba(18,63,59,0.07)] p-4 border border-ateliya-border/[0.55]">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
                     <Icon name="credit-card" size="sm" class="text-white" />
@@ -236,7 +236,7 @@ const gradientColors = [
 
             <!-- 3D badge decoration -->
             <div class="absolute left-[8%] top-[45%] z-10 hero-float-1">
-              <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl rotate-12 shadow-lg shadow-indigo-500/30 flex items-center justify-center">
+              <div class="w-14 h-14 bg-gradient-to-br from-ateliya-primary to-ateliya-secondary rounded-xl rotate-12 shadow-[0_10px_24px_rgba(47,175,164,0.16)] flex items-center justify-center">
                 <Icon name="sparkles" size="sm" class="text-white -rotate-12" />
               </div>
             </div>
@@ -248,7 +248,7 @@ const gradientColors = [
 
     <!-- ==================== COMMENT CA MARCHE ==================== -->
     <section class="py-24 relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
+      <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
 
       <!-- Side gradient accents -->
       <div class="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-teal-50/50 to-transparent"></div>
@@ -275,10 +275,10 @@ const gradientColors = [
           <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {workflow.map((step, idx) => (
               <div class="relative text-center workflow-step group">
-                <div class={`relative z-10 w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br ${step.gradient} text-white flex items-center justify-center font-black text-xl shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
+                <div class={`relative z-10 w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br ${step.gradient} text-white flex items-center justify-center font-black text-xl shadow-[0_10px_24px_rgba(18,63,59,0.08)] group-hover:-translate-y-0.5 transition-all duration-300`}>
                   {step.step}
                 </div>
-                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-md group-hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-16 h-16 bg-white/[0.96] rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-[0_6px_16px_rgba(18,63,59,0.04)] group-hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-shadow border border-ateliya-border/[0.55]">
                   <Icon name={step.icon} size="lg" class="text-gray-700" />
                 </div>
                 <h3 class="text-base font-serif font-extrabold tracking-tighter text-gray-900 mb-2">{step.title}</h3>
@@ -310,17 +310,17 @@ const gradientColors = [
           />
 
           <div
-            class="absolute w-64 h-64 rounded-full blur-[100px] opacity-15"
+            class="absolute w-64 h-64 rounded-full blur-[100px] opacity-[0.08]"
             style={`background: ${colors.from}; ${isPhoneLeft ? "right: 15%; top: 10%;" : "left: 15%; top: 10%;"}`}
           />
           <div
-            class="absolute w-48 h-48 rounded-full blur-[80px] opacity-10"
+            class="absolute w-48 h-48 rounded-full blur-[80px] opacity-[0.06]"
             style={`background: ${colors.mid}; ${isPhoneLeft ? "left: 20%; bottom: 15%;" : "right: 20%; bottom: 15%;"}`}
           />
 
           {/* Dot patterns */}
           <div
-            class={`absolute ${isPhoneLeft ? "left-6 top-[12%]" : "right-6 top-[12%]"} grid grid-cols-6 gap-2 opacity-35`}
+            class={`absolute ${isPhoneLeft ? "left-6 top-[12%]" : "right-6 top-[12%]"} grid grid-cols-6 gap-2 opacity-[0.16]`}
           >
             {[...Array(30)].map((_, i) => (
               <div
@@ -330,7 +330,7 @@ const gradientColors = [
             ))}
           </div>
           <div
-            class={`absolute ${isPhoneLeft ? "right-8 bottom-[18%]" : "left-8 bottom-[18%]"} grid grid-cols-4 gap-3 opacity-25`}
+            class={`absolute ${isPhoneLeft ? "right-8 bottom-[18%]" : "left-8 bottom-[18%]"} grid grid-cols-4 gap-3 opacity-[0.14]`}
           >
             {[...Array(12)].map((_, i) => (
               <div
@@ -342,7 +342,7 @@ const gradientColors = [
 
           {/* Radial dot bg */}
           <div
-            class="absolute inset-0 opacity-[0.02]"
+            class="absolute inset-0 opacity-[0.014]"
             style={`background-image: radial-gradient(circle, ${colors.from} 1px, transparent 1px); background-size: 40px 40px;`}
           />
 
@@ -366,7 +366,7 @@ const gradientColors = [
 
                 {/* Phone */}
                   <div class={`absolute ${isPhoneLeft ? "left-[10%]" : "right-[10%]"} top-[2%] z-30 feature-phone-slide`}>
-                  <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl transition-transform duration-500 hover:scale-[1.03]">
+                  <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)] transition-transform duration-500 hover:-translate-y-0.5">
                     <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]">
                       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20" />
                       <img src={cat.phoneSrc} alt={cat.phoneAlt} class="w-full h-full object-cover" loading="lazy" width="288" height="580" decoding="async" />
@@ -394,7 +394,7 @@ const gradientColors = [
                       />
                     </svg>
                   </div>
-                  <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-2xl">
+                  <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-[0_18px_44px_rgba(18,63,59,0.12)]">
                     <img src={cat.photoSrc} alt={cat.photoAlt} class="w-full h-full object-cover" loading="lazy" width="320" height="320" decoding="async" />
                   </div>
 
@@ -407,8 +407,7 @@ const gradientColors = [
                 {/* Numbered ball */}
                 <div class={`absolute ${isPhoneLeft ? "right-[5%] bottom-[5%]" : "left-[5%] bottom-[5%]"} z-30`}>
                   <div
-                    class={`w-16 h-16 rounded-full bg-gradient-to-br ${cat.gradient} shadow-xl flex items-center justify-center`}
-                    style={`box-shadow: 0 8px 32px ${colors.from}40`}
+                    class={`w-16 h-16 rounded-full bg-gradient-to-br ${cat.gradient} shadow-[0_10px_24px_rgba(18,63,59,0.08)] flex items-center justify-center`}
                   >
                     <span class="text-white text-2xl font-black">{categoryFeatures.length}</span>
                   </div>
@@ -463,14 +462,14 @@ const gradientColors = [
 
                   {/* Mini stat cards */}
                   <div class="grid grid-cols-2 gap-3 pt-4">
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-white/[0.94] backdrop-blur-sm rounded-xl p-4 border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-shadow">
                       <div class={`w-8 h-8 rounded-lg ${cat.accentBg} flex items-center justify-center mb-2`}>
                         <Icon name={cat.icon} size="sm" class={cat.accentText} />
                       </div>
                       <p class="text-2xl font-black text-gray-900">{categoryFeatures.length}</p>
                       <p class="text-xs text-gray-400 font-medium">Fonctionnalites</p>
                     </div>
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-white/[0.94] backdrop-blur-sm rounded-xl p-4 border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-shadow">
                       <div class={`w-8 h-8 rounded-lg ${cat.accentBg} flex items-center justify-center mb-2`}>
                         <Icon name="check" size="sm" class={cat.accentText} />
                       </div>
@@ -486,14 +485,14 @@ const gradientColors = [
             <div class={`grid sm:grid-cols-2 ${categoryFeatures.length >= 5 ? "lg:grid-cols-5" : categoryFeatures.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"} gap-4`}>
               {categoryFeatures.map((feature, fIdx) => (
                 <div
-                  class={`group relative p-5 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 ${cat.borderHover} hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 feature-card hover:-translate-y-1`}
+                  class={`group relative p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] ${cat.borderHover} hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-all duration-300 feature-card hover:-translate-y-0.5`}
                   style={`animation-delay: ${fIdx * 80}ms`}
                 >
                   <div
-                    class="absolute top-0 left-6 right-6 h-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    class="absolute top-0 left-6 right-6 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={`background: linear-gradient(90deg, ${colors.from}, ${colors.to})`}
                   />
-                  <div class={`w-12 h-12 rounded-xl ${cat.accentBg} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  <div class={`w-12 h-12 rounded-xl ${cat.accentBg} flex items-center justify-center mb-3 group-hover:-translate-y-0.5 transition-transform duration-300`}>
                     <Icon name={feature.icon} size="md" class={cat.accentText} />
                   </div>
                   <h4 class="text-[15px] font-bold text-gray-900 mb-1.5">{feature.title}</h4>

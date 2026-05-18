@@ -24,33 +24,31 @@ const {
 
 // Classes de base communes
 const baseClasses =
-  "font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-offset-2";
+  "font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-px disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-offset-2";
 
 // Variantes de style
 const variantClasses = {
   primary:
-    "bg-gradient-to-br from-ateliya-primary to-ateliya-secondary text-white shadow-glow-primary hover:shadow-glow-primary-lg focus:ring-ateliya-primary",
+    "bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] focus:ring-ateliya-primary",
   
   africa:
-    "bg-gradient-to-br from-africa-terra to-africa-gold text-white shadow-glow-africa hover:shadow-glow-africa-lg focus:ring-africa-gold",
+    "bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] focus:ring-ateliya-primary",
   
   earth:
-    "bg-gradient-to-br from-africa-clay to-africa-ochre text-white shadow-glow-africa hover:shadow-glow-africa-lg focus:ring-africa-ochre",
+    "bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] focus:ring-ateliya-primary",
   
   blend:
-    "text-white shadow-glow-africa hover:shadow-glow-africa-lg focus:ring-ateliya-primary",
+    "bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] focus:ring-ateliya-primary",
   
   outline:
-    "border-2 border-ateliya-primary text-ateliya-primary bg-transparent hover:bg-ateliya-primary hover:text-white focus:ring-ateliya-primary",
+    "border-2 border-ateliya-primary/30 text-ateliya-primary bg-transparent hover:bg-ateliya-primary/5 hover:text-ateliya-primary focus:ring-ateliya-primary",
   
   ghost:
     "text-ateliya-primary bg-transparent hover:bg-ateliya-primary/10 focus:ring-ateliya-primary shadow-none",
 };
 
-// Style pour le variant blend (gradient spécial)
-const blendStyle = variant === "blend" 
-  ? "background: linear-gradient(135deg, #2FAFA4 0%, #9E5A40 50%, #B99752 100%);"
-  : "";
+// Aucun style inline : les boutons restent en couleur unie.
+const blendStyle = "";
 
 // Tailles
 const sizeClasses = {

@@ -44,10 +44,10 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <!-- Title -->
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold tracking-tighter text-ateliya-dark leading-tight">
+      <h1 class="page-title text-ateliya-dark">
         <span class="block">Politique de</span>
         <span class="relative inline-block mt-2">
-          <span class="relative z-10 bg-gradient-to-r from-ateliya-primary via-ateliya-secondary to-ateliya-primary bg-clip-text text-transparent">
+          <span class="relative z-10 text-ateliya-primary">
             Confidentialité
           </span>
           <span class="absolute -inset-1 bg-gradient-to-r from-ateliya-primary/10 to-ateliya-secondary/10 blur-xl -z-10"></span>
@@ -85,7 +85,7 @@ import Layout from "../layouts/Layout.astro";
               <!-- Header -->
               <div class="flex items-start gap-6 mb-6">
                 <!-- Icon Badge -->
-                <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-ateliya-primary/[0.16] to-ateliya-primary/[0.08] flex items-center justify-center group-hover/section:-translate-y-0.5 transition-all duration-500">
+                <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-ateliya-primary/[0.16] to-ateliya-primary/[0.08] flex items-center justify-center group-hover/section:-translate-y-px transition-all duration-500">
                   <Icon name={section.icon} size="xl" class="text-ateliya-primary" />
                 </div>
 
@@ -179,7 +179,7 @@ import Layout from "../layouts/Layout.astro";
 
           <a
             href="mailto:privacy@ateliya.com"
-            class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
+            class="btn-action"
           >
             <Icon name="mail" size="md" />
             <span>privacy@ateliya.com</span>
@@ -243,3 +243,4 @@ import Layout from "../layouts/Layout.astro";
 
 </body>
 </html>
+

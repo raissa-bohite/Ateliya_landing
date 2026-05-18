@@ -36,19 +36,19 @@ const sizeClasses = {
 // Variant classes avec designs ultra-captivants
 const variantClasses = {
   primary: `
-    bg-gradient-to-r from-ateliya-primary to-ateliya-dark 
+    bg-ateliya-primary hover:bg-[#279f95]
     text-white font-bold
-    shadow-lg hover:shadow-2xl hover:shadow-ateliya-primary/30
-    hover:scale-105 active:scale-95
+    shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)]
+    hover:scale-[1.01] active:scale-95
     border-0
     relative overflow-hidden
     group/btn
   `,
   secondary: `
-    bg-gradient-to-r from-ateliya-secondary to-ateliya-accent
+    bg-ateliya-primary hover:bg-[#279f95]
     text-white font-bold
-    shadow-lg hover:shadow-2xl hover:shadow-ateliya-secondary/30
-    hover:scale-105 active:scale-95
+    shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)]
+    hover:scale-[1.01] active:scale-95
     border-0
     relative overflow-hidden
     group/btn
@@ -57,9 +57,9 @@ const variantClasses = {
     bg-white
     text-ateliya-dark font-bold
     border-2 border-ateliya-primary/30 hover:border-ateliya-primary
-    hover:bg-ateliya-primary/5
-    shadow-md hover:shadow-xl
-    hover:scale-105 active:scale-95
+    hover:bg-ateliya-primary/5 hover:text-ateliya-dark
+    shadow-md hover:shadow-md
+    hover:scale-[1.01] active:scale-95
     relative overflow-hidden
     group/btn
   `,
@@ -67,16 +67,16 @@ const variantClasses = {
     bg-transparent
     text-ateliya-primary font-bold
     border-0
-    hover:bg-ateliya-primary/10
-    hover:scale-105 active:scale-95
+    hover:bg-ateliya-primary/5
+    hover:scale-[1.01] active:scale-95
     relative overflow-hidden
     group/btn
   `,
   danger: `
-    bg-gradient-to-r from-red-500 to-red-600
+    bg-red-500 hover:bg-red-600
     text-white font-bold
-    shadow-lg hover:shadow-2xl hover:shadow-red-500/30
-    hover:scale-105 active:scale-95
+    shadow-[0_8px_18px_rgba(239,68,68,0.14)] hover:shadow-[0_8px_18px_rgba(239,68,68,0.12)]
+    hover:scale-[1.01] active:scale-95
     border-0
     relative overflow-hidden
     group/btn
@@ -115,11 +115,6 @@ const buttonProps = !href ? { type, disabled } : {};
   {...buttonProps}
   {...rest}
 >
-  <!-- Shimmer effect pour primary et secondary -->
-  {(variant === "primary" || variant === "secondary") && (
-    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent bg-[length:200%_100%] animate-shimmer-slow" />
-  )}
-
   <!-- Ripple effect au hover -->
   <span class="absolute inset-0 rounded-[inherit] bg-white/0 group-hover/btn:bg-white/10 scale-0 group-hover/btn:scale-100 transition-all duration-500" />
 
@@ -140,26 +135,9 @@ const buttonProps = !href ? { type, disabled } : {};
     )}
   </span>
 
-  <!-- Glow effect pour primary -->
-  {variant === "primary" && (
-    <span class="absolute -inset-1 bg-gradient-to-r from-ateliya-primary to-ateliya-dark opacity-0 group-hover/btn:opacity-50 blur-xl transition-opacity duration-500 -z-10" />
-  )}
 </Tag>
 
 <style>
-  @keyframes shimmer-slow {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
-  }
-
-  .animate-shimmer-slow {
-    animation: shimmer-slow 3s linear infinite;
-  }
-
   /* Empêcher la sélection du texte */
   button,
   a {
@@ -169,3 +147,4 @@ const buttonProps = !href ? { type, disabled } : {};
     user-select: none;
   }
 </style>
+

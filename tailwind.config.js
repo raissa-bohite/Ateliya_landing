@@ -2,8 +2,6 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 
-  darkMode: "class",
-
   theme: {
     extend: {
       fontFamily: {
@@ -22,16 +20,13 @@ export default {
           // Backgrounds
           background: "#FFFEFB",
           "bg-light": "#F7F5EF",
-          "bg-dark": "#111918",
 
           // Text
           text: "#26312F",
           "text-light": "#68706E",
-          "text-dark": "#F5F2EA",
 
           // Borders
           border: "#E8E2D8",
-          "border-dark": "#263A36",
         },
 
         // Couleurs africaines

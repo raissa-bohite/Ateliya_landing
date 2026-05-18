@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import onboardingImg from '../assets/app_images/onboarding.png';
-import blog2Img from '../assets/blog2.jpg';
+import onboardingImg from "../assets/app_images/onboarding.png";
+import blog2Img from "../assets/blog2.jpg";
 import { features, workflow } from "../data/features";
 
 const featuresByCategory = {
@@ -106,128 +106,226 @@ const gradientColors = [
   <Header />
 
   <main class="overflow-hidden">
-
     <!-- ==================== HERO SECTION ==================== -->
-    <section class="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-teal-50/30">
-
+    <section
+      class="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-teal-50/30"
+    >
       <!-- Large background shape -->
-      <div class="absolute top-0 right-0 w-[70%] h-full bg-gradient-to-bl from-ateliya-primary/[0.035] via-ateliya-secondary/[0.025] to-transparent rounded-bl-[120px]"></div>
+      <div
+        class="absolute top-0 right-0 w-[70%] h-full bg-gradient-to-bl from-ateliya-primary/[0.035] via-ateliya-secondary/[0.025] to-transparent rounded-bl-[120px]"
+      >
+      </div>
 
       <!-- Floating gradient orbs -->
-      <div class="absolute top-20 right-[20%] w-72 h-72 bg-ateliya-primary/[0.045] rounded-full blur-[100px] hero-float-1"></div>
-      <div class="absolute bottom-20 left-[10%] w-56 h-56 bg-ateliya-secondary/[0.04] rounded-full blur-[80px] hero-float-2"></div>
-      <div class="absolute top-1/2 right-[40%] w-40 h-40 bg-ateliya-primary/[0.025] rounded-full blur-[60px]"></div>
+      <div
+        class="absolute top-20 right-[20%] w-72 h-72 bg-ateliya-primary/[0.045] rounded-full blur-[100px] hero-float-1"
+      >
+      </div>
+      <div
+        class="absolute bottom-20 left-[10%] w-56 h-56 bg-ateliya-secondary/[0.04] rounded-full blur-[80px] hero-float-2"
+      >
+      </div>
+      <div
+        class="absolute top-1/2 right-[40%] w-40 h-40 bg-ateliya-primary/[0.025] rounded-full blur-[60px]"
+      >
+      </div>
 
       <!-- Radial dot pattern background -->
-      <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
+      <div
+        class="absolute inset-0 opacity-[0.014]"
+        style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"
+      >
+      </div>
 
       <!-- Dot grid left -->
-      <div class="absolute left-8 top-[20%] grid grid-cols-6 gap-2 opacity-[0.18]">
-        {[...Array(30)].map((_, i) => (
-          <div class={`w-2 h-2 rounded-full ${i % 5 === 0 ? 'bg-ateliya-primary' : i % 5 === 1 ? 'bg-ateliya-secondary/70' : i % 5 === 2 ? 'bg-ateliya-secondary/35' : i % 5 === 3 ? 'bg-africa-gold/25' : 'bg-gray-300'}`}></div>
-        ))}
+      <div
+        class="absolute left-8 top-[20%] grid grid-cols-6 gap-2 opacity-[0.18]"
+      >
+        {
+          [...Array(30)].map((_, i) => (
+            <div
+              class={`w-2 h-2 rounded-full ${i % 5 === 0 ? "bg-ateliya-primary" : i % 5 === 1 ? "bg-ateliya-secondary/70" : i % 5 === 2 ? "bg-ateliya-secondary/35" : i % 5 === 3 ? "bg-africa-gold/25" : "bg-gray-300"}`}
+            />
+          ))
+        }
       </div>
 
       <!-- Dot grid bottom right -->
-      <div class="absolute right-12 bottom-[15%] grid grid-cols-5 gap-3 opacity-[0.14]">
-        {[...Array(15)].map((_, i) => (
-          <div class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? 'bg-ateliya-primary' : 'bg-ateliya-secondary/50'}`}></div>
-        ))}
+      <div
+        class="absolute right-12 bottom-[15%] grid grid-cols-5 gap-3 opacity-[0.14]"
+      >
+        {
+          [...Array(15)].map((_, i) => (
+            <div
+              class={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? "bg-ateliya-primary" : "bg-ateliya-secondary/50"}`}
+            />
+          ))
+        }
       </div>
 
       <div class="container mx-auto px-6 lg:px-10 relative z-10">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-
           <!-- Left Content -->
           <div class="space-y-7">
-            <p class="text-sm font-semibold tracking-[0.2em] uppercase text-gray-400">
+            <p
+              class="text-sm font-semibold tracking-[0.2em] uppercase text-gray-400"
+            >
               Application / Couture
             </p>
 
-            <h1 class="text-5xl md:text-6xl lg:text-[4.5rem] font-serif font-extrabold text-gray-900 leading-[1.05] tracking-tighter">
+            <h1
+              class="page-title text-gray-900"
+            >
               Toutes les
               <br />fonctionnalites
               <br />
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-400 to-ateliya-secondary">
-                d'Ateliya
-              </span>
+              <span class="text-ateliya-primary"> d'Ateliya </span>
             </h1>
 
-            <div class="flex items-center gap-3 pt-1">
-              <span class="inline-block px-6 py-2.5 bg-gray-900 text-white text-sm font-bold rounded-full">
-                Gestion
-              </span>
-              <span class="inline-block px-6 py-2.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-sm font-bold rounded-full">
-                Couture
-              </span>
-            </div>
-
-            <p class="text-lg text-gray-500 leading-relaxed max-w-lg pt-2 tracking-wide">
-              Decouvrez comment Ateliya simplifie la gestion de votre atelier. Clients, commandes, paiements et productivite : tout est reuni dans une seule application pensee pour les tailleurs africains.
+            <p
+              class="text-lg text-gray-500 leading-relaxed max-w-lg pt-2 tracking-wide"
+            >
+              Decouvrez comment Ateliya simplifie la gestion de votre atelier.
+              Clients, commandes, paiements et productivite : tout est reuni
+              dans une seule application pensee pour les tailleurs africains.
             </p>
 
-            <a href="#features" class="inline-flex items-center gap-3 px-7 py-3.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold rounded-2xl shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] transition-all duration-300 hover:-translate-y-0.5 group">
+            <a
+              href="#features"
+              class="btn-action group"
+            >
               <span>Explorer les fonctionnalites</span>
-              <Icon name="arrow-down" size="sm" class="group-hover:translate-y-0.5 transition-transform" />
+              <Icon
+                name="arrow-down"
+                size="sm"
+                class="group-hover:translate-y-0.5 transition-transform"
+              />
             </a>
           </div>
 
           <!-- Right - Rich Composite Visual -->
-          <div class="relative flex justify-center lg:justify-end min-h-[640px]">
-
+          <div
+            class="relative flex justify-center lg:justify-end min-h-[640px]"
+          >
             <!-- Large dashed orbit circle -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[540px] h-[540px] rounded-full border-2 border-dashed border-ateliya-primary/10 hero-spin-slow"></div>
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[540px] h-[540px] rounded-full border-2 border-dashed border-ateliya-primary/10 hero-spin-slow"
+            >
+            </div>
             <!-- Filled bg circle -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-ateliya-primary/6 to-ateliya-secondary/4"></div>
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-ateliya-primary/6 to-ateliya-secondary/4"
+            >
+            </div>
 
             <!-- Phone mockup -->
-            <div class="absolute left-[12%] top-[3%] z-30 feature-phone-entrance">
-              <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
-                <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]">
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"></div>
-                  <Image src={onboardingImg} alt="Interface Ateliya" class="w-full h-full object-cover" loading="eager" />
+            <div
+              class="absolute left-[12%] top-[3%] z-30 feature-phone-entrance"
+            >
+              <div
+                class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)]"
+              >
+                <div
+                  class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]"
+                >
+                  <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20"
+                  >
+                  </div>
+                  <Image
+                    src={onboardingImg}
+                    alt="Interface Ateliya"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                  />
                 </div>
               </div>
             </div>
 
             <!-- Circular photo -->
-            <div class="absolute right-[2%] top-[0%] z-20 feature-photo-entrance">
+            <div
+              class="absolute right-[2%] top-[0%] z-20 feature-photo-entrance"
+            >
               <div class="absolute -top-6 -right-6 w-[360px] h-[360px]">
                 <svg viewBox="0 0 200 200" class="w-full h-full">
                   <defs>
-                    <linearGradient id="heroArc" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#2FAFA4;stop-opacity:0.8"></stop>
-                      <stop offset="100%" style="stop-color:#B99752;stop-opacity:0.5"></stop>
+                    <linearGradient
+                      id="heroArc"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop
+                        offset="0%"
+                        style="stop-color:#2FAFA4;stop-opacity:0.8"></stop>
+                      <stop
+                        offset="100%"
+                        style="stop-color:#B99752;stop-opacity:0.5"></stop>
                     </linearGradient>
                   </defs>
-                  <path d="M 100,15 A 85,85 0 0,1 185,100" fill="none" stroke="url(#heroArc)" stroke-width="32" stroke-linecap="round"></path>
+                  <path
+                    d="M 100,15 A 85,85 0 0,1 185,100"
+                    fill="none"
+                    stroke="url(#heroArc)"
+                    stroke-width="32"
+                    stroke-linecap="round"></path>
                 </svg>
               </div>
-              <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-[0_18px_44px_rgba(18,63,59,0.12)]">
-                <Image src={blog2Img} alt="Tailleur utilisant Ateliya" class="w-full h-full object-cover" loading="eager" />
+              <div
+                class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-[0_18px_44px_rgba(18,63,59,0.12)]"
+              >
+                <Image
+                  src={blog2Img}
+                  alt="Tailleur utilisant Ateliya"
+                  class="w-full h-full object-cover"
+                  loading="eager"
+                />
               </div>
             </div>
 
             <!-- Hatched circle -->
-            <div class="absolute left-[15%] top-0 w-16 h-16 opacity-50 hero-spin-slow-reverse">
-              <div class="w-full h-full rounded-full" style="background: repeating-linear-gradient(45deg, transparent, transparent 2px, #EC4899 2px, #EC4899 4px); opacity: 0.4;"></div>
+            <div
+              class="absolute left-[15%] top-0 w-16 h-16 opacity-50 hero-spin-slow-reverse"
+            >
+              <div
+                class="w-full h-full rounded-full"
+                style="background: repeating-linear-gradient(45deg, transparent, transparent 2px, #EC4899 2px, #EC4899 4px); opacity: 0.4;"
+              >
+              </div>
             </div>
 
             <!-- Small bouncing dots -->
-            <div class="absolute left-[25%] bottom-[25%] w-4 h-4 rounded-full bg-africa-gold/35 hero-bounce-1"></div>
-            <div class="absolute right-[35%] top-[15%] w-3 h-3 rounded-full bg-ateliya-secondary/50 hero-bounce-2"></div>
-            <div class="absolute right-[10%] bottom-[30%] w-5 h-5 rounded-full bg-ateliya-primary/40 hero-bounce-1"></div>
+            <div
+              class="absolute left-[25%] bottom-[25%] w-4 h-4 rounded-full bg-africa-gold/35 hero-bounce-1"
+            >
+            </div>
+            <div
+              class="absolute right-[35%] top-[15%] w-3 h-3 rounded-full bg-ateliya-secondary/50 hero-bounce-2"
+            >
+            </div>
+            <div
+              class="absolute right-[10%] bottom-[30%] w-5 h-5 rounded-full bg-ateliya-primary/40 hero-bounce-1"
+            >
+            </div>
 
-            
-
-            <div class="absolute right-[-5%] bottom-[5%] z-40 feature-float-card" style="animation-delay: 1.2s">
-              <div class="bg-white/[0.96] backdrop-blur-sm rounded-2xl shadow-[0_10px_24px_rgba(18,63,59,0.07)] p-4 border border-ateliya-border/[0.55]">
+            <div
+              class="absolute right-[-5%] bottom-[5%] z-40 feature-float-card"
+              style="animation-delay: 1.2s"
+            >
+              <div
+                class="bg-white/[0.96] backdrop-blur-sm rounded-2xl shadow-[0_10px_24px_rgba(18,63,59,0.07)] p-4 border border-ateliya-border/[0.55]"
+              >
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0"
+                  >
                     <Icon name="credit-card" size="sm" class="text-white" />
                   </div>
                   <div>
-                    <p class="text-[11px] text-gray-400 font-medium">Paiement recu</p>
+                    <p class="text-[11px] text-gray-400 font-medium">
+                      Paiement recu
+                    </p>
                     <p class="text-sm font-bold text-gray-900">25 000 FCFA</p>
                   </div>
                 </div>
@@ -236,8 +334,14 @@ const gradientColors = [
 
             <!-- 3D badge decoration -->
             <div class="absolute left-[8%] top-[45%] z-10 hero-float-1">
-              <div class="w-14 h-14 bg-gradient-to-br from-ateliya-primary to-ateliya-secondary rounded-xl rotate-12 shadow-[0_10px_24px_rgba(47,175,164,0.16)] flex items-center justify-center">
-                <Icon name="sparkles" size="sm" class="text-white -rotate-12" />
+              <div
+                class="w-14 h-14 bg-ateliya-primary/10 border border-ateliya-primary/15 rounded-xl rotate-12 shadow-[0_8px_18px_rgba(47,175,164,0.06)] flex items-center justify-center"
+              >
+                <Icon
+                  name="sparkles"
+                  size="sm"
+                  class="text-ateliya-primary -rotate-12"
+                />
               </div>
             </div>
           </div>
@@ -245,268 +349,388 @@ const gradientColors = [
       </div>
     </section>
 
-
     <!-- ==================== COMMENT CA MARCHE ==================== -->
-    <section class="py-24 relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
-      <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <section
+      class="py-24 relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white"
+    >
+      <div
+        class="absolute inset-0 opacity-[0.014]"
+        style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"
+      >
+      </div>
 
       <!-- Side gradient accents -->
-      <div class="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-teal-50/50 to-transparent"></div>
-      <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-amber-50/30 to-transparent"></div>
+      <div
+        class="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-teal-50/50 to-transparent"
+      >
+      </div>
+      <div
+        class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-amber-50/30 to-transparent"
+      >
+      </div>
 
       <div class="container mx-auto px-6 lg:px-10 max-w-6xl relative z-10">
         <div class="text-center mb-16">
-          <span class="inline-block px-5 py-2 bg-ateliya-primary/10 text-ateliya-primary text-sm font-bold rounded-full mb-4">
+          <span
+            class="inline-block px-5 py-2 bg-ateliya-primary/10 text-ateliya-primary text-sm font-bold rounded-full mb-4"
+          >
             Simple comme bonjour
           </span>
-          <h2 class="text-3xl md:text-4xl font-serif font-extrabold tracking-tighter text-gray-900 mb-4">
+          <h2
+            class="text-3xl md:text-4xl font-serif font-extrabold tracking-tighter text-gray-900 mb-4"
+          >
             Comment ca marche ?
           </h2>
           <p class="text-lg text-gray-500 max-w-2xl mx-auto">
-            De l'arrivee du client a la livraison, Ateliya vous accompagne a chaque etape
+            De l'arrivee du client a la livraison, Ateliya vous accompagne a
+            chaque etape
           </p>
         </div>
 
         <div class="relative">
-          <div class="hidden lg:block absolute top-16 left-[8%] right-[8%] h-1 rounded-full overflow-hidden">
-            <div class="w-full h-full bg-gradient-to-r from-ateliya-primary via-ateliya-secondary via-blue-400 via-green-400 to-purple-500 opacity-25"></div>
+          <div
+            class="hidden lg:block absolute top-16 left-[8%] right-[8%] h-1 rounded-full overflow-hidden"
+          >
+            <div
+              class="w-full h-full bg-gradient-to-r from-ateliya-primary via-ateliya-secondary via-blue-400 via-green-400 to-purple-500 opacity-25"
+            >
+            </div>
           </div>
 
           <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {workflow.map((step, idx) => (
-              <div class="relative text-center workflow-step group">
-                <div class={`relative z-10 w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br ${step.gradient} text-white flex items-center justify-center font-black text-xl shadow-[0_10px_24px_rgba(18,63,59,0.08)] group-hover:-translate-y-0.5 transition-all duration-300`}>
-                  {step.step}
+            {
+              workflow.map((step, idx) => (
+                <div class="relative text-center workflow-step group">
+                  <div class="relative z-10 w-14 h-14 mx-auto mb-4 rounded-full bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center font-black text-xl shadow-[0_6px_16px_rgba(47,175,164,0.04)] group-hover:-translate-y-px group-hover:bg-ateliya-primary/14 transition-all duration-300">
+                    {step.step}
+                  </div>
+                  <div class="w-16 h-16 bg-white/[0.96] rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-[0_6px_16px_rgba(18,63,59,0.04)] group-hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-shadow border border-ateliya-border/[0.55]">
+                    <Icon name={step.icon} size="lg" class="text-gray-700" />
+                  </div>
+                  <h3 class="text-base font-serif font-extrabold tracking-tighter text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p class="text-sm text-gray-500 leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-                <div class="w-16 h-16 bg-white/[0.96] rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-[0_6px_16px_rgba(18,63,59,0.04)] group-hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-shadow border border-ateliya-border/[0.55]">
-                  <Icon name={step.icon} size="lg" class="text-gray-700" />
-                </div>
-                <h3 class="text-base font-serif font-extrabold tracking-tighter text-gray-900 mb-2">{step.title}</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">{step.description}</p>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
       </div>
     </section>
 
-
     <!-- ==================== FEATURE SHOWCASES ==================== -->
-    {categoryMeta.map((cat, idx) => {
-      const isPhoneLeft = cat.direction === "phone-left";
-      const categoryFeatures = featuresByCategory[cat.key];
-      const colors = gradientColors[idx];
-      const arcId = `arc-${idx}`;
+    {
+      categoryMeta.map((cat, idx) => {
+        const isPhoneLeft = cat.direction === "phone-left";
+        const categoryFeatures = featuresByCategory[cat.key];
+        const colors = gradientColors[idx];
+        const arcId = `arc-${idx}`;
 
-      return (
-        <section
-          id={idx === 0 ? "features" : undefined}
-          class={`relative py-20 overflow-hidden ${cat.bgClass}`}
-        >
-          {/* ---- Background decorations ---- */}
-          <div
-            class={`absolute ${isPhoneLeft ? "right-0 top-0 rounded-bl-[100px]" : "left-0 top-0 rounded-br-[100px]"} w-[55%] h-[60%] opacity-[0.04]`}
-            style={`background: linear-gradient(135deg, ${colors.from}, ${colors.to})`}
-          />
-
-          <div
-            class="absolute w-64 h-64 rounded-full blur-[100px] opacity-[0.08]"
-            style={`background: ${colors.from}; ${isPhoneLeft ? "right: 15%; top: 10%;" : "left: 15%; top: 10%;"}`}
-          />
-          <div
-            class="absolute w-48 h-48 rounded-full blur-[80px] opacity-[0.06]"
-            style={`background: ${colors.mid}; ${isPhoneLeft ? "left: 20%; bottom: 15%;" : "right: 20%; bottom: 15%;"}`}
-          />
-
-          {/* Dot patterns */}
-          <div
-            class={`absolute ${isPhoneLeft ? "left-6 top-[12%]" : "right-6 top-[12%]"} grid grid-cols-6 gap-2 opacity-[0.16]`}
+        return (
+          <section
+            id={idx === 0 ? "features" : undefined}
+            class={`relative py-20 overflow-hidden ${cat.bgClass}`}
           >
-            {[...Array(30)].map((_, i) => (
-              <div
-                class="w-1.5 h-1.5 rounded-full"
-                style={i % 4 === 0 ? `background: ${colors.from}` : i % 4 === 1 ? `background: ${colors.mid}; opacity: 0.6` : i % 4 === 2 ? `background: ${colors.to}; opacity: 0.4` : "background: #d1d5db"}
-              />
-            ))}
-          </div>
-          <div
-            class={`absolute ${isPhoneLeft ? "right-8 bottom-[18%]" : "left-8 bottom-[18%]"} grid grid-cols-4 gap-3 opacity-[0.14]`}
-          >
-            {[...Array(12)].map((_, i) => (
-              <div
-                class="w-2 h-2 rounded-full"
-                style={i % 2 === 0 ? `background: ${colors.from}` : `background: ${colors.to}; opacity: 0.5`}
-              />
-            ))}
-          </div>
+            {/* ---- Background decorations ---- */}
+            <div
+              class={`absolute ${isPhoneLeft ? "right-0 top-0 rounded-bl-[100px]" : "left-0 top-0 rounded-br-[100px]"} w-[55%] h-[60%] opacity-[0.04]`}
+              style={`background: linear-gradient(135deg, ${colors.from}, ${colors.to})`}
+            />
 
-          {/* Radial dot bg */}
-          <div
-            class="absolute inset-0 opacity-[0.014]"
-            style={`background-image: radial-gradient(circle, ${colors.from} 1px, transparent 1px); background-size: 40px 40px;`}
-          />
+            <div
+              class="absolute w-64 h-64 rounded-full blur-[100px] opacity-[0.08]"
+              style={`background: ${colors.from}; ${isPhoneLeft ? "right: 15%; top: 10%;" : "left: 15%; top: 10%;"}`}
+            />
+            <div
+              class="absolute w-48 h-48 rounded-full blur-[80px] opacity-[0.06]"
+              style={`background: ${colors.mid}; ${isPhoneLeft ? "left: 20%; bottom: 15%;" : "right: 20%; bottom: 15%;"}`}
+            />
 
-          <div class="container mx-auto px-6 lg:px-10 relative z-10">
-
-            {/* ---- Visual + Description ---- */}
-            <div class="grid lg:grid-cols-2 gap-8 lg:gap-4 items-center mb-14">
-
-              {/* Phone + Photo Composite */}
-              <div class={`relative min-h-[640px] ${isPhoneLeft ? "lg:order-1" : "lg:order-2"}`}>
-
-                {/* BG circle fill */}
+            {/* Dot patterns */}
+            <div
+              class={`absolute ${isPhoneLeft ? "left-6 top-[12%]" : "right-6 top-[12%]"} grid grid-cols-6 gap-2 opacity-[0.16]`}
+            >
+              {[...Array(30)].map((_, i) => (
                 <div
-                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-[0.06]"
-                  style={`background: linear-gradient(135deg, ${colors.from}, ${colors.to})`}
+                  class="w-1.5 h-1.5 rounded-full"
+                  style={
+                    i % 4 === 0
+                      ? `background: ${colors.from}`
+                      : i % 4 === 1
+                        ? `background: ${colors.mid}; opacity: 0.6`
+                        : i % 4 === 2
+                          ? `background: ${colors.to}; opacity: 0.4`
+                          : "background: #d1d5db"
+                  }
                 />
-                <div
-                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-dashed opacity-10"
-                  style={`border-color: ${colors.from}`}
-                />
-
-                {/* Phone */}
-                  <div class={`absolute ${isPhoneLeft ? "left-[10%]" : "right-[10%]"} top-[2%] z-30 feature-phone-slide`}>
-                  <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)] transition-transform duration-500 hover:-translate-y-0.5">
-                    <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]">
-                      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20" />
-                      <img src={cat.phoneSrc} alt={cat.phoneAlt} class="w-full h-full object-cover" loading="lazy" width="288" height="580" decoding="async" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Circular photo + arc */}
-                <div class={`absolute ${isPhoneLeft ? "right-[0%]" : "left-[0%]"} top-[0%] z-20 feature-photo-reveal`}>
-                  <div class="absolute -top-5 -right-5 w-[340px] h-[340px]">
-                    <svg viewBox="0 0 200 200" class="w-full h-full">
-                      <defs>
-                        <linearGradient id={arcId} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style={`stop-color:${colors.from};stop-opacity:0.7`} />
-                          <stop offset="50%" style={`stop-color:${colors.mid};stop-opacity:0.4`} />
-                          <stop offset="100%" style={`stop-color:${colors.to};stop-opacity:0.7`} />
-                        </linearGradient>
-                      </defs>
-                      <path
-                        d={isPhoneLeft ? "M 100,18 A 82,82 0 0,1 182,100" : "M 18,100 A 82,82 0 0,1 100,182"}
-                        fill="none"
-                        stroke={`url(#${arcId})`}
-                        stroke-width="32"
-                        stroke-linecap="round"
-                      />
-                    </svg>
-                  </div>
-                  <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-[0_18px_44px_rgba(18,63,59,0.12)]">
-                    <img src={cat.photoSrc} alt={cat.photoAlt} class="w-full h-full object-cover" loading="lazy" width="320" height="320" decoding="async" />
-                  </div>
-
-                  {/* Hatched circle */}
-                  <div class={`absolute ${isPhoneLeft ? "-bottom-5 -left-5" : "-bottom-5 -right-5"} w-20 h-20 opacity-40`}>
-                    <div class="w-full h-full rounded-full" style={`background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, ${colors.from}40 2.5px, ${colors.from}40 5px)`} />
-                  </div>
-                </div>
-
-                {/* Numbered ball */}
-                <div class={`absolute ${isPhoneLeft ? "right-[5%] bottom-[5%]" : "left-[5%] bottom-[5%]"} z-30`}>
-                  <div
-                    class={`w-16 h-16 rounded-full bg-gradient-to-br ${cat.gradient} shadow-[0_10px_24px_rgba(18,63,59,0.08)] flex items-center justify-center`}
-                  >
-                    <span class="text-white text-2xl font-black">{categoryFeatures.length}</span>
-                  </div>
-                </div>
-
-                {/* Bouncing dots */}
-                <div
-                  class="absolute w-3 h-3 rounded-full hero-bounce-1"
-                  style={`background: ${colors.from}80; ${isPhoneLeft ? "right: 25%; top: 8%;" : "left: 25%; top: 8%;"}`}
-                />
-                <div
-                  class="absolute w-4 h-4 rounded-full hero-bounce-2"
-                  style={`background: ${colors.mid}60; ${isPhoneLeft ? "left: 35%; bottom: 12%;" : "right: 35%; bottom: 12%;"}`}
-                />
-                <div
-                  class="absolute w-2.5 h-2.5 rounded-full"
-                  style={`background: ${colors.to}50; ${isPhoneLeft ? "right: 40%; bottom: 25%;" : "left: 40%; bottom: 25%;"}`}
-                />
-
-                {/* Rotated square */}
-                <div
-                  class={`absolute ${isPhoneLeft ? "left-[40%] top-[2%]" : "right-[40%] top-[2%]"} w-8 h-8 rounded-lg rotate-45 opacity-20`}
-                  style={`background: linear-gradient(135deg, ${colors.from}, ${colors.mid})`}
-                />
-              </div>
-
-              {/* Content Side */}
-              <div class={`relative ${isPhoneLeft ? "lg:order-2 lg:pl-8" : "lg:order-1 lg:pr-8"}`}>
-                <div class="space-y-5">
-                  <p class="text-sm font-semibold tracking-[0.2em] uppercase text-gray-400">
-                    {cat.subtitle}
-                  </p>
-
-                  <h2 class="text-4xl md:text-5xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight">
-                    {cat.title.split(" ").slice(0, -1).join(" ")}{" "}
-                    <span class={`text-transparent bg-clip-text bg-gradient-to-r ${cat.gradient}`}>
-                      {cat.title.split(" ").slice(-1)}
-                    </span>
-                  </h2>
-
-                  <p class="text-lg text-gray-500 leading-relaxed max-w-lg">
-                    {cat.description}
-                  </p>
-
-                  <div class="flex flex-wrap items-center gap-3 pt-1">
-                    {cat.tags.map((tag) => (
-                      <span class={`inline-block px-5 py-2 ${cat.accentBg} ${cat.accentText} text-sm font-bold rounded-full`}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Mini stat cards */}
-                  <div class="grid grid-cols-2 gap-3 pt-4">
-                    <div class="bg-white/[0.94] backdrop-blur-sm rounded-xl p-4 border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-shadow">
-                      <div class={`w-8 h-8 rounded-lg ${cat.accentBg} flex items-center justify-center mb-2`}>
-                        <Icon name={cat.icon} size="sm" class={cat.accentText} />
-                      </div>
-                      <p class="text-2xl font-black text-gray-900">{categoryFeatures.length}</p>
-                      <p class="text-xs text-gray-400 font-medium">Fonctionnalites</p>
-                    </div>
-                    <div class="bg-white/[0.94] backdrop-blur-sm rounded-xl p-4 border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-shadow">
-                      <div class={`w-8 h-8 rounded-lg ${cat.accentBg} flex items-center justify-center mb-2`}>
-                        <Icon name="check" size="sm" class={cat.accentText} />
-                      </div>
-                      <p class="text-2xl font-black text-gray-900">100%</p>
-                      <p class="text-xs text-gray-400 font-medium">Inclus gratuit</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ---- Feature Cards Grid ---- */}
-            <div class={`grid sm:grid-cols-2 ${categoryFeatures.length >= 5 ? "lg:grid-cols-5" : categoryFeatures.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"} gap-4`}>
-              {categoryFeatures.map((feature, fIdx) => (
-                <div
-                  class={`group relative p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] ${cat.borderHover} hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] transition-all duration-300 feature-card hover:-translate-y-0.5`}
-                  style={`animation-delay: ${fIdx * 80}ms`}
-                >
-                  <div
-                    class="absolute top-0 left-6 right-6 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={`background: linear-gradient(90deg, ${colors.from}, ${colors.to})`}
-                  />
-                  <div class={`w-12 h-12 rounded-xl ${cat.accentBg} flex items-center justify-center mb-3 group-hover:-translate-y-0.5 transition-transform duration-300`}>
-                    <Icon name={feature.icon} size="md" class={cat.accentText} />
-                  </div>
-                  <h4 class="text-[15px] font-bold text-gray-900 mb-1.5">{feature.title}</h4>
-                  <p class="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
-                </div>
               ))}
             </div>
-          </div>
-        </section>
-      );
-    })}
+            <div
+              class={`absolute ${isPhoneLeft ? "right-8 bottom-[18%]" : "left-8 bottom-[18%]"} grid grid-cols-4 gap-3 opacity-[0.14]`}
+            >
+              {[...Array(12)].map((_, i) => (
+                <div
+                  class="w-2 h-2 rounded-full"
+                  style={
+                    i % 2 === 0
+                      ? `background: ${colors.from}`
+                      : `background: ${colors.to}; opacity: 0.5`
+                  }
+                />
+              ))}
+            </div>
 
+            {/* Radial dot bg */}
+            <div
+              class="absolute inset-0 opacity-[0.014]"
+              style={`background-image: radial-gradient(circle, ${colors.from} 1px, transparent 1px); background-size: 40px 40px;`}
+            />
 
-  
+            <div class="container mx-auto px-6 lg:px-10 relative z-10">
+              {/* ---- Visual + Description ---- */}
+              <div class="grid lg:grid-cols-2 gap-8 lg:gap-4 items-center mb-14">
+                {/* Phone + Photo Composite */}
+                <div
+                  class={`relative min-h-[640px] ${isPhoneLeft ? "lg:order-1" : "lg:order-2"}`}
+                >
+                  {/* BG circle fill */}
+                  <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-[0.06]"
+                    style={`background: linear-gradient(135deg, ${colors.from}, ${colors.to})`}
+                  />
+                  <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-dashed opacity-10"
+                    style={`border-color: ${colors.from}`}
+                  />
+
+                  {/* Phone */}
+                  <div
+                    class={`absolute ${isPhoneLeft ? "left-[10%]" : "right-[10%]"} top-[2%] z-30 feature-phone-slide`}
+                  >
+                    <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)] transition-transform duration-500 hover:-translate-y-px">
+                      <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-72 h-[580px]">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-20" />
+                        <img
+                          src={cat.phoneSrc}
+                          alt={cat.phoneAlt}
+                          class="w-full h-full object-cover"
+                          loading="lazy"
+                          width="288"
+                          height="580"
+                          decoding="async"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Circular photo + arc */}
+                  <div
+                    class={`absolute ${isPhoneLeft ? "right-[0%]" : "left-[0%]"} top-[0%] z-20 feature-photo-reveal`}
+                  >
+                    <div class="absolute -top-5 -right-5 w-[340px] h-[340px]">
+                      <svg viewBox="0 0 200 200" class="w-full h-full">
+                        <defs>
+                          <linearGradient
+                            id={arcId}
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="100%"
+                          >
+                            <stop
+                              offset="0%"
+                              style={`stop-color:${colors.from};stop-opacity:0.7`}
+                            />
+                            <stop
+                              offset="50%"
+                              style={`stop-color:${colors.mid};stop-opacity:0.4`}
+                            />
+                            <stop
+                              offset="100%"
+                              style={`stop-color:${colors.to};stop-opacity:0.7`}
+                            />
+                          </linearGradient>
+                        </defs>
+                        <path
+                          d={
+                            isPhoneLeft
+                              ? "M 100,18 A 82,82 0 0,1 182,100"
+                              : "M 18,100 A 82,82 0 0,1 100,182"
+                          }
+                          fill="none"
+                          stroke={`url(#${arcId})`}
+                          stroke-width="32"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="relative w-[320px] h-[320px] rounded-full overflow-hidden border-[6px] border-white shadow-[0_18px_44px_rgba(18,63,59,0.12)]">
+                      <img
+                        src={cat.photoSrc}
+                        alt={cat.photoAlt}
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                        width="320"
+                        height="320"
+                        decoding="async"
+                      />
+                    </div>
+
+                    {/* Hatched circle */}
+                    <div
+                      class={`absolute ${isPhoneLeft ? "-bottom-5 -left-5" : "-bottom-5 -right-5"} w-20 h-20 opacity-40`}
+                    >
+                      <div
+                        class="w-full h-full rounded-full"
+                        style={`background: repeating-linear-gradient(45deg, transparent, transparent 2.5px, ${colors.from}40 2.5px, ${colors.from}40 5px)`}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Numbered ball */}
+                  <div
+                    class={`absolute ${isPhoneLeft ? "right-[5%] bottom-[5%]" : "left-[5%] bottom-[5%]"} z-30`}
+                  >
+                    <div class="w-16 h-16 rounded-full bg-ateliya-primary/10 border border-ateliya-primary/15 shadow-[0_6px_16px_rgba(47,175,164,0.04)] flex items-center justify-center">
+                      <span class="text-ateliya-primary text-2xl font-black">
+                        {idx + 1}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Bouncing dots */}
+                  <div
+                    class="absolute w-3 h-3 rounded-full hero-bounce-1"
+                    style={`background: ${colors.from}80; ${isPhoneLeft ? "right: 25%; top: 8%;" : "left: 25%; top: 8%;"}`}
+                  />
+                  <div
+                    class="absolute w-4 h-4 rounded-full hero-bounce-2"
+                    style={`background: ${colors.mid}60; ${isPhoneLeft ? "left: 35%; bottom: 12%;" : "right: 35%; bottom: 12%;"}`}
+                  />
+                  <div
+                    class="absolute w-2.5 h-2.5 rounded-full"
+                    style={`background: ${colors.to}50; ${isPhoneLeft ? "right: 40%; bottom: 25%;" : "left: 40%; bottom: 25%;"}`}
+                  />
+
+                  {/* Rotated square */}
+                  <div
+                    class={`absolute ${isPhoneLeft ? "left-[40%] top-[2%]" : "right-[40%] top-[2%]"} w-8 h-8 rounded-lg rotate-45 opacity-20`}
+                    style={`background: linear-gradient(135deg, ${colors.from}, ${colors.mid})`}
+                  />
+                </div>
+
+                {/* Content Side */}
+                <div
+                  class={`relative ${isPhoneLeft ? "lg:order-2 lg:pl-8" : "lg:order-1 lg:pr-8"}`}
+                >
+                  <div class="space-y-5">
+                    <div class="inline-flex items-center gap-3">
+                      <span class="inline-flex h-9 min-w-9 items-center justify-center rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 px-3 text-sm font-black text-ateliya-primary">
+                        {idx + 1}
+                      </span>
+                      <p class="text-sm font-semibold tracking-[0.2em] uppercase text-gray-400">
+                        {cat.subtitle}
+                      </p>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight">
+                      {cat.title.split(" ").slice(0, -1).join(" ")}{" "}
+                      <span class="text-ateliya-primary">
+                        {cat.title.split(" ").slice(-1)}
+                      </span>
+                    </h2>
+
+                    <p class="text-lg text-gray-500 leading-relaxed max-w-lg">
+                      {cat.description}
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-1">
+                      {cat.tags.map((tag) => (
+                        <span
+                          class={`inline-block px-5 py-2 ${cat.accentBg} ${cat.accentText} text-sm font-bold rounded-full`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Mini stat cards */}
+                    <div class="grid grid-cols-2 gap-3 pt-4">
+                      <div class="bg-white/[0.94] backdrop-blur-sm rounded-xl p-4 border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-shadow">
+                        <div
+                          class={`w-8 h-8 rounded-lg ${cat.accentBg} flex items-center justify-center mb-2`}
+                        >
+                          <Icon
+                            name={cat.icon}
+                            size="sm"
+                            class={cat.accentText}
+                          />
+                        </div>
+                        <p class="text-2xl font-black text-gray-900">
+                          {categoryFeatures.length}
+                        </p>
+                        <p class="text-xs text-gray-400 font-medium">
+                          Fonctionnalites
+                        </p>
+                      </div>
+                      <div class="bg-white/[0.94] backdrop-blur-sm rounded-xl p-4 border border-ateliya-border/[0.55] shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-shadow">
+                        <div
+                          class={`w-8 h-8 rounded-lg ${cat.accentBg} flex items-center justify-center mb-2`}
+                        >
+                          <Icon name="check" size="sm" class={cat.accentText} />
+                        </div>
+                        <p class="text-2xl font-black text-gray-900">100%</p>
+                        <p class="text-xs text-gray-400 font-medium">
+                          Inclus gratuit
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ---- Feature Cards Grid ---- */}
+              <div
+                class={`grid sm:grid-cols-2 ${categoryFeatures.length >= 5 ? "lg:grid-cols-5" : categoryFeatures.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"} gap-4`}
+              >
+                {categoryFeatures.map((feature, fIdx) => (
+                  <div
+                    class={`group relative p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] ${cat.borderHover} hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-all duration-300 feature-card hover:-translate-y-px`}
+                    style={`animation-delay: ${fIdx * 80}ms`}
+                  >
+                    <span class="absolute right-4 top-4 text-xs font-black text-ateliya-primary/35">
+                      {fIdx + 1}
+                    </span>
+                    <div
+                      class="absolute top-0 left-6 right-6 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={`background: linear-gradient(90deg, ${colors.from}, ${colors.to})`}
+                    />
+                    <div
+                      class={`w-12 h-12 rounded-xl ${cat.accentBg} flex items-center justify-center mb-3 group-hover:-translate-y-px transition-transform duration-300`}
+                    >
+                      <Icon
+                        name={feature.icon}
+                        size="md"
+                        class={cat.accentText}
+                      />
+                    </div>
+                    <h4 class="text-[15px] font-bold text-gray-900 mb-1.5">
+                      {feature.title}
+                    </h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })
+    }
   </main>
 
   <Footer />
@@ -519,64 +743,153 @@ const gradientColors = [
 
   /* ---- Animations ---- */
   @keyframes phoneEntrance {
-    from { opacity: 0; transform: translateY(40px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
   @keyframes photoEntrance {
-    from { opacity: 0; transform: scale(0.85); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   @keyframes floatCard {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   @keyframes cardReveal {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   @keyframes spinSlow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
   @keyframes spinSlowReverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
   }
   @keyframes float1 {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
   }
   @keyframes float2 {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
   }
   @keyframes bounce1 {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-6px) scale(1.1); }
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-6px) scale(1.1);
+    }
   }
   @keyframes bounce2 {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-4px) scale(0.9); }
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-4px) scale(0.9);
+    }
   }
 
-  .feature-phone-entrance { animation: phoneEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
-  .feature-photo-entrance { animation: photoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both; }
-  .feature-float-card { animation: floatCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .feature-card { animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .feature-phone-slide { animation: phoneEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .feature-photo-reveal { animation: photoEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+  .feature-phone-entrance {
+    animation: phoneEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+  .feature-photo-entrance {
+    animation: photoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+  .feature-float-card {
+    animation: floatCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .feature-card {
+    animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .feature-phone-slide {
+    animation: phoneEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .feature-photo-reveal {
+    animation: photoEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
 
-  .hero-spin-slow { animation: spinSlow 30s linear infinite; }
-  .hero-spin-slow-reverse { animation: spinSlowReverse 25s linear infinite; }
-  .hero-float-1 { animation: float1 4s ease-in-out infinite; }
-  .hero-float-2 { animation: float2 5s ease-in-out infinite; }
-  .hero-bounce-1 { animation: bounce1 3s ease-in-out infinite; }
-  .hero-bounce-2 { animation: bounce2 3.5s ease-in-out infinite; }
+  .hero-spin-slow {
+    animation: spinSlow 30s linear infinite;
+  }
+  .hero-spin-slow-reverse {
+    animation: spinSlowReverse 25s linear infinite;
+  }
+  .hero-float-1 {
+    animation: float1 4s ease-in-out infinite;
+  }
+  .hero-float-2 {
+    animation: float2 5s ease-in-out infinite;
+  }
+  .hero-bounce-1 {
+    animation: bounce1 3s ease-in-out infinite;
+  }
+  .hero-bounce-2 {
+    animation: bounce2 3.5s ease-in-out infinite;
+  }
 
-  .workflow-step { animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .workflow-step:nth-child(1) { animation-delay: 0ms; }
-  .workflow-step:nth-child(2) { animation-delay: 100ms; }
-  .workflow-step:nth-child(3) { animation-delay: 200ms; }
-  .workflow-step:nth-child(4) { animation-delay: 300ms; }
-  .workflow-step:nth-child(5) { animation-delay: 400ms; }
+  .workflow-step {
+    animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .workflow-step:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  .workflow-step:nth-child(2) {
+    animation-delay: 100ms;
+  }
+  .workflow-step:nth-child(3) {
+    animation-delay: 200ms;
+  }
+  .workflow-step:nth-child(4) {
+    animation-delay: 300ms;
+  }
+  .workflow-step:nth-child(5) {
+    animation-delay: 400ms;
+  }
 </style>
+

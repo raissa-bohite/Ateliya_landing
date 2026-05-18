@@ -14,25 +14,25 @@ const { class: className = "" } = Astro.props;
 <header
   id="header"
   class:list={[
-    "fixed inset-x-0 top-0 z-50 px-4 transition-all duration-300",
+    "fixed inset-x-0 top-0 z-50 px-0 transition-all duration-300",
     className,
   ]}
 >
   <!-- Background -->
   <div
-    class="header-bg absolute inset-y-0 left-4 right-4 rounded-b-[1.35rem] border border-t-0 border-ateliya-border/[0.55] bg-white/[0.92] shadow-[0_10px_28px_rgba(18,63,59,0.055)] backdrop-blur-xl transition-all duration-300 lg:left-1/2 lg:right-auto lg:w-[min(calc(100%-2rem),76rem)] lg:-translate-x-1/2"
+    class="header-bg absolute inset-y-0 left-0 right-0 border-b border-ateliya-border/[0.55] bg-white/[0.92] shadow-[0_6px_18px_rgba(18,63,59,0.035)] backdrop-blur-xl transition-all duration-300"
   >
   </div>
 
   <!-- Kente accent -->
   <div
-    class="header-kente absolute left-8 right-8 top-0 h-px rounded-full bg-gradient-to-r from-transparent via-ateliya-primary/45 to-transparent opacity-0 transition-opacity duration-500 lg:left-1/2 lg:right-auto lg:w-[min(calc(100%-4rem),72rem)] lg:-translate-x-1/2"
+    class="header-kente absolute left-0 right-0 top-0 h-px bg-ateliya-primary/15 opacity-0 transition-opacity duration-500"
   >
   </div>
 
   <!-- Bottom accent -->
   <div
-    class="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-ateliya-primary/10 to-transparent lg:left-1/2 lg:right-auto lg:w-[min(calc(100%-4rem),72rem)] lg:-translate-x-1/2"
+    class="absolute bottom-0 left-0 right-0 h-px bg-ateliya-primary/10"
   >
   </div>
 
@@ -121,7 +121,7 @@ const { class: className = "" } = Astro.props;
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
           target="_blank"
           rel="noopener noreferrer"
-          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
+          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-ateliya-primary text-white rounded-xl transition-all duration-300 hover:bg-[#279f95] shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -245,7 +245,7 @@ const { class: className = "" } = Astro.props;
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white rounded-xl transition-all duration-300 shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
+          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-ateliya-primary text-white rounded-xl transition-all duration-300 hover:bg-[#279f95] shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -459,3 +459,4 @@ const { class: className = "" } = Astro.props;
     }
   }
 </style>
+

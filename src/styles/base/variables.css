@@ -56,10 +56,3 @@
   --blur-lg: 16px;
 }
 
-/* Dark mode overrides */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --shadow-glow-primary: 0 18px 48px rgba(47, 175, 164, 0.24);
-    --shadow-glow-africa: 0 18px 48px rgba(185, 151, 82, 0.22);
-  }
-}

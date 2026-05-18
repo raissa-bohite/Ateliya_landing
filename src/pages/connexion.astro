@@ -885,10 +885,7 @@ import "../styles/global.css";
   /* ══ FOND ══ */
   .bg {
     min-height: 100dvh;
-    background:
-      radial-gradient(circle at 12% 18%, rgba(47, 175, 164, 0.13), transparent 30rem),
-      radial-gradient(circle at 86% 24%, rgba(47, 175, 164, 0.08), transparent 24rem),
-      linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f0fdfa 100%);
+    background: #f9fafb;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -909,8 +906,8 @@ import "../styles/global.css";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.045;
-    background-image: radial-gradient(circle, #123f3b 1px, transparent 1px);
+    opacity: 0;
+    background-image: none;
     background-size: 32px 32px;
   }
 
@@ -1010,7 +1007,7 @@ import "../styles/global.css";
   .card-left {
     width: 380px;
     min-width: 380px;
-    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    background: #2fafa4;
     padding: 2.5rem 2.25rem;
     display: flex;
     flex-direction: column;
@@ -1022,12 +1019,8 @@ import "../styles/global.css";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.1;
-    background:
-      linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
-    background-size: 34px 34px;
-    mask-image: linear-gradient(135deg, black 0%, transparent 72%);
+    opacity: 0;
+    background: none;
   }
 
   .card-left::after {
@@ -1185,14 +1178,14 @@ import "../styles/global.css";
   }
 
   .step.active .step-circle {
-    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    background: #2fafa4;
     border-color: #2fafa4;
     color: #fff;
     box-shadow: 0 0 0 4px rgba(47, 175, 164, 0.16);
   }
 
   .step.done .step-circle {
-    background: linear-gradient(135deg, #257f78 0%, #123f3b 100%);
+    background: #257f78;
     border-color: #257f78;
     color: #fff;
   }
@@ -1231,7 +1224,7 @@ import "../styles/global.css";
     transition: background 0.3s;
   }
   .step-line.done {
-    background: linear-gradient(90deg, #2fafa4, #257f78);
+    background: #2fafa4;
   }
 
   /* ══ ALERTES ══ */
@@ -1538,7 +1531,7 @@ import "../styles/global.css";
     align-items: center;
     gap: 0.45rem;
     padding: 0.7rem 1.5rem;
-    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    background: #2fafa4;
     color: #fff;
     font-size: 0.875rem;
     font-weight: 700;
@@ -1552,12 +1545,12 @@ import "../styles/global.css";
       background 0.2s,
       box-shadow 0.2s,
       transform 0.15s;
-    box-shadow: 0 12px 28px rgba(37, 127, 120, 0.2);
+    box-shadow: 0 8px 18px rgba(47, 175, 164, 0.14);
   }
   .btn-next:hover {
-    background: linear-gradient(135deg, #34bdb1 0%, #257f78 100%);
+    background: #279f95;
     transform: translateY(-1px);
-    box-shadow: 0 18px 38px rgba(37, 127, 120, 0.24);
+    box-shadow: 0 8px 18px rgba(47, 175, 164, 0.12);
   }
   .btn-next:active {
     transform: translateY(0) scale(0.99);
@@ -1571,12 +1564,7 @@ import "../styles/global.css";
   .btn-shine {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      105deg,
-      transparent 38%,
-      rgba(255, 255, 255, 0.15) 50%,
-      transparent 62%
-    );
+    background: none;
     transform: translateX(-100%);
     transition: transform 0.55s ease;
     pointer-events: none;
@@ -1673,7 +1661,7 @@ import "../styles/global.css";
     width: 68px;
     height: 68px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    background: #2fafa4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1710,7 +1698,7 @@ import "../styles/global.css";
     align-items: center;
     gap: 0.45rem;
     padding: 0.72rem 1.5rem;
-    background: linear-gradient(135deg, #2fafa4 0%, #257f78 100%);
+    background: #2fafa4;
     color: #fff;
     font-size: 0.875rem;
     font-weight: 700;
@@ -1724,8 +1712,9 @@ import "../styles/global.css";
     box-shadow: 0 12px 28px rgba(37, 127, 120, 0.2);
   }
   .popup-btn:hover {
-    opacity: 0.9;
+    background: #279f95;
     transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(47, 175, 164, 0.12);
   }
 
   .popup-btn-secondary {

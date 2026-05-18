@@ -43,10 +43,10 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <!-- Title -->
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold tracking-tighter text-ateliya-dark leading-tight">
+      <h1 class="page-title text-ateliya-dark">
         <span class="block">Conditions</span>
         <span class="relative inline-block mt-2">
-          <span class="relative z-10 bg-gradient-to-r from-ateliya-secondary via-ateliya-primary to-ateliya-secondary bg-clip-text text-transparent">
+          <span class="relative z-10 text-ateliya-secondary">
             d'Utilisation
           </span>
           <span class="absolute -inset-1 bg-gradient-to-r from-ateliya-secondary/10 to-ateliya-primary/10 blur-xl -z-10"></span>
@@ -62,7 +62,7 @@ import Layout from "../layouts/Layout.astro";
         {sections.slice(0, 8).map((section) => (
           <a 
             href={`#section-${section.number}`}
-            class="px-4 py-2 rounded-xl bg-white/[0.96] border border-ateliya-secondary/20 hover:border-ateliya-secondary/35 text-sm font-semibold text-ateliya-dark hover:bg-ateliya-secondary/[0.04] transition-all duration-300"
+            class="px-4 py-2 rounded-xl bg-white/[0.96] border border-ateliya-primary/20 hover:border-ateliya-primary/35 text-sm font-semibold text-ateliya-dark hover:bg-ateliya-primary/[0.04] transition-all duration-300"
           >
             {section.number}. {section.title}
           </a>
@@ -88,7 +88,7 @@ import Layout from "../layouts/Layout.astro";
               <!-- Header -->
               <div class="flex items-start gap-6 mb-6">
                 <!-- Icon Badge -->
-                <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-ateliya-secondary/[0.16] to-ateliya-secondary/[0.08] flex items-center justify-center group-hover/section:-translate-y-0.5 transition-all duration-500">
+                <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-ateliya-secondary/[0.16] to-ateliya-secondary/[0.08] flex items-center justify-center group-hover/section:-translate-y-px transition-all duration-500">
                   <Icon name={section.icon} size="xl" class="text-ateliya-secondary" />
                 </div>
 
@@ -205,7 +205,7 @@ import Layout from "../layouts/Layout.astro";
 
           <a
             href="mailto:support@ateliya.com"
-            class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-ateliya-secondary to-ateliya-primary text-white font-bold shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
+            class="btn-action"
           >
             <Icon name="mail" size="md" />
             <span>support@ateliya.com</span>
@@ -268,3 +268,4 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 </body>
 </html>
+

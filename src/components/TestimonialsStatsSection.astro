@@ -80,7 +80,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
         >
           Ce que nos
           <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-400 to-ateliya-secondary"
+            class="text-ateliya-primary"
           >
             clients
           </span>
@@ -113,7 +113,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
           <div class="flex -space-x-2">
             {
               [1, 2, 3, 4].map((i) => (
-                <div class="w-9 h-9 rounded-full border-2 border-white bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-xs shadow-[0_6px_14px_rgba(18,63,59,0.08)] hover:-translate-y-0.5 hover:z-10 transition-transform duration-300">
+                <div class="w-9 h-9 rounded-full border-2 border-white bg-ateliya-primary flex items-center justify-center text-white font-bold text-xs shadow-[0_6px_14px_rgba(18,63,59,0.08)] hover:-translate-y-px hover:z-10 transition-transform duration-300">
                   {i}
                 </div>
               ))
@@ -128,7 +128,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
 
         <a
           href="#all-testimonials"
-          class="inline-flex items-center gap-3 px-7 py-3.5 bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold rounded-2xl shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] hover:-translate-y-0.5 transition-all duration-300 group/cta"
+          class="btn-action group/cta"
         >
           <span>Voir tous les temoignages</span>
           <Icon
@@ -219,7 +219,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
           <div class="flex items-center gap-4">
             <div class="relative">
               <div
-                class="w-14 h-14 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center font-black text-white text-lg shadow-[0_10px_24px_rgba(47,175,164,0.16)] group-hover/card:-translate-y-0.5 transition-transform duration-300"
+                class="w-14 h-14 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center font-black text-ateliya-primary text-lg shadow-[0_8px_18px_rgba(47,175,164,0.06)] group-hover/card:-translate-y-px group-hover/card:bg-ateliya-primary/14 transition-all duration-300"
               >
                 {testimonials[0]?.author.charAt(0) || "A"}{
                   testimonials[0]?.author.split(" ")[1]?.charAt(0) || "S"
@@ -276,7 +276,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
         {
           testimonials.slice(1, 4).map((t, idx) => (
             <div
-              class="group/t relative bg-white/[0.94] backdrop-blur-sm rounded-2xl p-6 border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:shadow-[0_10px_24px_rgba(18,63,59,0.055)] hover:-translate-y-0.5 transition-all duration-300 testi-card-reveal"
+              class="group/t relative bg-white/[0.94] backdrop-blur-sm rounded-2xl p-6 border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] hover:-translate-y-px transition-all duration-300 testi-card-reveal"
               style={`animation-delay: ${idx * 100}ms`}
             >
               <div class="absolute top-0 left-5 right-5 h-px rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary opacity-0 group-hover/t:opacity-100 transition-opacity duration-300" />
@@ -292,7 +292,7 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
               </p>
 
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-sm shadow-[0_8px_18px_rgba(47,175,164,0.14)]">
+                <div class="w-10 h-10 rounded-lg bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center text-ateliya-primary font-bold text-sm shadow-[0_6px_14px_rgba(47,175,164,0.06)]">
                   {t.author.charAt(0)}
                   {t.author.split(" ")[1]?.charAt(0) || ""}
                 </div>
@@ -391,3 +391,4 @@ const statsConfig = stats.slice(0, 4).map((stat, index) => ({
     }
   }
 </style>
+

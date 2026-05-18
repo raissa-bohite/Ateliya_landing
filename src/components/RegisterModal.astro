@@ -127,7 +127,7 @@
         </div>
         <h2
           id="modal-title"
-          class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-500 to-ateliya-secondary"
+          class="text-2xl font-black text-ateliya-primary"
         >
           Créer votre compte
         </h2>
@@ -535,11 +535,8 @@
         <button
           type="submit"
           id="submit-btn"
-          class="group relative w-full overflow-hidden flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold text-base shadow-lg shadow-ateliya-primary/25 hover:shadow-xl hover:shadow-ateliya-primary/35 transition-all duration-300 hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+          class="btn-action group relative w-full overflow-hidden text-base disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
-          <span
-            class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-          ></span>
           <span id="submit-text" class="relative z-10">Créer mon compte</span>
           <svg
             id="submit-arrow"
@@ -962,3 +959,4 @@
     if (target.closest("[data-open-register]")) openModal();
   });
 </script>
+

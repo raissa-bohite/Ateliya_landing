@@ -37,10 +37,6 @@
   @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ateliya-primary;
 }
 
-.focus-ring-dark {
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ateliya-bg-dark focus:ring-ateliya-primary;
-}
-
 .focus-ring-africa {
   @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
   --tw-ring-color: var(--color-africa-gold);

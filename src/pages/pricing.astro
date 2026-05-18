@@ -60,9 +60,9 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
             <span class="text-sm font-bold text-ateliya-primary">Tarifs Transparents</span>
           </div>
 
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
+          <h1 class="page-title text-gray-900">
             <span class="block">Un prix juste</span>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
+            <span class="text-ateliya-primary">
               pour chaque atelier
             </span>
           </h1>
@@ -135,7 +135,7 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
 
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
             <span class="block">Questions</span>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
+            <span class="text-ateliya-primary">
               frequentes
             </span>
           </h2>
@@ -193,7 +193,7 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
 
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-extrabold tracking-tighter leading-tight text-gray-900">
           <span class="block">Une question</span>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">
+          <span class="text-ateliya-primary">
             avant de vous lancer ?
           </span>
         </h2>
@@ -203,8 +203,7 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
-          <a href="/contact" class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold shadow-[0_12px_28px_rgba(47,175,164,0.16)] hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
-            <span class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+          <a href="/contact" class="btn-action group">
             <Icon name="mail" size="md" class="relative z-10" />
             <span class="relative z-10">Nous contacter</span>
           </a>
@@ -272,3 +271,4 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
     });
   });
 </script>
+

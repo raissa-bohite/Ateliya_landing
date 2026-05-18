@@ -74,11 +74,11 @@ const phoneScreensCount = phoneScreens.length;
         </div>
 
         <h1
-          class="text-4xl md:text-5xl lg:text-[3.5rem] xl:text-6xl font-serif font-extrabold tracking-tighter leading-[1.08] text-gray-900"
+          class="page-title text-gray-900"
         >
           Transformez votre
           <span
-            class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-500 to-ateliya-secondary"
+            class="block mt-2 text-ateliya-primary"
             >atelier de couture</span
           >
           <span class="block mt-2">des aujourd'hui</span>
@@ -96,11 +96,8 @@ const phoneScreensCount = phoneScreens.length;
           <button
             id="open-register-modal"
             type="button"
-            class="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-9 py-5 rounded-2xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white font-bold text-xl shadow-[0_12px_28px_rgba(47,175,164,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(47,175,164,0.2)]"
+            class="btn-action btn-action-lg group relative overflow-hidden"
           >
-            <span
-              class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-            ></span>
             <Icon
               name="user-plus"
               size="md"
@@ -110,7 +107,7 @@ const phoneScreensCount = phoneScreens.length;
           </button>
           <a
             href="#demo"
-            class="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.58] backdrop-blur-sm border border-ateliya-border/[0.55] text-gray-800 font-bold text-xl shadow-[0_8px_22px_rgba(18,63,59,0.04)] hover:bg-white/[0.76] hover:border-ateliya-primary/25 transition-all duration-300 hover:-translate-y-0.5"
+            class="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.58] backdrop-blur-sm border border-ateliya-border/[0.55] text-gray-800 font-bold text-xl shadow-[0_8px_22px_rgba(18,63,59,0.04)] hover:bg-white/[0.76] hover:border-ateliya-primary/25 transition-all duration-300 hover:-translate-y-px"
           >
             <Icon
               name="play-circle"
@@ -125,7 +122,7 @@ const phoneScreensCount = phoneScreens.length;
           <div class="flex -space-x-2">
             {
               [1, 2, 3, 4].map((i) => (
-                <div class="w-9 h-9 rounded-full border-2 border-white bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-xs shadow-[0_6px_14px_rgba(18,63,59,0.08)] hover:-translate-y-0.5 hover:z-10 transition-transform duration-300">
+                <div class="w-9 h-9 rounded-full border-2 border-white bg-ateliya-primary flex items-center justify-center text-white font-bold text-xs shadow-[0_6px_14px_rgba(18,63,59,0.08)] hover:-translate-y-px hover:z-10 transition-transform duration-300">
                   {i}
                 </div>
               ))
@@ -853,3 +850,4 @@ const phoneScreensCount = phoneScreens.length;
     }
   }
 </style>
+

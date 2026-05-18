@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import Icon from "../../components/Icon.astro";
 import "../../styles/global.css";
 import Layout from "../../layouts/Layout.astro";
@@ -8,34 +8,38 @@ import Header from "../../components/Header.astro";
 import { blogPosts } from "../../data/blog";
 
 export async function getStaticPaths() {
-  return blogPosts.map(post => ({
-    params: { id: post.id.toString() }
+  return blogPosts.map((post) => ({
+    params: { id: post.id.toString() },
   }));
 }
 
 const { id } = Astro.params;
-const articleData = blogPosts.find(post => post.id.toString() === id);
+const articleData = blogPosts.find((post) => post.id.toString() === id);
 
 if (!articleData) {
-  return Astro.redirect('/404');
+  return Astro.redirect("/404");
 }
 
 // Article sécurisé avec tous les champs requis
 const article = {
   id: articleData.id || 1,
-  title: articleData.title || 'Article non trouvé',
-  category: articleData.category || 'Général',
-  date: articleData.date || '01 Jan 2025',
-  readTime: articleData.readTime || '5 min',
+  title: articleData.title || "Article non trouvé",
+  category: articleData.category || "Général",
+  date: articleData.date || "01 Jan 2025",
+  readTime: articleData.readTime || "5 min",
   author: {
-    name: articleData.author || 'Auteur Invité',
-    role: 'Contributeur',
-    avatar: '/images/authors/default.jpg',
-    bio: 'Contenu éditorial Ateliya.'
+    name: articleData.author || "Auteur Invité",
+    role: "Contributeur",
+    avatar: "/images/authors/default.jpg",
+    bio: "Contenu éditorial Ateliya.",
   },
-  image: articleData.image || 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200',
-  tags: articleData.tags || ['général'],
-  content: articleData.content || '<p>Contenu temporaire. L\'article sera bientôt disponible.</p>'
+  image:
+    articleData.image ||
+    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200",
+  tags: articleData.tags || ["général"],
+  content:
+    articleData.content ||
+    "<p>Contenu temporaire. L'article sera bientôt disponible.</p>",
 };
 
 const relatedArticles = [
@@ -68,7 +72,8 @@ const categoryColors: Record<string, string> = {
   Business: "bg-africa-gold text-white",
   Stock: "bg-ateliya-accent text-white",
   Général: "bg-gray-500 text-white",
-  Technologie: "bg-blue-500 text-white"
+  Technologie:
+    "bg-ateliya-primary/10 text-ateliya-primary border border-ateliya-primary/15",
 };
 ---
 
@@ -132,7 +137,7 @@ const categoryColors: Record<string, string> = {
               <!-- Meta -->
               <div class="flex flex-wrap items-center gap-4">
                 <span
-                  class={`px-4 py-2 rounded-xl font-bold text-sm ${categoryColors[article.category] || 'bg-gray-500 text-white'}`}
+                  class={`px-4 py-2 rounded-xl font-bold text-sm ${categoryColors[article.category] || "bg-gray-500 text-white"}`}
                 >
                   {article.category}
                 </span>
@@ -150,7 +155,7 @@ const categoryColors: Record<string, string> = {
 
               <!-- Title -->
               <h1
-                class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1]"
+                class="page-title text-white"
               >
                 {article.title}
               </h1>
@@ -158,7 +163,7 @@ const categoryColors: Record<string, string> = {
               <!-- Author -->
               <div class="flex items-center gap-4 pt-4">
                 <div
-                  class="w-16 h-16 rounded-2xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-xl"
+                  class="w-16 h-16 rounded-2xl bg-ateliya-primary flex items-center justify-center text-white font-bold text-xl"
                 >
                   {
                     article.author.name
@@ -184,22 +189,26 @@ const categoryColors: Record<string, string> = {
             <!-- Article Content -->
             <div class="lg:col-span-8">
               <!-- Social Share Bar -->
-              <div class="flex items-center gap-3 mb-8 pb-6 border-b border-gray-100">
-                <span class="text-sm font-bold text-gray-400 mr-1">Partager :</span>
+              <div
+                class="flex items-center gap-3 mb-8 pb-6 border-b border-gray-100"
+              >
+                <span class="text-sm font-bold text-gray-400 mr-1"
+                  >Partager :</span
+                >
                 <button
-                  class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:scale-[1.01] transition-transform"
                   aria-label="Partager sur Facebook"
                 >
                   <Icon name="facebook" size="sm" />
                 </button>
                 <button
-                  class="w-10 h-10 rounded-xl bg-sky-400 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:scale-[1.01] transition-transform"
                   aria-label="Partager sur Twitter"
                 >
                   <Icon name="twitter" size="sm" />
                 </button>
                 <button
-                  class="w-10 h-10 rounded-xl bg-green-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:scale-[1.01] transition-transform"
                   aria-label="Partager sur WhatsApp"
                 >
                   <Icon name="messageCircle" size="sm" />
@@ -238,11 +247,11 @@ const categoryColors: Record<string, string> = {
 
               <!-- Author Bio -->
               <div
-                class="mt-12 p-8 rounded-2xl bg-gradient-to-br from-ateliya-primary/5 to-ateliya-secondary/5 border border-ateliya-primary/10"
+                class="mt-10 p-5 rounded-2xl bg-ateliya-primary/[0.035] border border-ateliya-primary/10"
               >
-                <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex items-center gap-4">
                   <div
-                    class="w-24 h-24 rounded-2xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white font-bold text-3xl flex-shrink-0"
+                    class="w-14 h-14 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center text-ateliya-primary font-bold text-lg flex-shrink-0"
                   >
                     {
                       article.author.name
@@ -252,13 +261,13 @@ const categoryColors: Record<string, string> = {
                     }
                   </div>
                   <div class="flex-1">
-                    <h3 class="text-2xl font-black text-gray-900 mb-2">
+                    <h3 class="text-lg font-black text-gray-900 mb-0.5">
                       {article.author.name}
                     </h3>
-                    <p class="text-ateliya-primary font-semibold mb-3">
+                    <p class="text-ateliya-primary font-semibold text-sm mb-1">
                       {article.author.role}
                     </p>
-                    <p class="text-ateliya-text/80 leading-relaxed">
+                    <p class="text-ateliya-text/70 text-sm leading-relaxed">
                       {article.author.bio}
                     </p>
                   </div>
@@ -297,7 +306,7 @@ const categoryColors: Record<string, string> = {
 
               <!-- Comments Section -->
               <div class="mt-16">
-                <h2 class="text-3xl font-black text-gray-900 mb-8">
+                <h2 class="text-xl font-black text-gray-900 mb-8">
                   Commentaires (12)
                 </h2>
 
@@ -327,7 +336,7 @@ const categoryColors: Record<string, string> = {
                       class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all resize-none"
                     ></textarea>
                     <button
-                      class="px-8 py-3 rounded-xl bg-gradient-primary text-white font-bold hover:scale-105 transition-transform"
+                      class="btn-action btn-action-sm"
                     >
                       Publier le commentaire
                     </button>
@@ -339,15 +348,13 @@ const categoryColors: Record<string, string> = {
                   <div class="p-6 rounded-2xl bg-white border border-gray-100">
                     <div class="flex items-start gap-4">
                       <div
-                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold flex-shrink-0"
+                        class="w-12 h-12 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center text-ateliya-primary font-bold flex-shrink-0"
                       >
                         MK
                       </div>
                       <div class="flex-1">
                         <div class="flex items-center justify-between mb-2">
-                          <h4 class="font-bold text-gray-900">
-                            Marie Kouassi
-                          </h4>
+                          <h4 class="font-bold text-gray-900">Marie Kouassi</h4>
                           <span class="text-sm text-ateliya-text/60"
                             >Il y a 2 jours</span
                           >
@@ -364,15 +371,13 @@ const categoryColors: Record<string, string> = {
                   <div class="p-6 rounded-2xl bg-white border border-gray-100">
                     <div class="flex items-start gap-4">
                       <div
-                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold flex-shrink-0"
+                        class="w-12 h-12 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center text-ateliya-primary font-bold flex-shrink-0"
                       >
                         FT
                       </div>
                       <div class="flex-1">
                         <div class="flex items-center justify-between mb-2">
-                          <h4 class="font-bold text-gray-900">
-                            Fatou Traoré
-                          </h4>
+                          <h4 class="font-bold text-gray-900">Fatou Traoré</h4>
                           <span class="text-sm text-ateliya-text/60"
                             >Il y a 5 jours</span
                           >
@@ -398,19 +403,32 @@ const categoryColors: Record<string, string> = {
                   class="p-8 rounded-2xl bg-gradient-to-b from-white via-teal-50/40 to-white overflow-hidden relative border border-gray-100"
                 >
                   <!-- Blob décoratif -->
-                  <div class="absolute top-0 right-0 w-32 h-32 bg-ateliya-primary/5 rounded-full blur-[60px]"></div>
+                  <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-ateliya-primary/5 rounded-full blur-[60px]"
+                  >
+                  </div>
                   <!-- Dot grid -->
-                  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 28px 28px;"></div>
+                  <div
+                    class="absolute inset-0 opacity-[0.03]"
+                    style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 28px 28px;"
+                  >
+                  </div>
 
                   <div class="relative z-10 space-y-5">
                     <!-- Icon -->
-                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-ateliya-primary/10">
-                      <Icon name="mail" size="lg" class="text-ateliya-primary" />
+                    <div
+                      class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-ateliya-primary/10"
+                    >
+                      <Icon
+                        name="mail"
+                        size="lg"
+                        class="text-ateliya-primary"
+                      />
                     </div>
                     <!-- Title -->
                     <div>
                       <h3 class="text-xl font-black text-gray-900 mb-1">
-                        Restez <span class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-secondary to-ateliya-primary">Informé</span>
+                        Restez <span class="text-ateliya-primary">Informé</span>
                       </h3>
                       <p class="text-sm text-gray-500">
                         Recevez nos meilleurs conseils chaque semaine
@@ -424,7 +442,7 @@ const categoryColors: Record<string, string> = {
                         class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 text-gray-900 placeholder:text-gray-400 transition-all"
                       />
                       <button
-                        class="w-full px-6 py-3 rounded-xl bg-ateliya-primary hover:bg-ateliya-secondary text-white font-bold transition-all duration-300"
+                        class="btn-action btn-action-sm w-full"
                       >
                         S'abonner
                       </button>
@@ -445,7 +463,7 @@ const categoryColors: Record<string, string> = {
                             <Image
                               src={related.image}
                               alt={related.title}
-                              class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform"
+                              class="w-24 h-24 rounded-xl object-cover group-hover:scale-[1.01] transition-transform"
                               loading="lazy"
                               width={96}
                               height={96}
@@ -719,4 +737,3 @@ const categoryColors: Record<string, string> = {
 
   createProgressBar();
 </script>
-

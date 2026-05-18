@@ -1,14 +1,14 @@
 ---
 /**
  * Composant Card modulaire avec glassmorphism
- * @param variant - "glass" | "africa" | "dark" | "solid"
+ * @param variant - "glass" | "africa" | "solid"
  * @param hover - Active l'effet hover
  * @param padding - "none" | "sm" | "md" | "lg"
  * @param class - Classes Tailwind additionnelles
  */
 
 interface Props {
-  variant?: "glass" | "africa" | "dark" | "solid";
+  variant?: "glass" | "africa" | "solid";
   hover?: boolean;
   padding?: "none" | "sm" | "md" | "lg";
   class?: string;
@@ -32,9 +32,6 @@ const variantClasses = {
   africa:
     "backdrop-blur-md border border-africa-gold/30 relative overflow-hidden bg-gradient-to-br from-white/85 to-africa-gold/5",
   
-  dark:
-    "bg-ateliya-bg-dark/50 backdrop-blur-lg border border-ateliya-border-dark text-ateliya-text-dark",
-  
   solid:
     "bg-white border border-ateliya-border",
 };
@@ -42,10 +39,9 @@ const variantClasses = {
 // Effets hover
 const hoverClasses = hover
   ? {
-      glass: "hover:shadow-lg hover:bg-white/95",
-      africa: "hover:shadow-lg hover:border-africa-gold/50 hover:bg-white/95",
-      dark: "hover:bg-ateliya-bg-dark/70 hover:border-ateliya-primary/30",
-      solid: "hover:shadow-lg",
+      glass: "hover:shadow-md hover:bg-white/95",
+      africa: "hover:shadow-md hover:border-africa-gold/50 hover:bg-white/95",
+      solid: "hover:shadow-md",
     }[variant]
   : "";
 

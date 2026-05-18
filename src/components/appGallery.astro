@@ -7,22 +7,22 @@ import rapportImg from "../assets/app_images/rapport.png";
 
 const galleryItems = [
   {
-    label: "Accueil",
-    description: "Vue d'ensemble de l'activite et des actions du jour",
-    image: accueilImg,
-  },
-  {
-    label: "Gestion",
-    description: "Commandes, clients et suivi de l'atelier au meme endroit",
-    image: gestionImg,
-  },
-  {
     label: "Onboarding",
     description: "Configuration rapide pour demarrer sans friction",
     image: onboardingImg,
   },
   {
-    label: "Rapports",
+    label: "Accueil",
+    description: "Vue d'ensemble de l'activite et des actions du jour",
+    image: accueilImg,
+  },
+  {
+    label: "Transactions",
+    description: "Suivi clair des revenus, depenses et factures",
+    image: gestionImg,
+  },
+  {
+    label: "Statistiques",
     description: "Indicateurs clairs pour suivre la performance",
     image: rapportImg,
   },
@@ -92,7 +92,7 @@ const galleryItems = [
       >
         Decouvrez l'
         <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-ateliya-primary via-teal-400 to-ateliya-secondary"
+          class="text-ateliya-primary"
         >
           Application
         </span> Ateliya
@@ -105,282 +105,57 @@ const galleryItems = [
     </div>
   </div>
 
-  <!-- Gallery Carousel (constrained width) -->
-  <div class="max-w-6xl mx-auto px-6 lg:px-10">
-    <div class="relative">
-      <!-- Fade edges -->
-      <div
-        class="absolute left-0 top-0 bottom-0 w-20 lg:w-32 bg-gradient-to-r from-teal-50/80 via-teal-50/40 to-transparent z-10 pointer-events-none"
-      ></div>
-      <div
-        class="absolute right-0 top-0 bottom-0 w-20 lg:w-32 bg-gradient-to-l from-white/80 via-white/40 to-transparent z-10 pointer-events-none"
-      ></div>
+  <!-- Gallery Carousel -->
+  <div class="container mx-auto px-6 lg:px-10 relative z-10">
+    <div class="mx-auto grid max-w-[1164px] grid-cols-1 justify-items-center gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      {
+        galleryItems.map((item, idx) => (
+          <div
+            class="gallery-card group relative h-[552px] w-[276px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-1"
+            style={`animation-delay: ${idx * 80}ms`}
+          >
+            <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
+              <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
 
-      <!-- Scrollable track -->
-      <div
-        id="gallery-scroll"
-        class="overflow-x-auto scrollbar-hide py-4"
-      >
-        <div
-          id="gallery-track"
-          class="flex gap-5"
-          style="width: fit-content;"
-        >
-        {
-          galleryItems.slice(0, 6).map((item, idx) => (
-            <div
-              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-1"
-              style={`animation-delay: ${idx * 80}ms`}
-            >
-              {/* Phone Mockup Structure (Matches Hero) */}
-              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
-                {/* Screen Container */}
-                <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
-                  {/* Notch */}
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
-                  
-                  {item.image ? (
-                    <img
-                      src={item.image.src}
-                      alt={item.label}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      width="390"
-                      height="844"
-                      decoding="async"
+                {item.image ? (
+                  <img
+                    src={item.image.src}
+                    alt={item.label}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    width="390"
+                    height="844"
+                    decoding="async"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-gray-50">
+                    <Icon
+                      name="image"
+                      size="2xl"
+                      class="text-ateliya-primary/50"
                     />
-                  ) : (
-                    <div class="w-full h-full flex items-center justify-center bg-gray-50">
-                      <Icon
-                        name="image"
-                        size="2xl"
-                        class="text-ateliya-primary/50"
-                      />
-                    </div>
-                  )}
-
-                  {/* Text Overlay - keeping it subtle at the bottom or hidden? 
-                      The user wants it like the hero, hero has no text overlay on the phone itself.
-                      But the gallery cardHAD text. I will keep the text overlay but make it respect the rounded corners.
-                  */}
-                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                  
-                  <div class="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <p class="text-white font-bold text-xl mb-1">{item.label}</p>
-                    <p class="text-white/80 text-sm leading-relaxed">
-                      {item.description}
-                    </p>
                   </div>
+                )}
+
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+
+                <div class="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <p class="text-white font-bold text-xl mb-1">{item.label}</p>
+                  <p class="text-white/80 text-sm leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>
-          ))
-        }
-
-        {/* Duplicate for infinite scroll illusion */}
-          {
-          galleryItems.slice(0, 6).map((item, idx) => (
-            <div
-              class="gallery-card group relative flex-shrink-0 w-[276px] h-[552px] rounded-[2.75rem] overflow-visible transition-all duration-300 hover:-translate-y-1"
-              aria-hidden="true"
-            >
-              <div class="relative w-full h-full bg-gray-900 rounded-[2.75rem] p-2.5 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
-                <div class="relative w-full h-full bg-white rounded-[2.25rem] overflow-hidden">
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-3xl z-20"></div>
-                  
-                  {item.image ? (
-                    <img
-                      src={item.image.src}
-                      alt=""
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                      width="390"
-                      height="844"
-                      decoding="async"
-                    />
-                  ) : (
-                    <div class="w-full h-full flex items-center justify-center bg-gray-50">
-                      <Icon
-                        name="image"
-                        size="2xl"
-                        class="text-ateliya-primary/50"
-                      />
-                    </div>
-                  )}
-
-                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                  
-                  <div class="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <p class="text-white font-bold text-xl mb-1">{item.label}</p>
-                    <p class="text-white/80 text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- Navigation arrows -->
-    <div class="container mx-auto px-6 lg:px-12 relative z-20">
-      <div class="flex items-center justify-center gap-3 mt-8">
-        <button
-          id="gallery-prev"
-          class="w-11 h-11 rounded-full bg-white/[0.96] border border-ateliya-border/[0.55] flex items-center justify-center hover:border-ateliya-primary/[0.35] hover:shadow-[0_8px_18px_rgba(18,63,59,0.06)] transition-all duration-300 hover:-translate-y-0.5"
-          aria-label="Precedent"
-        >
-          <Icon name="chevron-left" size="sm" class="text-gray-600" />
-        </button>
-
-        <!-- Progress dots -->
-        <div class="flex items-center gap-1.5 px-3" id="gallery-dots">
-          {
-            galleryItems.slice(0, 6).map((_, i) => (
-              <div
-                class={`gallery-dot rounded-full transition-all duration-300 ${i === 0 ? "w-6 h-2 bg-ateliya-primary" : "w-2 h-2 bg-gray-300"}`}
-              />
-            ))
-          }
-        </div>
-
-        <button
-          id="gallery-next"
-          class="w-11 h-11 rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white flex items-center justify-center shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:shadow-[0_10px_22px_rgba(47,175,164,0.18)] transition-all duration-300 hover:-translate-y-0.5"
-          aria-label="Suivant"
-        >
-          <Icon name="chevron-right" size="sm" class="text-white" />
-        </button>
-      </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
 
-<script>
-  function initGallery() {
-    const scrollContainer = document.getElementById("gallery-scroll");
-    const track = document.getElementById("gallery-track");
-    const prevBtn = document.getElementById("gallery-prev");
-    const nextBtn = document.getElementById("gallery-next");
-    const dots = document.querySelectorAll(".gallery-dot");
-
-    if (!scrollContainer || !track) return;
-
-    const cards = track.querySelectorAll(".gallery-card");
-    const totalOriginal = cards.length / 2;
-    const getCardWidth = () => {
-      const card = cards[0];
-      if (!card) return 296; // 276 width + 20 gap
-      return card.offsetWidth + 20;
-    };
-
-    let autoScrollId: number | null = null;
-    let isHovering = false;
-
-    const updateDots = () => {
-      const cardWidth = getCardWidth();
-      const currentIndex =
-        Math.round(scrollContainer.scrollLeft / cardWidth) % totalOriginal;
-
-      dots.forEach((dot, i) => {
-        if (i === currentIndex) {
-          dot.classList.remove("w-2", "h-2", "bg-gray-300");
-          dot.classList.add("w-6", "h-2", "bg-ateliya-primary");
-        } else {
-          dot.classList.remove("w-6", "bg-ateliya-primary");
-          dot.classList.add("w-2", "h-2", "bg-gray-300");
-        }
-      });
-    };
-
-    const scrollByCard = (direction: number) => {
-      const cardWidth = getCardWidth();
-      scrollContainer.scrollBy({
-        left: cardWidth * direction,
-        behavior: "smooth",
-      });
-    };
-
-    const resetScrollIfNeeded = () => {
-      const cardWidth = getCardWidth();
-      const halfPoint = cardWidth * totalOriginal;
-
-      if (scrollContainer.scrollLeft >= halfPoint) {
-        scrollContainer.scrollLeft -= halfPoint;
-      }
-      if (scrollContainer.scrollLeft <= 0 && totalOriginal > 0) {
-        scrollContainer.scrollLeft += halfPoint;
-      }
-    };
-
-    const startAutoScroll = () => {
-      if (autoScrollId) return;
-      autoScrollId = window.setInterval(() => {
-        if (isHovering) return;
-        scrollContainer.scrollLeft += 1;
-        resetScrollIfNeeded();
-        updateDots();
-      }, 30);
-    };
-
-    const stopAutoScroll = () => {
-      if (autoScrollId) {
-        clearInterval(autoScrollId);
-        autoScrollId = null;
-      }
-    };
-
-    scrollContainer.addEventListener("mouseenter", () => {
-      isHovering = true;
-    });
-    scrollContainer.addEventListener("mouseleave", () => {
-      isHovering = false;
-    });
-
-    prevBtn?.addEventListener("click", () => {
-      stopAutoScroll();
-      scrollByCard(-1);
-      setTimeout(() => {
-        resetScrollIfNeeded();
-        updateDots();
-        startAutoScroll();
-      }, 400);
-    });
-
-    nextBtn?.addEventListener("click", () => {
-      stopAutoScroll();
-      scrollByCard(1);
-      setTimeout(() => {
-        resetScrollIfNeeded();
-        updateDots();
-        startAutoScroll();
-      }, 400);
-    });
-
-    scrollContainer.addEventListener("scroll", () => {
-      updateDots();
-    }, { passive: true });
-
-    startAutoScroll();
-  }
-
-  document.addEventListener("DOMContentLoaded", initGallery);
-  document.addEventListener("astro:page-load", initGallery);
-</script>
-
 <style>
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    scroll-behavior: auto;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
   .gallery-card {
     animation: galleryCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
@@ -402,3 +177,4 @@ const galleryItems = [
     }
   }
 </style>
+

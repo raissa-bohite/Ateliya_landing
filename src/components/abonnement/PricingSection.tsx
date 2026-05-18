@@ -237,7 +237,7 @@ export default function PricingSection({
                   />
 
                   <div
-                    className={`h-full p-5 md:p-6 rounded-2xl bg-white/[0.96] border transition-all duration-500 hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] hover:-translate-y-0.5 relative overflow-hidden ${
+                    className={`h-full p-5 md:p-6 rounded-2xl bg-white/[0.96] border transition-all duration-500 hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] hover:-translate-y-px relative overflow-hidden ${
                       popular
                         ? "border-ateliya-primary/30"
                         : "border-ateliya-border/[0.55] group-hover/plan:border-ateliya-primary/30"
@@ -247,7 +247,7 @@ export default function PricingSection({
 
                     {popular && (
                       <div className="absolute -top-px left-0 right-0 flex justify-center">
-                        <div className="px-5 py-1.5 rounded-b-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-[11px] font-black tracking-wide uppercase shadow-[0_6px_16px_rgba(47,175,164,0.12)] flex items-center gap-1">
+                        <div className="px-5 py-1.5 rounded-b-xl bg-ateliya-primary text-white text-[11px] font-black tracking-wide uppercase shadow-[0_6px_16px_rgba(47,175,164,0.12)] flex items-center gap-1">
                           <Star size={10} fill="currentColor" /> Le plus
                           populaire
                         </div>
@@ -260,7 +260,7 @@ export default function PricingSection({
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div
-                          className={`relative flex items-center justify-center w-12 h-12 rounded-2xl group-hover/plan:-translate-y-0.5 transition-all duration-500 shadow-[0_6px_16px_rgba(18,63,59,0.035)] ${
+                          className={`relative flex items-center justify-center w-12 h-12 rounded-2xl group-hover/plan:-translate-y-px transition-all duration-500 shadow-[0_6px_16px_rgba(18,63,59,0.035)] ${
                             idx === 0
                               ? "bg-gradient-to-br from-ateliya-primary/[0.16] to-ateliya-primary/[0.08] text-ateliya-primary"
                               : idx === 1
@@ -337,7 +337,7 @@ export default function PricingSection({
                           onClick={() => setPlanSelectionne(mod)}
                           className={`group/btn w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] inline-flex items-center justify-center gap-2 ${
                             popular
-                              ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-[0_10px_24px_rgba(47,175,164,0.14)] hover:shadow-[0_14px_30px_rgba(47,175,164,0.18)]"
+                              ? "bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)]"
                               : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-primary"
                           }`}
                         >
@@ -368,3 +368,4 @@ export default function PricingSection({
     </div>
   );
 }
+

@@ -46,7 +46,7 @@ const featureColors = [
       <!-- Titre -->
       <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-ateliya-dark">
         Outils Essentiels pour
-        <span class="block mt-2 text-gradient-primary">
+        <span class="block mt-2 text-ateliya-primary">
           votre Succès
         </span>
       </h2>
@@ -62,7 +62,7 @@ const featureColors = [
       <div class="flex flex-wrap justify-center gap-4 pt-4">
         {stats.map((stat, i) => (
           <div 
-            class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/80 backdrop-blur-md border-2 border-ateliya-primary/25 hover:border-ateliya-primary/50 hover:shadow-lg transition-all duration-300 hover:scale-105"
+            class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/80 backdrop-blur-md border-2 border-ateliya-primary/25 hover:border-ateliya-primary/50 hover:shadow-md transition-all duration-300 hover:scale-[1.01]"
           >
             <span class="text-2xl font-black text-ateliya-primary">{stat.value}</span>
             <span class="text-sm font-bold text-ateliya-text/70">{stat.label}</span>
@@ -162,7 +162,7 @@ const featureColors = [
             <!-- Title -->
             <h3 class="text-3xl md:text-4xl lg:text-5xl font-black text-ateliya-dark leading-tight">
               Transformez votre atelier
-              <span class="block mt-2 text-gradient-primary">
+              <span class="block mt-2 text-ateliya-primary">
                 dès aujourd'hui
               </span>
             </h3>
@@ -177,7 +177,7 @@ const featureColors = [
             <!-- Benefits -->
             <div class="flex flex-wrap gap-3">
               {benefits.map((benefit) => (
-                <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 border-2 border-ateliya-primary/25 hover:border-ateliya-primary/50 transition-all duration-300 hover:scale-105">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 border-2 border-ateliya-primary/25 hover:border-ateliya-primary/50 transition-all duration-300 hover:scale-[1.01]">
                   <Check class="w-5 h-5 text-ateliya-primary" />
                   <span class="font-bold text-ateliya-dark text-sm">{benefit.text}</span>
                 </div>

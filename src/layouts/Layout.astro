@@ -44,9 +44,8 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
 
-    <meta name="theme-color" content="#2FAFA4" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#111918" media="(prefers-color-scheme: dark)" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#2FAFA4" />
+    <meta name="color-scheme" content="light" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -218,7 +217,7 @@ const canonicalURL = new URL(Astro.url.pathname, url).toString();
 
 <style>
   :root {
-    color-scheme: light dark;
+    color-scheme: light;
   }
 
   /* ── Conteneur flottant ── */

@@ -94,7 +94,7 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
             </div>
 
             <!-- Title -->
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
+            <h1 class="page-title text-white">
               {currentCategory}
             </h1>
 
@@ -217,7 +217,7 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
                     <!-- Footer -->
                     <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                       <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-ateliya-primary to-ateliya-secondary flex items-center justify-center text-white text-xs font-bold">
+                        <div class="w-8 h-8 rounded-xl bg-ateliya-primary flex items-center justify-center text-white text-xs font-bold">
                           {post.author.split(' ').map(n => n[0]).join('')}
                         </div>
                         <span class="text-sm font-semibold text-ateliya-dark">{post.author}</span>
@@ -258,10 +258,10 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
               Parcourez toutes nos catégories ou utilisez la recherche pour trouver l'article parfait
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="/blog" class="px-8 py-4 rounded-2xl bg-gradient-primary text-white font-bold hover:scale-105 transition-transform">
+              <a href="/blog" class="btn-action">
                 Voir tous les articles
               </a>
-              <a href="/blog/recherche" class="px-8 py-4 rounded-2xl border-2 border-ateliya-primary/20 hover:border-ateliya-primary/40 text-ateliya-dark font-bold hover:bg-ateliya-primary/5 transition-all">
+              <a href="/blog/recherche" class="btn-action-secondary">
                 Rechercher
               </a>
             </div>

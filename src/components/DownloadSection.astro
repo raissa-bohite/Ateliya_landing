@@ -105,7 +105,7 @@ import accueilImg from "../assets/app_images/accueil.png";
             href="https://apps.apple.com/us/app/ateliya/id6755125319"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center gap-3 px-4 py-3 bg-white/[0.96] rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/[0.35] hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-all duration-300 hover:-translate-y-px min-w-[180px]"
+            class="group flex items-center gap-3 px-4 py-3 bg-white/[0.96] rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/[0.35] hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out hover:-translate-y-px active:translate-y-0 min-w-[180px]"
           >
             <div
               class="flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 group-hover:bg-ateliya-primary/10 transition-colors duration-300"
@@ -135,7 +135,7 @@ import accueilImg from "../assets/app_images/accueil.png";
             <Icon
               name="arrow-right"
               size="sm"
-              class="text-ateliya-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
+              class="text-ateliya-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-[transform,opacity] duration-200 ease-out"
             />
           </a>
 
@@ -144,7 +144,7 @@ import accueilImg from "../assets/app_images/accueil.png";
             href="https://play.google.com/store/apps/details?id=com.ateliya.app"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center gap-3 px-4 py-3 bg-ateliya-primary text-white rounded-2xl shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] transition-all duration-300 hover:-translate-y-px relative overflow-hidden min-w-[180px]"
+            class="group flex items-center gap-3 px-4 py-3 bg-ateliya-primary text-white rounded-2xl shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] transition-[transform,background-color,box-shadow] duration-200 ease-out hover:-translate-y-px active:translate-y-0 relative overflow-hidden min-w-[180px]"
           >
             <!-- Shimmer -->
             <span class="absolute inset-0 dl-shimmer"></span>
@@ -178,7 +178,7 @@ import accueilImg from "../assets/app_images/accueil.png";
               <Icon
                 name="arrow-right"
                 size="sm"
-                class="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
+                class="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-[transform,opacity] duration-200 ease-out"
               />
             </div>
           </a>
@@ -186,10 +186,10 @@ import accueilImg from "../assets/app_images/accueil.png";
 
         <!-- QR Code -->
         <div
-          class="flex items-center gap-5 p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-all duration-300"
+          class="flex items-center gap-5 p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out"
         >
           <div
-            class="flex-shrink-0 w-20 h-20 rounded-xl bg-gradient-to-br from-ateliya-primary/10 to-ateliya-primary/5 border border-ateliya-primary/20 flex items-center justify-center"
+            class="flex-shrink-0 w-20 h-20 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/20 flex items-center justify-center"
           >
             <Icon name="qr-code" size="xl" class="text-ateliya-primary" />
           </div>
@@ -212,7 +212,7 @@ import accueilImg from "../assets/app_images/accueil.png";
       >
         <!-- Background fill circle -->
         <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-ateliya-primary/[0.035] to-ateliya-secondary/[0.025]"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[460px] rounded-full bg-ateliya-primary/[0.035]"
         >
         </div>
 
@@ -349,7 +349,7 @@ import accueilImg from "../assets/app_images/accueil.png";
 
         <!-- Rotated square -->
         <div
-          class="absolute top-[8%] right-[25%] w-8 h-8 rounded-lg rotate-45 bg-gradient-to-br from-ateliya-primary/15 to-ateliya-secondary/10"
+          class="absolute top-[8%] right-[25%] w-8 h-8 rounded-lg rotate-45 bg-ateliya-primary/[0.12]"
         >
         </div>
 

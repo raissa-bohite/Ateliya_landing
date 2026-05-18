@@ -11,8 +11,38 @@
 
 /* ===== THEME ===== */
 @layer base {
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  html {
+    @apply scroll-smooth;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
-    @apply bg-ateliya-background text-ateliya-text antialiased;
+    @apply overflow-x-hidden bg-ateliya-background text-ateliya-text antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    @apply bg-ateliya-primary/15 text-ateliya-dark;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ateliya-primary ring-offset-2 ring-offset-white;
   }
 }
 
@@ -22,11 +52,12 @@
   }
 
   .page-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold tracking-tighter leading-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold tracking-tighter leading-[1.05];
   }
 
   .btn-action {
-    @apply inline-flex items-center justify-center gap-3 rounded-2xl bg-ateliya-primary px-7 py-3.5 font-bold text-white transition-all duration-300 hover:-translate-y-px active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-3 rounded-2xl bg-ateliya-primary px-7 py-3.5 font-bold text-white transition-[transform,background-color,box-shadow,border-color,color] duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    transition-timing-function: var(--ease-out);
     box-shadow: 0 8px 18px rgba(47, 175, 164, 0.14);
   }
 
@@ -44,11 +75,13 @@
   }
 
   .btn-action-secondary {
-    @apply inline-flex items-center justify-center gap-3 rounded-2xl border border-ateliya-primary/20 bg-white px-7 py-3.5 font-bold text-ateliya-dark transition-all duration-300 hover:-translate-y-px hover:border-ateliya-primary/35 hover:bg-ateliya-primary/5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-3 rounded-2xl border border-ateliya-primary/20 bg-white px-7 py-3.5 font-bold text-ateliya-dark transition-[transform,background-color,border-color,color,box-shadow] duration-200 hover:-translate-y-px hover:border-ateliya-primary/35 hover:bg-ateliya-primary/5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    transition-timing-function: var(--ease-out);
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-3 rounded-2xl bg-ateliya-primary px-7 py-3.5 font-bold text-white transition-all duration-300 hover:-translate-y-px active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-3 rounded-2xl bg-ateliya-primary px-7 py-3.5 font-bold text-white transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    transition-timing-function: var(--ease-out);
     box-shadow: 0 8px 18px rgba(47, 175, 164, 0.14);
   }
 
@@ -58,7 +91,8 @@
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-3 rounded-2xl border border-ateliya-primary/20 bg-white px-7 py-3.5 font-bold text-ateliya-dark transition-all duration-300 hover:-translate-y-px hover:border-ateliya-primary/35 hover:bg-ateliya-primary/5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-3 rounded-2xl border border-ateliya-primary/20 bg-white px-7 py-3.5 font-bold text-ateliya-dark transition-[transform,background-color,border-color,color,box-shadow] duration-200 hover:-translate-y-px hover:border-ateliya-primary/35 hover:bg-ateliya-primary/5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2;
+    transition-timing-function: var(--ease-out);
   }
 }
 

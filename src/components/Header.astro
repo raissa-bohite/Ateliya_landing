@@ -9,18 +9,28 @@ interface Props {
 }
 
 const { class: className = "" } = Astro.props;
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const normalizePath = (href: string) => {
+  if (href.startsWith("#")) return "/";
+  return href.replace(/\/$/, "") || "/";
+};
+const isNavActive = (href: string) => {
+  const path = normalizePath(href);
+  return path === "/" ? currentPath === "/" : currentPath.startsWith(path);
+};
 ---
 
 <header
   id="header"
   class:list={[
-    "fixed inset-x-0 top-0 z-50 px-0 transition-all duration-300",
+    "fixed inset-x-0 top-0 z-50 px-0 transition-[transform,opacity] duration-200 ease-out",
     className,
   ]}
 >
   <!-- Background -->
   <div
-    class="header-bg absolute inset-y-0 left-0 right-0 border-b border-ateliya-border/[0.55] bg-white/[0.92] shadow-[0_6px_18px_rgba(18,63,59,0.035)] backdrop-blur-xl transition-all duration-300"
+    class="header-bg absolute inset-y-0 left-0 right-0 border-b border-ateliya-border/[0.55] bg-white/[0.92] shadow-[0_6px_18px_rgba(18,63,59,0.035)] backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-200 ease-out"
   >
   </div>
 
@@ -70,7 +80,13 @@ const { class: className = "" } = Astro.props;
         navItems.map((item) => (
           <a
             href={item.href}
-            class="nav-link relative px-3.5 py-1.5 text-[13px] font-medium text-gray-600 hover:text-ateliya-primary rounded-full transition-all duration-300 hover:bg-ateliya-primary/[0.06]"
+            aria-current={isNavActive(item.href) ? "page" : undefined}
+            class:list={[
+              "nav-link relative px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-[background-color,color,transform] duration-200",
+              isNavActive(item.href)
+                ? "text-ateliya-primary bg-ateliya-primary/[0.07]"
+                : "text-gray-600 hover:text-ateliya-primary hover:bg-ateliya-primary/[0.06]",
+            ]}
           >
             {item.label}
           </a>
@@ -85,7 +101,13 @@ const { class: className = "" } = Astro.props;
         href="/connexion"
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden md:inline-flex nav-link relative px-3.5 py-1.5 text-[13px] font-medium text-ateliya-primary hover:text-ateliya-secondary rounded-full transition-all duration-300 hover:bg-ateliya-primary/[0.06]"
+        aria-current={currentPath.startsWith("/connexion") ? "page" : undefined}
+        class:list={[
+          "hidden md:inline-flex nav-link relative px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-[background-color,color,transform] duration-200",
+          currentPath.startsWith("/connexion")
+            ? "text-ateliya-primary bg-ateliya-primary/[0.07]"
+            : "text-ateliya-primary hover:text-ateliya-secondary hover:bg-ateliya-primary/[0.06]",
+        ]}
       >
         S'inscrire
       </a>
@@ -96,7 +118,7 @@ const { class: className = "" } = Astro.props;
           href="https://apps.apple.com/us/app/ateliya/id6755125319"
           target="_blank"
           rel="noopener noreferrer"
-          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-white/[0.96] text-gray-800 rounded-xl border border-ateliya-primary/20 transition-all duration-300 group/store shadow-[0_6px_16px_rgba(18,63,59,0.035),inset_0_1px_0_rgba(255,255,255,0.8)]"
+          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-white/[0.96] text-gray-800 rounded-xl border border-ateliya-primary/20 transition-[transform,border-color,background-color,box-shadow] duration-200 ease-out group/store shadow-[0_6px_16px_rgba(18,63,59,0.035),inset_0_1px_0_rgba(255,255,255,0.8)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -121,7 +143,7 @@ const { class: className = "" } = Astro.props;
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
           target="_blank"
           rel="noopener noreferrer"
-          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-ateliya-primary text-white rounded-xl transition-all duration-300 hover:bg-[#279f95] shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
+          class="store-btn flex items-center gap-2 px-3 py-1.5 bg-ateliya-primary text-white rounded-xl transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-[#279f95] shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -169,7 +191,13 @@ const { class: className = "" } = Astro.props;
         navItems.map((item, index) => (
           <a
             href={item.href}
-            class="mobile-nav-link flex items-center gap-3 px-4 py-3 text-gray-800 font-semibold text-sm rounded-xl hover:bg-ateliya-primary/[0.06] transition-all duration-200"
+            aria-current={isNavActive(item.href) ? "page" : undefined}
+            class:list={[
+              "mobile-nav-link flex items-center gap-3 px-4 py-3 font-semibold text-sm rounded-xl transition-[background-color,color,transform] duration-200",
+              isNavActive(item.href)
+                ? "bg-ateliya-primary/[0.07] text-ateliya-primary"
+                : "text-gray-800 hover:bg-ateliya-primary/[0.06]",
+            ]}
             style={`animation-delay: ${index * 40}ms`}
           >
             <span
@@ -188,7 +216,7 @@ const { class: className = "" } = Astro.props;
         href="/connexion"
         target="_blank"
         rel="noopener noreferrer"
-        class="mobile-nav-link flex items-center gap-3 px-4 py-3 text-ateliya-primary font-semibold text-sm rounded-xl hover:bg-ateliya-primary/[0.06] transition-all duration-200"
+        class="mobile-nav-link flex items-center gap-3 px-4 py-3 text-ateliya-primary font-semibold text-sm rounded-xl hover:bg-ateliya-primary/[0.06] transition-[background-color,color,transform] duration-200 ease-out"
       >
         <span
           class="flex items-center justify-center w-8 h-8 rounded-lg bg-ateliya-primary/10"
@@ -223,7 +251,7 @@ const { class: className = "" } = Astro.props;
           href="https://apps.apple.com/us/app/ateliya/id6755125319"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-white/[0.96] text-gray-800 rounded-xl border border-ateliya-primary/20 transition-all duration-300 shadow-[0_6px_16px_rgba(18,63,59,0.035)]"
+          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-white/[0.96] text-gray-800 rounded-xl border border-ateliya-primary/20 transition-[transform,border-color,background-color,box-shadow] duration-200 ease-out shadow-[0_6px_16px_rgba(18,63,59,0.035)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -245,7 +273,7 @@ const { class: className = "" } = Astro.props;
           href="https://play.google.com/store/apps/details?id=com.ateliya.app"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-ateliya-primary text-white rounded-xl transition-all duration-300 hover:bg-[#279f95] shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
+          class="flex items-center justify-center gap-2.5 px-4 py-3 bg-ateliya-primary text-white rounded-xl transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-[#279f95] shadow-[0_8px_18px_rgba(47,175,164,0.14)]"
         >
           <svg
             class="w-5 h-5 flex-shrink-0"
@@ -345,7 +373,7 @@ const { class: className = "" } = Astro.props;
 
   /* ---- Hamburger ---- */
   .hamburger-line {
-    @apply block absolute left-1/2 -translate-x-1/2 h-[1.5px] w-[18px] bg-gray-600 rounded-full transition-all duration-300;
+    @apply block absolute left-1/2 -translate-x-1/2 h-[1.5px] w-[18px] bg-gray-600 rounded-full transition-[transform,opacity,top,bottom] duration-200 ease-out;
   }
 
   .hamburger-line-1 {
@@ -387,11 +415,7 @@ const { class: className = "" } = Astro.props;
     left: 50%;
     width: 0;
     height: 1.5px;
-    background: linear-gradient(
-      90deg,
-      var(--color-ateliya-primary),
-      var(--color-ateliya-secondary)
-    );
+    background: var(--color-ateliya-primary);
     transform: translateX(-50%);
     border-radius: 999px;
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);

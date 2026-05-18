@@ -67,10 +67,10 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
   <Layout title={`Catégorie: ${currentCategory}`}>
     <Header />
 
-    <section class="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <section class="min-h-[100dvh] bg-white">
       
       <!-- Header -->
-      <div class="relative overflow-hidden bg-gradient-to-br {info.color} py-20 md:py-24">
+      <div class="relative overflow-hidden bg-ateliya-primary py-20 md:py-24">
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;"></div>
         
         <div class="container-wide relative z-10">
@@ -149,7 +149,7 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
           </div>
           <div class="flex items-center gap-3">
             <label class="text-sm font-semibold text-ateliya-text/60">Trier par:</label>
-            <select class="px-4 py-2 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all font-semibold text-ateliya-dark">
+            <select class="px-4 py-2 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out font-semibold text-ateliya-dark">
               <option>Plus récent</option>
               <option>Plus ancien</option>
               <option>Plus populaire</option>
@@ -163,7 +163,7 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
           {filteredPosts.map((post, i) => (
             <article class="group/post animate-fade-in-up" style={`animation-delay: ${i * 100}ms`}>
               <a href={`/blog/${post.id}`} class="block h-full">
-                <div class="h-full flex flex-col rounded-3xl bg-white border border-gray-100 hover:border-ateliya-primary/20 hover:shadow-2xl transition-all duration-500 overflow-hidden group-hover/post:scale-[1.02]">
+                <div class="h-full flex flex-col rounded-3xl bg-white border border-gray-100 hover:border-ateliya-primary/20 hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out overflow-hidden group-hover/post:scale-[1.02]">
                   
                   <!-- Image -->
                   <div class="relative h-64 overflow-hidden">
@@ -223,7 +223,7 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
                         <span class="text-sm font-semibold text-ateliya-dark">{post.author}</span>
                       </div>
 
-                      <div class="flex items-center gap-1 text-ateliya-primary font-bold text-sm group-hover/post:gap-2 transition-all">
+                      <div class="flex items-center gap-1 text-ateliya-primary font-bold text-sm group-hover/post:gap-2 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
                         <span>Lire</span>
                         <Icon name="arrowRight" size="sm" class="group-hover/post:translate-x-1 transition-transform" />
                       </div>
@@ -237,19 +237,19 @@ const info = categoryInfo[currentCategory] || categoryInfo["Productivité"];
 
         <!-- Pagination -->
         <div class="flex items-center justify-center gap-3 mt-16">
-          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 flex items-center justify-center transition-all" disabled>
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 flex items-center justify-center transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out" disabled>
             <Icon name="arrowLeft" size="sm" class="text-ateliya-text/40" />
           </button>
           <button class="w-12 h-12 rounded-xl bg-ateliya-primary text-white font-bold">1</button>
-          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 font-bold text-ateliya-dark transition-all">2</button>
-          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 font-bold text-ateliya-dark transition-all">3</button>
-          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 flex items-center justify-center transition-all">
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 font-bold text-ateliya-dark transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">2</button>
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 font-bold text-ateliya-dark transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">3</button>
+          <button class="w-12 h-12 rounded-xl border border-gray-200 hover:border-ateliya-primary hover:bg-ateliya-primary/5 flex items-center justify-center transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
             <Icon name="arrowRight" size="sm" class="text-ateliya-dark" />
           </button>
         </div>
 
         <!-- CTA Section -->
-        <div class="mt-20 p-12 md:p-16 rounded-[2rem] bg-gradient-to-br from-ateliya-primary/5 to-ateliya-secondary/5 border-2 border-ateliya-primary/10 text-center">
+        <div class="mt-20 p-12 md:p-16 rounded-[2rem] bg-ateliya-primary/5 border border-ateliya-primary/10 text-center">
           <div class="max-w-3xl mx-auto space-y-6">
             <h2 class="text-3xl md:text-4xl font-black text-ateliya-dark">
               Vous ne trouvez pas ce que vous cherchez ?

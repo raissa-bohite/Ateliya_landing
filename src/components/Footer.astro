@@ -42,7 +42,7 @@ import logoImg from '../assets/ateliya.webp';
             alt="Ateliya"
             width={44}
             height={44}
-            class="rounded-xl shadow-[0_6px_16px_rgba(18,63,59,0.045)] group-hover:scale-[1.01] transition-transform duration-300"
+            class="rounded-xl shadow-[0_6px_16px_rgba(18,63,59,0.045)] group-hover:-translate-y-px transition-transform duration-300"
             loading="lazy"
           />
           <span
@@ -63,7 +63,7 @@ import logoImg from '../assets/ateliya.webp';
             socials.map((social) => (
               <a
                 href={social.href}
-                class="footer-social w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.94] border border-ateliya-border/[0.55] text-gray-500 shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:text-ateliya-primary hover:bg-white hover:border-ateliya-primary/[0.22] hover:-translate-y-px transition-all duration-300"
+                class="footer-social w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.94] border border-ateliya-border/[0.55] text-gray-500 shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:text-ateliya-primary hover:bg-white hover:border-ateliya-primary/[0.22] hover:-translate-y-px transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                 aria-label={social.name}
                 set:html={social.svg}
               />
@@ -85,7 +85,7 @@ import logoImg from '../assets/ateliya.webp';
                   href={link.href}
                   class="group flex items-center gap-2.5 text-sm font-medium text-gray-500 hover:text-ateliya-primary transition-colors duration-300"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-125 transition-all duration-300" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-110 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out" />
                   {link.label}
                 </a>
               </li>
@@ -107,7 +107,7 @@ import logoImg from '../assets/ateliya.webp';
                   href={link.href}
                   class="group flex items-center gap-2.5 text-sm font-medium text-gray-500 hover:text-ateliya-primary transition-colors duration-300"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-125 transition-all duration-300" />
+                  <span class="w-1.5 h-1.5 rounded-full bg-ateliya-primary/20 group-hover:bg-ateliya-primary group-hover:scale-110 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out" />
                   {link.label}
                 </a>
               </li>

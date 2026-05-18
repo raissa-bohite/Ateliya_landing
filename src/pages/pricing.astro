@@ -35,7 +35,7 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
     <!-- ============================================
          HERO
          ============================================ -->
-    <section class="relative pt-24 lg:pt-28 pb-10 lg:pb-14 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
+    <section class="relative pt-24 lg:pt-28 pb-10 lg:pb-14 overflow-hidden bg-white">
 
       <div class="absolute top-[5%] right-[20%] w-80 h-80 bg-ateliya-primary/[0.035] rounded-full blur-[120px]"></div>
       <div class="absolute bottom-[15%] left-[15%] w-64 h-64 bg-ateliya-secondary/[0.025] rounded-full blur-[100px]"></div>
@@ -114,7 +114,7 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
     <!-- ============================================
          FAQ
          ============================================ -->
-    <section class="relative py-14 lg:py-18 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
+    <section class="relative py-14 lg:py-18 overflow-hidden bg-white">
 
       <div class="absolute top-[10%] right-[10%] w-72 h-72 bg-ateliya-primary/[0.03] rounded-full blur-[120px]"></div>
       <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 36px 36px;"></div>
@@ -152,12 +152,12 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
                     aria-expanded="false"
                   >
                     <div class="flex items-center gap-3">
-                      <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-ateliya-primary/15 to-ateliya-primary/5 flex items-center justify-center">
+                      <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-ateliya-primary/10 flex items-center justify-center">
                         <span class="text-sm font-black text-ateliya-primary">{String(idx + 1).padStart(2, "0")}</span>
                       </div>
                       <span class="font-bold text-gray-900 text-base">{item.question}</span>
                     </div>
-                    <div class="faq-chevron flex-shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center transition-all duration-300">
+                    <div class="faq-chevron flex-shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
                       <Icon name="chevron-down" size="sm" class="text-gray-400 transition-transform duration-300" />
                     </div>
                   </button>
@@ -178,9 +178,9 @@ const initialModules = modulesResponse.success ? modulesResponse.data : [];
     <!-- ============================================
          CTA FINAL
          ============================================ -->
-    <section class="relative py-12 px-8 lg:px-12 mx-6 lg:mx-12 mb-14 rounded-3xl overflow-hidden bg-gradient-to-br from-teal-50/55 via-white to-amber-50/[0.18] border border-ateliya-border/[0.55] shadow-[0_16px_44px_rgba(18,63,59,0.045)]">
+    <section class="relative py-12 px-8 lg:px-12 mx-6 lg:mx-12 mb-14 rounded-3xl overflow-hidden bg-white/[0.96] border border-ateliya-border/[0.55] shadow-[0_16px_44px_rgba(18,63,59,0.045)]">
 
-      <div class="absolute right-0 top-0 w-[40%] h-[60%] bg-gradient-to-bl from-ateliya-primary/[0.03] to-transparent rounded-bl-[80px]"></div>
+      <div class="absolute right-0 top-0 w-[40%] h-[60%] bg-ateliya-primary/[0.025] rounded-bl-[80px]"></div>
       <div class="absolute top-[10%] right-[20%] w-56 h-56 bg-ateliya-primary/[0.035] rounded-full blur-[100px]"></div>
       <div class="absolute bottom-[10%] left-[15%] w-48 h-48 bg-ateliya-secondary/[0.025] rounded-full blur-[80px]"></div>
       <div class="absolute inset-0 opacity-[0.014]" style="background-image: radial-gradient(circle, #2FAFA4 1px, transparent 1px); background-size: 32px 32px;"></div>

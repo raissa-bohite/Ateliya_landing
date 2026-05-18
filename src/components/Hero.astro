@@ -25,7 +25,7 @@ const phoneScreensCount = phoneScreens.length;
 
 <section
   id="hero"
-  class="relative overflow-hidden min-h-[95vh] flex items-center bg-gradient-to-br from-gray-50 via-white to-teal-50/30"
+  class="relative overflow-hidden min-h-[95dvh] flex items-center bg-gradient-to-br from-gray-50 via-white to-teal-50/30"
 >
   <!-- Background Decorations -->
   <div
@@ -101,18 +101,18 @@ const phoneScreensCount = phoneScreens.length;
             <Icon
               name="user-plus"
               size="md"
-              class="relative z-10 group-hover:scale-110 transition-transform duration-300"
+              class="relative z-10 group-hover:scale-[1.04] transition-transform duration-200 ease-out"
             />
             <span class="relative z-10">S'inscrire</span>
           </button>
           <a
             href="#demo"
-            class="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.58] backdrop-blur-sm border border-ateliya-border/[0.55] text-gray-800 font-bold text-xl shadow-[0_8px_22px_rgba(18,63,59,0.04)] hover:bg-white/[0.76] hover:border-ateliya-primary/25 transition-all duration-300 hover:-translate-y-px"
+            class="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.78] backdrop-blur-sm border border-ateliya-border/[0.55] text-gray-800 font-bold text-xl shadow-[0_6px_16px_rgba(18,63,59,0.035)] hover:bg-white hover:border-ateliya-primary/25 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out hover:-translate-y-px active:translate-y-0"
           >
             <Icon
               name="play-circle"
               size="md"
-              class="text-ateliya-primary group-hover:scale-110 transition-transform duration-300"
+              class="text-ateliya-primary group-hover:scale-[1.04] transition-transform duration-200 ease-out"
             />
             <span>Voir la Demo</span>
           </a>
@@ -122,7 +122,7 @@ const phoneScreensCount = phoneScreens.length;
           <div class="flex -space-x-2">
             {
               [1, 2, 3, 4].map((i) => (
-                <div class="w-9 h-9 rounded-full border-2 border-white bg-ateliya-primary flex items-center justify-center text-white font-bold text-xs shadow-[0_6px_14px_rgba(18,63,59,0.08)] hover:-translate-y-px hover:z-10 transition-transform duration-300">
+                <div class="w-9 h-9 rounded-full border-2 border-white bg-ateliya-primary flex items-center justify-center text-white font-bold text-xs shadow-[0_6px_14px_rgba(18,63,59,0.08)] hover:-translate-y-px hover:z-10 transition-transform duration-200 ease-out">
                   {i}
                 </div>
               ))

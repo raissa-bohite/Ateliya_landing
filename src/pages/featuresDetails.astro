@@ -33,7 +33,7 @@ const categoryMeta = [
     photoAlt: "Tailleur gerant ses clients",
     tags: ["Gestion", "Clients"],
     direction: "phone-left",
-    bgClass: "bg-gradient-to-br from-teal-50/80 via-white to-amber-50/40",
+    bgClass: "bg-white",
   },
   {
     key: "commandes",
@@ -52,7 +52,7 @@ const categoryMeta = [
     photoAlt: "Tailleur gerant ses commandes",
     tags: ["Suivi", "Commandes"],
     direction: "phone-right",
-    bgClass: "bg-gradient-to-br from-green-50/80 via-white to-teal-50/40",
+    bgClass: "bg-white",
   },
   {
     key: "finance",
@@ -71,7 +71,7 @@ const categoryMeta = [
     photoAlt: "Gestion financiere",
     tags: ["Finance", "Paiements"],
     direction: "phone-left",
-    bgClass: "bg-gradient-to-br from-green-50/80 via-white to-emerald-50/40",
+    bgClass: "bg-white",
   },
   {
     key: "productivite",
@@ -90,7 +90,7 @@ const categoryMeta = [
     photoAlt: "Productivite et statistiques",
     tags: ["Productivite", "Stats"],
     direction: "phone-right",
-    bgClass: "bg-gradient-to-br from-emerald-50/80 via-white to-green-50/40",
+    bgClass: "bg-white",
   },
 ];
 
@@ -108,11 +108,11 @@ const gradientColors = [
   <main class="overflow-hidden">
     <!-- ==================== HERO SECTION ==================== -->
     <section
-      class="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-teal-50/30"
+      class="relative min-h-[100dvh] flex items-center py-20 overflow-hidden bg-white"
     >
       <!-- Large background shape -->
       <div
-        class="absolute top-0 right-0 w-[70%] h-full bg-gradient-to-bl from-ateliya-primary/[0.035] via-ateliya-secondary/[0.025] to-transparent rounded-bl-[120px]"
+        class="absolute top-0 right-0 w-[70%] h-full bg-ateliya-primary/[0.025] rounded-bl-[120px]"
       >
       </div>
 
@@ -214,7 +214,7 @@ const gradientColors = [
             </div>
             <!-- Filled bg circle -->
             <div
-              class="absolute top-1/2 left-1/2 h-[270px] w-[270px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-ateliya-primary/6 to-ateliya-secondary/4 sm:h-[390px] sm:w-[390px] lg:h-[460px] lg:w-[460px]"
+              class="absolute top-1/2 left-1/2 h-[270px] w-[270px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ateliya-primary/[0.05] sm:h-[390px] sm:w-[390px] lg:h-[460px] lg:w-[460px]"
             >
             </div>
 
@@ -318,7 +318,7 @@ const gradientColors = [
               >
                 <div class="flex items-center gap-3">
                   <div
-                    class="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0"
+                    class="w-10 h-10 rounded-xl bg-ateliya-primary flex items-center justify-center flex-shrink-0"
                   >
                     <Icon name="credit-card" size="sm" class="text-white" />
                   </div>
@@ -351,7 +351,7 @@ const gradientColors = [
 
     <!-- ==================== COMMENT CA MARCHE ==================== -->
     <section
-      class="py-24 relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white"
+      class="py-24 relative overflow-hidden bg-white"
     >
       <div
         class="absolute inset-0 opacity-[0.014]"
@@ -361,11 +361,11 @@ const gradientColors = [
 
       <!-- Side gradient accents -->
       <div
-        class="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-teal-50/50 to-transparent"
+        class="absolute left-0 top-0 w-1/3 h-full bg-ateliya-primary/[0.025]"
       >
       </div>
       <div
-        class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-amber-50/30 to-transparent"
+        class="absolute right-0 top-0 w-1/3 h-full bg-ateliya-primary/[0.018]"
       >
       </div>
 
@@ -392,7 +392,7 @@ const gradientColors = [
             class="hidden lg:block absolute top-16 left-[8%] right-[8%] h-1 rounded-full overflow-hidden"
           >
             <div
-              class="w-full h-full bg-gradient-to-r from-ateliya-primary via-ateliya-secondary via-blue-400 via-green-400 to-purple-500 opacity-25"
+              class="w-full h-full bg-ateliya-primary opacity-25"
             >
             </div>
           </div>
@@ -401,7 +401,7 @@ const gradientColors = [
             {
               workflow.map((step, idx) => (
                 <div class="relative text-center workflow-step group">
-                  <div class="relative z-10 w-14 h-14 mx-auto mb-4 rounded-full bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center font-black text-xl shadow-[0_6px_16px_rgba(47,175,164,0.04)] group-hover:-translate-y-px group-hover:bg-ateliya-primary/14 transition-all duration-300">
+                  <div class="relative z-10 w-14 h-14 mx-auto mb-4 rounded-full bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center font-black text-xl shadow-[0_6px_16px_rgba(47,175,164,0.04)] group-hover:-translate-y-px group-hover:bg-ateliya-primary/14 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
                     {step.step}
                   </div>
                   <div class="w-16 h-16 bg-white/[0.96] rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-[0_6px_16px_rgba(18,63,59,0.04)] group-hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-shadow border border-ateliya-border/[0.55]">
@@ -698,7 +698,7 @@ const gradientColors = [
               >
                 {categoryFeatures.map((feature, fIdx) => (
                   <div
-                    class={`group relative p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] ${cat.borderHover} hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-all duration-300 feature-card hover:-translate-y-px`}
+                    class={`group relative p-5 bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] ${cat.borderHover} hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out feature-card hover:-translate-y-px`}
                     style={`animation-delay: ${fIdx * 80}ms`}
                   >
                     <span class="absolute right-4 top-4 text-xs font-black text-ateliya-primary/35">
@@ -745,21 +745,20 @@ const gradientColors = [
   @keyframes phoneEntrance {
     from {
       opacity: 0;
-      transform: translateY(40px) scale(0.95);
+      transform: translateX(var(--feature-entry-x, 0)) translateY(40px)
+        scale(0.95);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateX(var(--feature-entry-x, 0)) translateY(0) scale(1);
     }
   }
   @keyframes photoEntrance {
     from {
       opacity: 0;
-      transform: scale(0.85);
     }
     to {
       opacity: 1;
-      transform: scale(1);
     }
   }
   @keyframes floatCard {
@@ -836,6 +835,7 @@ const gradientColors = [
   }
 
   .feature-phone-entrance {
+    --feature-entry-x: -50%;
     animation: phoneEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
   .feature-photo-entrance {
@@ -848,6 +848,7 @@ const gradientColors = [
     animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   .feature-phone-slide {
+    --feature-entry-x: -50%;
     animation: phoneEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   .feature-photo-reveal {
@@ -890,6 +891,29 @@ const gradientColors = [
   }
   .workflow-step:nth-child(5) {
     animation-delay: 400ms;
+  }
+
+  @media (min-width: 1024px) {
+    .feature-phone-entrance,
+    .feature-phone-slide {
+      --feature-entry-x: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .feature-photo-entrance,
+    .feature-photo-reveal {
+      animation-name: fadeInOnly;
+    }
+
+    @keyframes fadeInOnly {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
   }
 </style>
 

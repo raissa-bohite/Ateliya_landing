@@ -86,9 +86,9 @@ import { blogPosts } from "../data/data";
             class="group blog-card-reveal"
             style={`animation-delay: ${i * 80}ms`}
           >
-            <div class="h-full bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/[0.22] hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-all duration-300 hover:-translate-y-px overflow-hidden flex flex-col relative">
+            <div class="h-full bg-white/[0.94] backdrop-blur-sm rounded-2xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/[0.22] hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out hover:-translate-y-px overflow-hidden flex flex-col relative">
               {/* Top accent line */}
-              <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-ateliya-primary to-ateliya-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
+              <div class="absolute top-0 left-0 right-0 h-px bg-ateliya-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
 
               {/* Image */}
               <div class="relative h-52 overflow-hidden">
@@ -96,7 +96,7 @@ import { blogPosts } from "../data/data";
                   <img
                     src={post.image}
                     alt={post.title}
-                    class="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-500"
+                    class="w-full h-full object-cover group-hover:-translate-y-px transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
                     width="800"
@@ -118,7 +118,7 @@ import { blogPosts } from "../data/data";
                 <div class="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Category badge */}
-                <div class="absolute top-3 right-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/90 backdrop-blur-sm text-ateliya-primary border border-ateliya-primary/20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <div class="absolute top-3 right-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/90 backdrop-blur-sm text-ateliya-primary border border-ateliya-primary/20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
                   {post.category}
                 </div>
               </div>
@@ -146,7 +146,7 @@ import { blogPosts } from "../data/data";
                 {/* Read more */}
                 <a
                   href="#"
-                  class="inline-flex items-center gap-2 text-ateliya-primary font-semibold text-sm group-hover:gap-3 transition-all duration-300"
+                  class="inline-flex items-center gap-2 text-ateliya-primary font-semibold text-sm group-hover:gap-3 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                 >
                   <span>Lire plus</span>
                   <Icon

@@ -24,7 +24,7 @@ const {
 
 // Classes de base communes
 const baseClasses =
-  "font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-px disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-offset-2";
+  "font-semibold rounded-xl transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out hover:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-offset-2";
 
 // Variantes de style
 const variantClasses = {
@@ -41,10 +41,10 @@ const variantClasses = {
     "bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] focus:ring-ateliya-primary",
   
   outline:
-    "border-2 border-ateliya-primary/30 text-ateliya-primary bg-transparent hover:bg-ateliya-primary/5 hover:text-ateliya-primary focus:ring-ateliya-primary",
+    "border border-ateliya-primary/30 text-ateliya-primary bg-white hover:bg-ateliya-primary/5 hover:border-ateliya-primary/45 hover:text-ateliya-primary focus:ring-ateliya-primary shadow-none",
   
   ghost:
-    "text-ateliya-primary bg-transparent hover:bg-ateliya-primary/10 focus:ring-ateliya-primary shadow-none",
+    "text-ateliya-primary bg-transparent hover:bg-ateliya-primary/5 focus:ring-ateliya-primary shadow-none",
 };
 
 // Aucun style inline : les boutons restent en couleur unie.

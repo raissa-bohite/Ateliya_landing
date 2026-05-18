@@ -182,7 +182,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl border border-gray-100 animate-[scaleIn_.25s_cubic-bezier(.34,1.2,.64,1)_both]"
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-[0_14px_34px_rgba(18,63,59,0.07)] border border-gray-100 animate-[scaleIn_.25s_cubic-bezier(.34,1.2,.64,1)_both]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-[2px] bg-gradient-to-r from-transparent via-ateliya-primary to-transparent" />
@@ -190,7 +190,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
         <button
           onClick={onClose}
           aria-label="Fermer"
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white border border-gray-100 text-gray-400 hover:text-gray-700 hover:border-gray-200 flex items-center justify-center transition-all"
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white border border-gray-100 text-gray-400 hover:text-gray-700 hover:border-gray-200 flex items-center justify-center transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
         >
           <X size={16} />
         </button>
@@ -228,7 +228,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                 return (
                   <div key={e.key} className="flex flex-col items-center gap-1.5 flex-1">
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black transition-all ${
+                      className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out ${
                         done
                           ? "bg-ateliya-primary/15 border-2 border-ateliya-primary text-ateliya-primary"
                           : active
@@ -255,7 +255,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
             </div>
             <div className="h-1 rounded-full bg-gray-100 overflow-hidden">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-ateliya-primary to-ateliya-secondary transition-all duration-500"
+                className="h-full rounded-full bg-ateliya-primary transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out"
                 style={{ width: `${pct}%` }}
               />
             </div>
@@ -265,7 +265,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
           {etape === "email" && (
             <div className="flex flex-col gap-5 animate-[slideUp_.35s_ease-out_both]">
               <div className="flex flex-col items-center gap-3 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-ateliya-primary/20 to-ateliya-primary/5 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-ateliya-primary/10 flex items-center justify-center">
                   <Mail className="w-6 h-6 text-ateliya-primary" strokeWidth={1.75} />
                 </div>
                 <h2 className="text-xl md:text-2xl font-serif font-extrabold tracking-tighter text-gray-900">
@@ -291,7 +291,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                     }}
                     onKeyDown={(e) => e.key === "Enter" && handleVerifyEmail()}
                     placeholder="admin@votreatelier.com"
-                    className={`w-full pl-11 pr-4 py-3 rounded-xl bg-white text-sm text-gray-900 placeholder:text-gray-300 border-2 transition-all focus:outline-none focus:border-ateliya-primary ${
+                    className={`w-full pl-11 pr-4 py-3 rounded-xl bg-white text-sm text-gray-900 placeholder:text-gray-300 border-2 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out focus:outline-none focus:border-ateliya-primary ${
                       error ? "border-red-300" : "border-gray-100"
                     }`}
                   />
@@ -306,7 +306,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
               <button
                 onClick={handleVerifyEmail}
                 disabled={loading}
-                className="w-full py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out disabled:opacity-60 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -342,7 +342,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
               )}
 
               <div className="flex flex-col items-center gap-3 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-africa-gold/20 to-africa-gold/5 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-ateliya-primary/10 flex items-center justify-center">
                   <Calendar className="w-6 h-6 text-africa-gold" strokeWidth={1.75} />
                 </div>
                 <h2 className="text-xl md:text-2xl font-serif font-extrabold tracking-tighter text-gray-900">
@@ -370,7 +370,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                     <button
                       key={key}
                       onClick={() => setPeriodicite(key)}
-                      className={`relative p-4 rounded-2xl border-2 bg-white text-left transition-all hover:-translate-y-px ${
+                      className={`relative p-4 rounded-2xl border-2 bg-white text-left transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out hover:-translate-y-px ${
                         selected
                           ? "border-ateliya-primary shadow-sm shadow-ateliya-primary/15 bg-ateliya-primary/5"
                           : "border-gray-100 hover:border-ateliya-primary/40"
@@ -411,7 +411,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                 </button>
                 <button
                   onClick={next}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                 >
                   Continuer <ArrowRight size={15} />
                 </button>
@@ -438,7 +438,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                       value={nomPayeur}
                       onChange={(e) => setNomPayeur(e.target.value)}
                       placeholder="Nom complet"
-                      className="w-full pl-11 pr-4 py-3 rounded-xl bg-white text-sm text-gray-900 placeholder:text-gray-300 border-2 border-gray-100 transition-all focus:outline-none focus:border-ateliya-primary"
+                      className="w-full pl-11 pr-4 py-3 rounded-xl bg-white text-sm text-gray-900 placeholder:text-gray-300 border-2 border-gray-100 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out focus:outline-none focus:border-ateliya-primary"
                     />
                   </div>
                 </div>
@@ -454,7 +454,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                       value={telephonePayeur}
                       onChange={(e) => setTelephonePayeur(e.target.value)}
                       placeholder={`${pays.indicatif} 07 XX XX XX XX`}
-                      className="w-full pl-11 pr-4 py-3 rounded-xl bg-white text-sm text-gray-900 placeholder:text-gray-300 border-2 border-gray-100 transition-all focus:outline-none focus:border-ateliya-primary"
+                      className="w-full pl-11 pr-4 py-3 rounded-xl bg-white text-sm text-gray-900 placeholder:text-gray-300 border-2 border-gray-100 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out focus:outline-none focus:border-ateliya-primary"
                     />
                   </div>
                 </div>
@@ -474,7 +474,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                           setMethode(m.id);
                           setError("");
                         }}
-                        className={`relative p-3 rounded-xl border-2 bg-white text-left transition-all hover:-translate-y-px flex items-center gap-3 ${
+                        className={`relative p-3 rounded-xl border-2 bg-white text-left transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out hover:-translate-y-px flex items-center gap-3 ${
                           selected ? "shadow-md" : "border-gray-100 hover:border-gray-200"
                         }`}
                         style={
@@ -532,7 +532,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                 <button
                   onClick={handlePay}
                   disabled={loading || !methode}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <>
@@ -621,7 +621,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                     <button
                       onClick={checkStatus}
                       disabled={loading}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-all disabled:opacity-60"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out disabled:opacity-60"
                     >
                       {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <RefreshCw size={14} />}
                       Vérifier le statut
@@ -641,7 +641,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                   </p>
                   <a
                     href="/connexion"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                   >
                     <Zap size={15} /> Accéder à mon espace
                   </a>
@@ -662,7 +662,7 @@ export default function AbonnementModal({ plan, pays, onClose }: Props) {
                       setPaymentStatus("pending");
                       setEtape("paiement");
                     }}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)] active:scale-[0.98] transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                   >
                     <RefreshCw size={15} /> Réessayer
                   </button>

@@ -122,16 +122,16 @@ const appFeatures = [
           <div class="group/step h-full">
             <div class="h-full relative">
               <div
-                class={`absolute -inset-1 bg-gradient-to-br ${stepStyles[i].bgColor} rounded-2xl blur-lg opacity-0 group-hover/step:opacity-24 transition-all duration-700 -z-10`}
+                class={`absolute -inset-1 bg-gradient-to-br ${stepStyles[i].bgColor} rounded-2xl blur-lg opacity-0 group-hover/step:opacity-24 transition-[transform,opacity,background-color,border-color,box-shadow] duration-500 ease-out -z-10`}
               />
 
-              <div class="h-full p-6 md:p-8 rounded-2xl bg-white/[0.96] border border-ateliya-border/[0.55] group-hover/step:border-ateliya-primary/25 transition-all duration-500 hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] relative overflow-hidden">
+              <div class="h-full p-6 md:p-8 rounded-2xl bg-white/[0.96] border border-ateliya-border/[0.55] group-hover/step:border-ateliya-primary/25 transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ateliya-primary/[0.55] to-transparent opacity-0 group-hover/step:opacity-100 transition-opacity duration-500" />
 
                 <div class="relative z-10 flex flex-col h-full space-y-6">
                   <div class="flex items-start justify-between">
                     <div
-                      class={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepStyles[i].bgColor} group-hover/step:-translate-y-px transition-all duration-500 shadow-[0_10px_24px_rgba(18,63,59,0.07)]`}
+                      class={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepStyles[i].bgColor} group-hover/step:-translate-y-px transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out shadow-[0_10px_24px_rgba(18,63,59,0.07)]`}
                     >
                       <Icon
                         name={stepStyles[i].icon}
@@ -148,7 +148,7 @@ const appFeatures = [
                     <h3 class="text-xl md:text-2xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight">
                       {step.title}
                     </h3>
-                    <div class="w-12 h-1 bg-gradient-to-r from-ateliya-primary to-transparent rounded-full group-hover/step:w-20 transition-all duration-500" />
+                    <div class="w-12 h-1 bg-gradient-to-r from-ateliya-primary to-transparent rounded-full group-hover/step:w-20 transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out" />
                   </div>
 
                   <p class="text-gray-500 leading-relaxed text-sm md:text-base flex-grow tracking-wide">
@@ -252,10 +252,10 @@ const appFeatures = [
             {
               appFeatures.map((feature, i) => (
                 <div
-                  class="group/feat flex items-start gap-4 p-4 bg-white/[0.94] backdrop-blur-sm rounded-xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:bg-white hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] hover:-translate-y-px transition-all duration-300"
+                  class="group/feat flex items-start gap-4 p-4 bg-white/[0.94] backdrop-blur-sm rounded-xl border border-ateliya-border/[0.55] hover:border-ateliya-primary/25 hover:bg-white hover:shadow-[0_6px_16px_rgba(18,63,59,0.04)] hover:-translate-y-px transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                   style={`animation-delay: ${i * 80}ms`}
                 >
-                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center shadow-[0_8px_18px_rgba(47,175,164,0.06)] group-hover/feat:-translate-y-px group-hover/feat:bg-ateliya-primary/14 transition-all duration-300">
+                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center shadow-[0_8px_18px_rgba(47,175,164,0.06)] group-hover/feat:-translate-y-px group-hover/feat:bg-ateliya-primary/14 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
                     <Icon name={feature.icon} size="sm" class="text-ateliya-primary" />
                   </div>
                   <div class="flex-1 min-w-0">

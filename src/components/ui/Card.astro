@@ -22,15 +22,16 @@ const {
 } = Astro.props;
 
 // Classes de base
-const baseClasses = "rounded-2xl transition-all duration-300";
+const baseClasses =
+  "rounded-2xl transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out";
 
 // Variantes de style
 const variantClasses = {
   glass:
-    "backdrop-blur-md bg-white/80 border border-white/40",
+    "bg-white/[0.92] border border-ateliya-border/[0.55] shadow-[0_6px_18px_rgba(18,63,59,0.035)]",
   
   africa:
-    "backdrop-blur-md border border-africa-gold/30 relative overflow-hidden bg-gradient-to-br from-white/85 to-africa-gold/5",
+    "border border-ateliya-border/[0.55] relative overflow-hidden bg-white/[0.94] shadow-[0_6px_18px_rgba(18,63,59,0.035)]",
   
   solid:
     "bg-white border border-ateliya-border",
@@ -40,8 +41,8 @@ const variantClasses = {
 const hoverClasses = hover
   ? {
       glass: "hover:shadow-md hover:bg-white/95",
-      africa: "hover:shadow-md hover:border-africa-gold/50 hover:bg-white/95",
-      solid: "hover:shadow-md",
+      africa: "hover:shadow-md hover:border-ateliya-primary/25 hover:bg-white/95",
+      solid: "hover:shadow-md hover:-translate-y-px",
     }[variant]
   : "";
 

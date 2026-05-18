@@ -142,7 +142,7 @@ export default function PricingSection({
                   type="button"
                   key={p.id}
                   onClick={() => setPaysChoisi(p)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-bold transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-bold transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out ${
                     selected
                       ? "border-ateliya-primary/35 bg-ateliya-primary/[0.08] text-ateliya-primary shadow-[0_6px_16px_rgba(18,63,59,0.035)]"
                       : "border-ateliya-border/[0.55] bg-white/[0.96] text-gray-600 hover:border-ateliya-primary/40 hover:text-ateliya-primary"
@@ -233,11 +233,11 @@ export default function PricingSection({
                         : idx === 1
                           ? "from-ateliya-secondary/[0.08] to-amber-400/[0.05]"
                           : "from-africa-gold/[0.08] to-ateliya-primary/[0.05]"
-                    } rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-50 transition-all duration-700 -z-10`}
+                    } rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-50 transition-[transform,opacity,background-color,border-color,box-shadow] duration-500 ease-out -z-10`}
                   />
 
                   <div
-                    className={`h-full p-5 md:p-6 rounded-2xl bg-white/[0.96] border transition-all duration-500 hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] hover:-translate-y-px relative overflow-hidden ${
+                    className={`h-full p-5 md:p-6 rounded-2xl bg-white/[0.96] border transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out hover:shadow-[0_14px_34px_rgba(18,63,59,0.07)] hover:-translate-y-px relative overflow-hidden ${
                       popular
                         ? "border-ateliya-primary/30"
                         : "border-ateliya-border/[0.55] group-hover/plan:border-ateliya-primary/30"
@@ -260,9 +260,9 @@ export default function PricingSection({
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div
-                          className={`relative flex items-center justify-center w-12 h-12 rounded-2xl group-hover/plan:-translate-y-px transition-all duration-500 shadow-[0_6px_16px_rgba(18,63,59,0.035)] ${
+                          className={`relative flex items-center justify-center w-12 h-12 rounded-2xl group-hover/plan:-translate-y-px transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out shadow-[0_6px_16px_rgba(18,63,59,0.035)] ${
                             idx === 0
-                              ? "bg-gradient-to-br from-ateliya-primary/[0.16] to-ateliya-primary/[0.08] text-ateliya-primary"
+                              ? "bg-ateliya-primary/10 text-ateliya-primary"
                               : idx === 1
                                 ? "bg-gradient-to-br from-ateliya-secondary/[0.16] to-ateliya-secondary/[0.08] text-ateliya-secondary"
                                 : "bg-gradient-to-br from-ateliya-primary/[0.12] to-ateliya-primary/[0.08] text-ateliya-primary"
@@ -287,7 +287,7 @@ export default function PricingSection({
                               : idx === 1
                                 ? "from-ateliya-secondary to-amber-400"
                                 : "from-ateliya-secondary to-ateliya-primary"
-                          } rounded-full group-hover/plan:w-20 transition-all duration-500`}
+                          } rounded-full group-hover/plan:w-20 transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out`}
                         />
                         <p className="text-sm text-gray-500 pt-0.5">
                           {mod.description}
@@ -335,7 +335,7 @@ export default function PricingSection({
                         <button
                           type="button"
                           onClick={() => setPlanSelectionne(mod)}
-                          className={`group/btn w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] inline-flex items-center justify-center gap-2 ${
+                          className={`group/btn w-full py-3 rounded-xl font-bold text-sm transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out active:scale-[0.97] inline-flex items-center justify-center gap-2 ${
                             popular
                               ? "bg-ateliya-primary text-white shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:bg-[#279f95] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)]"
                               : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-primary"

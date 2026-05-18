@@ -24,7 +24,7 @@ const featuredPost = blogPosts[0];
     <Layout title="Blog & Ressources - Ateliya">
         <Header />
 <section 
-  class="min-h-screen relative overflow-hidden top-50 py-20"
+  class="min-h-[100dvh] relative overflow-hidden top-50 py-20"
   style="background: linear-gradient(135deg, #f8fcfc 0%, #ffffff 50%, #f8fcfc 100%);"
 >
   <!-- Éléments décoratifs minimalistes -->
@@ -78,7 +78,7 @@ const featuredPost = blogPosts[0];
           <input 
             type="text" 
             placeholder="Rechercher..." 
-            class="w-full pl-14 pr-6 py-5 rounded-2xl bg-white border border-ateliya-primary/10 focus:border-ateliya-primary/30 focus:outline-none transition-all duration-300 text-gray-900 placeholder:text-ateliya-text/40"
+            class="w-full pl-14 pr-6 py-5 rounded-2xl bg-white border border-ateliya-primary/10 focus:border-ateliya-primary/30 focus:outline-none transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out text-gray-900 placeholder:text-ateliya-text/40"
           />
         </div>
       </div>
@@ -91,7 +91,7 @@ const featuredPost = blogPosts[0];
           Tous
         </button>
         {categories.map((category) => (
-          <button class="px-6 py-3 rounded-full bg-white border border-ateliya-primary/10 hover:border-ateliya-primary/30 font-bold text-sm text-gray-900 hover:scale-[1.01] transition-all duration-300">
+          <button class="px-6 py-3 rounded-full bg-white border border-ateliya-primary/10 hover:border-ateliya-primary/30 font-bold text-sm text-gray-900 hover:-translate-y-px transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
             {category.name}
             <span class="ml-2 text-ateliya-primary">{category.count}</span>
           </button>
@@ -101,7 +101,7 @@ const featuredPost = blogPosts[0];
 
     <!-- Featured Article - Hero Full Width -->
     <div class="mb-16 animate-fade-in-up" data-animate>
-      <div class="relative overflow-hidden rounded-[2rem] group/featured shadow-2xl h-[600px]">
+      <div class="relative overflow-hidden rounded-[2rem] group/featured shadow-[0_14px_34px_rgba(18,63,59,0.07)] h-[600px]">
         
         <!-- Background Image -->
         <Image
@@ -120,7 +120,7 @@ const featuredPost = blogPosts[0];
           
           <!-- Badge -->
           <div class="absolute top-8 left-8">
-            <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-africa-gold text-white font-bold text-sm shadow-2xl">
+            <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-africa-gold text-white font-bold text-sm shadow-[0_14px_34px_rgba(18,63,59,0.07)]">
               <Icon name="star" size="sm" class="fill-current" />
               <span>Vedette</span>
             </div>
@@ -165,7 +165,7 @@ const featuredPost = blogPosts[0];
                 <p class="text-sm text-white/60">Auteur</p>
               </div>
             </div>
-            <a href={`/blog/${featuredPost.id}`} class="group/btn flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-ateliya-dark font-bold hover:scale-[1.01] transition-all duration-300">
+            <a href={`/blog/${featuredPost.id}`} class="group/btn flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-ateliya-dark font-bold hover:-translate-y-px transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
               <span>Lire l'article</span>
               <Icon name="arrowRight" size="md" class="group-hover/btn:translate-x-1 transition-transform" />
             </a>
@@ -174,7 +174,7 @@ const featuredPost = blogPosts[0];
 
         <!-- Progress -->
         <div class="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-          <div class="h-full w-0 bg-gradient-to-r from-ateliya-primary to-africa-gold group-hover/featured:w-full transition-all duration-1000" />
+          <div class="h-full w-0 bg-ateliya-primary group-hover/featured:w-full transition-[width] duration-500 ease-out" />
         </div>
       </div>
     </div>
@@ -186,7 +186,7 @@ const featuredPost = blogPosts[0];
           class={`animate-fade-in-up group/post ${bentoLayout[i % bentoLayout.length].span}`}
           data-animate
         >
-          <div class={`relative ${bentoLayout[i % bentoLayout.length].height} rounded-[2rem] overflow-hidden group-hover/post:scale-[1.02] transition-all duration-500`}>
+          <div class={`relative ${bentoLayout[i % bentoLayout.length].height} rounded-[2rem] overflow-hidden group-hover/post:scale-[1.02] transition-[transform,opacity,background-color,border-color,box-shadow] duration-300 ease-out`}>
             
             <!-- Image Background -->
             <Image
@@ -240,7 +240,7 @@ const featuredPost = blogPosts[0];
                     </div>
                   </div>
 
-                 <a href={`/blog/${post.id}`} class="group/link w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 flex items-center justify-center transition-all">
+                 <a href={`/blog/${post.id}`} class="group/link w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 flex items-center justify-center transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
   <Icon name="arrowRight" size="sm" class="text-white group-hover/link:translate-x-0.5 transition-transform" />
 </a>
                 </div>
@@ -256,7 +256,7 @@ const featuredPost = blogPosts[0];
 
     <!-- Newsletter CTA -->
     <div class="relative animate-fade-in-up" data-animate>
-      <div class="relative p-12 md:p-16 rounded-[2rem] bg-gradient-to-b from-white via-teal-50/40 to-white overflow-hidden border border-gray-100">
+      <div class="relative p-12 md:p-16 rounded-[2rem] bg-white overflow-hidden border border-gray-100">
 
         <!-- Blobs décoratifs -->
         <div class="absolute top-[10%] right-[8%] w-64 h-64 bg-ateliya-primary/5 rounded-full blur-[100px]"></div>
@@ -443,7 +443,7 @@ const featuredPost = blogPosts[0];
           // Update active state
           buttons.forEach(btn => {
             if (!btn.textContent?.includes('Tous') && !btn.textContent?.includes('S\'abonner')) {
-              btn.className = 'px-6 py-3 rounded-full bg-white border border-ateliya-primary/10 hover:border-ateliya-primary/30 font-bold text-sm text-gray-900 hover:scale-[1.01] transition-all duration-300';
+              btn.className = 'px-6 py-3 rounded-full bg-white border border-ateliya-primary/10 hover:border-ateliya-primary/30 font-bold text-sm text-gray-900 hover:-translate-y-px transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out';
             }
           });
           button.className = 'btn-action btn-action-sm rounded-full';

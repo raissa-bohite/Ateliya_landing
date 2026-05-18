@@ -89,7 +89,7 @@ const categoryColors: Record<string, string> = {
     <Layout title={article.title}>
       <Header />
 
-      <article class="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <article class="min-h-[100dvh] bg-white">
         <!-- Hero Section -->
         <section class="relative h-[70vh] min-h-[500px] overflow-hidden">
           <!-- Image -->
@@ -196,25 +196,25 @@ const categoryColors: Record<string, string> = {
                   >Partager :</span
                 >
                 <button
-                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:scale-[1.01] transition-transform"
+                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:-translate-y-px transition-transform"
                   aria-label="Partager sur Facebook"
                 >
                   <Icon name="facebook" size="sm" />
                 </button>
                 <button
-                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:scale-[1.01] transition-transform"
+                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:-translate-y-px transition-transform"
                   aria-label="Partager sur Twitter"
                 >
                   <Icon name="twitter" size="sm" />
                 </button>
                 <button
-                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:scale-[1.01] transition-transform"
+                  class="w-10 h-10 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 text-ateliya-primary flex items-center justify-center hover:-translate-y-px transition-transform"
                   aria-label="Partager sur WhatsApp"
                 >
                   <Icon name="messageCircle" size="sm" />
                 </button>
                 <button
-                  class="w-10 h-10 rounded-xl bg-gray-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                  class="w-10 h-10 rounded-xl bg-gray-500 text-white flex items-center justify-center hover:-translate-y-px transition-transform"
                   aria-label="Copier le lien"
                 >
                   <Icon name="share-2" size="sm" />
@@ -278,7 +278,7 @@ const categoryColors: Record<string, string> = {
               <div class="mt-12 grid md:grid-cols-2 gap-6">
                 <a
                   href="#"
-                  class="group p-6 rounded-2xl bg-white hover:bg-ateliya-primary/5 border border-gray-100 hover:border-ateliya-primary/20 transition-all"
+                  class="group p-6 rounded-2xl bg-white hover:bg-ateliya-primary/5 border border-gray-100 hover:border-ateliya-primary/20 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                 >
                   <p class="text-sm font-bold text-ateliya-text/60 mb-2">
                     ← ARTICLE PRÉCÉDENT
@@ -291,7 +291,7 @@ const categoryColors: Record<string, string> = {
                 </a>
                 <a
                   href="#"
-                  class="group p-6 rounded-2xl bg-white hover:bg-ateliya-primary/5 border border-gray-100 hover:border-ateliya-primary/20 transition-all text-right"
+                  class="group p-6 rounded-2xl bg-white hover:bg-ateliya-primary/5 border border-gray-100 hover:border-ateliya-primary/20 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out text-right"
                 >
                   <p class="text-sm font-bold text-ateliya-text/60 mb-2">
                     ARTICLE SUIVANT →
@@ -322,18 +322,18 @@ const categoryColors: Record<string, string> = {
                       <input
                         type="text"
                         placeholder="Votre nom"
-                        class="px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all"
+                        class="px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                       />
                       <input
                         type="email"
                         placeholder="Votre email"
-                        class="px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all"
+                        class="px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                       />
                     </div>
                     <textarea
                       rows="4"
                       placeholder="Votre commentaire..."
-                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-all resize-none"
+                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out resize-none"
                     ></textarea>
                     <button
                       class="btn-action btn-action-sm"
@@ -400,7 +400,7 @@ const categoryColors: Record<string, string> = {
               <div class="sticky top-24 space-y-8">
                 <!-- Newsletter Widget -->
                 <div
-                  class="p-8 rounded-2xl bg-gradient-to-b from-white via-teal-50/40 to-white overflow-hidden relative border border-gray-100"
+                  class="p-8 rounded-2xl bg-white overflow-hidden relative border border-gray-100"
                 >
                   <!-- Blob décoratif -->
                   <div
@@ -439,7 +439,7 @@ const categoryColors: Record<string, string> = {
                       <input
                         type="email"
                         placeholder="Votre email..."
-                        class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 text-gray-900 placeholder:text-gray-400 transition-all"
+                        class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-ateliya-primary focus:outline-none focus:ring-4 focus:ring-ateliya-primary/10 text-gray-900 placeholder:text-gray-400 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out"
                       />
                       <button
                         class="btn-action btn-action-sm w-full"
@@ -463,7 +463,7 @@ const categoryColors: Record<string, string> = {
                             <Image
                               src={related.image}
                               alt={related.title}
-                              class="w-24 h-24 rounded-xl object-cover group-hover:scale-[1.01] transition-transform"
+                              class="w-24 h-24 rounded-xl object-cover group-hover:-translate-y-px transition-transform"
                               loading="lazy"
                               width={96}
                               height={96}
@@ -715,7 +715,7 @@ const categoryColors: Record<string, string> = {
     progressBar.className =
       "fixed top-0 left-0 right-0 h-1 bg-ateliya-primary/20 z-50";
     progressBar.innerHTML =
-      '<div class="h-full bg-gradient-to-r from-ateliya-primary to-africa-gold transition-all duration-150" style="width: 0%"></div>';
+      '<div class="h-full bg-ateliya-primary transition-[width] duration-150 ease-out" style="width: 0%"></div>';
     document.body.appendChild(progressBar);
 
     const updateProgress = () => {

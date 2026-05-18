@@ -33,13 +33,13 @@ const sizeClasses = {
   xl: "px-10 py-5 text-xl rounded-2xl",
 };
 
-// Variant classes avec designs ultra-captivants
+// Variant classes
 const variantClasses = {
   primary: `
     bg-ateliya-primary hover:bg-[#279f95]
     text-white font-bold
     shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)]
-    hover:scale-[1.01] active:scale-95
+    hover:-translate-y-px active:translate-y-0 active:scale-[0.98]
     border-0
     relative overflow-hidden
     group/btn
@@ -48,7 +48,7 @@ const variantClasses = {
     bg-ateliya-primary hover:bg-[#279f95]
     text-white font-bold
     shadow-[0_8px_18px_rgba(47,175,164,0.14)] hover:shadow-[0_8px_18px_rgba(47,175,164,0.12)]
-    hover:scale-[1.01] active:scale-95
+    hover:-translate-y-px active:translate-y-0 active:scale-[0.98]
     border-0
     relative overflow-hidden
     group/btn
@@ -56,10 +56,10 @@ const variantClasses = {
   outline: `
     bg-white
     text-ateliya-dark font-bold
-    border-2 border-ateliya-primary/30 hover:border-ateliya-primary
+    border border-ateliya-primary/30 hover:border-ateliya-primary/45
     hover:bg-ateliya-primary/5 hover:text-ateliya-dark
-    shadow-md hover:shadow-md
-    hover:scale-[1.01] active:scale-95
+    shadow-sm hover:shadow-sm
+    hover:-translate-y-px active:translate-y-0 active:scale-[0.98]
     relative overflow-hidden
     group/btn
   `,
@@ -68,7 +68,7 @@ const variantClasses = {
     text-ateliya-primary font-bold
     border-0
     hover:bg-ateliya-primary/5
-    hover:scale-[1.01] active:scale-95
+    hover:-translate-y-px active:translate-y-0 active:scale-[0.98]
     relative overflow-hidden
     group/btn
   `,
@@ -76,7 +76,7 @@ const variantClasses = {
     bg-red-500 hover:bg-red-600
     text-white font-bold
     shadow-[0_8px_18px_rgba(239,68,68,0.14)] hover:shadow-[0_8px_18px_rgba(239,68,68,0.12)]
-    hover:scale-[1.01] active:scale-95
+    hover:-translate-y-px active:translate-y-0 active:scale-[0.98]
     border-0
     relative overflow-hidden
     group/btn
@@ -99,7 +99,7 @@ const buttonClasses = `
   ${widthClasses}
   ${className}
   items-center justify-center gap-3
-  transition-all duration-300
+  transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out
   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ateliya-primary focus-visible:ring-offset-2
   select-none
 `;
@@ -116,7 +116,7 @@ const buttonProps = !href ? { type, disabled } : {};
   {...rest}
 >
   <!-- Ripple effect au hover -->
-  <span class="absolute inset-0 rounded-[inherit] bg-white/0 group-hover/btn:bg-white/10 scale-0 group-hover/btn:scale-100 transition-all duration-500" />
+  <span class="absolute inset-0 rounded-[inherit] bg-white/0 group-hover/btn:bg-white/10 scale-0 group-hover/btn:scale-100 transition-[transform,background-color] duration-300 ease-out" />
 
   <!-- Content -->
   <span class="relative z-10 flex items-center gap-3">
@@ -129,7 +129,7 @@ const buttonProps = !href ? { type, disabled } : {};
     <slot />
     
     {icon && iconPosition === "right" && (
-      <span class="flex-shrink-0 group-hover/btn:translate-x-1 transition-transform duration-300">
+      <span class="flex-shrink-0 group-hover/btn:translate-x-0.5 transition-transform duration-200 ease-out">
         <slot name="icon-right" />
       </span>
     )}

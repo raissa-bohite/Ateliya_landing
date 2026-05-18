@@ -44,7 +44,9 @@ import accueilImg from "../assets/app_images/accueil.png";
   </div>
 
   <!-- Dot grid bottom-right -->
-  <div class="absolute right-10 bottom-[6%] grid grid-cols-5 gap-3 opacity-[0.14]">
+  <div
+    class="absolute right-10 bottom-[6%] grid grid-cols-5 gap-3 opacity-[0.14]"
+  >
     {
       [...Array(15)].map((_, i) => (
         <div
@@ -77,11 +79,7 @@ import accueilImg from "../assets/app_images/accueil.png";
           class="text-4xl md:text-5xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight"
         >
           Decouvrez les
-          <span
-            class="text-ateliya-primary"
-          >
-            Fonctionnalites
-          </span>
+          <span class="text-ateliya-primary"> Fonctionnalites </span>
           d'Ateliya
         </h2>
 
@@ -90,10 +88,7 @@ import accueilImg from "../assets/app_images/accueil.png";
           efficacement. Comptabilite, paiements, commandes et bien plus.
         </p>
 
-        <a
-          href="/fonctionnalites"
-          class="btn-action group"
-        >
+        <a href="/featuresDetails" class="btn-action group">
           <span>Voir toutes les fonctionnalites</span>
           <Icon
             name="arrow-right"
@@ -145,7 +140,9 @@ import accueilImg from "../assets/app_images/accueil.png";
 
         <!-- Phone -->
         <div class="relative z-20 feat-phone-entrance">
-          <div class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)]">
+          <div
+            class="relative bg-gray-900 rounded-[3rem] p-3 shadow-[0_18px_44px_rgba(18,63,59,0.14)]"
+          >
             <div
               class="relative bg-white rounded-[2.5rem] overflow-hidden w-64 h-[540px]"
             >
@@ -230,7 +227,11 @@ import accueilImg from "../assets/app_images/accueil.png";
 
                 <div class="flex items-start gap-4">
                   <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-ateliya-primary/10 border border-ateliya-primary/15 flex items-center justify-center shadow-[0_8px_18px_rgba(47,175,164,0.06)] group-hover:-translate-y-px group-hover:bg-ateliya-primary/14 transition-[transform,background-color,border-color,box-shadow,color] duration-200 ease-out">
-                    <Icon name={solution.icon} size="sm" class="text-ateliya-primary" />
+                    <Icon
+                      name={solution.icon}
+                      size="sm"
+                      class="text-ateliya-primary"
+                    />
                   </div>
 
                   <div class="flex-1 min-w-0">
@@ -379,4 +380,3 @@ import accueilImg from "../assets/app_images/accueil.png";
     }
   }
 </style>
-

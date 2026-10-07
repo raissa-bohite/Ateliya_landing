@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowRight, MessageCircle, Quote, Star } from "lucide-react";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 const PAYMENT_METHODS = [
   { name: "Orange Money", src: "/Orange_logo.png", width: 120 },
@@ -59,6 +60,7 @@ export function ClosingSections() {
       <section id="temoignages" className="bg-background py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
           <header className="mx-auto mb-14 max-w-2xl text-center">
+            <StitchDivider withScissors className="mb-7" />
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               La parole aux ateliers
             </p>
@@ -76,9 +78,20 @@ export function ClosingSections() {
                 key={testimonial.author}
                 className={`relative flex flex-col px-2 py-7 sm:px-7 md:py-2 ${index > 0 ? "border-t border-border md:border-l md:border-t-0" : ""} ${index === 0 ? "md:pr-9" : ""} ${index === 2 ? "md:pl-9" : ""}`}
               >
-                <div className="flex items-center gap-1" role="img" aria-label="5 étoiles sur 5">
+                <div
+                  className="flex items-center gap-1"
+                  role="img"
+                  aria-label="5 étoiles sur 5"
+                >
                   {Array.from({ length: 5 }, (_, star) => (
-                    <Star key={star} size={14} fill="currentColor" strokeWidth={0} className="text-gold" aria-hidden="true" />
+                    <Star
+                      key={star}
+                      size={14}
+                      fill="currentColor"
+                      strokeWidth={0}
+                      className="text-gold"
+                      aria-hidden="true"
+                    />
                   ))}
                 </div>
                 <Quote
@@ -91,8 +104,12 @@ export function ClosingSections() {
                   “{testimonial.quote}”
                 </blockquote>
                 <figcaption className="mt-7">
-                  <p className="font-semibold text-text">{testimonial.author}</p>
-                  <p className="mt-1 text-sm text-text-secondary">{testimonial.role}</p>
+                  <p className="font-semibold text-text">
+                    {testimonial.author}
+                  </p>
+                  <p className="mt-1 text-sm text-text-secondary">
+                    {testimonial.role}
+                  </p>
                 </figcaption>
               </figure>
             ))}
@@ -100,7 +117,10 @@ export function ClosingSections() {
         </div>
       </section>
 
-      <section id="contact" className="overflow-hidden bg-primary-dark text-white">
+      <section
+        id="contact"
+        className="overflow-hidden bg-primary-dark text-white"
+      >
         <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 pt-12 sm:px-8 sm:pt-16 md:grid-cols-[1fr_0.6fr] lg:px-12">
           <div className="relative z-10 py-4 sm:py-8">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/65">

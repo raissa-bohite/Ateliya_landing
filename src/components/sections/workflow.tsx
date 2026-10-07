@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 const CARDS = [
   {
@@ -56,9 +57,13 @@ function AppPreview({ card }: { card: (typeof CARDS)[number] }) {
 
 export function Workflow() {
   return (
-    <section id="parcours" className="overflow-hidden bg-background py-20 sm:py-28">
+    <section
+      id="parcours"
+      className="overflow-hidden bg-background py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
+          <StitchDivider withScissors className="mb-7" />
           <p className="inline-flex rounded-full bg-primary-light px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
             Votre atelier, simplement
           </p>
@@ -79,7 +84,9 @@ export function Workflow() {
                   <AppPreview card={card} />
                 </div>
                 <div className="mt-5 flex items-center gap-3">
-                  <span className="font-serif text-3xl text-gold">{card.number}</span>
+                  <span className="font-serif text-3xl text-gold">
+                    {card.number}
+                  </span>
                   <span className="h-px flex-1 bg-border" />
                   <span className="text-[10px] font-bold tracking-[0.16em] text-primary">
                     {card.eyebrow}

@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { ClipboardList, Ruler, UserRound, WalletCards } from "lucide-react";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 const FEATURES = [
   {
     icon: UserRound,
     title: "Gestion des clients",
-    description: "Coordonnées, préférences et historique réunis dans une fiche.",
+    description:
+      "Coordonnées, préférences et historique réunis dans une fiche.",
   },
   {
     icon: ClipboardList,
@@ -15,12 +17,14 @@ const FEATURES = [
   {
     icon: Ruler,
     title: "Prise de mesures",
-    description: "Conservez les mesures de chaque client pour les retrouver facilement.",
+    description:
+      "Conservez les mesures de chaque client pour les retrouver facilement.",
   },
   {
     icon: WalletCards,
     title: "Paiements intégrés",
-    description: "Suivez les acomptes, les soldes et les transactions de l’atelier.",
+    description:
+      "Suivez les acomptes, les soldes et les transactions de l’atelier.",
   },
 ];
 
@@ -32,8 +36,12 @@ function Feature({ item }: { item: (typeof FEATURES)[number] }) {
         <Icon size={20} strokeWidth={1.8} aria-hidden="true" />
       </div>
       <div>
-        <h3 className="font-serif text-xl font-semibold text-text">{item.title}</h3>
-        <p className="mt-1.5 text-sm leading-6 text-text-secondary">{item.description}</p>
+        <h3 className="font-serif text-xl font-semibold text-text">
+          {item.title}
+        </h3>
+        <p className="mt-1.5 text-sm leading-6 text-text-secondary">
+          {item.description}
+        </p>
       </div>
     </article>
   );
@@ -44,6 +52,7 @@ export function Features() {
     <section id="fonctionnalites" className="bg-card py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
+          <StitchDivider withScissors className="mb-7" />
           <p className="inline-flex rounded-full bg-primary-light px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
             Pourquoi choisir Ateliya
           </p>
@@ -59,7 +68,9 @@ export function Features() {
 
         <div className="mx-auto mt-14 grid max-w-6xl items-center gap-8 md:grid-cols-[1fr_minmax(250px,0.95fr)_1fr] md:gap-8">
           <div>
-            {FEATURES.slice(0, 2).map((item) => <Feature key={item.title} item={item} />)}
+            {FEATURES.slice(0, 2).map((item) => (
+              <Feature key={item.title} item={item} />
+            ))}
           </div>
 
           <div className="relative mx-auto flex w-full max-w-[330px] justify-center py-3 md:py-0">
@@ -75,7 +86,9 @@ export function Features() {
           </div>
 
           <div>
-            {FEATURES.slice(2).map((item) => <Feature key={item.title} item={item} />)}
+            {FEATURES.slice(2).map((item) => (
+              <Feature key={item.title} item={item} />
+            ))}
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Check, TrendingUp, WalletCards } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 export const metadata: Metadata = {
   title: "Fonctionnalités",
@@ -45,6 +46,7 @@ export default function FeaturesPage() {
         <section className="overflow-hidden bg-background px-5 pb-16 pt-32 sm:pb-20 sm:pt-40">
           <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
             <div className="relative z-10">
+              <StitchDivider withScissors align="left" className="mb-5" />
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Une application pour votre atelier
               </p>
@@ -103,6 +105,7 @@ export default function FeaturesPage() {
         <section className="bg-card px-5 py-20 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <header className="mb-12 max-w-2xl sm:mb-16">
+              <StitchDivider align="left" className="mb-5" />
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Votre atelier, en un seul espace
               </p>

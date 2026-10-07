@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight, Clock3, Mail, MessageCircle, Phone } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -62,6 +63,7 @@ export default function ContactPage() {
       <main className="flex-1">
         <section className="bg-background px-5 pb-10 pt-32 text-center sm:pb-14 sm:pt-40">
           <div className="mx-auto max-w-3xl">
+            <StitchDivider withScissors className="mb-7" />
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               Contact Ateliya
             </p>

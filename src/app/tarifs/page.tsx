@@ -3,6 +3,7 @@ import { Check, CircleHelp, CreditCard, ShieldCheck } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { PricingPlans } from "@/components/sections/pricing-plans";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 export const metadata: Metadata = {
   title: "Tarifs",
@@ -36,6 +37,7 @@ export default function PricingPage() {
       <main className="flex-1">
         <section className="bg-background px-5 pb-10 pt-32 text-center sm:pb-14 sm:pt-40">
           <div className="mx-auto max-w-3xl">
+            <StitchDivider withScissors className="mb-7" />
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               Tarifs Ateliya
             </p>

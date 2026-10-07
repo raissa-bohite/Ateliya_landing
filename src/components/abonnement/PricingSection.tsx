@@ -9,6 +9,7 @@ import {
 } from "../../lib/services/abonnementService";
 
 import AbonnementModal from "./AbonnementModal";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 function planIcon(idx: number) {
   const className = "w-6 h-6";
@@ -263,9 +264,11 @@ export default function PricingSection({
                     </ul>
                   )}
 
+                  <StitchDivider className="mt-7" lineClassName="" />
+
                   <button
                     onClick={() => setPlanSelectionne(mod)}
-                    className="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                    className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
                   >
                     <span>Choisir ce forfait</span>
                     <ArrowRight size={15} />

@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { InscriptionForm } from "@/components/sections/inscription-form";
+import { StitchDivider } from "@/components/ui/stitch-divider";
 
 export const metadata: Metadata = {
   title: "Inscription",
@@ -27,6 +28,7 @@ export default function InscriptionPage() {
         <section className="bg-background px-5 pb-16 pt-32 sm:pt-40">
           <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[0.85fr_1fr] lg:gap-16">
             <div className="lg:pt-6">
+              <StitchDivider withScissors align="left" className="mb-5" />
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Inscription Ateliya
               </p>

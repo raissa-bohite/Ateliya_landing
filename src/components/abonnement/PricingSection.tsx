@@ -1,18 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Check,
-  CheckCircle2,
-  Star,
-  Package,
-  Rocket,
-  Gem,
-  Globe,
-  ArrowRight,
-  X,
-} from "lucide-react";
+import { Check, Star, Package, Rocket, Gem, ArrowRight, X } from "lucide-react";
 
 import {
-  formaterMontant,
   getPaysDisponibles,
   getModulesDisponibles,
   type ModuleBackend,
@@ -21,13 +10,12 @@ import {
 
 import AbonnementModal from "./AbonnementModal";
 
-const PLAN_ICONS = [
-  <Package className="w-6 h-6" strokeWidth={1.75} />,
-  <Rocket className="w-6 h-6" strokeWidth={1.75} />,
-  <Gem className="w-6 h-6" strokeWidth={1.75} />,
-];
-
-const PLAN_NUMBERS = ["01", "02", "03"];
+function planIcon(idx: number) {
+  const className = "w-6 h-6";
+  if (idx === 1) return <Rocket className={className} strokeWidth={1.75} />;
+  if (idx >= 2) return <Gem className={className} strokeWidth={1.75} />;
+  return <Package className={className} strokeWidth={1.75} />;
+}
 
 interface PricingSectionProps {
   initialPays?: PaysOption[];
@@ -215,138 +203,73 @@ export default function PricingSection({
         )}
 
       {!loadingModules && modules.length > 0 && (
-        <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid items-stretch gap-5 md:grid-cols-3 md:gap-6">
           {modules.map((mod, idx) => {
             const popular = idx === 1;
             return (
-              <div
-                key={mod.id}
-                className={`group/plan h-full ${popular ? "md:-mt-4" : ""}`}
-              >
-                <div className="h-full relative">
-                  <div
-                    className={`absolute -inset-1 bg-gradient-to-br ${
-                      idx === 0
-                        ? "from-ateliya-primary/15 to-teal-400/10"
-                        : idx === 1
-                          ? "from-ateliya-secondary/15 to-amber-400/10"
-                          : "from-africa-gold/15 to-ateliya-primary/8"
-                    } rounded-2xl blur-lg opacity-0 group-hover/plan:opacity-60 transition-all duration-700 -z-10`}
-                  />
-
-                  <div
-                    className={`h-full p-5 md:p-6 rounded-2xl bg-white border-2 transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden ${
-                      popular
-                        ? "border-ateliya-primary/30"
-                        : "border-gray-100 group-hover/plan:border-ateliya-primary/30"
-                    }`}
-                  >
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ateliya-primary to-transparent opacity-0 group-hover/plan:opacity-100 transition-opacity duration-500" />
-
-                    {popular && (
-                      <div className="absolute -top-px left-0 right-0 flex justify-center">
-                        <div className="px-5 py-1.5 rounded-b-xl bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white text-[11px] font-black tracking-wide uppercase shadow-sm shadow-ateliya-primary/15 flex items-center gap-1">
-                          <Star size={10} fill="currentColor" /> Le plus
-                          populaire
-                        </div>
-                      </div>
-                    )}
-
-                    <div
-                      className={`relative z-10 flex flex-col h-full ${popular ? "pt-5" : ""}`}
-                    >
-                      {/* Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div
-                          className={`relative flex items-center justify-center w-12 h-12 rounded-2xl group-hover/plan:scale-110 transition-all duration-500 shadow-sm ${
-                            idx === 0
-                              ? "bg-gradient-to-br from-ateliya-primary/20 to-ateliya-primary/10 text-ateliya-primary"
-                              : idx === 1
-                                ? "bg-gradient-to-br from-ateliya-secondary/20 to-ateliya-secondary/10 text-ateliya-secondary"
-                                : "bg-gradient-to-br from-ateliya-primary/15 to-ateliya-primary/8 text-ateliya-primary"
-                          }`}
-                        >
-                          {PLAN_ICONS[idx] ?? PLAN_ICONS[0]}
-                        </div>
-                        <div className="text-5xl md:text-6xl font-black text-ateliya-primary/10 leading-none select-none">
-                          {PLAN_NUMBERS[idx] ?? "0" + (idx + 1)}
-                        </div>
-                      </div>
-
-                      {/* Title */}
-                      <div className="space-y-1 mb-4">
-                        <h3 className="text-xl md:text-2xl font-serif font-extrabold tracking-tighter text-gray-900 leading-tight">
-                          {mod.code}
-                        </h3>
-                        <div
-                          className={`w-12 h-1 bg-gradient-to-r ${
-                            idx === 0
-                              ? "from-ateliya-primary to-teal-400"
-                              : idx === 1
-                                ? "from-ateliya-secondary to-amber-400"
-                                : "from-ateliya-secondary to-ateliya-primary"
-                          } rounded-full group-hover/plan:w-20 transition-all duration-500`}
-                        />
-                        <p className="text-sm text-gray-500 pt-0.5">
-                          {mod.description}
-                        </p>
-                      </div>
-
-                      {/* Price */}
-                      <div className="mb-4">
-                        <div className="flex items-baseline gap-1.5">
-                          <span className="text-4xl md:text-5xl font-extrabold text-gray-900 tabular-nums">
-                            {parseInt(mod.montant).toLocaleString("fr-FR")}
-                          </span>
-                          <span className="text-base text-gray-400 font-bold">
-                            FCFA
-                          </span>
-                        </div>
-                        <p className="text-sm text-gray-400 mt-0.5">
-                          pour {mod.duree} jours
-                        </p>
-                      </div>
-
-                      {/* Features */}
-                      {mod.lignes.length > 0 && (
-                        <div className="space-y-2.5 flex-grow">
-                          {mod.lignes.map((l, li) => (
-                            <div key={li} className="flex items-start gap-2.5">
-                              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-ateliya-primary/10 flex items-center justify-center mt-0.5">
-                                <Check
-                                  size={11}
-                                  className="text-ateliya-primary"
-                                  strokeWidth={3}
-                                />
-                              </div>
-                              <span className="text-sm text-gray-600 leading-snug">
-                                {l.libelle}
-                                {l.quantite ? ` (${l.quantite})` : ""}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* CTA */}
-                      <div className="pt-5 mt-5 border-t border-gray-100">
-                        <button
-                          onClick={() => setPlanSelectionne(mod)}
-                          className={`group/btn w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 active:scale-[0.97] inline-flex items-center justify-center gap-2 ${
-                            popular
-                              ? "bg-gradient-to-r from-ateliya-primary to-ateliya-secondary text-white shadow-sm shadow-ateliya-primary/15 hover:shadow-md hover:shadow-ateliya-primary/25"
-                              : "bg-gray-50 text-gray-800 border border-gray-200 hover:bg-ateliya-primary/5 hover:border-ateliya-primary/30 hover:text-ateliya-primary"
-                          }`}
-                        >
-                          <span>Choisir ce forfait</span>
-                          <ArrowRight
-                            size={14}
-                            className="group-hover/btn:translate-x-0.5 transition-transform"
-                          />
-                        </button>
-                      </div>
+              <div key={mod.id} className="h-full">
+                <div
+                  className={`relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border bg-card p-6 transition-shadow hover:shadow-[0_20px_50px_-36px_rgba(7,31,20,0.45)] md:p-7 ${popular ? "border-primary/55" : "border-border"}`}
+                >
+                  {popular && (
+                    <div className="absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-primary-light px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-primary">
+                      <Star size={11} fill="currentColor" /> Recommandé
                     </div>
+                  )}
+
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary">
+                    {planIcon(idx)}
                   </div>
+
+                  <div className="mt-5">
+                    <h3 className="font-serif text-2xl font-semibold text-text">
+                      {mod.code}
+                    </h3>
+                    <p className="mt-2 min-h-10 text-sm leading-6 text-text-secondary">
+                      {mod.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 border-y border-border py-5">
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-serif text-4xl font-semibold tabular-nums text-text md:text-5xl">
+                        {parseInt(mod.montant).toLocaleString("fr-FR")}
+                      </span>
+                      <span className="text-sm font-semibold text-text-secondary">
+                        FCFA
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm text-text-secondary">
+                      pour {mod.duree} mois
+                    </p>
+                  </div>
+
+                  {mod.lignes.length > 0 && (
+                    <ul className="mt-5 flex-grow space-y-3">
+                      {mod.lignes.map((l, li) => (
+                        <li
+                          key={li}
+                          className="flex items-start gap-3 text-sm leading-5 text-text-secondary"
+                        >
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary">
+                            <Check size={12} strokeWidth={3} />
+                          </span>
+                          <span>
+                            {l.libelle}
+                            {l.quantite ? ` (${l.quantite})` : ""}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <button
+                    onClick={() => setPlanSelectionne(mod)}
+                    className="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                  >
+                    <span>Choisir ce forfait</span>
+                    <ArrowRight size={15} />
+                  </button>
                 </div>
               </div>
             );

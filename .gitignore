@@ -1,8 +1,15 @@
 # build output
 dist/
+.next/
+out/
 
 # generated types
 .astro/
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# environment variables (toutes variantes locales)
+.env*.local
 
 # dependencies
 node_modules/

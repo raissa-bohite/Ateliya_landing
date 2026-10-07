@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  /* Identité Ateliya */
+  --color-primary: #0c5e3f;
+  --color-primary-dark: #071f14;
+  --color-primary-light: #e8f5ee;
+  --color-primary-legacy-2: #0f7a52;
+  --color-primary-legacy-3: #094a32;
+
+  --color-gold: #e8960a;
+  --color-gold-light: #f5a820;
+  --color-gold-bg: #fff8e8;
+
+  --color-ivory: #f8f7f4;
+  --color-ivory-dark: #f0ede8;
+
+  /* Interface */
+  --color-background: #f8f7f4;
+  --color-card: #fffefa;
+  --color-text: #071f14;
+  --color-text-secondary: #496458;
+  --color-border: #d7e1db;
+  --color-danger: #b42318;
+  --color-muted: #6f8f80;
+
+  /* Typographie */
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-legacy-2: var(--color-primary-legacy-2);
+  --color-primary-legacy-3: var(--color-primary-legacy-3);
+
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-bg: var(--color-gold-bg);
+
+  --color-ivory: var(--color-ivory);
+  --color-ivory-dark: var(--color-ivory-dark);
+
+  --color-background: var(--color-background);
+  --color-card: var(--color-card);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-border: var(--color-border);
+  --color-danger: var(--color-danger);
+  --color-muted: var(--color-muted);
+
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+
+  /* Legacy subscription UI, aligned to the current Ateliya palette */
+  --color-ateliya-primary: var(--color-primary);
+  --color-ateliya-secondary: #62aaa3;
+  --color-ateliya-accent: var(--color-gold);
+  --color-ateliya-dark: var(--color-primary-dark);
+  --color-africa-gold: var(--color-gold);
+  --color-africa-terra: #b9775c;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}

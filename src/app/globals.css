@@ -77,6 +77,16 @@ body {
   .animate-marquee {
     animation: marquee 28s linear infinite;
   }
+
+  /* Apparition en cascade (fondu + glissement vers le haut). */
+  .animate-fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Zoom lent et continu de l'image de fond (effet Ken Burns). */
+  .animate-kenburns {
+    animation: kenburns 24s ease-in-out infinite alternate;
+  }
 }
 
 @keyframes marquee {
@@ -85,5 +95,25 @@ body {
   }
   to {
     transform: translateX(-33.333%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
   }
 }

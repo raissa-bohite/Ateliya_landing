@@ -1,54 +1,93 @@
-import Image from "next/image";
-import { Check } from "lucide-react";
-import { StitchDivider } from "@/components/ui/stitch-divider";
+"use client";
 
-const CARDS = [
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+/* -------------------------------------------------------------------------- */
+/*  Showcase scroll-pinné façon Paykko : une scène collante qui se métamorphose */
+/*  au fil du scroll (couleur, capture, titre, description, indicateur 01·02·03) */
+/* -------------------------------------------------------------------------- */
+
+type Theme = "green" | "gold" | "dark";
+
+type Step = {
+  number: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  screen: string;
+  alt: string;
+  theme: Theme;
+};
+
+const STEPS: Step[] = [
   {
     number: "01",
-    eyebrow: "VOS CLIENTS",
+    eyebrow: "Vos clients",
     title: "Chaque client, bien accompagné.",
     description:
-      "Retrouvez ses coordonnées, ses préférences et ses mesures dans une fiche complète.",
-    front: "/screens/gestion.webp",
-    alt: "Fiches clients et gestion de l’atelier dans Ateliya",
-    tone: "sage",
+      "Coordonnées, préférences et mesures réunies dans une fiche complète. Vous retrouvez tout l'historique d'un client en un instant.",
+    screen: "/screens/gestion.webp",
+    alt: "Fiches clients et gestion de l'atelier dans Ateliya",
+    theme: "green",
   },
   {
     number: "02",
-    eyebrow: "VOS COMMANDES",
+    eyebrow: "Vos commandes",
     title: "Chaque création, bien suivie.",
     description:
-      "Gardez les détails du modèle, les échéances et l’avancement à portée de main.",
-    front: "/screens/accueil.webp",
+      "Modèle, échéances, avancement et acomptes : gardez chaque commande sous contrôle, du premier essayage à la livraison.",
+    screen: "/screens/accueil.webp",
     alt: "Tableau de bord et suivi des commandes dans Ateliya",
-    tone: "gold",
+    theme: "gold",
   },
   {
     number: "03",
-    eyebrow: "VOTRE ACTIVITÉ",
-    title: "Votre atelier, en un coup d’œil.",
+    eyebrow: "Votre activité",
+    title: "Votre atelier, en un coup d'œil.",
     description:
-      "Suivez les transactions, les paiements et les statistiques de votre activité.",
-    front: "/screens/rapport.webp",
-    alt: "Rapports et statistiques de l’atelier dans Ateliya",
-    tone: "sage",
+      "Transactions, paiements et statistiques réunis. Vous suivez la santé de votre atelier en temps réel, où que vous soyez.",
+    screen: "/screens/rapport.webp",
+    alt: "Rapports et statistiques de l'atelier dans Ateliya",
+    theme: "dark",
   },
-] as const;
+];
 
-function AppPreview({ card }: { card: (typeof CARDS)[number] }) {
+const THEME: Record<
+  Theme,
+  { section: string; eyebrow: string; title: string; body: string }
+> = {
+  green: {
+    section: "bg-primary text-white",
+    eyebrow: "text-gold-light",
+    title: "text-white",
+    body: "text-white/80",
+  },
+  gold: {
+    section: "bg-gold text-primary-dark",
+    eyebrow: "text-primary-dark/70",
+    title: "text-primary-dark",
+    body: "text-primary-dark/80",
+  },
+  dark: {
+    section: "bg-primary-dark text-white",
+    eyebrow: "text-gold-light",
+    title: "text-white",
+    body: "text-white/80",
+  },
+};
+
+function Phone({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative mx-auto h-[258px] w-full max-w-[330px]">
-      <div
-        className={`absolute left-1/2 top-1/2 aspect-square w-[76%] -translate-x-1/2 -translate-y-1/2 rounded-full ${card.tone === "gold" ? "bg-gold/75" : "bg-primary/10"}`}
-      />
-      <div className="absolute bottom-0 left-1/2 z-20 h-[250px] w-[55%] -translate-x-1/2 overflow-hidden rounded-t-[1.5rem] border-[5px] border-b-0 border-primary-dark bg-white shadow-2xl motion-safe:transition-transform motion-safe:duration-500 motion-reduce:transition-none group-hover:-translate-y-2">
+    <div className="h-full w-full rounded-[2.2rem] bg-primary-dark p-1.5 shadow-[0_35px_80px_-30px_rgba(0,0,0,0.65)] ring-1 ring-white/10">
+      <div className="relative h-full w-full overflow-hidden rounded-[1.7rem] bg-ivory">
+        <div className="absolute top-1.5 left-1/2 z-10 h-3.5 w-16 -translate-x-1/2 rounded-full bg-primary-dark" />
         <Image
-          src={card.front}
-          alt={card.alt}
-          width={1206}
-          height={2622}
-          sizes="150px"
-          className="h-auto w-full"
+          src={src}
+          alt={alt}
+          fill
+          sizes="260px"
+          className="object-cover object-top"
         />
       </div>
     </div>
@@ -56,55 +95,120 @@ function AppPreview({ card }: { card: (typeof CARDS)[number] }) {
 }
 
 export function Workflow() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = trackRef.current;
+      if (!el) return;
+      const vh = window.innerHeight;
+      const distance = el.offsetHeight - vh; // course de scroll pendant le pin
+      const scrolled = Math.min(
+        Math.max(-el.getBoundingClientRect().top, 0),
+        distance,
+      );
+      const p = distance > 0 ? scrolled / distance : 0;
+      const idx = Math.min(STEPS.length - 1, Math.floor(p * STEPS.length));
+      setActive((prev) => (prev === idx ? prev : idx));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  const current = STEPS[active];
+  const t = THEME[current.theme];
+  const dimClass =
+    current.theme === "gold" ? "text-primary-dark/45" : "text-white/45";
+  const onClass = current.theme === "gold" ? "text-primary-dark" : "text-white";
+
   return (
     <section
       id="parcours"
-      className="overflow-hidden bg-background py-20 sm:py-28"
+      ref={trackRef}
+      className="relative"
+      style={{ height: `${STEPS.length * 100}svh` }}
     >
-      <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <header className="mx-auto max-w-2xl text-center">
-          <StitchDivider withScissors className="mb-7" />
-          <p className="inline-flex rounded-full bg-primary-light px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
-            Votre atelier, simplement
-          </p>
-          <h2 className="mt-5 font-serif text-4xl leading-tight tracking-tight text-text sm:text-5xl">
-            Tout suit le fil de votre métier.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-text-secondary sm:text-lg">
-            Du premier rendez-vous au suivi de l’activité, vos outils restent
-            réunis dans Ateliya.
-          </p>
-        </header>
+      <div
+        className={`sticky top-0 flex h-[100svh] flex-col overflow-hidden transition-colors duration-700 ${t.section}`}
+      >
+        <div className="mx-auto flex w-full max-w-6xl flex-1 items-center px-5 lg:px-10">
+          <div className="grid w-full items-center gap-8 lg:grid-cols-[1.1fr_auto_1fr] lg:gap-10">
+            {/* Titre (gauche) — rejoué à chaque changement d'étape */}
+            <div
+              key={`title-${active}`}
+              className="animate-fade-up motion-reduce:animate-none"
+            >
+              <p
+                className={`text-xs font-bold tracking-[0.2em] uppercase ${t.eyebrow}`}
+              >
+                {current.number} — {current.eyebrow}
+              </p>
+              <h2
+                className={`mt-4 font-serif text-4xl leading-[1.05] font-bold tracking-tight sm:text-5xl lg:text-6xl ${t.title}`}
+              >
+                {current.title}
+              </h2>
+            </div>
 
-        <div className="mt-16 grid items-start gap-x-6 gap-y-14 md:grid-cols-3 lg:gap-x-8">
-          {CARDS.map((card) => (
-            <article key={card.number} className="group relative pt-10">
-              <div className="relative rounded-[1.75rem] border border-border/80 bg-card px-5 pb-7 pt-0 shadow-[0_20px_50px_-40px_rgba(7,31,20,0.5)] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none group-hover:-translate-y-1 group-hover:shadow-[0_28px_60px_-38px_rgba(7,31,20,0.35)] sm:px-6">
-                <div className="-mt-10">
-                  <AppPreview card={card} />
+            {/* Téléphone (centre) — captures empilées, fondu entre elles */}
+            <div className="relative mx-auto h-[335px] w-[154px] sm:h-[470px] sm:w-[216px] lg:h-[565px] lg:w-[260px]">
+              {STEPS.map((s, i) => (
+                <div
+                  key={s.number}
+                  className={`absolute inset-0 transition-opacity duration-500 ${i === active ? "opacity-100" : "opacity-0"}`}
+                  aria-hidden={i !== active}
+                >
+                  <Phone src={s.screen} alt={s.alt} />
                 </div>
-                <div className="mt-5 flex items-center gap-3">
-                  <span className="font-serif text-3xl text-gold">
-                    {card.number}
+              ))}
+            </div>
+
+            {/* Description (droite) */}
+            <div
+              key={`desc-${active}`}
+              className="animate-fade-up motion-reduce:animate-none"
+            >
+              <p className={`text-base leading-7 sm:text-lg ${t.body}`}>
+                {current.description}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Indicateur de progression 01 · 02 · 03 */}
+        <div className="mx-auto w-full max-w-6xl px-5 pb-8 lg:px-10 lg:pb-12">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-current/15 pt-6">
+            {STEPS.map((s, i) => {
+              const isActive = i === active;
+              return (
+                <div
+                  key={s.number}
+                  className={`flex items-center gap-2.5 text-sm transition-colors ${isActive ? onClass : dimClass}`}
+                >
+                  <span
+                    className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold ${
+                      isActive
+                        ? current.theme === "gold"
+                          ? "bg-primary-dark text-white"
+                          : "bg-white text-primary-dark"
+                        : "border border-current"
+                    }`}
+                  >
+                    {s.number}
                   </span>
-                  <span className="h-px flex-1 bg-border" />
-                  <span className="text-[10px] font-bold tracking-[0.16em] text-primary">
-                    {card.eyebrow}
+                  <span className={isActive ? "font-semibold" : "font-medium"}>
+                    {s.eyebrow}
                   </span>
                 </div>
-                <h3 className="mt-4 font-serif text-2xl leading-tight text-text">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-text-secondary">
-                  {card.description}
-                </p>
-                <div className="mt-5 flex items-center gap-2 text-xs font-medium text-primary">
-                  <Check size={15} strokeWidth={2.5} aria-hidden="true" />
-                  <span>Dans une seule application</span>
-                </div>
-              </div>
-            </article>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

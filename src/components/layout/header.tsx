@@ -44,7 +44,12 @@ export function Header() {
             className="rounded-lg"
             priority
           />
-          <span className="font-serif text-lg font-bold tracking-tight text-primary-dark">
+          <span
+            className={cn(
+              "font-serif text-lg font-bold tracking-tight transition-colors",
+              scrolled ? "text-primary-dark" : "text-white",
+            )}
+          >
             Ateliya
           </span>
         </Link>
@@ -54,7 +59,12 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-text-secondary transition-colors hover:text-primary"
+              className={cn(
+                "text-sm font-medium transition-colors",
+                scrolled
+                  ? "text-text-secondary hover:text-primary"
+                  : "text-white/85 hover:text-white",
+              )}
             >
               {link.label}
             </Link>
@@ -62,13 +72,20 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Button href="/inscription" variant="primary" size="sm">
+          <Button
+            href="/inscription"
+            variant={scrolled ? "primary" : "gold"}
+            size="sm"
+          >
             S&apos;inscrire
           </Button>
         </div>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-full text-primary-dark lg:hidden"
+          className={cn(
+            "flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden",
+            scrolled ? "text-primary-dark" : "text-white",
+          )}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}

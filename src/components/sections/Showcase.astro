@@ -1,11 +1,11 @@
 ---
-import PhoneFrame from "../ui/PhoneFrame.astro";
+import { Picture } from "astro:assets";
 import { SHOWCASE_STEPS, type ShowcaseTheme } from "../../data/showcase";
-import accueil from "../../assets/screens/accueil.webp";
-import gestion from "../../assets/screens/gestion.webp";
-import rapport from "../../assets/screens/rapport.webp";
+import clients from "../../assets/screens/mockup-accueil.png";
+import commandes from "../../assets/screens/mockup-boutique.png";
+import activite from "../../assets/screens/mockup-activite.png";
 
-const SCREENS = { accueil, gestion, rapport };
+const SCREENS = { clients, commandes, activite };
 
 const THEME: Record<
   ShowcaseTheme,
@@ -67,11 +67,19 @@ const THEME: Record<
                   </h2>
                 </div>
 
-                <PhoneFrame
+                <Picture
                   src={SCREENS[s.screen]}
                   alt={s.alt}
-                  class="mx-auto w-[154px] sm:w-[216px] lg:w-[260px]"
+                  formats={["avif", "webp"]}
+                  fallbackFormat="webp"
+                  widths={[220, 440]}
+                  sizes="(min-width: 1024px) 300px, 220px"
                   loading={i === 0 ? "eager" : "lazy"}
+                  pictureAttributes={{
+                    class:
+                      "mx-auto block w-[190px] sm:w-[250px] lg:w-[300px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]",
+                  }}
+                  class="h-auto w-full"
                 />
 
                 <div class="lg:pl-4">

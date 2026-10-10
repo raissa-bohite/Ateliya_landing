@@ -5,8 +5,8 @@ export interface ShowcaseStep {
   eyebrow: string;
   title: string;
   description: string;
-  /** Clé de capture (voir imports dans Showcase.astro). */
-  screen: "accueil" | "gestion" | "rapport";
+  /** Clé du mockup (voir imports dans Showcase.astro). */
+  screen: "clients" | "commandes" | "activite";
   alt: string;
   theme: ShowcaseTheme;
 }
@@ -18,8 +18,8 @@ export const SHOWCASE_STEPS: ShowcaseStep[] = [
     title: "Chaque client, bien accompagné.",
     description:
       "Coordonnées, préférences et mesures réunies dans une fiche complète. Vous retrouvez tout l'historique d'un client en un instant.",
-    screen: "gestion",
-    alt: "Fiches clients et gestion de l'atelier dans Ateliya",
+    screen: "clients",
+    alt: "Fiche client et historique des transactions dans Ateliya",
     theme: "green",
   },
   {
@@ -28,8 +28,8 @@ export const SHOWCASE_STEPS: ShowcaseStep[] = [
     title: "Chaque création, bien suivie.",
     description:
       "Modèle, échéances, avancement et acomptes : gardez chaque commande sous contrôle, du premier essayage à la livraison.",
-    screen: "accueil",
-    alt: "Tableau de bord et suivi des commandes dans Ateliya",
+    screen: "commandes",
+    alt: "Catalogue boutique et suivi des stocks dans Ateliya",
     theme: "gold",
   },
   {
@@ -38,8 +38,8 @@ export const SHOWCASE_STEPS: ShowcaseStep[] = [
     title: "Votre atelier, en un coup d'œil.",
     description:
       "Transactions, paiements et statistiques réunis. Vous suivez la santé de votre atelier en temps réel, où que vous soyez.",
-    screen: "rapport",
-    alt: "Rapports et statistiques de l'atelier dans Ateliya",
+    screen: "activite",
+    alt: "Statistiques de caisse et de stock de l'atelier dans Ateliya",
     theme: "dark",
   },
 ];

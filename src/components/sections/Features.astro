@@ -1,32 +1,22 @@
 ---
+import { Image } from "astro:assets";
 import { FEATURES, type FeatureTone } from "../../data/features";
-import Icon from "../ui/Icon.astro";
 import StitchDivider from "../ui/StitchDivider.astro";
+import clients from "../../assets/features/clients.png";
+import commandes from "../../assets/features/commandes.png";
+import mesures from "../../assets/features/mesures.png";
+import paiements from "../../assets/features/paiements.png";
 
-const TONE: Record<
-  FeatureTone,
-  { card: string; badge: string; body: string }
-> = {
-  green: {
-    card: "bg-primary text-white",
-    badge: "bg-gold text-primary-dark",
-    body: "text-white/80",
-  },
-  gold: {
-    card: "bg-gold text-primary-dark",
-    badge: "bg-primary-dark text-white",
-    body: "text-primary-dark/80",
-  },
+const ILLUSTRATIONS = { clients, commandes, mesures, paiements };
+
+const TONE: Record<FeatureTone, { card: string; body: string }> = {
+  green: { card: "bg-primary text-white", body: "text-white/80" },
+  gold: { card: "bg-gold text-primary-dark", body: "text-primary-dark/80" },
   light: {
     card: "bg-primary-light text-primary-dark",
-    badge: "bg-primary text-white",
     body: "text-primary-dark/70",
   },
-  dark: {
-    card: "bg-primary-dark text-white",
-    badge: "bg-gold text-primary-dark",
-    body: "text-white/75",
-  },
+  dark: { card: "bg-primary-dark text-white", body: "text-white/75" },
 };
 ---
 
@@ -57,19 +47,19 @@ const TONE: Record<
           return (
             <article
               class:list={[
-                "flex flex-col rounded-3xl p-6 shadow-[0_20px_50px_-40px_rgba(7,31,20,0.5)] transition-transform duration-300 hover:-translate-y-1.5 sm:p-7",
+                "flex flex-col items-center rounded-3xl p-6 text-center shadow-[0_20px_50px_-40px_rgba(7,31,20,0.5)] transition-transform duration-300 hover:-translate-y-1.5 sm:p-7",
                 t.card,
               ]}
             >
-              <div
-                class:list={[
-                  "flex h-12 w-12 items-center justify-center rounded-2xl",
-                  t.badge,
-                ]}
-              >
-                <Icon name={f.icon} class="h-7 w-7" />
-              </div>
-              <h3 class="mt-5 font-serif text-xl font-bold sm:text-2xl">
+              <Image
+                src={ILLUSTRATIONS[f.illustration]}
+                alt=""
+                width={132}
+                height={132}
+                loading="lazy"
+                class="h-28 w-28 object-contain drop-shadow-[0_10px_18px_rgba(0,0,0,0.18)] sm:h-32 sm:w-32"
+              />
+              <h3 class="mt-4 font-serif text-xl font-bold sm:text-2xl">
                 {f.title}
               </h3>
               <p class:list={["mt-2.5 text-sm leading-6", t.body]}>

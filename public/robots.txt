@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ateliya.com/sitemap-index.xml

@@ -72,12 +72,12 @@ const THEME: Record<
                   alt={s.alt}
                   formats={["avif", "webp"]}
                   fallbackFormat="webp"
-                  widths={[220, 440]}
-                  sizes="(min-width: 1024px) 300px, 220px"
+                  widths={[280, 560, 840]}
+                  sizes="(min-width: 1024px) 460px, (min-width: 640px) 360px, 280px"
                   loading={i === 0 ? "eager" : "lazy"}
                   pictureAttributes={{
                     class:
-                      "mx-auto block w-[190px] sm:w-[250px] lg:w-[300px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]",
+                      "mx-auto block w-[260px] sm:w-[360px] lg:w-[460px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]",
                   }}
                   class="h-auto w-full"
                 />

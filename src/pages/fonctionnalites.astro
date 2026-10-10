@@ -60,7 +60,7 @@ const BADGES = ["Clients", "Commandes", "Paiements"];
           </div>
         </div>
 
-        <div class="relative mx-auto flex h-[380px] w-full max-w-[480px] items-end justify-center sm:h-[460px]">
+        <div class="relative mx-auto flex h-[380px] w-full min-w-0 max-w-[480px] items-end justify-center sm:h-[460px]">
           <div class="absolute bottom-[-6rem] left-1/2 aspect-square w-[88%] -translate-x-1/2 rounded-full bg-gold/35"></div>
           <div class="absolute bottom-[-3.5rem] left-1/2 aspect-square w-[72%] -translate-x-1/2 rounded-full border border-primary/20"></div>
           <Picture
@@ -70,7 +70,7 @@ const BADGES = ["Clients", "Commandes", "Paiements"];
             fallbackFormat="webp"
             widths={[200, 400]}
             sizes="200px"
-            class="absolute bottom-0 left-[10%] z-10 w-[40%] -rotate-[9deg] drop-shadow-[0_25px_45px_rgba(0,0,0,0.3)]"
+            class="absolute bottom-0 left-[10%] z-10 w-[40%] min-w-0 -rotate-[9deg] drop-shadow-[0_25px_45px_rgba(0,0,0,0.3)]"
           />
           <Picture
             src={accueil}
@@ -79,7 +79,7 @@ const BADGES = ["Clients", "Commandes", "Paiements"];
             fallbackFormat="webp"
             widths={[220, 440]}
             sizes="220px"
-            class="relative z-20 w-[46%] rotate-[2deg] drop-shadow-[0_25px_45px_rgba(0,0,0,0.3)]"
+            class="relative z-20 w-[46%] min-w-0 rotate-[2deg] drop-shadow-[0_25px_45px_rgba(0,0,0,0.3)]"
           />
         </div>
       </div>

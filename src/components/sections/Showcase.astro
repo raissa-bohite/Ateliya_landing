@@ -70,14 +70,14 @@ const THEME: Record<
                 {/* Hauteur contrainte en svh (s'adapte à l'écran) : ne peut
                     jamais déborder sous le header, quelle que soit la taille
                     de l'image source. object-contain évite toute déformation. */}
-                <div class="mx-auto flex h-[44svh] w-full max-w-[300px] items-center justify-center sm:h-[54svh] sm:max-w-[420px] lg:h-[62svh] lg:max-w-[520px]">
+                <div class="mx-auto flex h-[50svh] w-full max-w-[340px] items-center justify-center sm:h-[60svh] sm:max-w-[460px] lg:h-[68svh] lg:max-w-[580px]">
                   <Picture
                     src={SCREENS[s.screen]}
                     alt={s.alt}
                     formats={["avif", "webp"]}
                     fallbackFormat="webp"
-                    widths={[320, 640, 960]}
-                    sizes="(min-width: 1024px) 520px, (min-width: 640px) 420px, 320px"
+                    widths={[360, 720, 1080]}
+                    sizes="(min-width: 1024px) 580px, (min-width: 640px) 460px, 360px"
                     loading={i === 0 ? "eager" : "lazy"}
                     pictureAttributes={{
                       class: "block h-full w-auto",

@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import StitchDivider from "../components/ui/StitchDivider.astro";
+import Icon from "../components/ui/Icon.astro";
+import InscriptionForm from "../components/islands/InscriptionForm";
+
+const AVANTAGES = [
+  "Gestion des clients et des mesures",
+  "Suivi des commandes en temps réel",
+  "Paiements et facturation simplifiés",
+  "Application mobile incluse",
+];
+---
+
+<BaseLayout
+  title="Inscription — Ateliya"
+  description="Créez votre compte Ateliya et commencez à gérer votre atelier de couture : clients, mesures, commandes et paiements."
+>
+  <Header />
+  <main class="flex-1">
+    <section class="bg-background px-5 pt-32 pb-16 sm:pt-40">
+      <div class="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[0.85fr_1fr] lg:gap-16">
+        <div class="lg:pt-6">
+          <StitchDivider align="left" class="mb-5" />
+          <p class="text-xs font-bold tracking-[0.2em] text-primary uppercase">
+            Inscription Ateliya
+          </p>
+          <h1 class="mt-5 font-serif text-4xl leading-tight tracking-tight text-text sm:text-5xl">
+            Gérez votre atelier comme un pro.
+          </h1>
+          <p class="mt-5 max-w-md text-base leading-7 text-text-secondary sm:text-lg">
+            Créez votre compte en quelques instants et retrouvez tout votre
+            atelier dans une seule application.
+          </p>
+          <ul class="mt-8 flex flex-col gap-3">
+            {
+              AVANTAGES.map((item) => (
+                <li class="flex items-center gap-3 text-sm text-text">
+                  <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary">
+                    <Icon name="check" class="h-[13px] w-[13px]" strokeWidth={3} />
+                  </span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <InscriptionForm client:load />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

@@ -1,31 +1,62 @@
 ---
 interface Props {
   class?: string;
+  /** "center" : brins des deux côtés. "left" : un seul brin, aligné à gauche. */
+  align?: "center" | "left";
 }
-const { class: className = "" } = Astro.props;
+const { class: className = "", align = "center" } = Astro.props;
 ---
 
 <div
-  class:list={["flex items-center justify-center gap-3", className]}
+  class:list={[
+    "flex items-center gap-3",
+    align === "left" ? "justify-start" : "justify-center",
+    className,
+  ]}
   aria-hidden="true"
 >
-  <span class="stitch h-px max-w-[120px] flex-1"></span>
-  <svg
-    class="h-4 w-4 shrink-0 -rotate-90 text-gold"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="1.75"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <circle cx="6" cy="6" r="3"></circle>
-    <circle cx="6" cy="18" r="3"></circle>
-    <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
-    <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
-    <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
-  </svg>
-  <span class="stitch h-px max-w-[120px] flex-1"></span>
+  {
+    align === "left" ? (
+      <>
+        <svg
+          class="h-4 w-4 shrink-0 text-gold"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="6" cy="6" r="3" />
+          <circle cx="6" cy="18" r="3" />
+          <line x1="20" y1="4" x2="8.12" y2="15.88" />
+          <line x1="14.47" y1="14.48" x2="20" y2="20" />
+          <line x1="8.12" y1="8.12" x2="12" y2="12" />
+        </svg>
+        <span class="stitch h-px w-16 max-w-[120px]" />
+      </>
+    ) : (
+      <>
+        <span class="stitch h-px max-w-[120px] flex-1" />
+        <svg
+          class="h-4 w-4 shrink-0 -rotate-90 text-gold"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="6" cy="6" r="3" />
+          <circle cx="6" cy="18" r="3" />
+          <line x1="20" y1="4" x2="8.12" y2="15.88" />
+          <line x1="14.47" y1="14.48" x2="20" y2="20" />
+          <line x1="8.12" y1="8.12" x2="12" y2="12" />
+        </svg>
+        <span class="stitch h-px max-w-[120px] flex-1" />
+      </>
+    )
+  }
 </div>
 
 <style>

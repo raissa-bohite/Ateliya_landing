@@ -1,10 +1,26 @@
 ---
 import { NAV_LINKS } from "../../data/nav";
+
+interface Props {
+  /**
+   * Transparent/texte blanc tant qu'on n'a pas scrollé (pour une hero sombre
+   * en plein écran juste derrière, comme sur la home). Par défaut, le header
+   * est opaque et lisible dès le chargement — le bon choix pour toute page
+   * dont le haut n'est pas une hero sombre plein écran.
+   */
+  transparentUntilScroll?: boolean;
+}
+
+const { transparentUntilScroll = false } = Astro.props;
 ---
 
 <header
   id="site-header"
-  class="site-header fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300"
+  class:list={[
+    "site-header fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300",
+    { "is-scrolled": !transparentUntilScroll },
+  ]}
+  data-transparent={transparentUntilScroll}
 >
   <div
     class="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5 lg:px-8"
@@ -111,10 +127,14 @@ import { NAV_LINKS } from "../../data/nav";
 
 <script>
   const header = document.getElementById("site-header");
-  const setScrolled = () =>
-    header?.classList.toggle("is-scrolled", window.scrollY > 8);
-  setScrolled();
-  window.addEventListener("scroll", setScrolled, { passive: true });
+  // Seul le header transparent (home) a besoin d'écouter le scroll : les
+  // autres pages sont déjà rendues opaques côté serveur (voir Props).
+  if (header?.dataset.transparent === "true") {
+    const setScrolled = () =>
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    setScrolled();
+    window.addEventListener("scroll", setScrolled, { passive: true });
+  }
 
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");

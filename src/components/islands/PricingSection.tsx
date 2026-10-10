@@ -233,16 +233,24 @@ export default function PricingSection({
         )}
 
       {!loadingModules && modules.length > 0 && (
-        <div className="grid items-stretch gap-5 md:grid-cols-3 md:gap-6">
+        // Rail horizontal à cartes de largeur fixe plutôt qu'une grille à
+        // 3 colonnes : fonctionne pareil avec 2, 3, 4 ou 5+ forfaits (l'API
+        // peut en renvoyer un nombre variable), sans jamais laisser une
+        // carte orpheline sur une dernière ligne, et garde des cartes
+        // compactes au lieu de les étirer pour remplir la grille.
+        <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:justify-center md:gap-6">
           {modules.map((mod, idx) => {
             const popular = idx === 1;
             // Même rythme de couleurs pleines que les cartes de la home
             // (Features.astro) : vert / or / vert foncé, en boucle.
             const tone = TONES[idx % TONES.length];
             return (
-              <div key={mod.id} className="h-full">
+              <div
+                key={mod.id}
+                className="w-[270px] shrink-0 snap-start sm:w-[290px]"
+              >
                 <div
-                  className={`relative flex h-full flex-col overflow-hidden rounded-[1.5rem] p-6 shadow-[0_20px_50px_-40px_rgba(7,31,20,0.5)] transition-transform duration-300 hover:-translate-y-1.5 md:p-7 ${tone.card}`}
+                  className={`relative flex h-full flex-col overflow-hidden rounded-[1.5rem] p-5 shadow-[0_20px_50px_-40px_rgba(7,31,20,0.5)] transition-transform duration-300 hover:-translate-y-1.5 md:p-6 ${tone.card}`}
                 >
                   {popular && (
                     <div
@@ -253,25 +261,21 @@ export default function PricingSection({
                   )}
 
                   <div
-                    className={`flex h-11 w-11 items-center justify-center rounded-full ${tone.badge}`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-full ${tone.badge}`}
                   >
                     {planIcon(idx)}
                   </div>
 
-                  <div className="mt-5">
-                    <h3 className="font-serif text-2xl font-bold">
-                      {mod.code}
-                    </h3>
-                    <p
-                      className={`mt-2 min-h-10 text-sm leading-6 ${tone.body}`}
-                    >
+                  <div className="mt-4">
+                    <h3 className="font-serif text-xl font-bold">{mod.code}</h3>
+                    <p className={`mt-1.5 text-sm leading-6 ${tone.body}`}>
                       {mod.description}
                     </p>
                   </div>
 
-                  <div className={`mt-6 border-y py-5 ${tone.divider}`}>
+                  <div className={`mt-5 border-y py-4 ${tone.divider}`}>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-serif text-4xl font-bold tabular-nums md:text-5xl">
+                      <span className="font-serif text-3xl font-bold tabular-nums md:text-4xl">
                         {parseInt(mod.montant).toLocaleString("fr-FR")}
                       </span>
                       <span className="text-sm font-semibold">FCFA</span>
@@ -282,11 +286,11 @@ export default function PricingSection({
                   </div>
 
                   {mod.lignes.length > 0 && (
-                    <ul className="mt-5 flex-grow space-y-3">
+                    <ul className="mt-4 flex-grow space-y-2.5">
                       {mod.lignes.map((l, li) => (
                         <li
                           key={li}
-                          className={`flex items-start gap-3 text-sm leading-5 ${tone.body}`}
+                          className={`flex items-start gap-2.5 text-sm leading-5 ${tone.body}`}
                         >
                           <span
                             className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${tone.badge}`}
@@ -304,7 +308,7 @@ export default function PricingSection({
 
                   <button
                     onClick={() => setPlanSelectionne(mod)}
-                    className={`mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${tone.button}`}
+                    className={`mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${tone.button}`}
                   >
                     <span>Choisir ce forfait</span>
                     <ArrowRight size={15} />

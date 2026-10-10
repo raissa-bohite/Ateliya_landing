@@ -17,11 +17,35 @@ function planIcon(idx: number) {
   return <Package className={className} strokeWidth={1.75} />;
 }
 
-// Dégradé répété doré (reprend le motif StitchDivider utilisé côté Astro).
-const STITCH_STYLE: React.CSSProperties = {
-  backgroundImage:
-    "repeating-linear-gradient(to right, var(--color-gold) 0 9px, transparent 9px 16px)",
-};
+// Cartes en couleur pleine, même rythme vert / or / vert foncé que les
+// cartes de la home (Features.astro, Showcase.astro) — en boucle si plus
+// de 3 forfaits.
+const TONES = [
+  {
+    card: "bg-primary text-white",
+    body: "text-white/80",
+    badge: "bg-gold text-primary-dark",
+    divider: "border-white/20",
+    button:
+      "bg-gold text-primary-dark hover:bg-gold-light focus-visible:ring-gold/50",
+  },
+  {
+    card: "bg-gold text-primary-dark",
+    body: "text-primary-dark/80",
+    badge: "bg-primary-dark text-white",
+    divider: "border-primary-dark/15",
+    button:
+      "bg-primary-dark text-white hover:bg-primary focus-visible:ring-primary-dark/50",
+  },
+  {
+    card: "bg-primary-dark text-white",
+    body: "text-white/75",
+    badge: "bg-gold text-primary-dark",
+    divider: "border-white/15",
+    button:
+      "bg-gold text-primary-dark hover:bg-gold-light focus-visible:ring-gold/50",
+  },
+] as const;
 
 interface PricingSectionProps {
   initialPays?: PaysOption[];
@@ -212,40 +236,47 @@ export default function PricingSection({
         <div className="grid items-stretch gap-5 md:grid-cols-3 md:gap-6">
           {modules.map((mod, idx) => {
             const popular = idx === 1;
+            // Même rythme de couleurs pleines que les cartes de la home
+            // (Features.astro) : vert / or / vert foncé, en boucle.
+            const tone = TONES[idx % TONES.length];
             return (
               <div key={mod.id} className="h-full">
                 <div
-                  className={`relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border bg-card p-6 transition-shadow hover:shadow-[0_20px_50px_-36px_rgba(7,31,20,0.45)] md:p-7 ${popular ? "border-primary/55" : "border-border"}`}
+                  className={`relative flex h-full flex-col overflow-hidden rounded-[1.5rem] p-6 shadow-[0_20px_50px_-40px_rgba(7,31,20,0.5)] transition-transform duration-300 hover:-translate-y-1.5 md:p-7 ${tone.card}`}
                 >
                   {popular && (
-                    <div className="absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-primary-light px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-primary">
+                    <div
+                      className={`absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide ${tone.badge}`}
+                    >
                       <Star size={11} fill="currentColor" /> Recommandé
                     </div>
                   )}
 
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary">
+                  <div
+                    className={`flex h-11 w-11 items-center justify-center rounded-full ${tone.badge}`}
+                  >
                     {planIcon(idx)}
                   </div>
 
                   <div className="mt-5">
-                    <h3 className="font-serif text-2xl font-semibold text-text">
+                    <h3 className="font-serif text-2xl font-bold">
                       {mod.code}
                     </h3>
-                    <p className="mt-2 min-h-10 text-sm leading-6 text-text-secondary">
+                    <p
+                      className={`mt-2 min-h-10 text-sm leading-6 ${tone.body}`}
+                    >
                       {mod.description}
                     </p>
                   </div>
 
-                  <div className="mt-6 border-y border-border py-5">
+                  <div className={`mt-6 border-y py-5 ${tone.divider}`}>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-serif text-4xl font-semibold tabular-nums text-text md:text-5xl">
+                      <span className="font-serif text-4xl font-bold tabular-nums md:text-5xl">
                         {parseInt(mod.montant).toLocaleString("fr-FR")}
                       </span>
-                      <span className="text-sm font-semibold text-text-secondary">
-                        FCFA
-                      </span>
+                      <span className="text-sm font-semibold">FCFA</span>
                     </div>
-                    <p className="mt-1 text-sm text-text-secondary">
+                    <p className={`mt-1 text-sm ${tone.body}`}>
                       pour {mod.duree} mois
                     </p>
                   </div>
@@ -255,9 +286,11 @@ export default function PricingSection({
                       {mod.lignes.map((l, li) => (
                         <li
                           key={li}
-                          className="flex items-start gap-3 text-sm leading-5 text-text-secondary"
+                          className={`flex items-start gap-3 text-sm leading-5 ${tone.body}`}
                         >
-                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary">
+                          <span
+                            className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${tone.badge}`}
+                          >
                             <Check size={12} strokeWidth={3} />
                           </span>
                           <span>
@@ -269,15 +302,9 @@ export default function PricingSection({
                     </ul>
                   )}
 
-                  <div
-                    className="mt-7 h-px w-full"
-                    style={STITCH_STYLE}
-                    aria-hidden="true"
-                  />
-
                   <button
                     onClick={() => setPlanSelectionne(mod)}
-                    className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                    className={`mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${tone.button}`}
                   >
                     <span>Choisir ce forfait</span>
                     <ArrowRight size={15} />

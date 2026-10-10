@@ -56,7 +56,7 @@ const THEME: Record<
         const t = THEME[s.theme];
         return (
           <div class:list={[`state state-${i} absolute inset-0 flex flex-col`, t.section]}>
-            <div class="mx-auto flex w-full max-w-6xl flex-1 items-center px-5 lg:px-10">
+            <div class="mx-auto flex w-full max-w-6xl flex-1 items-center px-5 pt-20 lg:px-10 lg:pt-24">
               <div class="grid w-full items-center gap-8 lg:grid-cols-[1.1fr_auto_1fr] lg:gap-10">
                 <div class="lg:pr-4">
                   <p class:list={["text-xs font-bold tracking-[0.2em] uppercase", t.eyebrow]}>
@@ -67,20 +67,24 @@ const THEME: Record<
                   </h2>
                 </div>
 
-                <Picture
-                  src={SCREENS[s.screen]}
-                  alt={s.alt}
-                  formats={["avif", "webp"]}
-                  fallbackFormat="webp"
-                  widths={[280, 560, 840]}
-                  sizes="(min-width: 1024px) 460px, (min-width: 640px) 360px, 280px"
-                  loading={i === 0 ? "eager" : "lazy"}
-                  pictureAttributes={{
-                    class:
-                      "mx-auto block w-[260px] sm:w-[360px] lg:w-[460px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]",
-                  }}
-                  class="h-auto w-full"
-                />
+                {/* Hauteur contrainte en svh (s'adapte à l'écran) : ne peut
+                    jamais déborder sous le header, quelle que soit la taille
+                    de l'image source. object-contain évite toute déformation. */}
+                <div class="mx-auto flex h-[38svh] w-full max-w-[260px] items-center justify-center sm:h-[46svh] sm:max-w-[360px] lg:h-[54svh] lg:max-w-[460px]">
+                  <Picture
+                    src={SCREENS[s.screen]}
+                    alt={s.alt}
+                    formats={["avif", "webp"]}
+                    fallbackFormat="webp"
+                    widths={[280, 560, 840]}
+                    sizes="(min-width: 1024px) 460px, (min-width: 640px) 360px, 280px"
+                    loading={i === 0 ? "eager" : "lazy"}
+                    pictureAttributes={{
+                      class: "block h-full w-auto",
+                    }}
+                    class="h-full w-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]"
+                  />
+                </div>
 
                 <div class="lg:pl-4">
                   <p class:list={["text-base leading-7 sm:text-lg", t.body]}>

@@ -1,0 +1,152 @@
+---
+import PhoneFrame from "../ui/PhoneFrame.astro";
+import { SHOWCASE_STEPS, type ShowcaseTheme } from "../../data/showcase";
+import accueil from "../../assets/screens/accueil.webp";
+import gestion from "../../assets/screens/gestion.webp";
+import rapport from "../../assets/screens/rapport.webp";
+
+const SCREENS = { accueil, gestion, rapport };
+
+const THEME: Record<
+  ShowcaseTheme,
+  {
+    section: string;
+    eyebrow: string;
+    body: string;
+    on: string;
+    dim: string;
+    dot: string;
+  }
+> = {
+  green: {
+    section: "bg-primary text-white",
+    eyebrow: "text-gold-light",
+    body: "text-white/80",
+    on: "text-white",
+    dim: "text-white/45",
+    dot: "bg-white text-primary-dark",
+  },
+  gold: {
+    section: "bg-gold text-primary-dark",
+    eyebrow: "text-primary-dark/70",
+    body: "text-primary-dark/80",
+    on: "text-primary-dark",
+    dim: "text-primary-dark/45",
+    dot: "bg-primary-dark text-white",
+  },
+  dark: {
+    section: "bg-primary-dark text-white",
+    eyebrow: "text-gold-light",
+    body: "text-white/80",
+    on: "text-white",
+    dim: "text-white/45",
+    dot: "bg-white text-primary-dark",
+  },
+};
+---
+
+<section
+  id="parcours"
+  class="relative"
+  style={`height:${SHOWCASE_STEPS.length * 100}svh`}
+>
+  <div class="stage sticky top-0 h-[100svh] overflow-hidden" data-active="0">
+    {
+      SHOWCASE_STEPS.map((s, i) => {
+        const t = THEME[s.theme];
+        return (
+          <div class:list={[`state state-${i} absolute inset-0 flex flex-col`, t.section]}>
+            <div class="mx-auto flex w-full max-w-6xl flex-1 items-center px-5 lg:px-10">
+              <div class="grid w-full items-center gap-8 lg:grid-cols-[1.1fr_auto_1fr] lg:gap-10">
+                <div class="lg:pr-4">
+                  <p class:list={["text-xs font-bold tracking-[0.2em] uppercase", t.eyebrow]}>
+                    {s.number} — {s.eyebrow}
+                  </p>
+                  <h2 class="mt-4 font-serif text-4xl leading-[1.05] font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                    {s.title}
+                  </h2>
+                </div>
+
+                <PhoneFrame
+                  src={SCREENS[s.screen]}
+                  alt={s.alt}
+                  class="mx-auto w-[154px] sm:w-[216px] lg:w-[260px]"
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+
+                <div class="lg:pl-4">
+                  <p class:list={["text-base leading-7 sm:text-lg", t.body]}>
+                    {s.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mx-auto w-full max-w-6xl px-5 pb-8 lg:px-10 lg:pb-12">
+              <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-current/15 pt-6">
+                {SHOWCASE_STEPS.map((step, j) => (
+                  <div class:list={["flex items-center gap-2.5 text-sm", j === i ? t.on : t.dim]}>
+                    <span
+                      class:list={[
+                        "flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold",
+                        j === i ? t.dot : "border border-current",
+                      ]}
+                    >
+                      {step.number}
+                    </span>
+                    <span class={j === i ? "font-semibold" : "font-medium"}>
+                      {step.eyebrow}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
+
+<style>
+  .state {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .stage[data-active="0"] .state-0,
+  .stage[data-active="1"] .state-1,
+  .stage[data-active="2"] .state-2 {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const section = document.getElementById("parcours");
+  const stage = section?.querySelector<HTMLElement>(".stage");
+  const COUNT = 3;
+  let ticking = false;
+
+  function update() {
+    ticking = false;
+    if (!section || !stage) return;
+    const distance = section.offsetHeight - window.innerHeight;
+    const scrolled = Math.min(
+      Math.max(-section.getBoundingClientRect().top, 0),
+      distance,
+    );
+    const p = distance > 0 ? scrolled / distance : 0;
+    const idx = Math.min(COUNT - 1, Math.floor(p * COUNT));
+    if (stage.dataset.active !== String(idx)) stage.dataset.active = String(idx);
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  update();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+</script>

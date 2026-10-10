@@ -1,0 +1,57 @@
+---
+import { FAQ_ITEMS } from "../../data/faq";
+import Icon from "../ui/Icon.astro";
+
+// Données structurées FAQ (SEO + GEO : moteurs classiques et IA).
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+---
+
+<section id="faq" class="bg-background py-20 sm:py-28">
+  <div
+    class="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-8"
+  >
+    <header class="lg:pt-2">
+      <p class="text-xs font-bold tracking-[0.2em] text-primary uppercase">
+        Questions fréquentes
+      </p>
+      <h2
+        class="mt-4 font-serif text-4xl leading-tight tracking-tight text-text sm:text-5xl"
+      >
+        Tout ce que vous voulez savoir.
+      </h2>
+      <p class="mt-4 max-w-sm text-base leading-7 text-text-secondary">
+        Une autre question ? Écrivez-nous, on vous répond vite.
+      </p>
+    </header>
+
+    <div class="space-y-3">
+      {
+        FAQ_ITEMS.map((item) => (
+          <details class="group rounded-2xl border border-border/70 bg-card px-5 open:shadow-[0_20px_50px_-40px_rgba(7,31,20,0.4)]">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-medium text-text [&::-webkit-details-marker]:hidden">
+              {item.question}
+              <Icon
+                name="plus"
+                class="h-[18px] w-[18px] shrink-0 text-primary transition-transform duration-200 group-[[open]]:rotate-45"
+                strokeWidth={2.2}
+              />
+            </summary>
+            <p class="pb-5 text-sm leading-7 text-text-secondary">
+              {item.answer}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />

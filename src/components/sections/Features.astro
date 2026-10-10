@@ -1,0 +1,84 @@
+---
+import { FEATURES, type FeatureTone } from "../../data/features";
+import Icon from "../ui/Icon.astro";
+import StitchDivider from "../ui/StitchDivider.astro";
+
+const TONE: Record<
+  FeatureTone,
+  { card: string; badge: string; body: string }
+> = {
+  green: {
+    card: "bg-primary text-white",
+    badge: "bg-gold text-primary-dark",
+    body: "text-white/80",
+  },
+  gold: {
+    card: "bg-gold text-primary-dark",
+    badge: "bg-primary-dark text-white",
+    body: "text-primary-dark/80",
+  },
+  light: {
+    card: "bg-primary-light text-primary-dark",
+    badge: "bg-primary text-white",
+    body: "text-primary-dark/70",
+  },
+  dark: {
+    card: "bg-primary-dark text-white",
+    badge: "bg-gold text-primary-dark",
+    body: "text-white/75",
+  },
+};
+---
+
+<section id="fonctionnalites" class="bg-card py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 lg:px-8">
+    <header class="mx-auto max-w-2xl text-center">
+      <StitchDivider class="mb-7" />
+      <p class="text-xs font-bold tracking-[0.16em] text-primary uppercase">
+        Pourquoi choisir Ateliya
+      </p>
+      <h2
+        class="mt-5 font-serif text-4xl leading-tight tracking-tight text-text sm:text-5xl"
+      >
+        Tout ce qu'il faut pour <span class="text-primary">votre atelier.</span>
+      </h2>
+      <p
+        class="mx-auto mt-4 max-w-xl text-base leading-7 text-text-secondary sm:text-lg"
+      >
+        Vos clients, vos commandes et vos paiements enfin réunis dans une seule
+        application.
+      </p>
+    </header>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        FEATURES.map((f) => {
+          const t = TONE[f.tone];
+          return (
+            <article
+              class:list={[
+                "flex flex-col rounded-3xl p-6 shadow-[0_20px_50px_-40px_rgba(7,31,20,0.5)] transition-transform duration-300 hover:-translate-y-1.5 sm:p-7",
+                t.card,
+              ]}
+            >
+              <div
+                class:list={[
+                  "flex h-12 w-12 items-center justify-center rounded-2xl",
+                  t.badge,
+                ]}
+              >
+                <Icon name={f.icon} class="h-7 w-7" />
+              </div>
+              <h3 class="mt-5 font-serif text-xl font-bold sm:text-2xl">
+                {f.title}
+              </h3>
+              <p class:list={["mt-2.5 text-sm leading-6", t.body]}>
+                {f.description}
+              </p>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

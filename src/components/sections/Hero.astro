@@ -1,0 +1,72 @@
+---
+import { Picture } from "astro:assets";
+import heroImg from "../../assets/hero-atelier.webp";
+import AppStoreBadges from "../ui/AppStoreBadges.astro";
+---
+
+<section class="relative flex min-h-svh flex-col overflow-hidden bg-primary-dark">
+  {/* Fond : photo optimisée (AVIF/WebP responsive) + Ken Burns (CSS) */}
+  <Picture
+    src={heroImg}
+    formats={["avif", "webp"]}
+    fallbackFormat="webp"
+    widths={[640, 1024, 1536, 1920]}
+    sizes="100vw"
+    alt="Couturière présentant l'application Ateliya dans son atelier"
+    loading="eager"
+    fetchpriority="high"
+    pictureAttributes={{ class: "absolute inset-0 h-full w-full" }}
+    class="animate-kenburns h-full w-full object-cover object-center"
+  />
+
+  {/* Voiles pour le contraste du texte (colonne gauche) */}
+  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
+  <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
+  <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"></div>
+
+  <div
+    class="relative mx-auto flex min-h-0 w-full max-w-[88rem] flex-1 flex-col px-5 pt-28 pb-10 lg:px-10"
+  >
+    <div class="mt-auto max-w-4xl">
+      <p
+        class="animate-fade-up mb-4 text-xs font-semibold tracking-[0.22em] text-white/90 uppercase sm:text-sm"
+        style="animation-delay:.1s; text-shadow:0 2px 14px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.9)"
+      >
+        L'application de gestion pour ateliers de couture
+      </p>
+
+      <h1
+        class="animate-fade-up font-serif text-6xl leading-[0.95] font-bold tracking-tight text-white sm:text-7xl lg:text-8xl"
+        style="animation-delay:.25s; text-shadow:0 2px 24px rgba(0,0,0,.6)"
+      >
+        Votre atelier,<br />
+        <span class="text-white italic">enfin sous contrôle.</span>
+      </h1>
+
+      <p
+        class="animate-fade-up mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg"
+        style="animation-delay:.45s; text-shadow:0 1px 12px rgba(0,0,0,.6)"
+      >
+        Fini le carnet et les oublis : clients, mesures, commandes et paiements
+        réunis dans une seule app.
+      </p>
+
+      <div class="animate-fade-up mt-8" style="animation-delay:.6s">
+        <AppStoreBadges />
+      </div>
+    </div>
+  </div>
+
+  {/* Indice de scroll */}
+  <div
+    class="pointer-events-none absolute inset-x-0 bottom-5 z-10 flex justify-center"
+  >
+    <div
+      class="flex flex-col items-center gap-1 text-white/85"
+      style="text-shadow:0 1px 8px rgba(0,0,0,.75)"
+    >
+      <span class="text-xs font-medium tracking-wide uppercase">Découvrir</span>
+      <svg class="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+    </div>
+  </div>
+</section>

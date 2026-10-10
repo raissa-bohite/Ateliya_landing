@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* --- Polices self-hosted (Fontsource) : pas de FOUT, pas de requête tierce --- */
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/700.css";
+@import "@fontsource/cormorant-garamond/500-italic.css";
+@import "@fontsource/cormorant-garamond/600-italic.css";
+@import "@fontsource/cormorant-garamond/700-italic.css";
+@import "@fontsource-variable/inter";
+
+/* --- Design tokens Ateliya (génèrent les utilitaires bg-*, text-*, etc.) --- */
+@theme {
+  --color-primary: #0c5e3f;
+  --color-primary-dark: #071f14;
+  --color-primary-light: #e8f5ee;
+
+  --color-gold: #e8960a;
+  --color-gold-light: #f5a820;
+  --color-gold-bg: #fff8e8;
+
+  --color-ivory: #f8f7f4;
+  --color-ivory-dark: #f0ede8;
+
+  --color-background: #f8f7f4;
+  --color-card: #fffefa;
+  --color-text: #071f14;
+  --color-text-secondary: #496458;
+  --color-border: #d7e1db;
+  --color-danger: #b42318;
+  --color-muted: #6f8f80;
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+}
+
+/* --- Base --- */
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Animations (désactivées si prefers-reduced-motion) --- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 24s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

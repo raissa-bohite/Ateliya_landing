@@ -1,0 +1,129 @@
+---
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../data/nav";
+import Icon from "../ui/Icon.astro";
+
+const YEAR = new Date().getFullYear();
+
+const PAYMENTS = [
+  { name: "Orange Money", src: "/Orange_logo.png" },
+  { name: "MTN Mobile Money", src: "/MTN_Logo.png" },
+  { name: "Moov Money", src: "/moov_logo.png" },
+  { name: "Wave", src: "/wave_logo.webp" },
+];
+
+const PRODUCT = [
+  { label: "Fonctionnalités", href: "/fonctionnalites" },
+  { label: "Tarifs", href: "/tarifs" },
+  { label: "Témoignages", href: "/#temoignages" },
+  { label: "FAQ", href: "/#faq" },
+];
+
+const START = [
+  { label: "S'inscrire", href: "/inscription" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<footer class="bg-primary-dark text-sm text-white/65">
+  <div class="mx-auto max-w-6xl px-5 py-14 lg:px-8">
+    {/* Moyens de paiement */}
+    <div
+      class="mb-12 flex flex-col items-center gap-5 border-b border-white/15 pb-10 text-center sm:flex-row sm:justify-between sm:text-left"
+    >
+      <p class="text-xs font-bold tracking-[0.2em] text-white/70 uppercase">
+        Paiements intégrés
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        {
+          PAYMENTS.map((method) => (
+            <img src={method.src} alt={method.name} class="h-7 w-auto object-contain" loading="lazy" />
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
+      {/* Marque */}
+      <div class="max-w-sm">
+        <a href="/" class="flex items-center gap-2.5">
+          <img src="/ateliya.webp" alt="Ateliya" width="32" height="32" class="rounded-lg" />
+          <span class="font-serif text-lg font-bold text-white">Ateliya</span>
+        </a>
+        <p class="mt-4 leading-6">
+          La gestion de votre atelier de couture — clients, mesures, commandes
+          et paiements — réunie dans une seule application.
+        </p>
+        <div class="mt-5 flex gap-3">
+          <a
+            href="https://wa.me/2250501242929?text=Bonjour%2C%20je%20voudrais%20en%20savoir%20plus%20sur%20Ateliya."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20 hover:text-white"
+          >
+            <Icon name="message" class="h-[18px] w-[18px]" />
+          </a>
+          <a
+            href="mailto:support@ateliya.com"
+            aria-label="Email"
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20 hover:text-white"
+          >
+            <Icon name="mail" class="h-[18px] w-[18px]" />
+          </a>
+        </div>
+      </div>
+
+      {/* Produit */}
+      <div>
+        <h3 class="font-semibold text-white">Produit</h3>
+        <ul class="mt-4 space-y-3">
+          {
+            PRODUCT.map((link) => (
+              <li>
+                <a href={link.href} class="transition-colors hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {/* Commencer */}
+      <div>
+        <h3 class="font-semibold text-white">Commencer</h3>
+        <ul class="mt-4 space-y-3">
+          {
+            START.map((link) => (
+              <li>
+                <a href={link.href} class="transition-colors hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white">App Store</a>
+          </li>
+          <li>
+            <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white">Google Play</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-3 border-t border-white/15 pt-6 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>© {YEAR} Ateliya. Tous droits réservés.</p>
+      <div class="flex flex-wrap gap-x-5 gap-y-2">
+        <a href="/conditions" class="transition-colors hover:text-white">
+          Conditions d'utilisation
+        </a>
+        <a href="/politique" class="transition-colors hover:text-white">
+          Politique de confidentialité
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

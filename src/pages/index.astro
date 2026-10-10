@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Features from "../components/sections/Features.astro";
+import Showcase from "../components/sections/Showcase.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Faq from "../components/sections/Faq.astro";
+import Cta from "../components/sections/Cta.astro";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="Ateliya — Gestion d'atelier de couture intelligente"
+  description="Ateliya centralise la gestion de votre atelier de couture : clients, mesures, commandes et paiements, sur mobile. Essai gratuit, sans carte bancaire."
+>
+  <Header />
+  <main class="flex-1">
+    <Hero />
+    <Features />
+    <Showcase />
+    <Testimonials />
+    <Faq />
+    <Cta />
+  </main>
+  <SiteFooter />
+</BaseLayout>

@@ -2,10 +2,17 @@
 import { Picture } from "astro:assets";
 import heroImg from "../../assets/hero-atelier.webp";
 import AppStoreBadges from "../ui/AppStoreBadges.astro";
+import Icon from "../ui/Icon.astro";
 ---
 
 <section class="relative flex min-h-svh flex-col overflow-hidden bg-primary-dark">
-  {/* Fond : photo optimisée (AVIF/WebP responsive) + Ken Burns (CSS) */}
+  {/* Fond : la photo est toujours là (c'est le LCP, elle s'affiche tout de
+      suite). La vidéo en boucle n'est injectée et jouée que côté client,
+      et seulement si l'écran est assez grand, que la personne n'a pas
+      demandé "mouvement réduit", et qu'elle n'est pas en économie de
+      données — voir le script plus bas. Quand elle tourne, le bouton
+      pause devient obligatoire (WCAG 2.2.2 : tout mouvement automatique
+      de plus de 5 s doit pouvoir être arrêté). */}
   <Picture
     src={heroImg}
     formats={["avif", "webp"]}
@@ -16,28 +23,48 @@ import AppStoreBadges from "../ui/AppStoreBadges.astro";
     loading="eager"
     fetchpriority="high"
     pictureAttributes={{ class: "absolute inset-0 h-full w-full" }}
-    class="animate-kenburns h-full w-full object-cover object-center"
+    class="h-full w-full object-cover object-center"
   />
 
-  {/* Voiles pour le contraste du texte (colonne gauche) */}
-  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
-  <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
+  <video
+    class="hero-loop absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-700"
+    muted
+    loop
+    playsinline
+    preload="none"
+    aria-label="Vidéo de présentation d'Ateliya, en boucle"
+  >
+  </video>
+
+  <button
+    type="button"
+    class="hero-loop-toggle absolute bottom-5 left-5 z-10 hidden h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition-colors hover:bg-black/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark"
+    data-loop-toggle
+    aria-pressed="false"
+    aria-label="Mettre en pause la vidéo en boucle"
+  >
+    <Icon name="pause" class="icon-pause h-[18px] w-[18px]" />
+    <Icon name="play" class="icon-play h-[18px] w-[18px]" />
+  </button>
+
+  {/* Voile pour le contraste du texte — un seul dégradé diagonal, en
+      pleine largeur, qui devient réellement transparent avant la moitié
+      de l'écran. Pas de bord dur comme avec un conteneur max-w limité :
+      la transition se termine en transparent, donc invisible. */}
+  <div
+    class="absolute inset-0"
+    style="background:linear-gradient(100deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.6) 22%, rgba(0,0,0,.28) 42%, rgba(0,0,0,0) 60%)"
+  >
+  </div>
   <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"></div>
 
   <div
     class="relative mx-auto flex min-h-0 w-full max-w-[88rem] flex-1 flex-col px-5 pt-28 pb-10 lg:px-10"
   >
     <div class="mt-auto max-w-4xl">
-      <p
-        class="animate-fade-up mb-4 text-xs font-semibold tracking-[0.22em] text-white/90 uppercase sm:text-sm"
-        style="animation-delay:.1s; text-shadow:0 2px 14px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.9)"
-      >
-        L'application de gestion pour ateliers de couture
-      </p>
-
       <h1
         class="animate-fade-up font-serif text-6xl leading-[0.95] font-bold tracking-tight text-white sm:text-7xl lg:text-8xl"
-        style="animation-delay:.25s; text-shadow:0 2px 24px rgba(0,0,0,.6)"
+        style="animation-delay:.1s; text-shadow:0 2px 24px rgba(0,0,0,.6)"
       >
         Votre atelier,<br />
         <span class="text-white italic">enfin sous contrôle.</span>
@@ -70,3 +97,55 @@ import AppStoreBadges from "../ui/AppStoreBadges.astro";
     </div>
   </div>
 </section>
+
+<script>
+  const loopVideo = document.querySelector<HTMLVideoElement>(".hero-loop");
+  const loopToggle = document.querySelector<HTMLButtonElement>("[data-loop-toggle]");
+
+  // navigator.connection n'existe que sur Chrome/Edge — absent ailleurs,
+  // d'où l'optional chaining partout.
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
+    .connection;
+
+  const shouldPlayVideo =
+    window.matchMedia("(min-width: 768px)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    !connection?.saveData;
+
+  if (loopVideo && loopToggle && shouldPlayVideo) {
+    const source = document.createElement("source");
+    source.type = "video/mp4";
+    source.src = "/hero-loop.mp4";
+    loopVideo.append(source);
+    loopVideo.load();
+
+    // Le fondu n'arrive qu'une fois la vidéo réellement en train de jouer,
+    // pour éviter un flash noir pendant le chargement.
+    loopVideo.addEventListener(
+      "playing",
+      () => loopVideo.classList.add("is-playing"),
+      { once: true },
+    );
+    loopVideo.play().catch(() => {});
+    loopToggle.classList.remove("hidden");
+    loopToggle.classList.add("flex");
+
+    loopToggle.addEventListener("click", () => {
+      const willPause = !loopVideo.paused;
+      if (willPause) loopVideo.pause();
+      else loopVideo.play().catch(() => {});
+      loopToggle.setAttribute("aria-pressed", String(willPause));
+    });
+  }
+</script>
+
+<style>
+  .hero-loop.is-playing {
+    opacity: 1;
+  }
+
+  .hero-loop-toggle[aria-pressed="false"] .icon-play,
+  .hero-loop-toggle[aria-pressed="true"] .icon-pause {
+    display: none;
+  }
+</style>

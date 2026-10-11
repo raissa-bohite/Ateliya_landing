@@ -65,19 +65,6 @@ body {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes kenburns {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.08);
-  }
-}
-
-.animate-kenburns {
-  animation: kenburns 24s ease-in-out infinite alternate;
-}
-
 /* --- Scroll reveal : état par défaut = visible (pas de JS => rien à cacher).
    Le script ScrollReveal ajoute .reveal-pending au chargement (donc seuls les
    navigateurs avec JS passent par l'état caché), puis .is-visible quand

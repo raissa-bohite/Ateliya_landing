@@ -70,7 +70,7 @@ const THEME: Record<
                 {/* Hauteur contrainte en svh (s'adapte à l'écran) : ne peut
                     jamais déborder sous le header, quelle que soit la taille
                     de l'image source. object-contain évite toute déformation. */}
-                <div class="mx-auto flex h-[50svh] w-full max-w-[340px] items-center justify-center sm:h-[60svh] sm:max-w-[460px] lg:h-[68svh] lg:max-w-[580px]">
+                <div class="showcase-visual mx-auto flex h-[50svh] w-full max-w-[340px] items-center justify-center sm:h-[60svh] sm:max-w-[460px] lg:h-[68svh] lg:max-w-[580px]">
                   <Picture
                     src={SCREENS[s.screen]}
                     alt={s.alt}
@@ -130,6 +130,23 @@ const THEME: Record<
   .stage[data-active="2"] .state-2 {
     opacity: 1;
   }
+
+  /* Rejoué en JS à chaque fois qu'un panneau devient actif (cf. playRise) —
+     même recette que les reveals au scroll : montée + léger zoom + fade. */
+  @keyframes showcase-rise {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .showcase-rise {
+    animation: showcase-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
 </style>
 
 <script>
@@ -137,6 +154,17 @@ const THEME: Record<
   const stage = section?.querySelector<HTMLElement>(".stage");
   const COUNT = 3;
   let ticking = false;
+  let current = -1;
+
+  function playRise(idx: number) {
+    const visual = stage?.querySelector<HTMLElement>(
+      `.state-${idx} .showcase-visual`,
+    );
+    if (!visual) return;
+    visual.classList.remove("showcase-rise");
+    void visual.offsetWidth; // force le reflow pour pouvoir rejouer l'animation
+    visual.classList.add("showcase-rise");
+  }
 
   function update() {
     ticking = false;
@@ -148,7 +176,11 @@ const THEME: Record<
     );
     const p = distance > 0 ? scrolled / distance : 0;
     const idx = Math.min(COUNT - 1, Math.floor(p * COUNT));
-    if (stage.dataset.active !== String(idx)) stage.dataset.active = String(idx);
+    if (current !== idx) {
+      current = idx;
+      stage.dataset.active = String(idx);
+      playRise(idx);
+    }
   }
 
   function onScroll() {

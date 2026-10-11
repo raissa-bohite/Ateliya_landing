@@ -39,6 +39,8 @@ const TONES = [
           const t = TONES[index % TONES.length];
           return (
             <figure
+              data-reveal
+              style={`transition-delay:${index * 90}ms`}
               class:list={[
                 "relative flex flex-col overflow-hidden rounded-3xl p-7 shadow-[0_24px_60px_-40px_rgba(7,31,20,0.45)] transition-transform duration-300 hover:-translate-y-1.5 sm:p-8",
                 t.card,

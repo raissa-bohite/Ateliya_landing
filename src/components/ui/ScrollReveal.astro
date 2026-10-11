@@ -1,0 +1,37 @@
+{/*
+  Révèle au scroll les éléments marqués data-reveal (cascade possible via
+  style="transition-delay:...").  Vanilla JS, aucune dépendance : si le
+  script ne tourne pas (JS désactivé, erreur), les éléments restent visibles
+  par défaut — voir la règle [data-reveal] dans global.css.
+*/}
+<script>
+  const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
+
+  if ("IntersectionObserver" in window && els.length) {
+    els.forEach((el) => el.classList.add("reveal-pending"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const el = entry.target as HTMLElement;
+          observer.unobserve(el);
+          el.classList.add("is-visible");
+          // Une fois l'animation d'arrivée jouée, on retire reveal-pending :
+          // l'état final (opacity:1, transform:none) est déjà celui par
+          // défaut de [data-reveal], donc rien ne change visuellement — mais
+          // ça libère les éventuelles transitions Tailwind propres à
+          // l'élément (ex: hover) de la transition-delay/duration du reveal.
+          el.addEventListener(
+            "transitionend",
+            () => el.classList.remove("reveal-pending"),
+            { once: true },
+          );
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+    );
+
+    els.forEach((el) => observer.observe(el));
+  }
+</script>

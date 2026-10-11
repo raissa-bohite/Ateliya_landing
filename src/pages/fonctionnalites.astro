@@ -63,24 +63,36 @@ const BADGES = ["Clients", "Commandes", "Paiements"];
         <div class="relative mx-auto h-[420px] w-full max-w-[460px] sm:h-[500px]">
           <div class="absolute bottom-[-6rem] left-1/2 aspect-square w-[88%] -translate-x-1/2 rounded-full bg-gold/35"></div>
           <div class="absolute bottom-[-3.5rem] left-1/2 aspect-square w-[72%] -translate-x-1/2 rounded-full border border-primary/20"></div>
-          <Picture
-            src={boutique}
-            alt=""
-            formats={["avif", "webp"]}
-            fallbackFormat="webp"
-            widths={[200, 400]}
-            sizes="200px"
-            class="absolute bottom-0 left-[2%] z-10 w-[38%] -rotate-[10deg] drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)]"
-          />
-          <Picture
-            src={accueil}
-            alt="Aperçu de l'application Ateliya"
-            formats={["avif", "webp"]}
-            fallbackFormat="webp"
-            widths={[220, 440]}
-            sizes="220px"
-            class="absolute bottom-0 left-[34%] z-20 w-[56%] rotate-[3deg] drop-shadow-[0_30px_55px_rgba(0,0,0,0.35)]"
-          />
+          <div
+            data-reveal="scale"
+            style="transition-delay:0ms"
+            class="absolute bottom-0 left-[2%] z-10 w-[38%]"
+          >
+            <Picture
+              src={boutique}
+              alt=""
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+              widths={[200, 400]}
+              sizes="200px"
+              class="w-full -rotate-[10deg] drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)]"
+            />
+          </div>
+          <div
+            data-reveal="scale"
+            style="transition-delay:160ms"
+            class="absolute bottom-0 left-[34%] z-20 w-[56%]"
+          >
+            <Picture
+              src={accueil}
+              alt="Aperçu de l'application Ateliya"
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+              widths={[220, 440]}
+              sizes="220px"
+              class="w-full rotate-[3deg] drop-shadow-[0_30px_55px_rgba(0,0,0,0.35)]"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -78,6 +78,40 @@ body {
   animation: kenburns 24s ease-in-out infinite alternate;
 }
 
+/* --- Scroll reveal : état par défaut = visible (pas de JS => rien à cacher).
+   Le script ScrollReveal ajoute .reveal-pending au chargement (donc seuls les
+   navigateurs avec JS passent par l'état caché), puis .is-visible quand
+   l'élément entre dans le viewport. --- */
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal].reveal-pending {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal].reveal-pending.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Variante "scale" : montée + léger zoom-in (97% -> 100%) au lieu du simple
+   fade-up. Même recette que le reveal des mockups dans Showcase.astro. */
+[data-reveal="scale"].reveal-pending {
+  transform: translateY(2.5rem) scale(0.97);
+}
+
+/* Variante "lg" : amplitude plus marquée, pour les sections de clôture
+   (ex: Cta) où on veut un peu plus d'emphase qu'un fade-up discret. */
+[data-reveal="lg"].reveal-pending {
+  transform: translateY(3rem);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

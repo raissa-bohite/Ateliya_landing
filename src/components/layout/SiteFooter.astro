@@ -1,5 +1,5 @@
 ---
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../data/nav";
+import { APP_STORE_URL, GOOGLE_PLAY_URL, WHATSAPP_URL } from "../../data/nav";
 import Icon from "../ui/Icon.astro";
 
 const YEAR = new Date().getFullYear();
@@ -55,7 +55,7 @@ const START = [
         </p>
         <div class="mt-5 flex gap-3">
           <a
-            href="https://wa.me/2250501242929?text=Bonjour%2C%20je%20voudrais%20en%20savoir%20plus%20sur%20Ateliya."
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"

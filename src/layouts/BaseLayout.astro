@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import BaseHead from "../components/layout/BaseHead.astro";
 import ScrollReveal from "../components/ui/ScrollReveal.astro";
+import WhatsappButton from "../components/ui/WhatsappButton.astro";
 
 interface Props {
   title: string;
@@ -20,5 +21,6 @@ const { title, description, image } = Astro.props;
   <body class="flex min-h-dvh flex-col bg-background font-sans text-text">
     <slot />
     <ScrollReveal />
+    <WhatsappButton />
   </body>
 </html>

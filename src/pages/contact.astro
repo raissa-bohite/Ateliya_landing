@@ -4,13 +4,14 @@ import Header from "../components/layout/Header.astro";
 import SiteFooter from "../components/layout/SiteFooter.astro";
 import StitchDivider from "../components/ui/StitchDivider.astro";
 import Icon from "../components/ui/Icon.astro";
+import { WHATSAPP_URL } from "../data/nav";
 
 const CHANNELS = [
   {
     title: "WhatsApp",
     value: "+225 05 01 24 29 29",
     description: "Écrivez-nous directement",
-    href: "https://wa.me/2250501242929?text=Bonjour%2C%20je%20voudrais%20en%20savoir%20plus%20sur%20Ateliya.",
+    href: WHATSAPP_URL,
     icon: "message" as const,
     primary: true,
   },

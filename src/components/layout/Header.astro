@@ -85,20 +85,20 @@ const { transparentUntilScroll = false } = Astro.props;
 </header>
 
 <style>
-  /* État "en haut de page" : transparent, texte blanc (sur le hero sombre). */
+  /* État "en haut de page" : transparent, texte foncé sur le hero ivoire. */
   .site-header .wordmark,
   .site-header .nav-link {
-    color: #fff;
+    color: var(--color-primary-dark);
   }
   .site-header .nav-link:hover {
-    color: rgba(255, 255, 255, 0.78);
+    color: var(--color-primary);
   }
   .site-header .cta {
-    background: var(--color-gold);
+    background: var(--color-gold-light);
     color: var(--color-primary-dark);
   }
   .site-header .menu-btn {
-    color: #fff;
+    color: var(--color-primary-dark);
   }
 
   /* État "scrollé" : carte opaque, texte foncé. */

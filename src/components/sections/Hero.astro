@@ -1,151 +1,151 @@
+
 ---
-import { Picture } from "astro:assets";
-import heroImg from "../../assets/hero-atelier.webp";
 import AppStoreBadges from "../ui/AppStoreBadges.astro";
 import Icon from "../ui/Icon.astro";
 ---
 
-<section class="relative flex min-h-svh flex-col overflow-hidden bg-primary-dark">
-  {/* Fond : la photo est toujours là (c'est le LCP, elle s'affiche tout de
-      suite). La vidéo en boucle n'est injectée et jouée que côté client,
-      et seulement si l'écran est assez grand, que la personne n'a pas
-      demandé "mouvement réduit", et qu'elle n'est pas en économie de
-      données — voir le script plus bas. Quand elle tourne, le bouton
-      pause devient obligatoire (WCAG 2.2.2 : tout mouvement automatique
-      de plus de 5 s doit pouvoir être arrêté). */}
-  <Picture
-    src={heroImg}
-    formats={["avif", "webp"]}
-    fallbackFormat="webp"
-    widths={[640, 1024, 1536, 1920]}
-    sizes="100vw"
-    alt="Couturière présentant l'application Ateliya dans son atelier"
-    loading="eager"
+<section class="hero relative isolate min-h-svh overflow-hidden bg-hero pt-[72px]">
+  <!-- Photo de fond : la couturière reste à droite -->
+  <img
+    src="/hero-image.webp"
+    alt="Créatrice dans son atelier, avec l’application Ateliya affichée sur un téléphone posé sur la table"
+    class="hero-photo absolute inset-0 -z-20 h-full w-full"
     fetchpriority="high"
-    pictureAttributes={{ class: "absolute inset-0 h-full w-full" }}
-    class="h-full w-full object-cover object-center"
+    loading="eager"
+    decoding="async"
   />
 
-  <video
-    class="hero-loop absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-700"
-    muted
-    loop
-    playsinline
-    preload="none"
-    aria-label="Vidéo de présentation d'Ateliya, en boucle"
-  >
-  </video>
-
-  <button
-    type="button"
-    class="hero-loop-toggle absolute bottom-5 left-5 z-10 hidden h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition-colors hover:bg-black/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark"
-    data-loop-toggle
-    aria-pressed="false"
-    aria-label="Mettre en pause la vidéo en boucle"
-  >
-    <Icon name="pause" class="icon-pause h-[18px] w-[18px]" />
-    <Icon name="play" class="icon-play h-[18px] w-[18px]" />
-  </button>
-
-  {/* Voile pour le contraste du texte — un seul dégradé diagonal, en
-      pleine largeur, qui devient réellement transparent avant la moitié
-      de l'écran. Pas de bord dur comme avec un conteneur max-w limité :
-      la transition se termine en transparent, donc invisible. */}
   <div
-    class="absolute inset-0"
-    style="background:linear-gradient(100deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.6) 22%, rgba(0,0,0,.28) 42%, rgba(0,0,0,0) 60%)"
+    class="hero-inner relative mx-auto flex min-h-[calc(100svh-72px)] w-full items-center px-5 py-12 sm:px-8 lg:px-[5.1vw] lg:py-16"
   >
-  </div>
-  <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"></div>
-
-  <div
-    class="relative mx-auto flex min-h-0 w-full max-w-[88rem] flex-1 flex-col px-5 pt-28 pb-10 lg:px-10"
-  >
-    <div class="mt-auto max-w-4xl">
-      <h1
-        class="animate-fade-up font-serif text-6xl leading-[0.95] font-bold tracking-tight text-white sm:text-7xl lg:text-8xl"
-        style="animation-delay:.1s; text-shadow:0 2px 24px rgba(0,0,0,.6)"
+    <!-- Contenu éditorial -->
+    <div class="hero-copy relative z-10 w-full max-w-[610px]">
+      <p
+        class="animate-fade-up mb-6 inline-flex max-w-full rounded-full bg-primary-light/80 px-4 py-2 text-[10px] leading-relaxed font-semibold tracking-wide text-primary-dark sm:text-xs"
       >
-        Votre atelier,<br />
-        <span class="text-white italic">enfin sous contrôle.</span>
+        L’APPLICATION PENSÉE POUR LES ATELIERS DE COUTURE
+      </p>
+
+      <h1
+        class="animate-fade-up font-serif text-[clamp(3rem,5.2vw,5rem)] leading-[.9] font-semibold tracking-[-.045em] text-primary-dark"
+        style="animation-delay:.1s"
+      >
+        Votre talent crée<br class="hidden sm:block" />
+        la mode. Ateliya<br class="hidden sm:block" />
+        <span class="text-primary">organise le reste.</span>
       </h1>
 
       <p
-        class="animate-fade-up mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg"
-        style="animation-delay:.45s; text-shadow:0 1px 12px rgba(0,0,0,.6)"
+        class="animate-fade-up mt-6 max-w-[460px] text-base leading-relaxed text-text-secondary sm:text-lg"
+        style="animation-delay:.25s"
       >
-        Fini le carnet et les oublis : clients, mesures, commandes et paiements
-        réunis dans une seule app.
+        Clients, mensurations, commandes et paiements :
+        gérez votre atelier de couture depuis une seule application.
       </p>
 
-      <div class="animate-fade-up mt-8" style="animation-delay:.6s">
+      <!-- Téléchargement de l'application -->
+      <div
+        class="animate-fade-up mt-7 flex flex-wrap items-center gap-3"
+        style="animation-delay:.4s"
+      >
         <AppStoreBadges />
       </div>
-    </div>
-  </div>
 
-  {/* Indice de scroll */}
-  <div
-    class="pointer-events-none absolute inset-x-0 bottom-5 z-10 flex justify-center"
-  >
-    <div
-      class="flex flex-col items-center gap-1 text-white/85"
-      style="text-shadow:0 1px 8px rgba(0,0,0,.75)"
-    >
-      <span class="text-xs font-medium tracking-wide uppercase">Découvrir</span>
-      <svg class="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+      <!-- Bénéfices -->
+      <div
+        class="animate-fade-up mt-9 grid max-w-[490px] grid-cols-4 divide-x divide-primary/20"
+        style="animation-delay:.52s"
+      >
+        {[
+          { icon: "users" as const, label: "Vos clients" },
+          { icon: "receipt" as const, label: "Vos commandes" },
+          { icon: "wallet" as const, label: "Vos paiements" },
+          { icon: "trending-up" as const, label: "Votre atelier" },
+        ].map((item) => (
+          <div
+            class="flex flex-col items-center gap-2 px-1 text-center text-[10px] font-medium text-primary-dark sm:text-sm"
+          >
+            <Icon name={item.icon} class="h-6 w-6 text-primary sm:h-7 sm:w-7" />
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
+
     </div>
+
   </div>
 </section>
 
-<script>
-  const loopVideo = document.querySelector<HTMLVideoElement>(".hero-loop");
-  const loopToggle = document.querySelector<HTMLButtonElement>("[data-loop-toggle]");
-
-  // navigator.connection n'existe que sur Chrome/Edge — absent ailleurs,
-  // d'où l'optional chaining partout.
-  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
-    .connection;
-
-  const shouldPlayVideo =
-    window.matchMedia("(min-width: 768px)").matches &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
-    !connection?.saveData;
-
-  if (loopVideo && loopToggle && shouldPlayVideo) {
-    const source = document.createElement("source");
-    source.type = "video/mp4";
-    source.src = "/hero-loop.mp4";
-    loopVideo.append(source);
-    loopVideo.load();
-
-    // Le fondu n'arrive qu'une fois la vidéo réellement en train de jouer,
-    // pour éviter un flash noir pendant le chargement.
-    loopVideo.addEventListener(
-      "playing",
-      () => loopVideo.classList.add("is-playing"),
-      { once: true },
-    );
-    loopVideo.play().catch(() => {});
-    loopToggle.classList.remove("hidden");
-    loopToggle.classList.add("flex");
-
-    loopToggle.addEventListener("click", () => {
-      const willPause = !loopVideo.paused;
-      if (willPause) loopVideo.pause();
-      else loopVideo.play().catch(() => {});
-      loopToggle.setAttribute("aria-pressed", String(willPause));
-    });
-  }
-</script>
-
 <style>
-  .hero-loop.is-playing {
-    opacity: 1;
+  .hero {
+    background-color: var(--color-hero);
   }
 
-  .hero-loop-toggle[aria-pressed="false"] .icon-play,
-  .hero-loop-toggle[aria-pressed="true"] .icon-pause {
-    display: none;
+  /* Cette image réunit déjà la couturière, le téléphone et l'espace de texte. */
+  .hero .hero-photo {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right center;
+  }
+
+  .hero-copy {
+    text-wrap: pretty;
+  }
+
+  @media (min-width: 1280px) {
+    .hero-copy { transform: translateY(-24px); }
+  }
+
+  /* Ordinateurs portables et écrans intermédiaires */
+  @media (min-width: 1280px) and (max-width: 1450px) {
+    .hero-copy {
+      max-width: 540px;
+    }
+  }
+
+  /* Tablettes : le visuel reste unique et le texte garde son fond crème. */
+  @media (max-width: 1279px) {
+    .hero .hero-photo {
+      object-fit: cover;
+      object-position: 72% center;
+      opacity: 0.2;
+    }
+  }
+
+  /* Téléphones mobiles */
+  @media (max-width: 640px) {
+    .hero {
+      min-height: 100svh;
+    }
+
+    .hero-inner {
+      min-height: calc(100svh - 72px);
+      align-items: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .hero .hero-photo {
+      object-position: 74% center;
+    }
+
+    .hero-copy {
+      max-width: 100%;
+      transform: none;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.65rem, 10.2vw, 3.8rem);
+      line-height: 0.99;
+    }
+  }
+
+  /* Respect des préférences d'accessibilité */
+  @media (prefers-reduced-motion: reduce) {
+    .hero .animate-fade-up {
+      animation: none !important;
+    }
   }
 </style>
